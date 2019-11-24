@@ -16,20 +16,16 @@
     <script type="text/javascript" src="words.js"></script>
 
     <script type="text/javascript">
-        // This will be called by the admin adapter when the settings page loads
         function load(settings, onChange) {
-            // example: select elements with id=key and class=value and insert value
             if (!settings) return;
             $('.value').each(function () {
                 var $key = $(this);
                 var id = $key.attr('id');
                 if ($key.attr('type') === 'checkbox') {
-                    // do not call onChange direct, because onChange could expect some arguments
                     $key.prop('checked', settings[id])
                         .on('change', () => onChange())
                         ;
                 } else {
-                    // do not call onChange direct, because onChange could expect some arguments
                     $key.val(settings[id])
                         .on('change', () => onChange())
                         .on('keyup', () => onChange())
@@ -44,13 +40,10 @@
 
             values2table('trashtypes', settings.trashtypes || [], onChange);
 
-            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
             if (M) M.updateTextFields();
         }
 
-        // This will be called by the admin adapter when the user presses the save button
         function save(callback) {
-            // example: select elements with class=value and build settings object
             var obj = {};
             $('.value').each(function () {
                 var $this = $(this);
@@ -84,8 +77,8 @@
     <div class="m adapter-container">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s2"><a href="#tab-main" class="translate active">Main settings</a></li>
-                <li class="tab col s2"><a href="#tab-trashtypes" class="translate">Trash types</a></li>
+                <li class="tab col s2"><a href="#tab-main" class="translate active">main settings</a></li>
+                <li class="tab col s2"><a href="#tab-trashtypes" class="translate">trash types</a></li>
             </ul>
         </div>
         <div id="tab-main" class="col s12 page">
@@ -97,7 +90,7 @@
             <div class="row">
                 <div class="col s6 input-field">
                     <select class="value" id="ical"></select>
-                    <label for="ical" class="translate">iCal-Instance</label>
+                    <label for="ical" class="translate">ical instance</label>
                 </div>
             </div>
         </div>
@@ -107,11 +100,11 @@
                 <div class="table-values-div">
                     <table class="table-values">
                         <thead>
-                        <tr>
-                            <th data-name="name" style="width: 40%" class="translate">name</th>
-                            <th data-name="match" style="width: 40%" class="translate">event match</th>
-                            <th data-buttons="delete" style="width: 20%"></th>
-                        </tr>
+                            <tr>
+                                <th data-name="name" style="width: 40%" class="translate">name</th>
+                                <th data-name="match" style="width: 40%" class="translate">event match</th>
+                                <th data-buttons="delete" style="width: 20%"></th>
+                            </tr>
                         </thead>
                     </table>
                 </div>
