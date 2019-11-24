@@ -18,14 +18,14 @@ class Trashschedule extends utils.Adapter {
     }
 
     async onReady() {
-        let self = this;
-        let iCalInstance = this.config.ical;
-        let trashTypesConfig = this.config.trashtypes;
+        const self = this;
+        const iCalInstance = this.config.ical;
+        const trashTypesConfig = this.config.trashtypes;
 
         // Create states and channels
         if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
-            for (let t in trashTypesConfig) {
-                let trashType = trashTypesConfig[t];
+            for (const t in trashTypesConfig) {
+                const trashType = trashTypesConfig[t];
 
                 this.setObjectNotExists('type.' + trashType.name, {
                     type: 'channel',
@@ -102,26 +102,26 @@ class Trashschedule extends utils.Adapter {
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data)) {
             this.setState('info.connection', true, true);
-            let dateNow = this.getDateWithoutTime(new Date());
-            let trashTypesConfig = this.config.trashtypes;
-            var minDays = 999;
-            var minDate = null;
-            var minTypes = [];
-            var filledTypes = [];
+            const dateNow = this.getDateWithoutTime(new Date());
+            const trashTypesConfig = this.config.trashtypes;
+            let minDays = 999;
+            let minDate = null;
+            const minTypes = [];
+            const filledTypes = [];
 
-            for (let i in data) {
-                let entry = data[i];
-                let date = this.getDateWithoutTime(new Date(entry._date));
+            for (const i in data) {
+                const entry = data[i];
+                const date = this.getDateWithoutTime(new Date(entry._date));
 
                 this.log.debug('parsing event ' + JSON.stringify(entry));
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
-                    var dayDiff = (date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24);
+                    const dayDiff = (date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24);
 
                     // Check if event matches trash type and fill information
-                    for (let t in trashTypesConfig) {
-                        let trashType = trashTypesConfig[t];
+                    for (const t in trashTypesConfig) {
+                        const trashType = trashTypesConfig[t];
 
                         // Fill type if event matches
                         if (entry.event.indexOf(trashType.match) > -1 && !filledTypes.includes(trashType.name)) {
