@@ -1,90 +1,141 @@
+/* jshint -W097 */
+/* jshint strict: false */
+/* jslint node: true */
 'use strict';
 
-/*
- * Created with @iobroker/create-adapter v1.17.0
- */
-
-// The adapter-core module gives you access to the core ioBroker functions
-// you need to create an adapter
 const utils = require('@iobroker/adapter-core');
-
-// Load your modules here, e.g.:
-// const fs = require("fs");
 
 class Trashschedule extends utils.Adapter {
 
-    /**
-     * @param {Partial<ioBroker.AdapterOptions>} [options={}]
-     */
     constructor(options) {
         super({
             ...options,
-            name: 'trashschedule',
+            name: 'trashschedule'
         });
         this.on('ready', this.onReady.bind(this));
-        this.on('objectChange', this.onObjectChange.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
-        // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
 
-    /**
-     * Is called when databases are connected and adapter received configuration.
-     */
     async onReady() {
-        // Initialize your adapter here
+        let self = this;
+        let iCalInstance = this.config.ical;
+        let trashTypesConfig = this.config.trashtypes;
 
-        // The adapters config (in the instance object everything under the attribute "native") is accessible via
-        // this.config:
-        this.log.info('config option1: ' + this.config.option1);
-        this.log.info('config option2: ' + this.config.option2);
+        // Create states and channels
+        if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
+            for (let t in trashTypesConfig) {
+                let trashType = trashTypesConfig[t];
 
-        /*
-        For every state in the system there has to be also an object of type state
-        Here a simple template for a boolean variable named "testVariable"
-        Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-        */
-        await this.setObjectAsync('testVariable', {
-            type: 'state',
-            common: {
-                name: 'testVariable',
-                type: 'boolean',
-                role: 'indicator',
-                read: true,
-                write: true,
-            },
-            native: {},
-        });
+                this.setObjectNotExists('type.' + trashType.name, {
+                    type: 'channel',
+                    common: {
+                        name: 'Type ' + trashType.name
+                    },
+                    native: {}
+                });
 
-        // in this template all states changes inside the adapters namespace are subscribed
-        this.subscribeStates('*');
+                this.setObjectNotExists('type.' + trashType.name + '.nextdate', {
+                    type: 'state',
+                    common: {
+                        name: 'Next date',
+                        type: 'string',
+                        role: 'date.start',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
 
-        /*
-        setState examples
-        you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-        */
-        // the variable testVariable is set to true as command (ack=false)
-        await this.setStateAsync('testVariable', true);
+                this.setObjectNotExists('type.' + trashType.name + '.nextdateformat', {
+                    type: 'state',
+                    common: {
+                        name: 'Next date format',
+                        type: 'string',
+                        role: 'value',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
 
-        // same thing, but the value is flagged "ack"
-        // ack should be always set to true if the value is received from or acknowledged from the target system
-        await this.setStateAsync('testVariable', { val: true, ack: true });
+                this.setObjectNotExists('type.' + trashType.name + '.daysleft', {
+                    type: 'state',
+                    common: {
+                        name: 'Days left',
+                        type: 'number',
+                        role: 'value',
+                        unit: 'days',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
+            }
+        }
 
-        // same thing, but the state is deleted after 30s (getState will return null afterwards)
-        await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
+        if (iCalInstance) {
+            this.subscribeStates('*');
+            this.subscribeForeignStates(this.config.ical + '.data.table');
 
-        // examples for the checkPassword/checkGroup functions
-        let result = await this.checkPasswordAsync('admin', 'iobroker');
-        this.log.info('check user admin pw ioboker: ' + result);
-
-        result = await this.checkGroupAsync('admin', 'admin');
-        this.log.info('check group user admin group admin: ' + result);
+            this.getForeignState(this.config.ical + '.data.table', function (err, state) {
+                self.updateByCalendarTable(state.val);
+            });
+        } else {
+            this.setState('info.connection', false, true);
+        }
     }
 
-    /**
-     * Is called when adapter shuts down - callback has to be called under any circumstances!
-     * @param {() => void} callback
-     */
+    onStateChange(id, state) {
+        if (id && state && id == this.config.ical + '.data.table') {
+            this.updateByCalendarTable(state.val);
+        }
+    }
+
+    getDateWithoutTime(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    updateByCalendarTable(data) {
+        this.log.debug('updating data');
+
+        if (data && Array.isArray(data)) {
+            this.setState('info.connection', true, true);
+            let dateNow = this.getDateWithoutTime(new Date());
+            let trashTypesConfig = this.config.trashtypes;
+            var filledTypes = [];
+
+            for (let i in data) {
+                let entry = data[i];
+                let date = this.getDateWithoutTime(new Date(entry._date));
+
+                this.log.debug('parsing event ' + JSON.stringify(entry));
+
+                // Just future events
+                if (date.getTime() >= dateNow.getTime()) {
+                    var dayDiff = (date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24);
+
+                    // Check if event matches trash type and fill information
+                    for (let t in trashTypesConfig) {
+                        let trashType = trashTypesConfig[t];
+
+                        // Fill type if event matches
+                        if (entry.event.indexOf(trashType.match) > -1 && !filledTypes.includes(trashType.name)) {
+                            filledTypes.push(trashType.name);
+
+                            this.setState('type.' + trashType.name + '.nextdate', {val: date, ack: true});
+                            this.setState('type.' + trashType.name + '.nextdateformat', {val: entry.date, ack: true});
+                            this.setState('type.' + trashType.name + '.daysleft', {val: dayDiff, ack: true});
+
+                        }
+                    }
+                }
+            }
+        } else {
+            this.setState('info.connection', false, true);
+        }
+    }
+
     onUnload(callback) {
         try {
             this.log.info('cleaned everything up...');
@@ -93,54 +144,6 @@ class Trashschedule extends utils.Adapter {
             callback();
         }
     }
-
-    /**
-     * Is called if a subscribed object changes
-     * @param {string} id
-     * @param {ioBroker.Object | null | undefined} obj
-     */
-    onObjectChange(id, obj) {
-        if (obj) {
-            // The object was changed
-            this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-        } else {
-            // The object was deleted
-            this.log.info(`object ${id} deleted`);
-        }
-    }
-
-    /**
-     * Is called if a subscribed state changes
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
-     */
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.info(`state ${id} deleted`);
-        }
-    }
-
-    // /**
-    //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-    //  * Using this method requires "common.message" property to be set to true in io-package.json
-    //  * @param {ioBroker.Message} obj
-    //  */
-    // onMessage(obj) {
-    // 	if (typeof obj === 'object' && obj.message) {
-    // 		if (obj.command === 'send') {
-    // 			// e.g. send email or pushover or whatever
-    // 			this.log.info('send command');
-
-    // 			// Send response in callback if required
-    // 			if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-    // 		}
-    // 	}
-    // }
-
 }
 
 // @ts-ignore parent is a valid property on module

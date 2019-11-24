@@ -1,7 +1,5 @@
 <html>
-
 <head>
-
     <!-- Load ioBroker scripts and styles-->
     <link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
     <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
@@ -38,7 +36,14 @@
                         ;
                 }
             });
+
+            console.log(settings.ical);
+            fillCalenderServices('#ical', settings.ical, settings.type);
+
             onChange(false);
+
+            values2table('trashtypes', settings.trashtypes || [], onChange);
+
             // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
             if (M) M.updateTextFields();
         }
@@ -55,39 +60,63 @@
                     obj[$this.attr('id')] = $this.val();
                 }
             });
+
+            obj.trashtypes = table2values('trashtypes');
+
             callback(obj);
         }
+
+        function fillCalenderServices(elem, current, type) {
+            socket.emit('getObjectView', 'system', 'instance', {startkey: 'system.adapter.ical.', endkey: 'system.adapter.ical.\u9999'}, function (err, res) {
+                if (!err && res) {
+                    for (var i = 0; i < res.rows.length; i++) {
+                        var n =  res.rows[i].id.replace('system.adapter.', '');
+                        $(elem).append('<option value="' + n + '">' + n + '</option>');
+                    }
+                }
+                $(elem).val(current);
+                $(elem).select();
+            });
+        }
     </script>
-
 </head>
-
 <body>
-
     <div class="m adapter-container">
-
-        <div class="row">
-            <div class="col s12 m4 l2">
-                <img src="trashschedule.png" class="logo">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s2"><a href="#tab-main" class="translate active">Main settings</a></li>
+                <li class="tab col s2"><a href="#tab-trashtypes" class="translate">Trash types</a></li>
+            </ul>
+        </div>
+        <div id="tab-main" class="col s12 page">
+            <div class="row">
+                <div class="col s12 m4 l2">
+                    <img src="trashschedule.png" class="logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 input-field">
+                    <select class="value" id="ical"></select>
+                    <label for="ical" class="translate">iCal-Instance</label>
+                </div>
             </div>
         </div>
-
-        <!-- Put your content here -->
-
-        <!-- For example columns with settings: -->
-        <div class="row">
-            <div class="col s6 input-field">
-                <input type="checkbox" class="value" id="option1" />
-                <label for="option1" class="translate">option1</label>
-            </div>
-
-            <div class="col s6 input-field">
-                <input type="text" class="value" id="option2" />
-                <label for="option2" class="translate">option2</label>
+        <div id="tab-trashtypes" class="col s12 page">
+            <div class="col s12" id="trashtypes">
+                <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                <div class="table-values-div">
+                    <table class="table-values">
+                        <thead>
+                        <tr>
+                            <th data-name="name" style="width: 40%" class="translate">name</th>
+                            <th data-name="match" style="width: 40%" class="translate">event match</th>
+                            <th data-buttons="delete" style="width: 20%"></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-
     </div>
-
 </body>
-
 </html>

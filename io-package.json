@@ -5,41 +5,17 @@
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
+                "de": "Erstveröffentlichung"
             }
         },
         "title": "Trash Schedule",
         "titleLang": {
             "en": "Trash Schedule",
-            "de": "Papierkorb-Zeitplan",
-            "ru": "Расписание мусора",
-            "pt": "Agenda da Lixeira",
-            "nl": "Prullenbakschema",
-            "fr": "Calendrier de la corbeille",
-            "it": "Cestino",
-            "es": "Horario de basura",
-            "pl": "Harmonogram śmieci",
-            "zh-cn": "垃圾箱时间表"
+            "de": "Müllabfuhr-Zeitplan"
         },
         "desc": {
             "en": "Calculate the days until next trash pickup",
-            "de": "Berechnen Sie die Tage bis zur nächsten Müllabfuhr",
-            "ru": "Рассчитать дни до следующего сбора мусора",
-            "pt": "Calcular os dias até a próxima coleta de lixo",
-            "nl": "Bereken de dagen tot de volgende prullenbak",
-            "fr": "Calculez les jours jusqu'au prochain ramassage des ordures",
-            "it": "Calcola i giorni fino alla prossima raccolta dei rifiuti",
-            "es": "Calcule los días hasta la próxima recolección de basura",
-            "pl": "Oblicz dni do następnego odbioru kosza",
-            "zh-cn": "计算直到下一次垃圾收集的天数"
+            "de": "Berechnen Sie die Tage bis zur nächsten Müllabfuhr"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -54,43 +30,83 @@
         "platform": "Javascript/Node.js",
         "main": "main.js",
         "icon": "trashschedule.png",
-        "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.trashschedule/master/admin/trashschedule.png",
+        "enabled": true,
         "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
         "loglevel": "info",
-        "mode": "once",
+        "mode": "daemon",
         "type": "date-and-time",
         "compact": true,
         "materialize": true,
-        "materializeTab": true,
-        "adminTab": {
-            "singleton": true,
-            "name": {
-                "en": "Trash Schedule",
-                "de": "Papierkorb-Zeitplan",
-                "ru": "Расписание мусора",
-                "pt": "Agenda da Lixeira",
-                "nl": "Prullenbakschema",
-                "fr": "Calendrier de la corbeille",
-                "it": "Cestino",
-                "es": "Horario de basura",
-                "pl": "Harmonogram śmieci",
-                "zh-cn": "垃圾箱时间表"
-            },
-            "link": "",
-            "fa-icon": "info"
-        },
-        "supportCustoms": true,
         "dependencies": [
             {
                 "js-controller": ">=1.4.2"
             }
         ]
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
-    },
+    "native": {},
     "objects": [],
-    "instanceObjects": []
+    "instanceObjects": [
+        {
+          "_id":  "info",
+          "type": "channel",
+          "common": {
+            "name": "Information"
+          },
+          "native": {}
+        },
+        {
+          "_id":  "info.connection",
+          "type": "state",
+          "common": {
+            "role":  "indicator.reachable",
+            "name":  "If connected to ical device",
+            "type":  "boolean",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "type",
+          "type": "channel",
+          "common": {
+            "name": "Type"
+          },
+          "native": {}
+        },
+        {
+          "_id":  "next",
+          "type": "channel",
+          "common": {
+            "name": "Next"
+          },
+          "native": {}
+        },
+        {
+            "_id": "next.types",
+            "type": "state",
+            "common": {
+                "name": "Next Types",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.date",
+            "type": "state",
+            "common": {
+                "name": "Next Date",
+                "type": "string",
+                "role": "date.start",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
+    ]
 }
