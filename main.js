@@ -99,10 +99,14 @@ class Trashschedule extends utils.Adapter {
     updateByCalendarTable(data) {
         this.log.debug('updating data');
 
+        // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data)) {
             this.setState('info.connection', true, true);
             let dateNow = this.getDateWithoutTime(new Date());
             let trashTypesConfig = this.config.trashtypes;
+            var minDays = 999;
+            var minDate = null;
+            var minTypes = [];
             var filledTypes = [];
 
             for (let i in data) {
@@ -127,9 +131,24 @@ class Trashschedule extends utils.Adapter {
                             this.setState('type.' + trashType.name + '.nextdateformat', {val: entry.date, ack: true});
                             this.setState('type.' + trashType.name + '.daysleft', {val: dayDiff, ack: true});
 
+                            // Set next type
+                            if (minTypes.length == 0) {
+                                minDays = dayDiff;
+                                minDate = date;
+                            }
+
+                            if (minDays == dayDiff) {
+                                minTypes.push(trashType.name);
+                            }
                         }
                     }
                 }
+            }
+
+            if (minDays < 999 && minTypes.length > 0) {
+                this.setState('next.daysleft', {val: minDays, ack: true});
+                this.setState('next.date', {val: minDate, ack: true});
+                this.setState('next.types', {val: minTypes.join(','), ack: true});
             }
         } else {
             this.setState('info.connection', false, true);

@@ -97,6 +97,19 @@
             "native": {}
         },
         {
+            "_id": "next.daysleft",
+            "type": "state",
+            "common": {
+                "name": "Next days left",
+                "type": "number",
+                "role": "value",
+                "unit": "days",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
             "_id": "next.date",
             "type": "state",
             "common": {
