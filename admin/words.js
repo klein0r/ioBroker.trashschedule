@@ -18,6 +18,10 @@ systemDictionary = {
         'en': 'ical instance',
         'de': 'ical-Instanz'
     },
+    'next separator': {
+        'en': 'Next-Text Separator (and)',
+        'de': 'Trenner für Nächste-Text (und)'
+    },
     'name': {
         'en': 'Name',
         'de': 'Name'

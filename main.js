@@ -149,6 +149,7 @@ class Trashschedule extends utils.Adapter {
                 this.setState('next.daysleft', {val: minDays, ack: true});
                 this.setState('next.date', {val: minDate, ack: true});
                 this.setState('next.types', {val: minTypes.join(','), ack: true});
+                this.setState('next.typestext', {val: minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
             }
         } else {
             this.setState('info.connection', false, true);

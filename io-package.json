@@ -14,8 +14,8 @@
             "de": "Müllabfuhr-Zeitplan"
         },
         "desc": {
-            "en": "Calculate the days until next trash pickup",
-            "de": "Berechnen Sie die Tage bis zur nächsten Müllabfuhr"
+            "en": "Calculates the days until next trash pickup",
+            "de": "Berechnet die Tage bis zur nächsten Müllabfuhr"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -44,7 +44,9 @@
             }
         ]
     },
-    "native": {},
+    "native": {
+        "nextseparator": ","
+    },
     "objects": [],
     "instanceObjects": [
         {
@@ -88,7 +90,19 @@
             "_id": "next.types",
             "type": "state",
             "common": {
-                "name": "Next Types",
+                "name": "Next types",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.typestext",
+            "type": "state",
+            "common": {
+                "name": "Next types as text",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -113,7 +127,7 @@
             "_id": "next.date",
             "type": "state",
             "common": {
-                "name": "Next Date",
+                "name": "Next date",
                 "type": "string",
                 "role": "date.start",
                 "read": true,
