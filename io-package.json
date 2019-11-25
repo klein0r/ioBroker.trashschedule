@@ -146,6 +146,18 @@
                 "write": false
             },
             "native": {}
+        },
+        {
+            "_id": "next.weekday",
+            "type": "state",
+            "common": {
+                "name": "Next week day",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
         }
     ]
 }

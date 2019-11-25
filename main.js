@@ -60,6 +60,18 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
+                this.setObjectNotExists('type.' + trashType.name + '.nextweekday', {
+                    type: 'state',
+                    common: {
+                        name: 'Next week day',
+                        type: 'string',
+                        role: 'value',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
+
                 this.setObjectNotExists('type.' + trashType.name + '.daysleft', {
                     type: 'state',
                     common: {
@@ -130,6 +142,7 @@ class Trashschedule extends utils.Adapter {
 
                             this.setState('type.' + trashType.name + '.nextdate', {val: date, ack: true});
                             this.setState('type.' + trashType.name + '.nextdateformat', {val: this.formatDate(date), ack: true});
+                            this.setState('type.' + trashType.name + '.nextweekday', {val: date.getDay(), ack: true});
                             this.setState('type.' + trashType.name + '.daysleft', {val: dayDiff, ack: true});
 
                             // Set next type
@@ -150,6 +163,7 @@ class Trashschedule extends utils.Adapter {
                 this.setState('next.daysleft', {val: minDays, ack: true});
                 this.setState('next.date', {val: minDate, ack: true});
                 this.setState('next.dateformat', {val: this.formatDate(minDate), ack: true});
+                this.setState('next.weekday', {val: minDate.getDay(), ack: true});
                 this.setState('next.types', {val: minTypes.join(','), ack: true});
                 this.setState('next.typestext', {val: minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
             }
