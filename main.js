@@ -10,7 +10,8 @@ class Trashschedule extends utils.Adapter {
     constructor(options) {
         super({
             ...options,
-            name: 'trashschedule'
+            name: 'trashschedule',
+            useFormatDate: true
         });
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
@@ -128,7 +129,7 @@ class Trashschedule extends utils.Adapter {
                             filledTypes.push(trashType.name);
 
                             this.setState('type.' + trashType.name + '.nextdate', {val: date, ack: true});
-                            this.setState('type.' + trashType.name + '.nextdateformat', {val: entry.date, ack: true});
+                            this.setState('type.' + trashType.name + '.nextdateformat', {val: this.formatDate(date), ack: true});
                             this.setState('type.' + trashType.name + '.daysleft', {val: dayDiff, ack: true});
 
                             // Set next type
@@ -148,6 +149,7 @@ class Trashschedule extends utils.Adapter {
             if (minDays < 999 && minTypes.length > 0) {
                 this.setState('next.daysleft', {val: minDays, ack: true});
                 this.setState('next.date', {val: minDate, ack: true});
+                this.setState('next.dateformat', {val: this.formatDate(minDate), ack: true});
                 this.setState('next.types', {val: minTypes.join(','), ack: true});
                 this.setState('next.typestext', {val: minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
             }

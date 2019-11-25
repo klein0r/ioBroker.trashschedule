@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -130,6 +130,18 @@
                 "name": "Next date",
                 "type": "string",
                 "role": "date.start",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.dateformat",
+            "type": "state",
+            "common": {
+                "name": "Next date format",
+                "type": "string",
+                "role": "value",
                 "read": true,
                 "write": false
             },
