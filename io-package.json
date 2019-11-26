@@ -45,7 +45,8 @@
         ]
     },
     "native": {
-        "nextseparator": ","
+        "nextseparator": ",",
+        "globaloffset": 0
     },
     "objects": [],
     "instanceObjects": [

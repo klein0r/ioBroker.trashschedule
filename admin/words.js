@@ -22,6 +22,10 @@ systemDictionary = {
         'en': 'Next-Text Separator (and)',
         'de': 'Trenner für Nächste-Text (und)'
     },
+    'global offset': {
+        'en': 'Global Offset (days)',
+        'de': 'Globaler Offset (Tage)'
+    },
     'name': {
         'en': 'Name',
         'de': 'Name'

@@ -105,8 +105,12 @@ class Trashschedule extends utils.Adapter {
         }
     }
 
-    getDateWithoutTime(date) {
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    getDateWithoutTime(date, offset) {
+        const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        if (offset != 0) {
+            d.setTime(d.getTime() +  (offset * 24 * 60 * 60 * 1000));
+        }
+        return d;
     }
 
     updateByCalendarTable(data) {
@@ -115,8 +119,9 @@ class Trashschedule extends utils.Adapter {
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data)) {
             this.setState('info.connection', true, true);
-            const dateNow = this.getDateWithoutTime(new Date());
+            const dateNow = this.getDateWithoutTime(new Date(), 0);
             const trashTypesConfig = this.config.trashtypes;
+            const globalOffset = this.config.globaloffset || 0;
             let minDays = 999;
             let minDate = null;
             const minTypes = [];
@@ -124,7 +129,7 @@ class Trashschedule extends utils.Adapter {
 
             for (const i in data) {
                 const entry = data[i];
-                const date = this.getDateWithoutTime(new Date(entry._date));
+                const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
 
                 this.log.debug('parsing event ' + JSON.stringify(entry));
 
