@@ -33,5 +33,9 @@ systemDictionary = {
     'event match': {
         'en': 'Matches events',
         'de': 'Gilt für Termine'
+    },
+    'exact match': {
+        'en': 'Exact Match',
+        'de': 'Genauer Treffer'
     }
 };

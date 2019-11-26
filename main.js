@@ -122,6 +122,7 @@ class Trashschedule extends utils.Adapter {
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const trashTypesConfig = this.config.trashtypes;
             const globalOffset = this.config.globaloffset || 0;
+
             let minDays = 999;
             let minDate = null;
             const minTypes = [];
@@ -142,7 +143,13 @@ class Trashschedule extends utils.Adapter {
                         const trashType = trashTypesConfig[t];
 
                         // Fill type if event matches
-                        if (entry.event.indexOf(trashType.match) > -1 && !filledTypes.includes(trashType.name)) {
+                        if (
+                            !filledTypes.includes(trashType.name) &&
+                            (
+                                (!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || 
+                                (trashType.exactmatch && entry.event == trashType.match)
+                            )
+                            ) {
                             filledTypes.push(trashType.name);
 
                             this.setState('type.' + trashType.name + '.nextdate', {val: date, ack: true});

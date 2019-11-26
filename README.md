@@ -14,14 +14,25 @@
 
 Scans an ical calendar to calculate the days left until next trash pickup
 
+## Preconditions
+
+1. Create an ical instance
+2. Configure url of your calendar
+3. Set "Preview days" to a range which includes every trash type once
+3. Choose option to "Hide Start-End of events"
+
 ## Configuration
 
-1. Create an ical instance and configure url etc.
-2. Create a trash schedule instance and choose the ical instance as source
-3. Go to the trash types tab and add type names and event matches
-4. Start the instance
+1. Create a trash schedule instance and choose the ical instance as source
+2. Go to the trash types tab and add type names and event matches
+3. Start the instance
 
 ## Changelog
+
+### 0.0.2
+
+* (klein0r) added global offset in days
+* (klein0r) added exact match for types
 
 ### 0.0.1
 

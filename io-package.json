@@ -3,6 +3,10 @@
         "name": "trashschedule",
         "version": "0.0.2",
         "news": {
+            "0.0.2": {
+                "en": "added global offset in days",
+                "de": "Globaler Offset in Tagen hinzugefügt"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung"
