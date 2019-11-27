@@ -120,9 +120,13 @@ class Trashschedule extends utils.Adapter {
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data)) {
             this.setState('info.connection', true, true);
+
             const dateNow = this.getDateWithoutTime(new Date(), 0);
+            const hourNow = (new Date()).getHours();
+
             const trashTypesConfig = this.config.trashtypes;
             const globalOffset = this.config.globaloffset || 0;
+            const skipsamedayathour = this.config.skipsamedayathour || 18;
 
             let minDays = 999;
             let minDate = null;
@@ -144,29 +148,31 @@ class Trashschedule extends utils.Adapter {
                         const trashType = trashTypesConfig[t];
                         const trashName = trashType.name.trim();
 
-                        // Fill type if event matches
-                        if (
-                            !filledTypes.includes(trashName) &&
-                            (
-                                (!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || 
-                                (trashType.exactmatch && entry.event == trashType.match)
-                            )
-                            ) {
-                            filledTypes.push(trashName);
-
-                            this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
-                            this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
-                            this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
-                            this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
-
-                            // Set next type
-                            if (minTypes.length == 0) {
-                                minDays = dayDiff;
-                                minDate = date;
-                            }
-
-                            if (minDays == dayDiff) {
-                                minTypes.push(trashName);
+                        if (dayDiff > 0 || hourNow < skipsamedayathour) {
+                            // Fill type if event matches
+                            if (
+                                !filledTypes.includes(trashName) &&
+                                (
+                                    (!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || 
+                                    (trashType.exactmatch && entry.event == trashType.match)
+                                )
+                                ) {
+                                filledTypes.push(trashName);
+    
+                                this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
+                                this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
+                                this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
+                                this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
+    
+                                // Set next type
+                                if (minTypes.length == 0) {
+                                    minDays = dayDiff;
+                                    minDate = date;
+                                }
+    
+                                if (minDays == dayDiff) {
+                                    minTypes.push(trashName);
+                                }
                             }
                         }
                     }

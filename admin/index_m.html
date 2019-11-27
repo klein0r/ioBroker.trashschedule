@@ -83,41 +83,61 @@
         </div>
         <div id="tab-main" class="col s12 page">
             <div class="row">
-                <div class="col s12 m4 l2">
+                <div class="col s6">
                     <img src="trashschedule.png" class="logo">
                 </div>
             </div>
             <div class="row">
-                <div class="col s4 input-field">
+                <div class="col s6 input-field">
                     <select class="value" id="ical"></select>
                     <label for="ical" class="translate">ical instance</label>
+                    <span class="translate">ical instance help</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col s4 input-field">
-                    <input type="text" class="value" id="nextseparator" />
-                    <label for="nextseparator" class="translate">next separator</label>
-                </div>
-                <div class="col s4 input-field">
+                <div class="col s6 input-field">
                     <input type="number" class="value" id="globaloffset" />
                     <label for="globaloffset" class="translate">global offset</label>
+                    <span class="translate">global offset help</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 input-field">
+                    <input type="text" class="value" id="nextseparator" />
+                    <label for="nextseparator" class="translate">next separator</label>
+                    <span class="translate">next separator help</span>
+                </div>
+                <div class="col s6 input-field">
+                    <input type="number" class="value" id="skipsamedayathour" />
+                    <label for="skipsamedayathour" class="translate">skip same day at hour</label>
+                    <span class="translate">skip same day at hour help</span>
                 </div>
             </div>
         </div>
         <div id="tab-trashtypes" class="col s12 page">
-            <div class="col s12" id="trashtypes">
-                <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
-                <div class="table-values-div">
-                    <table class="table-values">
-                        <thead>
-                            <tr>
-                                <th data-name="name" style="width: 40%" class="translate">name</th>
-                                <th data-name="match" style="width: 40%" class="translate">event match</th>
-                                <th data-name="exactmatch" style="width: 70px" data-style="width: 70px" data-type="checkbox" class="translate">exact match</th>
-                                <th data-buttons="delete" style="width: 10%"></th>
-                            </tr>
-                        </thead>
-                    </table>
+            <div class="row">
+                <div class="col s12" id="trashtypes">
+                    <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                    <div class="table-values-div">
+                        <table class="table-values">
+                            <thead>
+                                <tr>
+                                    <th data-name="name" style="width: 40%" class="translate">name</th>
+                                    <th data-name="match" style="width: 40%" class="translate">event match</th>
+                                    <th data-name="exactmatch" style="width: 70px" data-style="width: 70px" data-type="checkbox" class="translate">exact match</th>
+                                    <th data-buttons="delete" style="width: 10%"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 input-field">
+                    <span class="translate">table name help</span>
+                </div>
+                <div class="col s6 input-field">
+                    <span class="translate">table match help</span>
                 </div>
             </div>
         </div>

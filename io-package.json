@@ -50,6 +50,7 @@
     },
     "native": {
         "nextseparator": ",",
+        "skipsamedayathour": 18,
         "globaloffset": 0
     },
     "objects": [],
