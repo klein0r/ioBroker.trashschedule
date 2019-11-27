@@ -27,16 +27,17 @@ class Trashschedule extends utils.Adapter {
         if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
             for (const t in trashTypesConfig) {
                 const trashType = trashTypesConfig[t];
+                const trashName = trashType.name.trim();
 
-                this.setObjectNotExists('type.' + trashType.name, {
+                this.setObjectNotExists('type.' + trashName, {
                     type: 'channel',
                     common: {
-                        name: 'Type ' + trashType.name
+                        name: 'Type ' + trashName
                     },
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashType.name + '.nextdate', {
+                this.setObjectNotExists('type.' + trashName + '.nextdate', {
                     type: 'state',
                     common: {
                         name: 'Next date',
@@ -48,7 +49,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashType.name + '.nextdateformat', {
+                this.setObjectNotExists('type.' + trashName + '.nextdateformat', {
                     type: 'state',
                     common: {
                         name: 'Next date format',
@@ -60,7 +61,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashType.name + '.nextweekday', {
+                this.setObjectNotExists('type.' + trashName + '.nextweekday', {
                     type: 'state',
                     common: {
                         name: 'Next week day',
@@ -72,7 +73,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashType.name + '.daysleft', {
+                this.setObjectNotExists('type.' + trashName + '.daysleft', {
                     type: 'state',
                     common: {
                         name: 'Days left',
@@ -141,21 +142,22 @@ class Trashschedule extends utils.Adapter {
                     // Check if event matches trash type and fill information
                     for (const t in trashTypesConfig) {
                         const trashType = trashTypesConfig[t];
+                        const trashName = trashType.name.trim();
 
                         // Fill type if event matches
                         if (
-                            !filledTypes.includes(trashType.name) &&
+                            !filledTypes.includes(trashName) &&
                             (
                                 (!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || 
                                 (trashType.exactmatch && entry.event == trashType.match)
                             )
                             ) {
-                            filledTypes.push(trashType.name);
+                            filledTypes.push(trashName);
 
-                            this.setState('type.' + trashType.name + '.nextdate', {val: date, ack: true});
-                            this.setState('type.' + trashType.name + '.nextdateformat', {val: this.formatDate(date), ack: true});
-                            this.setState('type.' + trashType.name + '.nextweekday', {val: date.getDay(), ack: true});
-                            this.setState('type.' + trashType.name + '.daysleft', {val: dayDiff, ack: true});
+                            this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
+                            this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
+                            this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
+                            this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
 
                             // Set next type
                             if (minTypes.length == 0) {
@@ -164,7 +166,7 @@ class Trashschedule extends utils.Adapter {
                             }
 
                             if (minDays == dayDiff) {
-                                minTypes.push(trashType.name);
+                                minTypes.push(trashName);
                             }
                         }
                     }
