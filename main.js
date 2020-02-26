@@ -141,7 +141,7 @@ class Trashschedule extends utils.Adapter {
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
-                    const dayDiff = (date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24);
+                    const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24));
 
                     // Check if event matches trash type and fill information
                     for (const t in trashTypesConfig) {
@@ -158,18 +158,18 @@ class Trashschedule extends utils.Adapter {
                                 )
                                 ) {
                                 filledTypes.push(trashName);
-    
+
                                 this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
                                 this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
                                 this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
                                 this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
-    
+
                                 // Set next type
                                 if (minTypes.length == 0) {
                                     minDays = dayDiff;
                                     minDate = date;
                                 }
-    
+
                                 if (minDays == dayDiff) {
                                     minTypes.push(trashName);
                                 }
