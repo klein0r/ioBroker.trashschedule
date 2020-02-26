@@ -3,6 +3,10 @@
         "name": "trashschedule",
         "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "fixed issue with events after time change date",
+                "de": "Problem mit Termin nach Zeitumstellung behoben"
+            },
             "0.0.2": {
                 "en": "added global offset in days",
                 "de": "Globaler Offset in Tagen hinzugefügt"
