@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "news": {
+            "0.0.4": {
+                "en": "Added VIS templates",
+                "de": "VIS Templates hinzugefügt"
+            },
             "0.0.3": {
                 "en": "fixed issue with events after time change date",
                 "de": "Problem mit Termin nach Zeitumstellung behoben"
