@@ -89,6 +89,18 @@
           "native": {}
         },
         {
+            "_id": "type.json",
+            "type": "state",
+            "common": {
+                "name": "Types as JSOM",
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
           "_id":  "next",
           "type": "channel",
           "common": {

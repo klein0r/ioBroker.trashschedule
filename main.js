@@ -128,6 +128,7 @@ class Trashschedule extends utils.Adapter {
             const globalOffset = this.config.globaloffset || 0;
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
+            let jsonSummary = [];
             let minDays = 999;
             let minDate = null;
             const minTypes = [];
@@ -164,6 +165,13 @@ class Trashschedule extends utils.Adapter {
                                 this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
                                 this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
 
+                                jsonSummary.push(
+                                    {
+                                        type: trashName,
+                                        daysleft: dayDiff
+                                    }
+                                );
+
                                 // Set next type
                                 if (minTypes.length == 0) {
                                     minDays = dayDiff;
@@ -177,6 +185,8 @@ class Trashschedule extends utils.Adapter {
                         }
                     }
                 }
+
+                this.setState('type.json', {val: JSON.stringify(jsonSummary), ack: true});
             }
 
             if (minDays < 999 && minTypes.length > 0) {
