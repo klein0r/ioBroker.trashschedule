@@ -73,9 +73,8 @@ vis.binds['trashschedule'] = {
         h = Math.round(360 * h);
 
         // Ausgangsfarbe: #00892c, HSL => 139°, 100%, 27%
-        // Nach sepia: #3b3529, HSL => 40°, 18%, 20%
 
-        return 'brightness(50%) sepia(1)  hue-rotate(' + (h - 40) + 'deg) saturate(' + (100 + (s - 18)) + '%) brightness(' + (100 + (l - 20)) + '%)';
+        return 'brightness(50%) sepia(1)  hue-rotate(' + (h - 139) + 'deg) saturate(' + (100 + (s - 100)) + '%) brightness(' + (100 + (l - 27)) + '%)';
     },
     redraw: function(target, json) {
 
