@@ -54,6 +54,10 @@ systemDictionary = {
         'en': 'Matches events',
         'de': 'Gilt für Termine'
     },
+    'color': {
+        'en': 'Color code',
+        'de': 'Farbcode'
+    },
     'exact match': {
         'en': 'Exact Match',
         'de': 'Genauer Treffer'
@@ -65,5 +69,9 @@ systemDictionary = {
     'table match help': {
         'en': 'Matches events: This text must be included in the event name of the calendar. If "Exact Match" is checked, the name has to match exactly.',
         'de': 'Gilt für Termine: Dieser Text muss als Termin im Kalender enthalten sein, damit dieser als Abholtermin des Typs erkannt wird. Wird "Genauer Treffer" muss der Termin genau übereinstimmen.'
+    },
+    'table color help': {
+        'en': 'Specify a color for the trash type. This color can be used in VIS to colorize the pickup type.',
+        'de': 'Mit diesem Farbcode können die einzelnen Termine in VIS eingefärbt werden.'
     }
 };

@@ -85,6 +85,18 @@ class Trashschedule extends utils.Adapter {
                     },
                     native: {}
                 });
+
+                this.setObjectNotExists('type.' + trashName + '.color', {
+                    type: 'state',
+                    common: {
+                        name: 'Color',
+                        type: 'string',
+                        role: 'level.color.rgb',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
             }
         }
 
@@ -164,11 +176,14 @@ class Trashschedule extends utils.Adapter {
                                 this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
                                 this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
                                 this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
+                                this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
 
                                 jsonSummary.push(
                                     {
-                                        type: trashName,
-                                        daysleft: dayDiff
+                                        name: trashName,
+                                        daysleft: dayDiff,
+                                        nextdate: date,
+                                        _color: trashType.color
                                     }
                                 );
 

@@ -36,7 +36,8 @@
             "trash",
             "calendar",
             "muell",
-            "muellabfuhr"
+            "muellabfuhr",
+            "vis"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
@@ -50,10 +51,14 @@
         "type": "date-and-time",
         "compact": true,
         "materialize": true,
+        "restartAdapters": [
+            "vis"
+        ],
         "dependencies": [
             {
                 "js-controller": ">=1.4.2"
-            }
+            },
+            "vis"
         ]
     },
     "native": {
@@ -96,7 +101,7 @@
             "_id": "type.json",
             "type": "state",
             "common": {
-                "name": "Types as JSOM",
+                "name": "Types as JSON",
                 "type": "string",
                 "role": "json",
                 "read": true,
