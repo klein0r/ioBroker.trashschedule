@@ -101,7 +101,6 @@ class Trashschedule extends utils.Adapter {
         }
 
         if (iCalInstance) {
-            this.subscribeStates('*');
             this.subscribeForeignStates(this.config.ical + '.data.table');
 
             this.getForeignState(this.config.ical + '.data.table', function (err, state) {
