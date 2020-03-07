@@ -1,10 +1,7 @@
 .trashtype {
+    position: relative;
     display: inline-block;
     width: 105px;
-    position: relative;
-}
-
-.trashtype + .trashtype {
     margin-left: 20px;
 }
 
