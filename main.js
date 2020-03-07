@@ -201,6 +201,18 @@ class Trashschedule extends utils.Adapter {
                 }
             }
 
+            // Check for "unmatched" types
+            for (const t in trashTypesConfig) {
+                const trashType = trashTypesConfig[t];
+                const trashName = trashType.name.trim();
+
+                if (!filledTypes.includes(trashName)) {
+                    this.log.debug('no events found for type ' + trashType.name);
+
+                    // TODO: Reset to default values?
+                }
+            }
+
             // Sort summary by days left
             jsonSummary.sort(function(a, b){
                 return a.daysleft - b.daysleft;
