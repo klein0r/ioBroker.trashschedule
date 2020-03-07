@@ -201,6 +201,11 @@ class Trashschedule extends utils.Adapter {
                 }
             }
 
+            // Sort summary by days left
+            jsonSummary.sort(function(a, b){
+                return a.daysleft - b.daysleft;
+            });
+
             this.setState('type.json', {val: JSON.stringify(jsonSummary), ack: true});
 
             if (minDays < 999 && minTypes.length > 0) {
