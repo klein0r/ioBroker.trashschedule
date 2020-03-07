@@ -140,10 +140,19 @@ class Trashschedule extends utils.Adapter {
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
             let jsonSummary = [];
-            let minDays = 999;
-            let minDate = null;
-            const minTypes = [];
             const filledTypes = [];
+
+            let next = {
+                minDays: 999,
+                minDate: null,
+                minTypes: []
+            };
+
+            let nextAfter = {
+                minDays: 999,
+                minDate: null,
+                minTypes: []
+            };
 
             for (const i in data) {
                 const entry = data[i];
@@ -162,38 +171,40 @@ class Trashschedule extends utils.Adapter {
 
                         if (dayDiff > 0 || hourNow < skipsamedayathour) {
                             // Fill type if event matches
-                            if (
-                                !filledTypes.includes(trashName) &&
-                                (
-                                    (!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || 
-                                    (trashType.exactmatch && entry.event == trashType.match)
-                                )
-                                ) {
-                                filledTypes.push(trashName);
+                            if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
-                                this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
-                                this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
-                                this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
-                                this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
+                                if (!filledTypes.includes(trashName)) {
+                                    filledTypes.push(trashName);
 
-                                jsonSummary.push(
-                                    {
-                                        name: trashName,
-                                        daysleft: dayDiff,
-                                        nextdate: date,
-                                        _color: trashType.color
-                                    }
-                                );
+                                    this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
+                                    this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
+                                    this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
+                                    this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
+                                    this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
 
-                                // Set next type
-                                if (minTypes.length == 0) {
-                                    minDays = dayDiff;
-                                    minDate = date;
+                                    jsonSummary.push(
+                                        {
+                                            name: trashName,
+                                            daysleft: dayDiff,
+                                            nextdate: date,
+                                            _color: trashType.color
+                                        }
+                                    );
                                 }
 
-                                if (minDays == dayDiff) {
-                                    minTypes.push(trashName);
+                                // Set next type
+                                if (next.minTypes.length == 0) {
+                                    next.minDays = dayDiff;
+                                    next.minDate = date;
+                                } else if (nextAfter.minTypes.length == 0) {
+                                    nextAfter.minDays = dayDiff;
+                                    nextAfter.minDate = date;
+                                }
+
+                                if (!next.minTypes.includes(trashName) && next.minDays == dayDiff) {
+                                    next.minTypes.push(trashName);
+                                } else if (!nextAfter.minTypes.includes(trashName) && nextAfter.minDays == dayDiff) {
+                                    nextAfter.minTypes.push(trashName);
                                 }
                             }
                         }
@@ -220,17 +231,27 @@ class Trashschedule extends utils.Adapter {
 
             this.setState('type.json', {val: JSON.stringify(jsonSummary), ack: true});
 
-            if (minDays < 999 && minTypes.length > 0) {
-                this.setState('next.daysleft', {val: minDays, ack: true});
-                this.setState('next.date', {val: minDate, ack: true});
-                this.setState('next.dateformat', {val: this.formatDate(minDate), ack: true});
-                this.setState('next.weekday', {val: minDate.getDay(), ack: true});
-                this.setState('next.types', {val: minTypes.join(','), ack: true});
-                this.setState('next.typestext', {val: minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
-            }
+            this.fillNext(next, 'next');
+            this.fillNext(nextAfter, 'nextAfter');
+
         } else {
             this.setState('info.connection', false, true);
         }
+    }
+
+    fillNext(obj, statePrefix) {
+
+        this.log.debug('fill ' + statePrefix + ' events for ' + JSON.stringify(obj));
+
+        if (obj.minDays < 999 && obj.minTypes.length > 0) {
+            this.setState(statePrefix + '.daysleft', {val: obj.minDays, ack: true});
+            this.setState(statePrefix + '.date', {val: obj.minDate, ack: true});
+            this.setState(statePrefix + '.dateformat', {val: this.formatDate(obj.minDate), ack: true});
+            this.setState(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
+            this.setState(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
+            this.setState(statePrefix + '.typestext', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
+        }
+
     }
 
     onUnload(callback) {

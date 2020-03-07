@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
+            "0.0.5": {
+                "en": "Added pickup dates after next date",
+                "de": "Übernächste Termine hinzugefügt"
+            },
             "0.0.4": {
                 "en": "Added VIS templates",
                 "de": "VIS Templates hinzugefügt"
@@ -183,6 +187,87 @@
             "type": "state",
             "common": {
                 "name": "Next week day",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+          "_id":  "nextAfter",
+          "type": "channel",
+          "common": {
+            "name": "After Next"
+          },
+          "native": {}
+        },
+        {
+            "_id": "nextAfter.types",
+            "type": "state",
+            "common": {
+                "name": "After Next types",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.typestext",
+            "type": "state",
+            "common": {
+                "name": "After Next types as text",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.daysleft",
+            "type": "state",
+            "common": {
+                "name": "After Next days left",
+                "type": "number",
+                "role": "value",
+                "unit": "days",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.date",
+            "type": "state",
+            "common": {
+                "name": "After Next date",
+                "type": "string",
+                "role": "date.start",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.dateformat",
+            "type": "state",
+            "common": {
+                "name": "After Next date format",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.weekday",
+            "type": "state",
+            "common": {
+                "name": "After Next week day",
                 "type": "string",
                 "role": "value",
                 "read": true,
