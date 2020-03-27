@@ -234,7 +234,7 @@ class Trashschedule extends utils.Adapter {
                 if (!filledTypes.includes(trashName)) {
                     this.log.debug('no events found for type ' + trashType.name);
                     this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
-					//reset values
+		    //reset values
                     this.setState('type.' + trashName + '.nextdate', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextdateformat', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
