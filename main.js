@@ -86,6 +86,19 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
+                this.setObjectNotExists('type.' + trashName + '.nextDateFound', {
+                    type: 'state',
+                    common: {
+                        name: 'Date found',
+                        type: 'boolean',
+                        role: 'value',
+                        def: false,
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
+
                 this.setObjectNotExists('type.' + trashName + '.color', {
                     type: 'state',
                     common: {
@@ -180,6 +193,7 @@ class Trashschedule extends utils.Adapter {
                                     this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
                                     this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
                                     this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
+                                    this.setState('type.' + trashName + '.nextDateFound', {val: true, ack: true});
                                     this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
 
                                     jsonSummary.push(
@@ -219,9 +233,12 @@ class Trashschedule extends utils.Adapter {
 
                 if (!filledTypes.includes(trashName)) {
                     this.log.debug('no events found for type ' + trashType.name);
-
-                    // TODO: Reset to default values?
-                }
+                    this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
+		    //reset values
+                    this.setState('type.' + trashName + '.nextdate', {val: "", ack: true});
+                    this.setState('type.' + trashName + '.nextdateformat', {val: "", ack: true});
+                    this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
+                    this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});                }
             }
 
             // Sort summary by days left
