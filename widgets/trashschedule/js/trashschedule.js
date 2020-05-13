@@ -8,7 +8,7 @@
 'use strict';
 
 // add translations for edit mode
-$.get('adapter/trashschedule/words.js', function(script) {
+$.get('widgets/trashschedule/words.js', function(script) {
     let translation = script.substring(script.indexOf('{'), script.length);
     translation = translation.substring(0, translation.lastIndexOf(';'));
     $.extend(systemDictionary, JSON.parse(translation));
@@ -32,13 +32,15 @@ vis.binds['trashschedule'] = {
             }, 100);
         }
 
+        const size = data.size ? parseInt(data.size) : 100;
+
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[data.oid + '.val']);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[data.oid + '.val'], size);
 
         // subscribe on updates of value
         if (data.oid) {
             vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size);
             });
         }
     },
@@ -181,11 +183,15 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json) {
+    redraw: function(target, json, size) {
 
         const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
 
         target.empty();
+
+        if (size < 100 && size > 0) {
+            target.css('transform', 'scale(' + (size / 100) + ')');
+        }
 
         $.each(JSON.parse(json), function(i, trashType) {
             var newItem = $('<div class="trashtype"></div>');
