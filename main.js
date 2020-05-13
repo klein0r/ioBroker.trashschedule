@@ -145,6 +145,8 @@ class Trashschedule extends utils.Adapter {
         if (data && Array.isArray(data) && data.length > 0) {
             this.setState('info.connection', true, true);
 
+            this.log.debug('Start processing ' + data.length + ' iCal events');
+
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = (new Date()).getHours();
 
@@ -171,7 +173,7 @@ class Trashschedule extends utils.Adapter {
                 const entry = data[i];
                 const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
 
-                this.log.debug('parsing event ' + JSON.stringify(entry));
+                this.log.debug('(1) parsing next event ' + JSON.stringify(entry));
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
@@ -185,6 +187,8 @@ class Trashschedule extends utils.Adapter {
                         if (dayDiff > 0 || hourNow < skipsamedayathour) {
                             // Fill type if event matches
                             if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
+
+                                this.log.debug('(2) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
 
                                 if (!filledTypes.includes(trashName)) {
                                     filledTypes.push(trashName);
@@ -204,6 +208,8 @@ class Trashschedule extends utils.Adapter {
                                             _color: trashType.color
                                         }
                                     );
+
+                                    this.log.debug('(3) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
                                 }
 
                                 // Set next type
@@ -223,6 +229,8 @@ class Trashschedule extends utils.Adapter {
                             }
                         }
                     }
+                } else {
+                    this.log.debug('Skipped event (event is in the past) ' + JSON.stringify(entry));
                 }
             }
 
@@ -232,13 +240,15 @@ class Trashschedule extends utils.Adapter {
                 const trashName = trashType.name.trim();
 
                 if (!filledTypes.includes(trashName)) {
-                    this.log.debug('no events found for type ' + trashType.name);
+                    this.log.info('no events matches type ' + trashType.name);
+
+                    // reset values
                     this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
-		    //reset values
                     this.setState('type.' + trashName + '.nextdate', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextdateformat', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
-                    this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});                }
+                    this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});
+                }
             }
 
             // Sort summary by days left
@@ -252,13 +262,15 @@ class Trashschedule extends utils.Adapter {
             this.fillNext(nextAfter, 'nextAfter');
 
         } else {
+            this.log.error('no events found in iCal instance - check configuration and restart adapter');
+
             this.setState('info.connection', false, true);
         }
     }
 
     fillNext(obj, statePrefix) {
 
-        this.log.debug('fill ' + statePrefix + ' events for ' + JSON.stringify(obj));
+        this.log.debug('fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
             this.setState(statePrefix + '.daysleft', {val: obj.minDays, ack: true});
