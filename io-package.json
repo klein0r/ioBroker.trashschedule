@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "Updated dependencies",
+                "de": "Abhängigkeiten aktualisiert"
+            },
             "0.0.5": {
                 "en": "Added pickup dates after next date",
                 "de": "Übernächste Termine hinzugefügt"
