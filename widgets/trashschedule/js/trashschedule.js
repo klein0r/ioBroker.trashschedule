@@ -7,13 +7,6 @@
 */
 'use strict';
 
-// add translations for edit mode
-$.get('adapter/trashschedule/words.js', function(script) {
-    let translation = script.substring(script.indexOf('{'), script.length);
-    translation = translation.substring(0, translation.lastIndexOf(';'));
-    $.extend(systemDictionary, JSON.parse(translation));
-});
-
 // this code can be placed directly in trashschedule.html
 vis.binds['trashschedule'] = {
     version: '0.0.4',
