@@ -58,6 +58,8 @@
         "mode": "daemon",
         "type": "date-and-time",
         "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
         "materialize": true,
         "restartAdapters": [
             "vis"
