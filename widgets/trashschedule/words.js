@@ -1,7 +1,7 @@
 /*global systemDictionary:true */
 'use strict';
 
-systemDictionary = {
+const trashscheduleTranslations = {
     "size": {
         "en": "Size",
         "de": "Größe",
@@ -13,5 +13,5 @@ systemDictionary = {
         "es": "Talla",
         "pl": "Rozmiar",
         "zh-cn": "尺寸"
-    },
+    }
 };

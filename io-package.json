@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "Fixed missing VIS translations",
+                "de": "VIS Übersetzungen gefixt"
+            },
             "0.0.7": {
                 "en": "Several fixes, improved admin and vis",
                 "de": "Mehrere Bugfixes, Admin und VIS verbessert"
