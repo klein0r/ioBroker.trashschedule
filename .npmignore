@@ -9,8 +9,8 @@ gulpfile.js
 
 test/
 travis/
-.travis.yaml
-appveyor.yaml
+.travis.yml
+appveyor.yml
 tsconfig.json
 
 .eslintrc.json
