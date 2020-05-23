@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "news": {
+            "0.0.9": {
+                "en": "Fixed color correction calculation issue",
+                "de": "Fehler mit der automatischen Farbberechnung behoben"
+            },
             "0.0.8": {
                 "en": "Fixed missing VIS translations",
                 "de": "VIS Übersetzungen gefixt"

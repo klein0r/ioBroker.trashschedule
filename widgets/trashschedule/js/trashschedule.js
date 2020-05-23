@@ -57,6 +57,10 @@ vis.binds['trashschedule'] = {
             });
         }
     },
+    toPaddedHexString: function(num, len) {
+        let str = num.toString(16);
+        return '0'.repeat(len - str.length) + str;
+    },
     rgbToHsl: function(r, g, b) {
         r /= 255, g /= 255, b /= 255;
 
@@ -131,7 +135,7 @@ vis.binds['trashschedule'] = {
         var hsl = this.getHsl(hex);
         var rgb = this.hslToRgb(hsl[0], hsl[1], hsl[2] + lightnessShift);
 
-        return rgb[0].toString(16) + rgb[1].toString(16) + rgb[2].toString(16);
+        return this.toPaddedHexString(rgb[0], 2) + this.toPaddedHexString(rgb[1], 2) + this.toPaddedHexString(rgb[2], 2);
     },
     getBackgroundImage: function(color) {
 
