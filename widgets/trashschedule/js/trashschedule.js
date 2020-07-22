@@ -211,17 +211,19 @@ vis.binds['trashschedule'] = {
         }
 
         $.each(JSON.parse(json), function(i, trashType) {
-            var newItem = $('<div class="trashtype"></div>');
-
-            $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
-            $('<div class="dumpster"></div>').html(trashType.daysleft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
-            $('<span class="nextdate"></span>').html(new Date(trashType.nextdate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
-
             if (trashType._color) {
-                newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
-            }
+                var newItem = $('<div class="trashtype"></div>');
 
-            target.append(newItem);
+                $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
+                $('<div class="dumpster"></div>').html(trashType.daysleft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
+                $('<span class="nextdate"></span>').html(new Date(trashType.nextdate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+
+                if (trashType._color) {
+                    newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
+                }
+
+                target.append(newItem);
+            }
         });
 
     }
