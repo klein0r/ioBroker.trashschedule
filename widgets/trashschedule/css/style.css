@@ -44,3 +44,27 @@
     text-align: center;
     width: 100%;
 }
+
+@-webkit-keyframes animTrashGlow {
+  0% {
+    box-shadow: 0 0 #f30b0b;
+  }
+  100% {
+    box-shadow: 0 0 10px 8px transparent;
+    border-width: 2px;
+  }
+}
+@keyframes animTrashGlow {
+  0% {
+    box-shadow: 0 0 #f30b0b;
+  }
+  100% {
+    box-shadow: 0 0 10px 8px transparent;
+    border-width: 2px;
+  }
+}
+
+.trashtype.trash-glow .daysleft {
+  -webkit-animation: animTrashGlow 2s ease infinite;
+          animation: animTrashGlow 2s ease infinite;
+}

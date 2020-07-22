@@ -1,7 +1,7 @@
 /*
     ioBroker.vis TrashSchedule Widget-Set
 
-    version: "0.0.7"
+    version: "0.0.10"
 
     Copyright 2020 Matthias Kleine info@haus-automatisierung.com
 */
@@ -23,13 +23,25 @@ $.extend(
             "es": "Talla",
             "pl": "Rozmiar",
             "zh-cn": "尺寸"
+        },
+        "glow": {
+            "en": "glow when due",
+            "de": "leuchten, wenn fällig",
+            "ru": "светиться, когда из-за",
+            "pt": "brilhar quando devido",
+            "nl": "gloeien wanneer verschuldigd",
+            "fr": "briller quand vient le temps",
+            "it": "bagliore quando dovuto",
+            "es": "brilla cuando es debido",
+            "pl": "świecić w odpowiednim czasie",
+            "zh-cn": "到期时发光"
         }
     }
 );
 
 // this code can be placed directly in trashschedule.html
 vis.binds['trashschedule'] = {
-    version: '0.0.7',
+    version: '0.0.10',
     showVersion: function () {
         if (vis.binds['trashschedule'].version) {
             console.log('Version trashschedule: ' + vis.binds['trashschedule'].version);
@@ -46,14 +58,15 @@ vis.binds['trashschedule'] = {
         }
 
         const size = data.size ? parseInt(data.size) : 100;
+        const glow = data.glow ? true : false;
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[data.oid + '.val'], size);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[data.oid + '.val'], size, glow);
 
         // subscribe on updates of value
         if (data.oid) {
             vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow);
             });
         }
     },
@@ -200,7 +213,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json, size) {
+    redraw: function(target, json, size, glow) {
 
         const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
 
@@ -211,25 +224,30 @@ vis.binds['trashschedule'] = {
         }
 
         $.each(JSON.parse(json), function(i, trashType) {
-            if (trashType._color) {
-                var newItem = $('<div class="trashtype"></div>');
 
-                if (trashType.daysleft == 1) {
-                    newItem.addClass('trash-tomorrow');
-                }
+            var newItem = $('<div class="trashtype"></div>');
 
-                if (trashType.daysleft == 0) {
-                    newItem.addClass('trash-today');
-                }
-
-                $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
-                $('<div class="dumpster"></div>').html(trashType.daysleft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
-                $('<span class="nextdate"></span>').html(new Date(trashType.nextdate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
-
-                newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
-
-                target.append(newItem);
+            if (trashType.daysleft == 1) {
+                newItem.addClass('trash-tomorrow');
             }
+
+            if (trashType.daysleft == 0) {
+                newItem.addClass('trash-today');
+            }
+
+            if (glow && trashType.daysleft <= 1) {
+                newItem.addClass('trash-glow');
+            }
+
+            $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
+            $('<div class="dumpster"></div>').html(trashType.daysleft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
+            $('<span class="nextdate"></span>').html(new Date(trashType.nextdate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+
+            if (trashType._color) {
+                newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
+            }
+
+            target.append(newItem);
         });
 
     }
