@@ -30,6 +30,10 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ## Changelog
 
+### 0.0.10
+
+* (klein0r) Added CSS classes for easier customization
+
 ### 0.0.9
 
 * (klein0r) Fixed color correction calculation issue

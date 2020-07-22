@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "news": {
+            "0.0.10": {
+                "en": "Added CSS classes for easier customization",
+                "de": "CSS-Klassen für einfachere Anpassung hinzugefügt"
+            },
             "0.0.9": {
                 "en": "Fixed color correction calculation issue",
                 "de": "Fehler mit der automatischen Farbberechnung behoben"
