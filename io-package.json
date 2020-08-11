@@ -216,6 +216,18 @@
             "native": {}
         },
         {
+            "_id": "next.dateFound",
+            "type": "state",
+            "common": {
+                "name": "Date found",
+                "type": "boolean",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
           "_id":  "nextAfter",
           "type": "channel",
           "common": {
@@ -290,6 +302,18 @@
             "common": {
                 "name": "After Next week day",
                 "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.dateFound",
+            "type": "state",
+            "common": {
+                "name": "Date found",
+                "type": "boolean",
                 "role": "value",
                 "read": true,
                 "write": false

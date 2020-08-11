@@ -240,14 +240,14 @@ class Trashschedule extends utils.Adapter {
                 const trashName = trashType.name.trim();
 
                 if (!filledTypes.includes(trashName)) {
-                    this.log.info('no events matches type ' + trashType.name);
+                    this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
 
                     // reset values
-                    this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
                     this.setState('type.' + trashName + '.nextdate', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextdateformat', {val: "", ack: true});
                     this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
                     this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});
+                    this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
                 }
             }
 
@@ -273,12 +273,23 @@ class Trashschedule extends utils.Adapter {
         this.log.debug('fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            this.setState(statePrefix + '.daysleft', {val: obj.minDays, ack: true});
             this.setState(statePrefix + '.date', {val: obj.minDate, ack: true});
             this.setState(statePrefix + '.dateformat', {val: this.formatDate(obj.minDate), ack: true});
             this.setState(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
+            this.setState(statePrefix + '.daysleft', {val: obj.minDays, ack: true});
             this.setState(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
             this.setState(statePrefix + '.typestext', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
+            this.setState(statePrefix + '.dateFound', {val: true, ack: true});
+        } else {
+            this.log.error(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
+
+            this.setState(statePrefix + '.date', {val: "", ack: true});
+            this.setState(statePrefix + '.dateformat', {val: "", ack: true});
+            this.setState(statePrefix + '.weekday', {val: null, ack: true});
+            this.setState(statePrefix + '.daysleft', {val: null, ack: true});
+            this.setState(statePrefix + '.types', {val: "n/a", ack: true});
+            this.setState(statePrefix + '.typestext', {val: "n/a", ack: true});
+            this.setState(statePrefix + '.dateFound', {val: false, ack: true});
         }
 
     }
