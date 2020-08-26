@@ -154,16 +154,16 @@ class Trashschedule extends utils.Adapter {
             const globalOffset = this.config.globaloffset || 0;
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
-            let jsonSummary = [];
+            const jsonSummary = [];
             const filledTypes = [];
 
-            let next = {
+            const next = {
                 minDays: 999,
                 minDate: null,
                 minTypes: []
             };
 
-            let nextAfter = {
+            const nextAfter = {
                 minDays: 999,
                 minDate: null,
                 minTypes: []
@@ -243,8 +243,8 @@ class Trashschedule extends utils.Adapter {
                     this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
 
                     // reset values
-                    this.setState('type.' + trashName + '.nextdate', {val: "", ack: true});
-                    this.setState('type.' + trashName + '.nextdateformat', {val: "", ack: true});
+                    this.setState('type.' + trashName + '.nextdate', {val: '', ack: true});
+                    this.setState('type.' + trashName + '.nextdateformat', {val: '', ack: true});
                     this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
                     this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});
                     this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
@@ -283,12 +283,12 @@ class Trashschedule extends utils.Adapter {
         } else {
             this.log.error(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
 
-            this.setState(statePrefix + '.date', {val: "", ack: true});
-            this.setState(statePrefix + '.dateformat', {val: "", ack: true});
+            this.setState(statePrefix + '.date', {val: '', ack: true});
+            this.setState(statePrefix + '.dateformat', {val: '', ack: true});
             this.setState(statePrefix + '.weekday', {val: null, ack: true});
             this.setState(statePrefix + '.daysleft', {val: null, ack: true});
-            this.setState(statePrefix + '.types', {val: "n/a", ack: true});
-            this.setState(statePrefix + '.typestext', {val: "n/a", ack: true});
+            this.setState(statePrefix + '.types', {val: 'n/a', ack: true});
+            this.setState(statePrefix + '.typestext', {val: 'n/a', ack: true});
             this.setState(statePrefix + '.dateFound', {val: false, ack: true});
         }
 
