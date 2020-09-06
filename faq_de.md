@@ -28,3 +28,11 @@ Das Verhalten ist so gewünscht. Dem Adapter sind Uhrzeiten egal - es interessie
 ## Das VIS-Widget funktioniert in der VIS-App für Android nicht
 
 Das liegt nicht in meiner Hand. Die App arbeitet anders - Widgets müssen vom Entwickler manuell hinterlegt werden. Ich empfehle die Nutzung der App **Fully Kiosk Browser**. Damit gibt es solche Probleme nicht.
+
+## Das VIS-Widget ist leer / zeigt nichts an
+
+Im Widget muss unter "Object ID" der JSON-Knoten angegeben werden, z.B.: `trashschedule.0.type.json`
+
+## In welchem Format werden die Farben der Tonnen hinterlegt?
+
+Die Farben werde als Hex-Codes, also z.B. mit `#13a7eb` angegeben.
