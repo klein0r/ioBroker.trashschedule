@@ -137,7 +137,7 @@
         },
         {
             "_id": "type.json",
-            "type": "json",
+            "type": "state",
             "common": {
                 "name": "Types as JSON",
                 "type": "string",
@@ -160,7 +160,7 @@
             "type": "state",
             "common": {
                 "name": "Next types",
-                "type": "test",
+                "type": "string",
                 "role": "value",
                 "read": true,
                 "write": false
