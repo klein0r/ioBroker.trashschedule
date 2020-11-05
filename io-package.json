@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "0.0.11",
+        "version": "1.0.0",
         "news": {
             "1.0.0": {
                 "en": "First stable release",
