@@ -281,7 +281,7 @@ class Trashschedule extends utils.Adapter {
             this.setState(statePrefix + '.typestext', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
             this.setState(statePrefix + '.dateFound', {val: true, ack: true});
         } else {
-            this.log.error(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
+            this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
 
             this.setState(statePrefix + '.date', {val: '', ack: true});
             this.setState(statePrefix + '.dateformat', {val: '', ack: true});
