@@ -88,7 +88,12 @@
             {
                 "js-controller": ">=1.4.2"
             }
-        ]
+        ],
+        "plugins": {
+            "sentry": {
+                "dsn": "https://ae5180dfac964a4d8d1c74657dd14281@sentry.iobroker.net/102"
+            }
+        }
     },
     "native": {
         "nextseparator": ",",
