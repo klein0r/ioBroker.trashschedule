@@ -3,6 +3,10 @@
         "name": "trashschedule",
         "version": "0.0.11",
         "news": {
+            "1.0.0": {
+                "en": "First stable release",
+                "de": "Erster stable Release"
+            },
             "0.0.11": {
                 "en": "Better error reporting",
                 "de": "Bessere Fehlermeldungen"
@@ -133,7 +137,7 @@
         },
         {
             "_id": "type.json",
-            "type": "state",
+            "type": "json",
             "common": {
                 "name": "Types as JSON",
                 "type": "string",
@@ -190,10 +194,10 @@
         },
         {
             "_id": "next.date",
-            "type": "state",
+            "type": "date",
             "common": {
                 "name": "Next date",
-                "type": "string",
+                "type": "number",
                 "role": "date.start",
                 "read": true,
                 "write": false
@@ -283,10 +287,10 @@
         },
         {
             "_id": "nextAfter.date",
-            "type": "state",
+            "type": "date",
             "common": {
                 "name": "After Next date",
-                "type": "string",
+                "type": "number",
                 "role": "date.start",
                 "read": true,
                 "write": false
