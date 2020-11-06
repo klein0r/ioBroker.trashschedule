@@ -37,7 +37,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashName + '.nextdate', {
+                this.setObjectNotExists('type.' + trashName + '.nextDate', {
                     type: 'state',
                     common: {
                         name: 'Next date',
@@ -49,7 +49,19 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashName + '.nextdateformat', {
+                this.setObjectNotExists('type.' + trashName + '.nextDateEpoch', {
+                    type: 'state',
+                    common: {
+                        name: 'Next date epoch',
+                        type: 'number',
+                        role: 'value',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
+
+                this.setObjectNotExists('type.' + trashName + '.nextDateFormat', {
                     type: 'state',
                     common: {
                         name: 'Next date format',
@@ -61,7 +73,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashName + '.nextweekday', {
+                this.setObjectNotExists('type.' + trashName + '.nextWeekday', {
                     type: 'state',
                     common: {
                         name: 'Next week day',
@@ -73,7 +85,7 @@ class Trashschedule extends utils.Adapter {
                     native: {}
                 });
 
-                this.setObjectNotExists('type.' + trashName + '.daysleft', {
+                this.setObjectNotExists('type.' + trashName + '.daysLeft', {
                     type: 'state',
                     common: {
                         name: 'Days left',
@@ -193,18 +205,19 @@ class Trashschedule extends utils.Adapter {
                                 if (!filledTypes.includes(trashName)) {
                                     filledTypes.push(trashName);
 
-                                    this.setState('type.' + trashName + '.nextdate', {val: date, ack: true});
-                                    this.setState('type.' + trashName + '.nextdateformat', {val: this.formatDate(date), ack: true});
-                                    this.setState('type.' + trashName + '.nextweekday', {val: date.getDay(), ack: true});
-                                    this.setState('type.' + trashName + '.daysleft', {val: dayDiff, ack: true});
+                                    this.setState('type.' + trashName + '.nextDate', {val: date, ack: true});
+                                    this.setState('type.' + trashName + '.nextDateEpoch', {val: Math.round(date.getTime() / 1000), ack: true});
+                                    this.setState('type.' + trashName + '.nextDateFormat', {val: this.formatDate(date), ack: true});
+                                    this.setState('type.' + trashName + '.nextWeekday', {val: date.getDay(), ack: true});
+                                    this.setState('type.' + trashName + '.daysLeft', {val: dayDiff, ack: true});
                                     this.setState('type.' + trashName + '.nextDateFound', {val: true, ack: true});
                                     this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
 
                                     jsonSummary.push(
                                         {
                                             name: trashName,
-                                            daysleft: dayDiff,
-                                            nextdate: date,
+                                            daysLeft: dayDiff,
+                                            nextDate: date,
                                             _color: trashType.color
                                         }
                                     );
@@ -243,17 +256,18 @@ class Trashschedule extends utils.Adapter {
                     this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
 
                     // reset values
-                    this.setState('type.' + trashName + '.nextdate', {val: '', ack: true});
-                    this.setState('type.' + trashName + '.nextdateformat', {val: '', ack: true});
-                    this.setState('type.' + trashName + '.nextweekday', {val: null, ack: true});
-                    this.setState('type.' + trashName + '.daysleft', {val: null, ack: true});
+                    this.setState('type.' + trashName + '.nextDate', {val: '', ack: true});
+                    this.setState('type.' + trashName + '.nextDateEpoch', {val: 0, ack: true});
+                    this.setState('type.' + trashName + '.nextDateFormat', {val: '', ack: true});
+                    this.setState('type.' + trashName + '.nextWeekday', {val: null, ack: true});
+                    this.setState('type.' + trashName + '.daysLeft', {val: null, ack: true});
                     this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
                 }
             }
 
             // Sort summary by days left
             jsonSummary.sort(function(a, b){
-                return a.daysleft - b.daysleft;
+                return a.daysLeft - b.daysLeft;
             });
 
             this.setState('type.json', {val: JSON.stringify(jsonSummary), ack: true});
@@ -274,21 +288,23 @@ class Trashschedule extends utils.Adapter {
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
             this.setState(statePrefix + '.date', {val: obj.minDate, ack: true});
-            this.setState(statePrefix + '.dateformat', {val: this.formatDate(obj.minDate), ack: true});
+            this.setState(statePrefix + '.dateEpoch', {val: Math.round(obj.minDate.getTime() / 1000), ack: true});
+            this.setState(statePrefix + '.dateFormat', {val: this.formatDate(obj.minDate), ack: true});
             this.setState(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
-            this.setState(statePrefix + '.daysleft', {val: obj.minDays, ack: true});
+            this.setState(statePrefix + '.daysLeft', {val: obj.minDays, ack: true});
             this.setState(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
-            this.setState(statePrefix + '.typestext', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
+            this.setState(statePrefix + '.typesText', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
             this.setState(statePrefix + '.dateFound', {val: true, ack: true});
         } else {
             this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
 
             this.setState(statePrefix + '.date', {val: '', ack: true});
-            this.setState(statePrefix + '.dateformat', {val: '', ack: true});
+            this.setState(statePrefix + '.dateEpoch', {val: 0, ack: true});
+            this.setState(statePrefix + '.dateFormat', {val: '', ack: true});
             this.setState(statePrefix + '.weekday', {val: null, ack: true});
-            this.setState(statePrefix + '.daysleft', {val: null, ack: true});
+            this.setState(statePrefix + '.daysLeft', {val: null, ack: true});
             this.setState(statePrefix + '.types', {val: 'n/a', ack: true});
-            this.setState(statePrefix + '.typestext', {val: 'n/a', ack: true});
+            this.setState(statePrefix + '.typesText', {val: 'n/a', ack: true});
             this.setState(statePrefix + '.dateFound', {val: false, ack: true});
         }
 

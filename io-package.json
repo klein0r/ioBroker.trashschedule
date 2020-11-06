@@ -168,7 +168,7 @@
             "native": {}
         },
         {
-            "_id": "next.typestext",
+            "_id": "next.typesText",
             "type": "state",
             "common": {
                 "name": "Next types as text",
@@ -180,7 +180,7 @@
             "native": {}
         },
         {
-            "_id": "next.daysleft",
+            "_id": "next.daysLeft",
             "type": "state",
             "common": {
                 "name": "Next days left",
@@ -205,7 +205,19 @@
             "native": {}
         },
         {
-            "_id": "next.dateformat",
+            "_id": "next.dateEpoch",
+            "type": "state",
+            "common": {
+                "name": "Next date epoch",
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.dateFormat",
             "type": "state",
             "common": {
                 "name": "Next date format",
@@ -232,7 +244,7 @@
             "_id": "next.dateFound",
             "type": "state",
             "common": {
-                "name": "Date found",
+                "name": "Next date found",
                 "type": "boolean",
                 "role": "value",
                 "read": true,
@@ -244,7 +256,7 @@
           "_id":  "nextAfter",
           "type": "channel",
           "common": {
-            "name": "After Next"
+            "name": "After next"
           },
           "native": {}
         },
@@ -252,7 +264,7 @@
             "_id": "nextAfter.types",
             "type": "state",
             "common": {
-                "name": "After Next types",
+                "name": "After next types",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -261,10 +273,10 @@
             "native": {}
         },
         {
-            "_id": "nextAfter.typestext",
+            "_id": "nextAfter.typesText",
             "type": "state",
             "common": {
-                "name": "After Next types as text",
+                "name": "After next types as text",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -273,10 +285,10 @@
             "native": {}
         },
         {
-            "_id": "nextAfter.daysleft",
+            "_id": "nextAfter.daysLeft",
             "type": "state",
             "common": {
-                "name": "After Next days left",
+                "name": "After next days left",
                 "type": "number",
                 "role": "value",
                 "unit": "days",
@@ -289,7 +301,7 @@
             "_id": "nextAfter.date",
             "type": "state",
             "common": {
-                "name": "After Next date",
+                "name": "After next date",
                 "type": "string",
                 "role": "date.start",
                 "read": true,
@@ -298,10 +310,22 @@
             "native": {}
         },
         {
-            "_id": "nextAfter.dateformat",
+            "_id": "nextAfter.dateEpoch",
             "type": "state",
             "common": {
-                "name": "After Next date format",
+                "name": "After next date epoch",
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.dateFormat",
+            "type": "state",
+            "common": {
+                "name": "After next date format",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -313,7 +337,7 @@
             "_id": "nextAfter.weekday",
             "type": "state",
             "common": {
-                "name": "After Next week day",
+                "name": "After next week day",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -325,7 +349,7 @@
             "_id": "nextAfter.dateFound",
             "type": "state",
             "common": {
-                "name": "Date found",
+                "name": "After next date found",
                 "type": "boolean",
                 "role": "value",
                 "read": true,
