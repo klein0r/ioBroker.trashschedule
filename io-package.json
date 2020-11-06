@@ -197,20 +197,8 @@
             "type": "state",
             "common": {
                 "name": "Next date",
-                "type": "string",
-                "role": "date.start",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.dateEpoch",
-            "type": "state",
-            "common": {
-                "name": "Next date epoch",
                 "type": "number",
-                "role": "value",
+                "role": "date",
                 "read": true,
                 "write": false
             },
@@ -302,20 +290,8 @@
             "type": "state",
             "common": {
                 "name": "After next date",
-                "type": "string",
-                "role": "date.start",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.dateEpoch",
-            "type": "state",
-            "common": {
-                "name": "After next date epoch",
                 "type": "number",
-                "role": "value",
+                "role": "date",
                 "read": true,
                 "write": false
             },

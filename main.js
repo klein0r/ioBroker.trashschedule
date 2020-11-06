@@ -41,20 +41,8 @@ class Trashschedule extends utils.Adapter {
                     type: 'state',
                     common: {
                         name: 'Next date',
-                        type: 'string',
-                        role: 'date.start',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.nextDateEpoch', {
-                    type: 'state',
-                    common: {
-                        name: 'Next date epoch',
                         type: 'number',
-                        role: 'value',
+                        role: 'date',
                         read: true,
                         write: false
                     },
@@ -205,8 +193,7 @@ class Trashschedule extends utils.Adapter {
                                 if (!filledTypes.includes(trashName)) {
                                     filledTypes.push(trashName);
 
-                                    this.setState('type.' + trashName + '.nextDate', {val: date, ack: true});
-                                    this.setState('type.' + trashName + '.nextDateEpoch', {val: Math.round(date.getTime() / 1000), ack: true});
+                                    this.setState('type.' + trashName + '.nextDate', {val: date.getTime(), ack: true});
                                     this.setState('type.' + trashName + '.nextDateFormat', {val: this.formatDate(date), ack: true});
                                     this.setState('type.' + trashName + '.nextWeekday', {val: date.getDay(), ack: true});
                                     this.setState('type.' + trashName + '.daysLeft', {val: dayDiff, ack: true});
@@ -217,7 +204,7 @@ class Trashschedule extends utils.Adapter {
                                         {
                                             name: trashName,
                                             daysLeft: dayDiff,
-                                            nextDate: date,
+                                            nextDate: date.getTime(),
                                             _color: trashType.color
                                         }
                                     );
@@ -256,8 +243,7 @@ class Trashschedule extends utils.Adapter {
                     this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
 
                     // reset values
-                    this.setState('type.' + trashName + '.nextDate', {val: '', ack: true});
-                    this.setState('type.' + trashName + '.nextDateEpoch', {val: 0, ack: true});
+                    this.setState('type.' + trashName + '.nextDate', {val: 0, ack: true});
                     this.setState('type.' + trashName + '.nextDateFormat', {val: '', ack: true});
                     this.setState('type.' + trashName + '.nextWeekday', {val: null, ack: true});
                     this.setState('type.' + trashName + '.daysLeft', {val: null, ack: true});
@@ -287,8 +273,7 @@ class Trashschedule extends utils.Adapter {
         this.log.debug('fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            this.setState(statePrefix + '.date', {val: obj.minDate, ack: true});
-            this.setState(statePrefix + '.dateEpoch', {val: Math.round(obj.minDate.getTime() / 1000), ack: true});
+            this.setState(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});
             this.setState(statePrefix + '.dateFormat', {val: this.formatDate(obj.minDate), ack: true});
             this.setState(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
             this.setState(statePrefix + '.daysLeft', {val: obj.minDays, ack: true});
@@ -298,8 +283,7 @@ class Trashschedule extends utils.Adapter {
         } else {
             this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
 
-            this.setState(statePrefix + '.date', {val: '', ack: true});
-            this.setState(statePrefix + '.dateEpoch', {val: 0, ack: true});
+            this.setState(statePrefix + '.date', {val: 0, ack: true});
             this.setState(statePrefix + '.dateFormat', {val: '', ack: true});
             this.setState(statePrefix + '.weekday', {val: null, ack: true});
             this.setState(statePrefix + '.daysLeft', {val: null, ack: true});
