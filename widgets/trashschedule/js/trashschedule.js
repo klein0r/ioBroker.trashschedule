@@ -213,19 +213,9 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    convertUTCDateToLocalDate: function(date) {
-        var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-
-        var offset = date.getTimezoneOffset() / 60;
-        var hours = date.getHours();
-
-        newDate.setHours(hours - offset);
-
-        return newDate;
-    },
     redraw: function(target, json, size, glow) {
 
-        const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric', timeZone: 'CET' };
+        const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
 
         target.empty();
 
@@ -251,7 +241,7 @@ vis.binds['trashschedule'] = {
 
             $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
             $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
-            $('<span class="nextdate"></span>').html(vis.binds['trashschedule'].convertUTCDateToLocalDate(new Date(trashType.nextDate)).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+            $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
 
             if (trashType._color) {
                 newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));

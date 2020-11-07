@@ -173,11 +173,13 @@ class Trashschedule extends utils.Adapter {
                 const entry = data[i];
                 const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
 
-                this.log.debug('(1) parsing next event ' + JSON.stringify(entry));
+                this.log.debug('(1) parsing next event ' + JSON.stringify(entry) + ' // originalDate: ' + entry._date);
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
-                    const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24));
+                    const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
+
+                    this.log.debug('(2) processing: ' + entry.event + ' (' + date.getTime() + ') // dayDiff: ' + dayDiff + ' // current hour (date): ' + hourNow + ' (' + dateNow.getTime() + ') // skipsamedayathour (config): ' + skipsamedayathour);
 
                     // Check if event matches trash type and fill information
                     for (const t in trashTypesConfig) {
@@ -188,7 +190,7 @@ class Trashschedule extends utils.Adapter {
                             // Fill type if event matches
                             if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                this.log.debug('(2) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
+                                this.log.debug('(3) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
 
                                 if (!filledTypes.includes(trashName)) {
                                     filledTypes.push(trashName);
@@ -209,7 +211,7 @@ class Trashschedule extends utils.Adapter {
                                         }
                                     );
 
-                                    this.log.debug('(3) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
+                                    this.log.debug('(4) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
                                 }
 
                                 // Set next type
@@ -270,7 +272,7 @@ class Trashschedule extends utils.Adapter {
 
     fillNext(obj, statePrefix) {
 
-        this.log.debug('fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
+        this.log.debug('(5) fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
             this.setState(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});

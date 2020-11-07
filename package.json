@@ -1,6 +1,6 @@
 {
   "name": "iobroker.trashschedule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculates the days until next trash pickup",
   "author": {
     "name": "Matthias Kleine",
