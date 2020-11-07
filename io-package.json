@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
+            "1.0.2": {
+                "en": "Added color picker",
+                "de": "Color Picker für einfache Farbauswahl"
+            },
             "1.0.1": {
                 "en": "Fixed date calculation issue in VIS",
                 "de": "Fehler mit der Datumsanzeite in VIS behoben"

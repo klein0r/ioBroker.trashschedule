@@ -32,6 +32,10 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ## Changelog
 
+### 1.0.2
+
+* (klein0r) Added color picker
+
 ### 1.0.1
 
 * (klein0r) Fixed date calculation issue in VIS

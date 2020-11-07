@@ -159,16 +159,16 @@ systemDictionary = {
         "zh-cn": "比赛赛事"
     },
     "color": {
-        "en": "Color code",
-        "de": "Farbcode",
-        "ru": "Цветовой код",
-        "pt": "Código de cores",
-        "nl": "Kleurcode",
-        "fr": "Code couleur",
-        "it": "Codice colore",
-        "es": "Codigo de color",
-        "pl": "Kod koloru",
-        "zh-cn": "色标"
+        "en": "color",
+        "de": "Farbe",
+        "ru": "цвет",
+        "pt": "cor",
+        "nl": "kleur",
+        "fr": "Couleur",
+        "it": "colore",
+        "es": "color",
+        "pl": "kolor",
+        "zh-cn": "颜色"
     },
     "exact match": {
         "en": "Exact Match",
