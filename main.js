@@ -172,6 +172,8 @@ class Trashschedule extends utils.Adapter {
                 minTypes: []
             };
 
+            this.log.debug('(0) offset (config): ' + globalOffset);
+
             for (const i in data) {
                 const entry = data[i];
                 const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);

@@ -35,13 +35,24 @@ $.extend(
             "es": "brilla cuando es debido",
             "pl": "świecić w odpowiednim czasie",
             "zh-cn": "到期时发光"
+        },
+        "showDate": {
+            "en": "show date",
+            "de": "Datum anzeigen",
+            "ru": "показать дату",
+            "pt": "show data",
+            "nl": "toon datum",
+            "fr": "montrer la date",
+            "it": "data dello spettacolo",
+            "es": "mostrar fecha",
+            "pl": "Pokaż datę",
+            "zh-cn": "演出日期"
         }
     }
 );
 
-// this code can be placed directly in trashschedule.html
 vis.binds['trashschedule'] = {
-    version: '0.0.10',
+    version: '1.0.3',
     showVersion: function () {
         if (vis.binds['trashschedule'].version) {
             console.log('Version trashschedule: ' + vis.binds['trashschedule'].version);
@@ -59,15 +70,18 @@ vis.binds['trashschedule'] = {
 
         const oid = data.oid ? data.oid : 'trashschedule.0.type.json';
         const size = data.size ? parseInt(data.size) : 100;
-        const glow = data.glow ? true : false;
+        const glow = !!data.glow;
+        const showDate = !!data.showDate;
+
+        const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, glow);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, glow, showDate, dateOptions);
 
         // subscribe on updates of value
         if (oid) {
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow, showDate, dateOptions);
             });
         }
     },
@@ -214,11 +228,9 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json, size, glow) {
+    redraw: function(target, json, size, glow, showDate, dateOptions) {
 
         if (json) {
-            const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
-
             target.empty();
 
             if (size < 100 && size > 0) {
@@ -243,7 +255,10 @@ vis.binds['trashschedule'] = {
 
                 $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
                 $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
-                $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+
+                if (showDate) {
+                    $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+                }
 
                 if (trashType._color) {
                     newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
