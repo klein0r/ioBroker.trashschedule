@@ -47,6 +47,78 @@ $.extend(
             "es": "mostrar fecha",
             "pl": "Pokaż datę",
             "zh-cn": "演出日期"
+        },
+        "dateLocale": {
+            "en": "date locale",
+            "de": "Datum Gebietsschema",
+            "ru": "дата Локаль",
+            "pt": "data local",
+            "nl": "datum Locale",
+            "fr": "date Locale",
+            "it": "data Locale",
+            "es": "fecha Locale",
+            "pl": "data Lokalizacja",
+            "zh-cn": "日期语言环境"
+        },
+        "de-DE": {
+            "en": "german",
+            "de": "Deutsch",
+            "ru": "Немецкий",
+            "pt": "alemão",
+            "nl": "Duitse",
+            "fr": "allemand",
+            "it": "Tedesco",
+            "es": "alemán",
+            "pl": "Niemiecki",
+            "zh-cn": "德语"
+        },
+        "dateWeekday": {
+            "en": "weekday",
+            "de": "Wochentag",
+            "ru": "будний день",
+            "pt": "dia da semana",
+            "nl": "weekdag",
+            "fr": "jour de la semaine",
+            "it": "giorno della settimana",
+            "es": "día laborable",
+            "pl": "dzień powszedni",
+            "zh-cn": "平日"
+        },
+        "hide": {
+            "en": "hide",
+            "de": "ausblenden",
+            "ru": "скрывать",
+            "pt": "ocultar",
+            "nl": "zich verstoppen",
+            "fr": "cacher",
+            "it": "nascondere",
+            "es": "esconder",
+            "pl": "ukryć",
+            "zh-cn": "隐藏"
+        },
+        "long": {
+            "en": "long",
+            "de": "lang",
+            "ru": "длинный",
+            "pt": "longo",
+            "nl": "lang",
+            "fr": "longue",
+            "it": "lungo",
+            "es": "largo",
+            "pl": "długie",
+            "zh-cn": "长"
+        },
+        "short": {
+            "en": "short",
+            "de": "kurz",
+            "ru": "короткая",
+            "pt": "curto",
+            "nl": "kort",
+            "fr": "court",
+            "it": "corto",
+            "es": "corto",
+            "pl": "krótki",
+            "zh-cn": "短"
         }
     }
 );
@@ -72,16 +144,22 @@ vis.binds['trashschedule'] = {
         const size = data.size ? parseInt(data.size) : 100;
         const glow = !!data.glow;
         const showDate = !!data.showDate;
+        const dateLocale = data.dateLocale ? data.dateLocale : 'de-DE';
+        const dateWeekday = data.dateWeekday ? data.dateWeekday : 'long';
 
-        const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
+        const dateOptions = { month: 'numeric', day: 'numeric' };
+
+        if (dateWeekday != 'hide') {
+            dateOptions.weekday = dateWeekday;
+        }
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, glow, showDate, dateOptions);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, glow, showDate, dateLocale, dateOptions);
 
         // subscribe on updates of value
         if (oid) {
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow, showDate, dateOptions);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow, showDate, dateLocale, dateOptions);
             });
         }
     },
@@ -228,7 +306,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json, size, glow, showDate, dateOptions) {
+    redraw: function(target, json, size, glow, showDate, dateLocale, dateOptions) {
 
         if (json) {
             target.empty();
@@ -257,7 +335,7 @@ vis.binds['trashschedule'] = {
                 $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
 
                 if (showDate) {
-                    $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+                    $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString(dateLocale, dateOptions)).appendTo(newItem);
                 }
 
                 if (trashType._color) {

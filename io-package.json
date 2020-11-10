@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "Improved VIS widget options",
+                "de": "Verbesserte VIS-Widget Optionen"
+            },
             "1.0.2": {
                 "en": "Added color picker",
                 "de": "Color Picker für einfache Farbauswahl"
