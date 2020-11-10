@@ -35,6 +35,7 @@ Scans an ical calendar to calculate the days left until next trash pickup
 ### 1.0.2
 
 * (klein0r) Added color picker
+* (klein0r) Fixed null reference exception
 
 ### 1.0.1
 

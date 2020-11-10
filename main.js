@@ -117,7 +117,10 @@ class Trashschedule extends utils.Adapter {
             this.subscribeForeignStates(this.config.ical + '.data.table');
 
             this.getForeignState(this.config.ical + '.data.table', function (err, state) {
-                self.updateByCalendarTable(state.val);
+                // state can be null!
+                if (state) {
+                    self.updateByCalendarTable(state.val);
+                }
             });
         } else {
             this.setState('info.connection', false, true);
