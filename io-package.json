@@ -76,8 +76,7 @@
             "trash",
             "calendar",
             "muell",
-            "muellabfuhr",
-            "vis"
+            "muellabfuhr"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",

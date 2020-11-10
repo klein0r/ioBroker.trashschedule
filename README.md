@@ -30,6 +30,10 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 **Questions?** Check the FAQ: [German](https://github.com/klein0r/ioBroker.trashschedule/blob/master/faq_de.md)
 
+## VIS Widget
+
+![VIS widget](images/vis.png)
+
 ## Blockly example
 
 ![Blockly example](images/exampleBlockly.png)

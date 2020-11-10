@@ -1,7 +1,7 @@
 /*
     ioBroker.vis TrashSchedule Widget-Set
 
-    version: "0.0.10"
+    version: "1.0.3"
 
     Copyright 2020 Matthias Kleine info@haus-automatisierung.com
 */
@@ -57,15 +57,16 @@ vis.binds['trashschedule'] = {
             }, 100);
         }
 
+        const oid = data.oid ? data.oid : 'trashschedule.0.type.json';
         const size = data.size ? parseInt(data.size) : 100;
         const glow = data.glow ? true : false;
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[data.oid + '.val'], size, glow);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, glow);
 
         // subscribe on updates of value
-        if (data.oid) {
-            vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
+        if (oid) {
+            vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
                 vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, glow);
             });
         }
@@ -215,40 +216,42 @@ vis.binds['trashschedule'] = {
     },
     redraw: function(target, json, size, glow) {
 
-        const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
+        if (json) {
+            const dateOptions = { weekday: 'long', month: 'numeric', day: 'numeric' };
 
-        target.empty();
+            target.empty();
 
-        if (size < 100 && size > 0) {
-            target.css('transform', 'scale(' + (size / 100) + ')');
+            if (size < 100 && size > 0) {
+                target.css('transform', 'scale(' + (size / 100) + ')');
+            }
+
+            $.each(JSON.parse(json), function(i, trashType) {
+
+                var newItem = $('<div class="trashtype"></div>');
+
+                if (trashType.daysLeft == 1) {
+                    newItem.addClass('trash-tomorrow');
+                }
+
+                if (trashType.daysLeft == 0) {
+                    newItem.addClass('trash-today');
+                }
+
+                if (glow && trashType.daysLeft <= 1) {
+                    newItem.addClass('trash-glow');
+                }
+
+                $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
+                $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
+                $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
+
+                if (trashType._color) {
+                    newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
+                }
+
+                target.append(newItem);
+            });
         }
-
-        $.each(JSON.parse(json), function(i, trashType) {
-
-            var newItem = $('<div class="trashtype"></div>');
-
-            if (trashType.daysLeft == 1) {
-                newItem.addClass('trash-tomorrow');
-            }
-
-            if (trashType.daysLeft == 0) {
-                newItem.addClass('trash-today');
-            }
-
-            if (glow && trashType.daysLeft <= 1) {
-                newItem.addClass('trash-glow');
-            }
-
-            $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
-            $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
-            $('<span class="nextdate"></span>').html(new Date(trashType.nextDate).toLocaleDateString('de-DE', dateOptions)).appendTo(newItem);
-
-            if (trashType._color) {
-                newItem.find('.dumpster').css('background-image', vis.binds['trashschedule'].getBackgroundImage(trashType._color));
-            }
-
-            target.append(newItem);
-        });
 
     }
 };

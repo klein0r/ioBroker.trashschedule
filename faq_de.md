@@ -36,3 +36,10 @@ Im Widget muss unter "Object ID" der JSON-Knoten angegeben werden, z.B.: `trashs
 ## In welchem Format werden die Farben der Tonnen hinterlegt?
 
 Die Farben werde als Hex-Codes, also z.B. mit `#13a7eb` angegeben.
+
+## VIS zeigt "invalid date"
+
+1. Trashschedule Instanz stoppen
+2. Alle Datenpunkte des Adapters löschen (also von trashschedule.0). Einfach in der Objektansicht auf die Mülltonne klicken und weg damit.
+3. In der Expertenansicht der Adapterliste erst bei Trashschedule auf Upload klicken, dann bei VIS
+4. iCal einmal Instanzliste neustarten, dann Trashschedule wieder starten
