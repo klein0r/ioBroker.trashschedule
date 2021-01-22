@@ -115,7 +115,7 @@
         }
     },
     "native": {
-        "nextseparator": ",",
+        "nextseparator": ", ",
         "skipsamedayathour": 18,
         "globaloffset": 0
     },

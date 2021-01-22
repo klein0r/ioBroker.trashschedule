@@ -25,7 +25,7 @@ class Trashschedule extends utils.Adapter {
         this.getChannelsOf(
             'type',
             (err, states) => {
-
+                
                 const typesAll = [];
                 const typesKeep = [];
 
@@ -74,6 +74,18 @@ class Trashschedule extends utils.Adapter {
                             type: 'state',
                             common: {
                                 name: 'Next date format',
+                                type: 'string',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.nextDescription', {
+                            type: 'state',
+                            common: {
+                                name: 'Next description',
                                 type: 'string',
                                 role: 'value',
                                 read: true,
@@ -243,6 +255,7 @@ class Trashschedule extends utils.Adapter {
 
                                     this.setState('type.' + trashName + '.nextDate', {val: date.getTime(), ack: true});
                                     this.setState('type.' + trashName + '.nextDateFormat', {val: this.formatDate(date), ack: true});
+                                    this.setState('type.' + trashName + '.nextDescription', {val: entry._section, ack: true});
                                     this.setState('type.' + trashName + '.nextWeekday', {val: date.getDay(), ack: true});
                                     this.setState('type.' + trashName + '.daysLeft', {val: dayDiff, ack: true});
                                     this.setState('type.' + trashName + '.nextDateFound', {val: true, ack: true});
@@ -253,6 +266,7 @@ class Trashschedule extends utils.Adapter {
                                             name: trashName,
                                             daysLeft: dayDiff,
                                             nextDate: date.getTime(),
+                                            _description: entry._section,
                                             _color: trashType.color
                                         }
                                     );
@@ -326,7 +340,7 @@ class Trashschedule extends utils.Adapter {
             this.setState(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
             this.setState(statePrefix + '.daysLeft', {val: obj.minDays, ack: true});
             this.setState(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
-            this.setState(statePrefix + '.typesText', {val: obj.minTypes.join(' ' + this.config.nextseparator + ' '), ack: true});
+            this.setState(statePrefix + '.typesText', {val: obj.minTypes.join(this.config.nextseparator), ack: true});
             this.setState(statePrefix + '.dateFound', {val: true, ack: true});
         } else {
             this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
