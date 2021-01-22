@@ -19,112 +19,148 @@ class Trashschedule extends utils.Adapter {
     }
 
     async onReady() {
-        const self = this;
         const iCalInstance = this.config.ical;
         const trashTypesConfig = this.config.trashtypes;
 
-        // Create states and channels
-        if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
-            for (const t in trashTypesConfig) {
-                const trashType = trashTypesConfig[t];
-                const trashName = trashType.name.trim();
+        this.getChannelsOf(
+            'type',
+            (err, states) => {
+                
+                const typesAll = [];
+                const typesKeep = [];
 
-                this.setObjectNotExists('type.' + trashName, {
-                    type: 'channel',
-                    common: {
-                        name: 'Type ' + trashName
-                    },
-                    native: {}
-                });
+                // Collect all types
+                if (states) {
+                    for (let i = 0; i < states.length; i++) {
+                        const id = this.removeNamespace(states[i]._id);
 
-                this.setObjectNotExists('type.' + trashName + '.nextDate', {
-                    type: 'state',
-                    common: {
-                        name: 'Next date',
-                        type: 'number',
-                        role: 'date',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.nextDateFormat', {
-                    type: 'state',
-                    common: {
-                        name: 'Next date format',
-                        type: 'string',
-                        role: 'value',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.nextWeekday', {
-                    type: 'state',
-                    common: {
-                        name: 'Next week day',
-                        type: 'string',
-                        role: 'value',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.daysLeft', {
-                    type: 'state',
-                    common: {
-                        name: 'Days left',
-                        type: 'number',
-                        role: 'value',
-                        unit: 'days',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.nextDateFound', {
-                    type: 'state',
-                    common: {
-                        name: 'Date found',
-                        type: 'boolean',
-                        role: 'value',
-                        def: false,
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-
-                this.setObjectNotExists('type.' + trashName + '.color', {
-                    type: 'state',
-                    common: {
-                        name: 'Color',
-                        type: 'string',
-                        role: 'level.color.rgb',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
-                });
-            }
-        }
-
-        if (iCalInstance) {
-            this.subscribeForeignStates(this.config.ical + '.data.table');
-
-            this.getForeignState(this.config.ical + '.data.table', function (err, state) {
-                // state can be null!
-                if (state) {
-                    self.updateByCalendarTable(state.val);
+                        // Check if the state is a direct child (e.g. type.YourTrashType)
+                        if (id.split('.').length === 2) {
+                            typesAll.push(id);
+                        }
+                    }
                 }
-            });
-        } else {
-            this.setState('info.connection', false, true);
-        }
+
+                // Create states and channels
+                if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
+                    for (const t in trashTypesConfig) {
+                        const trashType = trashTypesConfig[t];
+                        const trashName = trashType.name.trim();
+
+                        typesKeep.push('type.' + trashName);
+                        this.log.debug('Trash type found: "' + trashName + '"');
+
+                        this.setObjectNotExists('type.' + trashName, {
+                            type: 'channel',
+                            common: {
+                                name: 'Type ' + trashName
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.nextDate', {
+                            type: 'state',
+                            common: {
+                                name: 'Next date',
+                                type: 'number',
+                                role: 'date',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.nextDateFormat', {
+                            type: 'state',
+                            common: {
+                                name: 'Next date format',
+                                type: 'string',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.nextWeekday', {
+                            type: 'state',
+                            common: {
+                                name: 'Next week day',
+                                type: 'string',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.daysLeft', {
+                            type: 'state',
+                            common: {
+                                name: 'Days left',
+                                type: 'number',
+                                role: 'value',
+                                unit: 'days',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.nextDateFound', {
+                            type: 'state',
+                            common: {
+                                name: 'Date found',
+                                type: 'boolean',
+                                role: 'value',
+                                def: false,
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+
+                        this.setObjectNotExists('type.' + trashName + '.color', {
+                            type: 'state',
+                            common: {
+                                name: 'Color',
+                                type: 'string',
+                                role: 'level.color.rgb',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                    }
+                } else {
+                    this.log.warn('No trash types configured');
+                }
+
+                // Delete non existent trash types
+                for (let i = 0; i < typesAll.length; i++) {
+                    const id = typesAll[i];
+
+                    if (typesKeep.indexOf(id) === -1) {
+                        this.delObject(id, {recursive: true}, () => {
+                            this.log.debug('Trash type deleted: ' + id);
+                        });
+                    }
+                }
+
+                if (iCalInstance) {
+                    this.subscribeForeignStates(this.config.ical + '.data.table');
+
+                    this.getForeignState(this.config.ical + '.data.table', (err, state) => {
+                        // state can be null!
+                        if (state) {
+                            this.updateByCalendarTable(state.val);
+                        }
+                    });
+                } else {
+                    this.setState('info.connection', false, true);
+                }
+            }
+        );
     }
 
     onStateChange(id, state) {
@@ -139,6 +175,11 @@ class Trashschedule extends utils.Adapter {
             d.setTime(d.getTime() + (offset * 24 * 60 * 60 * 1000));
         }
         return d;
+    }
+
+    removeNamespace(id) {
+        const re = new RegExp(this.namespace + '*\.', 'g');
+        return id.replace(re, '');
     }
 
     updateByCalendarTable(data) {

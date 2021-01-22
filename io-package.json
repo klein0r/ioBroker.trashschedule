@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "news": {
+            "1.0.4": {
+                "en": "Delete unsed states",
+                "de": "Ungenutzte Datenpunkte löschen"
+            },
             "1.0.3": {
                 "en": "Improved VIS widget options",
                 "de": "Verbesserte VIS-Widget Optionen"
@@ -101,7 +105,7 @@
         ],
         "dependencies": [
             {
-                "js-controller": ">=1.4.2"
+                "js-controller": ">=2.0.0"
             }
         ],
         "plugins": {

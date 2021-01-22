@@ -189,6 +189,10 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ## Changelog
 
+### 1.0.4
+
+* (klein0r) Delete unsed states
+
 ### 1.0.3
 
 * (klein0r) Improved VIS widget options
