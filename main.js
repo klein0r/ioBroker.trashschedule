@@ -27,7 +27,7 @@ class Trashschedule extends utils.Adapter {
 
         this.getChannelsOf(
             'type',
-            (err, states) => {
+            async (err, states) => {
 
                 const typesAll = [];
                 const typesKeep = [];
@@ -53,7 +53,7 @@ class Trashschedule extends utils.Adapter {
                         typesKeep.push('type.' + trashName);
                         this.log.debug('Trash type found: "' + trashName + '"');
 
-                        this.setObjectNotExists('type.' + trashName, {
+                        await this.setObjectNotExistsAsync('type.' + trashName, {
                             type: 'channel',
                             common: {
                                 name: 'Type ' + trashName
@@ -61,7 +61,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.nextDate', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDate', {
                             type: 'state',
                             common: {
                                 name: 'Next date',
@@ -73,7 +73,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.nextDateFormat', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDateFormat', {
                             type: 'state',
                             common: {
                                 name: 'Next date format',
@@ -85,7 +85,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.nextDescription', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDescription', {
                             type: 'state',
                             common: {
                                 name: 'Next description',
@@ -97,7 +97,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.nextWeekday', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextWeekday', {
                             type: 'state',
                             common: {
                                 name: 'Next week day',
@@ -109,7 +109,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.daysLeft', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.daysLeft', {
                             type: 'state',
                             common: {
                                 name: 'Days left',
@@ -122,7 +122,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.nextDateFound', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDateFound', {
                             type: 'state',
                             common: {
                                 name: 'Date found',
@@ -135,7 +135,7 @@ class Trashschedule extends utils.Adapter {
                             native: {}
                         });
 
-                        this.setObjectNotExists('type.' + trashName + '.color', {
+                        await this.setObjectNotExistsAsync('type.' + trashName + '.color', {
                             type: 'state',
                             common: {
                                 name: 'Color',
