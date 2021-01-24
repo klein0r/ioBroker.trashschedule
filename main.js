@@ -28,7 +28,7 @@ class Trashschedule extends utils.Adapter {
         this.getChannelsOf(
             'type',
             (err, states) => {
-                
+
                 const typesAll = [];
                 const typesKeep = [];
 
