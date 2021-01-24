@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.0.4",
+        "version": "1.0.5",
         "news": {
+            "1.0.5": {
+                "en": "Added automatic refresh every full hour",
+                "de": "Automatische aktualisierung jede Stunde"
+            },
             "1.0.4": {
                 "en": "Delete unsed states",
                 "de": "Ungenutzte Datenpunkte löschen"

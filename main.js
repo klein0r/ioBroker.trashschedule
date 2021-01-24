@@ -13,6 +13,9 @@ class Trashschedule extends utils.Adapter {
             name: 'trashschedule',
             useFormatDate: true
         });
+
+        this.refreshEverythingTimeout = null;
+
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
         this.on('unload', this.onUnload.bind(this));
@@ -160,14 +163,9 @@ class Trashschedule extends utils.Adapter {
                 }
 
                 if (iCalInstance) {
-                    this.subscribeForeignStates(this.config.ical + '.data.table');
+                    this.subscribeForeignStates(iCalInstance + '.data.table');
 
-                    this.getForeignState(this.config.ical + '.data.table', (err, state) => {
-                        // state can be null!
-                        if (state) {
-                            this.updateByCalendarTable(state.val);
-                        }
-                    });
+                    this.refreshEverything();
                 } else {
                     this.setState('info.connection', false, true);
                 }
@@ -175,10 +173,51 @@ class Trashschedule extends utils.Adapter {
         );
     }
 
+    refreshEverything() {
+        const iCalInstance = this.config.ical;
+
+        this.getForeignState(iCalInstance + '.data.table', (err, state) => {
+            // state can be null!
+            if (state) {
+                this.updateByCalendarTable(state.val);
+            }
+        });
+
+        // Next Timeout
+        const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
+
+        this.log.debug('re-creating refresh timeout in ' + nexTimeoutMilli + 'ms (' + this.convertMillisecondsToDuration(nexTimeoutMilli) + ')');
+        this.refreshEverythingTimeout = this.refreshEverythingTimeout || setTimeout(() => {
+            this.log.debug('started automatic refresh (every full hour)');
+
+            this.refreshEverythingTimeout = null;
+            this.refreshEverything();
+        }, nexTimeoutMilli);
+    }
+
     onStateChange(id, state) {
         if (id && state && id == this.config.ical + '.data.table') {
             this.updateByCalendarTable(state.val);
         }
+    }
+
+    getMillisecondsToNextFullHour() {
+        const now = new Date();
+        const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 5, 0);  // add 5 seconds to ensure we are in the next hour
+
+        return nextHour.getTime() - now.getTime();
+    }
+
+    convertMillisecondsToDuration(duration) {
+        let seconds = Math.floor((duration / 1000) % 60);
+        let minutes = Math.floor((duration / (1000 * 60)) % 60);
+        let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+        hours = (hours < 10) ? '0' + hours : hours;
+        minutes = (minutes < 10) ? '0' + minutes : minutes;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+        return hours + ':' + minutes + ':' + seconds;
     }
 
     getDateWithoutTime(date, offset) {
@@ -359,6 +398,12 @@ class Trashschedule extends utils.Adapter {
     onUnload(callback) {
         try {
             this.log.info('cleaned everything up...');
+
+            if (this.refreshEverythingTimeout) {
+                this.log.debug('clearing refresh timeout');
+                clearTimeout(this.refreshEverythingTimeout);
+            }
+
             callback();
         } catch (e) {
             callback();

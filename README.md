@@ -189,6 +189,10 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ## Changelog
 
+### 1.0.5
+
+* (klein0r) Added automatic refresh every full hour
+
 ### 1.0.4
 
 * (klein0r) Delete unsed states
