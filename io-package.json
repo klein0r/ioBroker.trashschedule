@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.0.6",
+        "version": "1.1.0",
         "news": {
+            "1.1.0": {
+                "en": "Just allow clean trash type names",
+                "de": "Datenpunkte für Abfalltypen von Sonderzeichen befreien"
+            },
             "1.0.6": {
                 "en": "Fixed async object creation",
                 "de": "Asynchrone Objekt-Erstellung behoben"

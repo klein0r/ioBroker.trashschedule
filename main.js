@@ -49,103 +49,109 @@ class Trashschedule extends utils.Adapter {
                     for (const t in trashTypesConfig) {
                         const trashType = trashTypesConfig[t];
                         const trashName = trashType.name.trim();
+                        const trashNameClean = this.cleanNamespace(trashName);
 
-                        typesKeep.push('type.' + trashName);
-                        this.log.debug('Trash type found: "' + trashName + '"');
+                        if (trashNameClean) {
+                            typesKeep.push('type.' + trashNameClean);
+                            this.log.debug('Trash type found: "' + trashNameClean + '"');
 
-                        await this.setObjectNotExistsAsync('type.' + trashName, {
-                            type: 'channel',
-                            common: {
-                                name: 'Type ' + trashName
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean, {
+                                type: 'channel',
+                                common: {
+                                    name: trashName
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDate', {
-                            type: 'state',
-                            common: {
-                                name: 'Next date',
-                                type: 'number',
-                                role: 'date',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDate', {
+                                type: 'state',
+                                common: {
+                                    name: 'Next date ' + trashName,
+                                    type: 'number',
+                                    role: 'date',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDateFormat', {
-                            type: 'state',
-                            common: {
-                                name: 'Next date format',
-                                type: 'string',
-                                role: 'value',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFormat', {
+                                type: 'state',
+                                common: {
+                                    name: 'Next date format ' + trashName,
+                                    type: 'string',
+                                    role: 'value',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDescription', {
-                            type: 'state',
-                            common: {
-                                name: 'Next description',
-                                type: 'string',
-                                role: 'value',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDescription', {
+                                type: 'state',
+                                common: {
+                                    name: 'Next description ' + trashName,
+                                    type: 'string',
+                                    role: 'value',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextWeekday', {
-                            type: 'state',
-                            common: {
-                                name: 'Next week day',
-                                type: 'string',
-                                role: 'value',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextWeekday', {
+                                type: 'state',
+                                common: {
+                                    name: 'Next week day ' + trashName,
+                                    type: 'string',
+                                    role: 'value',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.daysLeft', {
-                            type: 'state',
-                            common: {
-                                name: 'Days left',
-                                type: 'number',
-                                role: 'value',
-                                unit: 'days',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.daysLeft', {
+                                type: 'state',
+                                common: {
+                                    name: 'Days left ' + trashName,
+                                    type: 'number',
+                                    role: 'value',
+                                    unit: 'days',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.nextDateFound', {
-                            type: 'state',
-                            common: {
-                                name: 'Date found',
-                                type: 'boolean',
-                                role: 'value',
-                                def: false,
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFound', {
+                                type: 'state',
+                                common: {
+                                    name: 'Date found ' + trashName,
+                                    type: 'boolean',
+                                    role: 'value',
+                                    def: false,
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
 
-                        await this.setObjectNotExistsAsync('type.' + trashName + '.color', {
-                            type: 'state',
-                            common: {
-                                name: 'Color',
-                                type: 'string',
-                                role: 'level.color.rgb',
-                                read: true,
-                                write: false
-                            },
-                            native: {}
-                        });
+                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.color', {
+                                type: 'state',
+                                common: {
+                                    name: 'Color ' + trashName,
+                                    type: 'string',
+                                    role: 'level.color.rgb',
+                                    read: true,
+                                    write: false
+                                },
+                                native: {}
+                            });
+
+                        } else {
+                            this.log.warn('Skipping invalid trash name: ' + trashNameClean);
+                        }
                     }
                 } else {
                     this.log.warn('No trash types configured');
@@ -157,7 +163,7 @@ class Trashschedule extends utils.Adapter {
 
                     if (typesKeep.indexOf(id) === -1) {
                         this.delObject(id, {recursive: true}, () => {
-                            this.log.debug('Trash type deleted: ' + id);
+                            this.log.debug('Trash type deleted: "' + id + '"');
                         });
                     }
                 }
@@ -228,6 +234,20 @@ class Trashschedule extends utils.Adapter {
         return d;
     }
 
+    cleanNamespace(id) {
+        return id
+            .trim()
+            .replace(/\s/g, '_') // Replace whitespaces with underscores
+            .replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_') // Replace not allowed chars with underscore
+            .replace(/[_]+$/g, '') // Remove underscores end
+            .replace(/^[_]+/g, '') // Remove underscores beginning
+            .replace(/_+/g, '_') // Replace multiple underscores with one
+            .toLowerCase()
+            .replace(/_([a-z])/g, (m, w) => {
+                return w.toUpperCase();
+            });
+    }
+
     removeNamespace(id) {
         const re = new RegExp(this.namespace + '*\.', 'g');
         return id.replace(re, '');
@@ -282,50 +302,53 @@ class Trashschedule extends utils.Adapter {
                     for (const t in trashTypesConfig) {
                         const trashType = trashTypesConfig[t];
                         const trashName = trashType.name.trim();
+                        const trashNameClean = this.cleanNamespace(trashName);
 
-                        if (dayDiff > 0 || hourNow < skipsamedayathour) {
-                            // Fill type if event matches
-                            if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
+                        if (trashNameClean) {
+                            if (dayDiff > 0 || hourNow < skipsamedayathour) {
+                                // Fill type if event matches
+                                if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                this.log.debug('(3) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
+                                    this.log.debug('(3) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
 
-                                if (!filledTypes.includes(trashName)) {
-                                    filledTypes.push(trashName);
+                                    if (!filledTypes.includes(trashName)) {
+                                        filledTypes.push(trashName);
 
-                                    this.setState('type.' + trashName + '.nextDate', {val: date.getTime(), ack: true});
-                                    this.setState('type.' + trashName + '.nextDateFormat', {val: this.formatDate(date), ack: true});
-                                    this.setState('type.' + trashName + '.nextDescription', {val: entry._section, ack: true});
-                                    this.setState('type.' + trashName + '.nextWeekday', {val: date.getDay(), ack: true});
-                                    this.setState('type.' + trashName + '.daysLeft', {val: dayDiff, ack: true});
-                                    this.setState('type.' + trashName + '.nextDateFound', {val: true, ack: true});
-                                    this.setState('type.' + trashName + '.color', {val: trashType.color, ack: true});
+                                        this.setState('type.' + trashNameClean + '.nextDate', {val: date.getTime(), ack: true});
+                                        this.setState('type.' + trashNameClean + '.nextDateFormat', {val: this.formatDate(date), ack: true});
+                                        this.setState('type.' + trashNameClean + '.nextDescription', {val: entry._section, ack: true});
+                                        this.setState('type.' + trashNameClean + '.nextWeekday', {val: date.getDay(), ack: true});
+                                        this.setState('type.' + trashNameClean + '.daysLeft', {val: dayDiff, ack: true});
+                                        this.setState('type.' + trashNameClean + '.nextDateFound', {val: true, ack: true});
+                                        this.setState('type.' + trashNameClean + '.color', {val: trashType.color, ack: true});
 
-                                    jsonSummary.push(
-                                        {
-                                            name: trashName,
-                                            daysLeft: dayDiff,
-                                            nextDate: date.getTime(),
-                                            _description: entry._section,
-                                            _color: trashType.color
-                                        }
-                                    );
+                                        jsonSummary.push(
+                                            {
+                                                name: trashName,
+                                                daysLeft: dayDiff,
+                                                nextDate: date.getTime(),
+                                                _description: entry._section,
+                                                _color: trashType.color
+                                            }
+                                        );
 
-                                    this.log.debug('(4) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
-                                }
+                                        this.log.debug('(4) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
+                                    }
 
-                                // Set next type
-                                if (next.minTypes.length == 0) {
-                                    next.minDays = dayDiff;
-                                    next.minDate = date;
-                                } else if (nextAfter.minTypes.length == 0) {
-                                    nextAfter.minDays = dayDiff;
-                                    nextAfter.minDate = date;
-                                }
+                                    // Set next type
+                                    if (next.minTypes.length == 0) {
+                                        next.minDays = dayDiff;
+                                        next.minDate = date;
+                                    } else if (nextAfter.minTypes.length == 0) {
+                                        nextAfter.minDays = dayDiff;
+                                        nextAfter.minDate = date;
+                                    }
 
-                                if (!next.minTypes.includes(trashName) && next.minDays == dayDiff) {
-                                    next.minTypes.push(trashName);
-                                } else if (!nextAfter.minTypes.includes(trashName) && nextAfter.minDays == dayDiff) {
-                                    nextAfter.minTypes.push(trashName);
+                                    if (!next.minTypes.includes(trashName) && next.minDays == dayDiff) {
+                                        next.minTypes.push(trashName);
+                                    } else if (!nextAfter.minTypes.includes(trashName) && nextAfter.minDays == dayDiff) {
+                                        nextAfter.minTypes.push(trashName);
+                                    }
                                 }
                             }
                         }
@@ -339,16 +362,17 @@ class Trashschedule extends utils.Adapter {
             for (const t in trashTypesConfig) {
                 const trashType = trashTypesConfig[t];
                 const trashName = trashType.name.trim();
+                const trashNameClean = this.cleanNamespace(trashName);
 
                 if (!filledTypes.includes(trashName)) {
                     this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
 
                     // reset values
-                    this.setState('type.' + trashName + '.nextDate', {val: 0, ack: true});
-                    this.setState('type.' + trashName + '.nextDateFormat', {val: '', ack: true});
-                    this.setState('type.' + trashName + '.nextWeekday', {val: null, ack: true});
-                    this.setState('type.' + trashName + '.daysLeft', {val: null, ack: true});
-                    this.setState('type.' + trashName + '.nextDateFound', {val: false, ack: true});
+                    this.setState('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
+                    this.setState('type.' + trashNameClean + '.nextDateFormat', {val: '', ack: true});
+                    this.setState('type.' + trashNameClean + '.nextWeekday', {val: null, ack: true});
+                    this.setState('type.' + trashNameClean + '.daysLeft', {val: null, ack: true});
+                    this.setState('type.' + trashNameClean + '.nextDateFound', {val: false, ack: true});
                 }
             }
 
