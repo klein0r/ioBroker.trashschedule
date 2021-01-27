@@ -187,7 +187,15 @@ Scans an ical calendar to calculate the days left until next trash pickup
 </xml>
 ```
 
+## Offset configuration
+
+![Offset example](images/offsetExample.jpg)
+
 ## Changelog
+
+### 1.1.1
+
+* (klein0r) ...
 
 ### 1.1.0
 

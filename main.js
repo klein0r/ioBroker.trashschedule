@@ -290,7 +290,7 @@ class Trashschedule extends utils.Adapter {
                 const entry = data[i];
                 const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
 
-                this.log.debug('(1) parsing next event ' + JSON.stringify(entry) + ' // originalDate: ' + entry._date);
+                this.log.debug('(1) parsing next event ' + JSON.stringify(entry) + ' // originalDate: ' + entry._date + ' // calculated date (with offset): ' + date);
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
@@ -365,7 +365,7 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (!filledTypes.includes(trashName)) {
-                    this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal and trashschedule!');
+                    this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal (increase preview) and trashschedule!');
 
                     // reset values
                     this.setState('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
