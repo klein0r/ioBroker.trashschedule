@@ -220,8 +220,8 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ### 1.0.0
 
-* (klein0r) BREAKING CHANGE: Renamed data types - check your scripts!
-* (klein0r) First stable release
+* (klein0r) Renamed data types **(BREAKING CHANGE - CHECK YOUR SCRIPTS AND VIS)**
+* (klein0r) First **stable** release
 * (klein0r) Added iobroker sentry
 
 ### 0.0.11
