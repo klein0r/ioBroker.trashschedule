@@ -191,7 +191,7 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ### 1.1.0
 
-* (klein0r) Just allow clean trash type names
+* (klein0r) Just allow clean trash type names **(BREAKING CHANGE - CHECK YOUR SCRIPTS AND VIS)**
 
 ### 1.0.6
 
