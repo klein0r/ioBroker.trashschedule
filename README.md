@@ -38,7 +38,7 @@ Scans an ical calendar to calculate the days left until next trash pickup
 
 ![Blockly example](images/exampleBlockly.png)
 
-```
+```xml
 <xml xmlns="https://developers.google.com/blockly/xml">
   <block type="comment" id="@ObjS.SGnDWy?:*J=bee" x="37" y="188">
     <field name="COMMENT">Um 18:00 Uhr am Vortag (verbleibende Tage = 1) erinnern, dass Abholung bevorsteht</field>
