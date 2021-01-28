@@ -150,7 +150,7 @@ class Trashschedule extends utils.Adapter {
                             });
 
                         } else {
-                            this.log.warn('Skipping invalid trash name: ' + trashNameClean);
+                            this.log.warn('Skipping invalid or empty trash name: ' + trashName);
                         }
                     }
                 } else {
