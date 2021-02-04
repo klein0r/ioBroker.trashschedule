@@ -3,6 +3,10 @@
         "name": "trashschedule",
         "version": "1.1.1",
         "news": {
+            "1.1.1": {
+                "en": "Added log message if the match pattern contains leading or trailing whitespaces",
+                "de": "Warnung eingefügt, falls zu suchender Treffer mit Leerzeichen beginnt oder endet"
+            },
             "1.1.0": {
                 "en": "Just allow clean trash type names",
                 "de": "Datenpunkte für Abfalltypen von Sonderzeichen befreien"
