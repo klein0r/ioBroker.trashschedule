@@ -51,7 +51,7 @@ class Trashschedule extends utils.Adapter {
                         const trashName = trashType.name.trim();
                         const trashNameClean = this.cleanNamespace(trashName);
 
-                        if (trashNameClean) {
+                        if (trashNameClean && !!trashType.match) {
                             typesKeep.push('type.' + trashNameClean);
                             this.log.debug('Trash type found: "' + trashNameClean + '"');
 
@@ -150,7 +150,7 @@ class Trashschedule extends utils.Adapter {
                             });
 
                         } else {
-                            this.log.warn('Skipping invalid or empty trash name: ' + trashName);
+                            this.log.warn('Skipping invalid/empty trash name or match: ' + trashName);
                         }
                     }
                 } else {
@@ -304,7 +304,7 @@ class Trashschedule extends utils.Adapter {
                         const trashName = trashType.name.trim();
                         const trashNameClean = this.cleanNamespace(trashName);
 
-                        if (trashNameClean) {
+                        if (trashNameClean && !!trashType.match) {
                             if (dayDiff > 0 || hourNow < skipsamedayathour) {
                                 // Fill type if event matches
                                 if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
@@ -364,8 +364,8 @@ class Trashschedule extends utils.Adapter {
                 const trashName = trashType.name.trim();
                 const trashNameClean = this.cleanNamespace(trashName);
 
-                if (!filledTypes.includes(trashName)) {
-                    this.log.warn('no events matches type ' + trashType.name + '. Check configuration of iCal (increase preview) and trashschedule!');
+                if (!filledTypes.includes(trashName) && !!trashType.match) {
+                    this.log.warn('no events matches type "' + trashType.name + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
 
                     // reset values
                     this.setState('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
