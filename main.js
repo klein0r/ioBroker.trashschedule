@@ -53,7 +53,11 @@ class Trashschedule extends utils.Adapter {
 
                         if (trashNameClean && !!trashType.match) {
                             typesKeep.push('type.' + trashNameClean);
-                            this.log.debug('Trash type found: "' + trashNameClean + '"');
+                            this.log.debug('Trash type found: "' + trashName + '"');
+
+                            if (trashType.match != trashType.match.trim()) {
+                                this.log.info('Attention: Trash type "' + trashName + '" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "' + trashType.match + '"');
+                            }
 
                             await this.setObjectNotExistsAsync('type.' + trashNameClean, {
                                 type: 'channel',
@@ -309,7 +313,7 @@ class Trashschedule extends utils.Adapter {
                                 // Fill type if event matches
                                 if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                    this.log.debug('(3) event match: "' + entry.event + '" matches trash type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
+                                    this.log.debug('(3) event match: "' + entry.event + '" matches type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
@@ -332,7 +336,7 @@ class Trashschedule extends utils.Adapter {
                                             }
                                         );
 
-                                        this.log.debug('(4) filled type: "' + entry.event + '" matches trash type ' + trashType.match + (trashType.exactmatch ? ' (exact match)' : ''));
+                                        this.log.debug('(4) filled type: "' + trashName + '"');
                                     }
 
                                     // Set next type
@@ -365,7 +369,7 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
-                    this.log.warn('no events matches type "' + trashType.name + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
+                    this.log.warn('no events matches type "' + trashName + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
 
                     // reset values
                     this.setState('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
@@ -395,7 +399,7 @@ class Trashschedule extends utils.Adapter {
 
     fillNext(obj, statePrefix) {
 
-        this.log.debug('(5) fill ' + statePrefix + ' event with data ' + JSON.stringify(obj));
+        this.log.debug('(5) filling "' + statePrefix + '" event with data: ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
             this.setState(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});
