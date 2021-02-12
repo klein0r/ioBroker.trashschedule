@@ -1,32 +1,71 @@
----
 name: Bug report
-about: Something is not working as it should
-title: ''
-labels: ''
-assignees: ''
----
+about: Create a report to help improve this ioBroker adapter
+title: ""
+issue_body: true
+inputs:
+  - type: description
+    attributes:
+      value: >
+        **Thank you for wanting to report a bug in this adapter!**
 
-**Describe the bug**  
-A clear and concise description of what the bug is.
+        If this is the first time you are doing this, please take a few moments to read
+        through the [README](https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md).
+        Also check out [the FAQ](https://github.com/klein0r/ioBroker.trashschedule/blob/master/faq_de.md) if your
+        problem is maybe already covered there.
 
-**To Reproduce**  
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '...'
-3. Scroll down to '....'
-4. See error
+        You are about to report a bug in **Trashschedule Adapter**. Do not proceed if your issues
+        occurs with ioBroker, any third party adapters, unofficial or outdated
+        adapter versions.
 
-**Expected behavior**  
-A clear and concise description of what you expected to happen.
+        Do also not seek support here ("I need help with ...", "I have a
+        question ...", "Can someone walk me through ..."), that belongs into the
+        [ioBroker forum at forum.iobroker.net](https://forum.iobroker.net/).
 
-**Screenshots & Logfiles**  
-If applicable, add screenshots and logfiles to help explain your problem.
+        And finally, make sure any bug you want to report is still present with the **current**
+        adapter version.
 
-**Versions:**  
- - Adapter version: <adapter-version>
- - JS-Controller version: <js-controller-version> <!-- determine this with `iobroker -v` on the console -->
- - Node version: <node-version> <!-- determine this with `node -v` on the console -->
- - Operating system: <os-name>
+        Thank you for your collaboration!
+  - type: textarea
+    attributes:
+      label: The problem
+      required: true
+      description: >-
+        Describe the issue you are experiencing here. Tell us what you were trying to do
+        step by step, and what happened that you did not expect.
 
-**Additional context**  
-Add any other context about the problem here.
+        Provide a clear and concise description of what the problem is and include as many
+        details as possible.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+  - type: description
+    attributes:
+      value: |
+        ## Environment
+  - type: input
+    attributes:
+      label: Version of ioBroker js-controller
+      description: Can be found in the host section of ioBroker admin
+      required: true
+  - type: input
+    attributes:
+      label: Operating system running ioBroker
+      description: >-
+        Linux, Windows, MacOS, something else? With version please?
+      required: true
+  - type: description
+    attributes:
+      value: |
+        ## Logs and other files needed for analysis
+  - type: description
+    attributes:
+      value: >-
+        Please also be sure to upload the following files below:
+
+          * `iobroker.current.log`: Please share the logs in debug mode
+          * `ical file` or the contents of your calendar
+  - type: description
+    attributes:
+      value: |
+        ## Additional information & file uploads
