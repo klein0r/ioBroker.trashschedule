@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.1.1",
+        "version": "1.1.2",
         "news": {
+            "1.1.2": {
+                "en": "Nodejs 12 required",
+                "de": "Nodejs 12 erforderlich"
+            },
             "1.1.1": {
                 "en": "Added log message if the match pattern contains leading or trailing whitespaces",
                 "de": "Warnung eingefügt, falls zu suchender Treffer mit Leerzeichen beginnt oder endet"
