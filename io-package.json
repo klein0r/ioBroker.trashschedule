@@ -42,50 +42,6 @@
             "1.0.0": {
                 "en": "First stable release",
                 "de": "Erster stable Release"
-            },
-            "0.0.11": {
-                "en": "Better error reporting",
-                "de": "Bessere Fehlermeldungen"
-            },
-            "0.0.10": {
-                "en": "Added CSS classes for easier customization",
-                "de": "CSS-Klassen für einfachere Anpassung hinzugefügt"
-            },
-            "0.0.9": {
-                "en": "Fixed color correction calculation issue",
-                "de": "Fehler mit der automatischen Farbberechnung behoben"
-            },
-            "0.0.8": {
-                "en": "Fixed missing VIS translations",
-                "de": "VIS Übersetzungen gefixt"
-            },
-            "0.0.7": {
-                "en": "Several fixes, improved admin and vis",
-                "de": "Mehrere Bugfixes, Admin und VIS verbessert"
-            },
-            "0.0.6": {
-                "en": "Updated dependencies",
-                "de": "Abhängigkeiten aktualisiert"
-            },
-            "0.0.5": {
-                "en": "Added pickup dates after next date",
-                "de": "Übernächste Termine hinzugefügt"
-            },
-            "0.0.4": {
-                "en": "Added VIS templates",
-                "de": "VIS Templates hinzugefügt"
-            },
-            "0.0.3": {
-                "en": "fixed issue with events after time change date",
-                "de": "Problem mit Termin nach Zeitumstellung behoben"
-            },
-            "0.0.2": {
-                "en": "added global offset in days",
-                "de": "Globaler Offset in Tagen hinzugefügt"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung"
             }
         },
         "title": "Trash Schedule",
