@@ -212,7 +212,7 @@
             "type": "state",
             "common": {
                 "name": "Next week day",
-                "type": "string",
+                "type": "number",
                 "role": "value",
                 "read": true,
                 "write": false
@@ -305,7 +305,7 @@
             "type": "state",
             "common": {
                 "name": "After next week day",
-                "type": "string",
+                "type": "number",
                 "role": "value",
                 "read": true,
                 "write": false

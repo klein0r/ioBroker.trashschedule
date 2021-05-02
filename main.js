@@ -107,7 +107,7 @@ class Trashschedule extends utils.Adapter {
                                 type: 'state',
                                 common: {
                                     name: 'Next week day ' + trashName,
-                                    type: 'string',
+                                    type: 'number',
                                     role: 'value',
                                     read: true,
                                     write: false
