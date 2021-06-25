@@ -4,10 +4,10 @@
 
 Wenn der Adapter gelb bleibt, können vom iCal-Adapter keine Termine abgeholt werden. Das liegt entweder daran, dass der iCal-Adapter
 
-- seinen Kalender nicht abfragen kann (Zugriffsrechte),
+- den dort konfigurierten Kalender nicht abrufen kann (Zugriffsrechte),
 - oder dass im verwendeten Kalender keine Termine enthalten sind / der eingestellte Zeitraum zu klein ist.
 
-Weiterhin muss im iCal-Adapter bei Verwendung des "Ereignisse"-Features (siehe Tab im Admin) der Haken bei "anzeigen" gesetzt werden. Ist der Haken nicht gesetzt, werden die treffenden Termine vom iCal-Adapter gefiltert und können somit nicht mehr vom Trashschedule-Adapter gelesen werden.
+**Weiterhin muss im iCal-Adapter bei Verwendung des "Ereignisse"-Features (siehe Tab im Admin) der Haken bei "anzeigen" gesetzt werden.** Ist der Haken nicht gesetzt, werden die treffenden Termine vom iCal-Adapter gefiltert und können somit nicht mehr vom Trashschedule-Adapter gelesen werden.
 
 ## Einige Typen werden nicht gefunden / gefüllt
 
@@ -15,7 +15,7 @@ Das könnte daran liegen, dass der iCal-Adapter nicht "weit genug in die Zukunft
 
 ## Die verbleibenden Tage aktualisieren sich nicht
 
-Die Idee ist, dass der iCal-Adapter regelmäßig den Kalender neu holt. Daher sollte hier ein Intervall definiert werden, wie oft die Daten aus der iCal-Datei / iCal-Url neu gelesen werden. Es ist nicht nötig, den Trashschedule-Adapter regelmäßig neustarten zu lassen (dieser würde ja nur wieder die gleichen/alten Daten vom iCal lesen). iCal ist also führend und muss dafür sorgen, dass immer aktuelle Termine vorliegen. Es sollte also mindestens einmal täglich (möglichst früh am Tag) die iCal-Instanz neugestartet werden.
+Die Idee ist, dass der iCal-Adapter regelmäßig den Kalender neu holt. Daher sollte hier ein Intervall definiert werden, wie oft die Daten aus der iCal-Datei / iCal-Url neu gelesen werden. Es ist nicht nötig, den Trashschedule-Adapter regelmäßig neustarten zu lassen (dieser würde ja nur wieder die gleichen/alten Daten vom iCal lesen). iCal ist also führend und muss dafür sorgen, dass immer aktuelle Termine vorliegen. **Es sollte also mindestens einmal täglich (möglichst früh am Tag) die iCal-Instanz gestartet werden (siehe Cron-Einstellungen auf der Instanz).**
 
 ## Einige Tonnen sind im VIS widget nicht vorhanden oder werden nicht richtig dargestellt
 
@@ -35,7 +35,7 @@ Im Widget muss unter "Object ID" der JSON-Knoten angegeben werden, z.B.: `trashs
 
 ## In welchem Format werden die Farben der Tonnen hinterlegt?
 
-Die Farben werde als Hex-Codes, also z.B. mit `#13a7eb` angegeben. Das regelt in neueren Versionen aber der Color-Picker für Dich.
+Die Farben werden als Hex-Codes, also z.B. mit `#13a7eb` angegeben. Das regelt in neueren Versionen aber der Color-Picker für Dich. Wähle einfach die gewünschte Farbe aus.
 
 ## VIS zeigt "invalid date"
 
