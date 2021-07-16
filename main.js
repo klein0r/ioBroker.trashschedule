@@ -67,6 +67,14 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
+                            if (trashType.color) {
+                                this.extendObjectAsync('type.' + trashNameClean, {
+                                    common: {
+                                        color: trashType.color
+                                    }
+                                });
+                            }
+
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDate', {
                                 type: 'state',
                                 common: {
@@ -259,6 +267,15 @@ class Trashschedule extends utils.Adapter {
 
     updateByCalendarTable(data) {
         this.log.debug('updating data');
+
+        // Added compatibility with iCal 1.10.0
+        if (typeof data === 'string') {
+            try {
+                data = JSON.parse(data);
+            } catch (e) {
+                this.log.error('unable to parse iCal json: ' + e.toString());
+            }
+        }
 
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data) && data.length > 0) {
