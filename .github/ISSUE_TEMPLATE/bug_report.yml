@@ -1,7 +1,8 @@
 name: Bug report
 title: "Bug report"
+description: "Create a report to help improve this ioBroker adapter"
 body:
-  - type: description
+  - type: markdown
     attributes:
       value: >
         **Thank you for wanting to report a bug in this adapter!**
@@ -26,7 +27,6 @@ body:
   - type: textarea
     attributes:
       label: The problem
-      required: true
       description: >-
         Describe the issue you are experiencing here. Tell us what you were trying to do
         step by step, and what happened that you did not expect.
@@ -37,7 +37,9 @@ body:
         1. ...
         2. ...
         3. ...
-  - type: description
+    validations:
+      required: true
+  - type: markdown
     attributes:
       value: |
         ## Environment
@@ -45,25 +47,26 @@ body:
     attributes:
       label: Version of ioBroker js-controller
       description: Can be found in the host section of ioBroker admin
+    validations:
       required: true
   - type: input
     attributes:
       label: Operating system running ioBroker
       description: >-
         Linux, Windows, MacOS, something else? With version please?
+    validations:
       required: true
-  - type: description
+  - type: markdown
     attributes:
       value: |
         ## Logs and other files needed for analysis
-  - type: description
+  - type: checkboxes
     attributes:
-      value: >-
-        Please also be sure to upload the following files below:
-
-          * `iobroker.current.log`: Please share the logs in debug mode
-          * `ical file` or the contents of your calendar
-  - type: description
+      label: Checklist of files to include below
+      options:
+        - label: iobroker.current.log (Please share the logs in debug mode)
+          required: true
+        - label: Contents of the JavaScript browser console (always include in cases of issues with the user interface)
+  - type: textarea
     attributes:
-      value: |
-        ## Additional information & file uploads
+      label: Additional information & file uploads
