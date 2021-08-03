@@ -1,6 +1,6 @@
 name: Bug report
 title: "Bug report"
-inputs:
+body:
   - type: description
     attributes:
       value: >
