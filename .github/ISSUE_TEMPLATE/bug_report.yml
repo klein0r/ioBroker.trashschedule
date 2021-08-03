@@ -51,6 +51,12 @@ body:
       required: true
   - type: input
     attributes:
+      label: Version of Adapter
+      description: Can be found in the adapters tab of ioBroker admin
+    validations:
+      required: true
+  - type: input
+    attributes:
       label: Operating system running ioBroker
       description: >-
         Linux, Windows, MacOS, something else? With version please?
