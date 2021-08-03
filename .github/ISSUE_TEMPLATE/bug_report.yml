@@ -21,7 +21,7 @@ body:
         [ioBroker forum at forum.iobroker.net](https://forum.iobroker.net/).
 
         And finally, make sure any bug you want to report is still present with the **current**
-        adapter version.
+        adapter (beta) version.
 
         Thank you for your collaboration!
   - type: textarea
@@ -33,10 +33,6 @@ body:
 
         Provide a clear and concise description of what the problem is and include as many
         details as possible.
-      placeholder: |
-        1. ...
-        2. ...
-        3. ...
     validations:
       required: true
   - type: markdown
