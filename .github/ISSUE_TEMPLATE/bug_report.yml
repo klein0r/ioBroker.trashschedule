@@ -1,7 +1,5 @@
 name: Bug report
-about: Create a report to help improve this ioBroker adapter
-title: ""
-issue_body: true
+title: "Bug report"
 inputs:
   - type: description
     attributes:
