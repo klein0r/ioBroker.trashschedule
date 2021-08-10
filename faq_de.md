@@ -17,6 +17,12 @@ Das könnte daran liegen, dass der iCal-Adapter nicht "weit genug in die Zukunft
 
 Die Idee ist, dass der iCal-Adapter regelmäßig den Kalender neu holt. Daher sollte hier ein Intervall definiert werden, wie oft die Daten aus der iCal-Datei / iCal-Url neu gelesen werden. Es ist nicht nötig, den Trashschedule-Adapter regelmäßig neustarten zu lassen (dieser würde ja nur wieder die gleichen/alten Daten vom iCal lesen). iCal ist also führend und muss dafür sorgen, dass immer aktuelle Termine vorliegen. **Es sollte also mindestens einmal täglich (möglichst früh am Tag) die iCal-Instanz gestartet werden (siehe Cron-Einstellungen auf der Instanz).**
 
+## State value to set for "trashschedule.0.type.xxx.nextWeekday" has to be type "string" but received type "number"
+
+In späteren Adapter-Versionen wurden die Datentypen von einigen Datenpunkten angepasst. Sollten entsprechende Fehler im Log auftauchen, kann dies dadurch gelöst werden, dass der Adapter noch einmal alle Datenpunkte neu anlegt. Lösche dazu einfach alle Datenpunkte, welche sich unter ``trashschedule.0`` befinden. Das kann einfach in der Objekt-Ansicht erledigt werden.
+
+Sobald die Instanz einmal neugestartet wurde, sind alle Datenpunkten wieder vorhanden.
+
 ## Einige Tonnen sind im VIS widget nicht vorhanden oder werden nicht richtig dargestellt
 
 Die Farben der Tonnen und die verschiedenen Schattierungen im genutzten SVG werden dynamisch berechnet. Dort gab es vor Version 0.0.9 noch ein paar Fehler, welche mittlerweile behoben sind. Es hilft ein Update des Adapters auf 0.0.9 oder neuer. Weiterhin sollte ein "Upload" von VIS und Trashschedule über das Adapter-Tab durchgeführt werden (Experten-Modus aktivieren).
