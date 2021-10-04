@@ -22,34 +22,6 @@
             "1.1.0": {
                 "en": "Just allow clean trash type names",
                 "de": "Datenpunkte für Abfalltypen von Sonderzeichen befreien"
-            },
-            "1.0.6": {
-                "en": "Fixed async object creation",
-                "de": "Asynchrone Objekt-Erstellung behoben"
-            },
-            "1.0.5": {
-                "en": "Added automatic refresh every full hour",
-                "de": "Automatische aktualisierung jede Stunde"
-            },
-            "1.0.4": {
-                "en": "Delete unsed states",
-                "de": "Ungenutzte Datenpunkte löschen"
-            },
-            "1.0.3": {
-                "en": "Improved VIS widget options",
-                "de": "Verbesserte VIS-Widget Optionen"
-            },
-            "1.0.2": {
-                "en": "Added color picker",
-                "de": "Color Picker für einfache Farbauswahl"
-            },
-            "1.0.1": {
-                "en": "Fixed date calculation issue in VIS",
-                "de": "Fehler mit der Datumsanzeite in VIS behoben"
-            },
-            "1.0.0": {
-                "en": "First stable release",
-                "de": "Erster stable Release"
             }
         },
         "title": "Trash Schedule",
@@ -89,7 +61,12 @@
         ],
         "dependencies": [
             {
-                "js-controller": ">=2.0.0"
+                "js-controller": ">=3.3.0"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.19"
             }
         ],
         "plugins": {
