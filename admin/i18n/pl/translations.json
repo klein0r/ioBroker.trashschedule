@@ -1,0 +1,19 @@
+{
+    "color": "kolor",
+    "event match": "Dopasowuje wydarzenia",
+    "exact match": "Dokładne dopasowanie",
+    "global offset": "Globalne przesunięcie (dni)",
+    "global offset help": "Liczba dni dodanych (lub odjęta) od każdej daty wydarzenia",
+    "ical instance": "instancja fizyczna",
+    "ical instance help": "Wybierz swoje ical wystąpienie ze zdarzeniami odbioru",
+    "name": "Nazwa",
+    "next separator": "Separator następnego tekstu",
+    "next separator help": "Będzie używany do łączenia wielu typów śmieci w tym samym dniu co tekst (i)",
+    "options": "Opcje",
+    "skip same day at hour": "Pomiń ten sam dzień o godzinie",
+    "skip same day at hour help": "Po tej godzinie wyszukiwanie następnego wydarzenia zostanie pominięte dzisiaj. Jest to istotne, jeśli dzisiaj i jutro odbędzie się odbiór.",
+    "table color help": "Określ kolor dla typu kosza. Tego koloru można użyć w VIS do pokolorowania typu odbioru.",
+    "table match help": "Pasuje do wydarzeń: ten tekst musi być zawarty w nazwie wydarzenia kalendarza. Jeśli zaznaczone jest „Dopasowanie ścisłe”, nazwa musi być dokładnie taka sama.",
+    "table name help": "Nazwa: nazwa odbioru śmieci. na przykład „papier”, „śmieci” lub „odpady ogólne”",
+    "trash types": "Rodzaje śmieci"
+}

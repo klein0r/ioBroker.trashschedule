@@ -2,29 +2,17 @@
 'use strict';
 
 systemDictionary = {
-    "trashschedule adapter settings": {
-        "en": "Adapter settings for Trash-Schedule",
-        "de": "Adaptereinstellungen für Müll-Planer",
-        "ru": "Настройки адаптера для Trash-Schedule",
-        "pt": "Configurações do adaptador para Trash-Schedule",
-        "nl": "Adapterinstellingen voor Prullenbak",
-        "fr": "Paramètres de l'adaptateur pour la corbeille",
-        "it": "Impostazioni dell'adattatore per Cestino",
-        "es": "Configuración del adaptador para el calendario de basura",
-        "pl": "Ustawienia adaptera dla Trash-Schedule",
-        "zh-cn": "垃圾箱时间表的适配器设置"
-    },
-    "main settings": {
-        "en": "Main Settings",
-        "de": "Haupteinstellungen",
-        "ru": "Основные параметры",
-        "pt": "Configurações principais",
-        "nl": "Belangrijkste instellingen",
-        "fr": "Réglages principaux",
-        "it": "Impostazioni principali",
-        "es": "Ajustes principales",
-        "pl": "Ustawienia główne",
-        "zh-cn": "主要设定"
+    "options": {
+        "en": "Options",
+        "de": "Einstellungen",
+        "ru": "Настройки",
+        "pt": "Opções",
+        "nl": "opties",
+        "fr": "Options",
+        "it": "Opzioni",
+        "es": "Opciones",
+        "pl": "Opcje",
+        "zh-cn": "选项"
     },
     "trash types": {
         "en": "Trash Types",

@@ -1,0 +1,19 @@
+{
+    "color": "Farbe",
+    "event match": "Gilt für Termine",
+    "exact match": "Genauer Treffer",
+    "global offset": "Globaler Offset (Tage)",
+    "global offset help": "Anzahl der Tage, welche zum Termin im Kalender hinzugefügt (oder abgezogen) werden",
+    "ical instance": "ical-Instanz",
+    "ical instance help": "Wähle die ical-Instanz, welche die Abfuhrtermine bereitstellt",
+    "name": "Name",
+    "next separator": "Trenner für Nächste-Text",
+    "next separator help": "Wird genutzt, um Abfall-Typen am gleichen Tag als Text zu verketten (und)",
+    "options": "Einstellungen",
+    "skip same day at hour": "Aktuellen Tag ab Stunde X überspringen",
+    "skip same day at hour help": "Nach dieser Uhrzeit wird nach Abholungen in der Zukunft gesucht und heute übersprungen. Relevant, wenn heute und morgen eine Abholung stattfindet.",
+    "table color help": "Mit diesem Farbcode können die einzelnen Termine in VIS eingefärbt werden.",
+    "table match help": "Gilt für Termine: Dieser Text muss als Termin im Kalender enthalten sein, damit dieser als Abholtermin des Typs erkannt wird. Wird \"Genauer Treffer\" muss der Termin genau übereinstimmen.",
+    "table name help": "Name: Name der Abholung. Zum Beispiel \"Papiertonne\", \"Restabfalltonne\", \"Biotonne\" oder \"Gelber Sack\"",
+    "trash types": "Abfall-Typen"
+}

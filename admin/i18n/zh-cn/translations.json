@@ -1,0 +1,19 @@
+{
+    "color": "颜色",
+    "event match": "比赛赛事",
+    "exact match": "完全符合",
+    "global offset": "全球偏移量（天）",
+    "global offset help": "从每个活动日期添加（或减去）的天数",
+    "ical instance": "实例",
+    "ical instance help": "选择具有拾取事件的ical实例",
+    "name": "名称",
+    "next separator": "下一个文本分隔符",
+    "next separator help": "将用于在同一天将多种垃圾类型与文本（和）连接在一起",
+    "options": "选项",
+    "skip same day at hour": "每小时跳过同一天",
+    "skip same day at hour help": "在这小时之后，下一个事件搜索将在今天跳过。如果今天和明天是接送活动，则这是相关的。",
+    "table color help": "指定垃圾桶类型的颜色。可以在VIS中使用此颜色为拾取器类型着色。",
+    "table match help": "匹配事件：此文本必须包含在日历的事件名称中。如果选中“完全匹配”，则名称必须完全匹配。",
+    "table name help": "名称：垃圾箱的名称。例如“纸张”，“垃圾”或“一般废物”",
+    "trash types": "垃圾类型"
+}

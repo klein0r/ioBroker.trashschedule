@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "news": {
+            "1.3.0": {
+                "en": "Admin 5 Support",
+                "de": "Admin 5 Support"
+            },
             "1.2.0": {
                 "en": "Added compatibility with iCal 1.10.0",
                 "de": "Kompatibilität zu iCal 1.10.0 hergestellt"
@@ -56,6 +60,9 @@
         "connectionType": "local",
         "dataSource": "push",
         "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
         "restartAdapters": [
             "vis"
         ],
@@ -66,7 +73,8 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=5.1.19"
+                "admin": ">=5.1.19",
+                "ical": ">=1.11.0"
             }
         ],
         "plugins": {

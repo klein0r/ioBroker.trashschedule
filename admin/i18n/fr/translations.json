@@ -1,0 +1,19 @@
+{
+    "color": "Couleur",
+    "event match": "Matchs d'événements",
+    "exact match": "Correspondance exacte",
+    "global offset": "Décalage global (jours)",
+    "global offset help": "Nombre de jours ajoutés (ou soustraits) à partir de chaque date d'événement",
+    "ical instance": "instance ical",
+    "ical instance help": "Choisissez votre instance ical avec les événements de ramassage",
+    "name": "Nom",
+    "next separator": "Séparateur de texte suivant",
+    "next separator help": "Sera utilisé pour concaténer plusieurs types de corbeille le même jour que le texte (et)",
+    "options": "Options",
+    "skip same day at hour": "Passer le même jour à l'heure",
+    "skip same day at hour help": "Après cette heure, la prochaine recherche d'événement sera ignorée aujourd'hui. C'est pertinent, si aujourd'hui et demain est un événement de ramassage.",
+    "table color help": "Spécifiez une couleur pour le type de corbeille. Cette couleur peut être utilisée dans VIS pour coloriser le type de micro.",
+    "table match help": "Correspond aux événements: ce texte doit être inclus dans le nom de l'événement du calendrier. Si \"Correspondance exacte\" est coché, le nom doit correspondre exactement.",
+    "table name help": "Nom: nom du ramassage des ordures. par exemple. \"papier\", \"poubelle\" ou \"déchet général\"",
+    "trash types": "Types de corbeille"
+}

@@ -1,0 +1,107 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_options": {
+            "type": "panel",
+            "label": "options",
+            "items": {
+                "ical": {
+                    "type": "instance",
+                    "adapter": "ical",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ical instance",
+                    "help": "ical instance help"
+                },
+                "globaloffset": {
+                    "newLine": true,
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "global offset",
+                    "help": "global offset help"
+                },
+                "nextseparator": {
+                    "newLine": true,
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "next separator",
+                    "help": "next separator help"
+                },
+                "skipsamedayathour": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "skip same day at hour",
+                    "help": "skip same day at hour help"
+                },
+                "_ioBrokerKursBanner": {
+                    "newLine": true,
+                    "type": "staticImage",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "href": "https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-trashschedule",
+                    "src": "https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png"
+                }
+            }
+        },
+        "_advanced": {
+            "type": "panel",
+            "label": "trash types",
+            "items": {
+                "trashtypes": {
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "trash types",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "name",
+                            "width": "35%",
+                            "title": "name",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "match",
+                            "width": "35%",
+                            "title": "event match",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "exactmatch",
+                            "width": "15%",
+                            "title": "exact match",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "color",
+                            "attr": "color",
+                            "width": "15%",
+                            "title": "color",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

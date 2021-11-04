@@ -398,7 +398,7 @@ class Trashschedule extends utils.Adapter {
             }
 
             // Sort summary by days left
-            jsonSummary.sort(function(a, b) {
+            jsonSummary.sort((a, b) => {
                 return a.daysLeft - b.daysLeft;
             });
 

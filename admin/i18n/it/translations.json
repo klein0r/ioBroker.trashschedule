@@ -1,0 +1,19 @@
+{
+    "color": "colore",
+    "event match": "Incontri eventi",
+    "exact match": "Corrispondenza esatta",
+    "global offset": "Offset globale (giorni)",
+    "global offset help": "Numero di giorni aggiunti (o sottratti) da ogni data dell'evento",
+    "ical instance": "istanza ical",
+    "ical instance help": "Scegli la tua istanza ical con eventi di ritiro",
+    "name": "Nome",
+    "next separator": "Separatore testo successivo",
+    "next separator help": "Verrà utilizzato per concatenare più tipi di cestino nello stesso giorno del testo (e)",
+    "options": "Opzioni",
+    "skip same day at hour": "Salta lo stesso giorno all'ora",
+    "skip same day at hour help": "Dopo quest'ora, la prossima ricerca dell'evento salterà oggi. Questo è rilevante, se oggi e domani è un evento di ritiro.",
+    "table color help": "Specifica un colore per il tipo di cestino. Questo colore può essere utilizzato in VIS per colorare il tipo di pickup.",
+    "table match help": "Abbina eventi: questo testo deve essere incluso nel nome dell'evento del calendario. Se si seleziona \"Corrispondenza esatta\", il nome deve corrispondere esattamente.",
+    "table name help": "Nome: nome del cestino. per esempio. \"carta\", \"spazzatura\" o \"rifiuti generici\"",
+    "trash types": "Tipi di rifiuti"
+}

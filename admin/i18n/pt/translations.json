@@ -1,0 +1,19 @@
+{
+    "color": "cor",
+    "event match": "Corresponde a eventos",
+    "exact match": "Combinação exata",
+    "global offset": "Compensação global (dias)",
+    "global offset help": "Número de dias adicionados (ou subtraídos) a partir de cada data do evento",
+    "ical instance": "instância",
+    "ical instance help": "Escolha sua instância icônica com eventos de recebimento",
+    "name": "Nome",
+    "next separator": "Separador de texto seguinte",
+    "next separator help": "Será usado para concatenar vários tipos de lixo no mesmo dia que o texto (e)",
+    "options": "Opções",
+    "skip same day at hour": "Pule o mesmo dia às horas",
+    "skip same day at hour help": "Após essa hora, a próxima pesquisa de eventos será ignorada hoje. Isso é relevante, se hoje e amanhã for um evento de recebimento.",
+    "table color help": "Especifique uma cor para o tipo de lixo. Essa cor pode ser usada no VIS para colorir o tipo de coleta.",
+    "table match help": "Corresponde a eventos: este texto deve ser incluído no nome do evento do calendário. Se a opção \"Correspondência exata\" estiver marcada, o nome deverá corresponder exatamente.",
+    "table name help": "Nome: nome da coleta de lixo. por exemplo. \"papel\", \"lixo\" ou \"lixo geral\"",
+    "trash types": "Tipos de Lixo"
+}

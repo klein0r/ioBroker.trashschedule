@@ -1,0 +1,19 @@
+{
+    "color": "kleur",
+    "event match": "Komt overeen met evenementen",
+    "exact match": "Exacte overeenkomst",
+    "global offset": "Wereldwijde offset (dagen)",
+    "global offset help": "Aantal dagen toegevoegd (of afgetrokken) vanaf elke afspraakdatum",
+    "ical instance": "ical exemplaar",
+    "ical instance help": "Kies uw ical exemplaar met ophaalgebeurtenissen",
+    "name": "Naam",
+    "next separator": "Volgende-tekstscheider",
+    "next separator help": "Wordt gebruikt om meerdere soorten prullenbak op dezelfde dag samen te voegen als tekst (en)",
+    "options": "opties",
+    "skip same day at hour": "Sla dezelfde dag om het uur over",
+    "skip same day at hour help": "Na dit uur wordt het volgende evenement zoeken vandaag overgeslagen. Dit is relevant, als vandaag en morgen een pick-up evenement is.",
+    "table color help": "Geef een kleur op voor het type prullenbak. Deze kleur kan in VIS worden gebruikt om het ophaaltype te kleuren.",
+    "table match help": "Komt overeen met evenementen: deze tekst moet worden opgenomen in de naam van de agenda. Als \"Exact zoeken\" is aangevinkt, moet de naam exact overeenkomen.",
+    "table name help": "Naam: naam van de prullenbak. bijv. \"papier\", \"afval\" of \"algemeen afval\"",
+    "trash types": "Soorten afval"
+}

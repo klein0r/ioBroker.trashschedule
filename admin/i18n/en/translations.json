@@ -1,0 +1,19 @@
+{
+    "color": "color",
+    "event match": "Matches events",
+    "exact match": "Exact Match",
+    "global offset": "Global Offset (days)",
+    "global offset help": "Number of days added (or substracted) from each event date",
+    "ical instance": "ical instance",
+    "ical instance help": "Choose your ical instance with pickup events",
+    "name": "Name",
+    "next separator": "Next-Text Separator",
+    "next separator help": "Will be used to concatenate multiple trash types on the same day as text (and)",
+    "options": "Options",
+    "skip same day at hour": "Skip same day at hour",
+    "skip same day at hour help": "After this hour, the next event search will skip today. This is relevant, if today and tomorrow is a pickup event.",
+    "table color help": "Specify a color for the trash type. This color can be used in VIS to colorize the pickup type.",
+    "table match help": "Matches events: This text must be included in the event name of the calendar. If \"Exact Match\" is checked, the name has to match exactly.",
+    "table name help": "Name: Name of the trash pickup. e.g. \"paper\", \"trash\" or \"general waste\"",
+    "trash types": "Trash Types"
+}
