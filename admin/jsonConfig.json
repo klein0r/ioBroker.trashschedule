@@ -100,6 +100,28 @@
                             "default": ""
                         }
                     ]
+                },
+                "_help1": {
+                    "newLine": true,
+                    "type": "staticText",
+                    "text": "table name help",
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "_help2": {
+                    "type": "staticText",
+                    "text": "table match help",
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "_help3": {
+                    "type": "staticText",
+                    "text": "table color help",
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
                 }
             }
         }
