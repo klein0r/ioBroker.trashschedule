@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.3.0",
+        "version": "1.3.1",
         "news": {
+            "1.3.1": {
+                "en": "Fixed missing translations",
+                "de": "Fehlende Übersetzungen hinzugefügt"
+            },
             "1.3.0": {
                 "en": "Admin 5 Support",
                 "de": "Admin 5 Support"

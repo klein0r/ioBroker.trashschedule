@@ -211,6 +211,10 @@ iobroker add trashschedule
 
 ## Changelog
 
+### 1.3.1
+
+* (klein0r) Fixed missing translations
+
 ### 1.3.0
 
 * (klein0r) Admin 5 Support
