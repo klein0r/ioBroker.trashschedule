@@ -211,6 +211,11 @@ iobroker add trashschedule
 
 ## Changelog
 
+<!--
+  Placeholder for the next version (at the beginning of the line):
+  ### **WORK IN PROGRESS**
+-->
+
 ### 1.3.2
 
 * (klein0r) Fixed missing VIS widget
