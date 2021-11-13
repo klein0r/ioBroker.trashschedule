@@ -1,12 +1,8 @@
 {
-    "color": "cor",
-    "event match": "Corresponde a eventos",
-    "exact match": "Combinação exata",
     "global offset": "Compensação global (dias)",
     "global offset help": "Número de dias adicionados (ou subtraídos) a partir de cada data do evento",
     "ical instance": "instância",
     "ical instance help": "Escolha sua instância icônica com eventos de recebimento",
-    "name": "Nome",
     "next separator": "Separador de texto seguinte",
     "next separator help": "Será usado para concatenar vários tipos de lixo no mesmo dia que o texto (e)",
     "options": "Opções",

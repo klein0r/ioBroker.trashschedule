@@ -1,12 +1,8 @@
 {
-    "color": "颜色",
-    "event match": "比赛赛事",
-    "exact match": "完全符合",
     "global offset": "全球偏移量（天）",
     "global offset help": "从每个活动日期添加（或减去）的天数",
     "ical instance": "实例",
     "ical instance help": "选择具有拾取事件的ical实例",
-    "name": "名称",
     "next separator": "下一个文本分隔符",
     "next separator help": "将用于在同一天将多种垃圾类型与文本（和）连接在一起",
     "options": "选项",

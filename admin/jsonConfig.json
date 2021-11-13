@@ -67,7 +67,18 @@
                             "type": "text",
                             "attr": "name",
                             "width": "35%",
-                            "title": "name",
+                            "title": {
+                                "en": "name",
+                                "de": "Name",
+                                "ru": "имя",
+                                "pt": "nome",
+                                "nl": "naam",
+                                "fr": "Nom",
+                                "it": "nome",
+                                "es": "nombre",
+                                "pl": "Nazwa",
+                                "zh-cn": "姓名"
+                            },
                             "filter": true,
                             "sort": true,
                             "default": ""
@@ -76,7 +87,18 @@
                             "type": "text",
                             "attr": "match",
                             "width": "35%",
-                            "title": "event match",
+                            "title": {
+                                "en": "Applies to appointments",
+                                "de": "Gilt für Termine",
+                                "ru": "Относится к встречам",
+                                "pt": "Aplica-se a compromissos",
+                                "nl": "Geldt voor afspraken",
+                                "fr": "S'applique aux rendez-vous",
+                                "it": "Si applica agli appuntamenti",
+                                "es": "Se aplica a citas",
+                                "pl": "Dotyczy spotkań",
+                                "zh-cn": "适用于约会"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -85,19 +107,41 @@
                             "type": "checkbox",
                             "attr": "exactmatch",
                             "width": "15%",
-                            "title": "exact match",
+                            "title": {
+                                "en": "Exact match",
+                                "de": "Genaue Übereinstimmung",
+                                "ru": "Точное совпадение",
+                                "pt": "Combinação exata",
+                                "nl": "Exacte overeenkomst",
+                                "fr": "Correspondance exacte",
+                                "it": "Corrispondenza esatta",
+                                "es": "Coincidencia exacta",
+                                "pl": "Dokładne dopasowanie",
+                                "zh-cn": "完全符合"
+                            },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": false
                         },
                         {
                             "type": "color",
                             "attr": "color",
                             "width": "15%",
-                            "title": "color",
+                            "title": {
+                                "en": "Color",
+                                "de": "Farbe",
+                                "ru": "Цвет",
+                                "pt": "Cor",
+                                "nl": "Kleur",
+                                "fr": "Couleur",
+                                "it": "Colore",
+                                "es": "Color",
+                                "pl": "Kolor",
+                                "zh-cn": "颜色"
+                            },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": "#000000"
                         }
                     ]
                 },
@@ -106,22 +150,22 @@
                     "type": "staticText",
                     "text": "table name help",
                     "sm": 12,
-                    "md": 3,
-                    "lg": 3
+                    "md": 4,
+                    "lg": 4
                 },
                 "_help2": {
                     "type": "staticText",
                     "text": "table match help",
                     "sm": 12,
-                    "md": 3,
-                    "lg": 3
+                    "md": 4,
+                    "lg": 4
                 },
                 "_help3": {
                     "type": "staticText",
                     "text": "table color help",
                     "sm": 12,
-                    "md": 3,
-                    "lg": 3
+                    "md": 4,
+                    "lg": 4
                 }
             }
         }

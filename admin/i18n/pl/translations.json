@@ -1,12 +1,8 @@
 {
-    "color": "kolor",
-    "event match": "Dopasowuje wydarzenia",
-    "exact match": "Dokładne dopasowanie",
     "global offset": "Globalne przesunięcie (dni)",
     "global offset help": "Liczba dni dodanych (lub odjęta) od każdej daty wydarzenia",
     "ical instance": "instancja fizyczna",
     "ical instance help": "Wybierz swoje ical wystąpienie ze zdarzeniami odbioru",
-    "name": "Nazwa",
     "next separator": "Separator następnego tekstu",
     "next separator help": "Będzie używany do łączenia wielu typów śmieci w tym samym dniu co tekst (i)",
     "options": "Opcje",

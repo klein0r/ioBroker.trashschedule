@@ -1,49 +1,93 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.3.2",
+        "version": "1.3.3",
         "news": {
+            "1.3.3": {
+                "en": "Translated admin table headers",
+                "de": "Übersetzte Kopfzeilen der Admin-Tabelle",
+                "ru": "Переведены заголовки административной таблицы",
+                "pt": "Cabeçalhos de tabela de administração traduzidos",
+                "nl": "Vertaalde beheerderstabelkoppen",
+                "fr": "En-têtes de table d'administration traduits",
+                "it": "Intestazioni della tabella di amministrazione tradotte",
+                "es": "Encabezados de la tabla de administración traducidos",
+                "pl": "Przetłumaczone nagłówki tabeli administratora",
+                "zh-cn": "翻译的管理表标题"
+            },
             "1.3.2": {
                 "en": "Fixed missing VIS widget",
-                "de": "Fehlendes VIS widget wieder hinzugefügt"
+                "de": "Fehlendes VIS widget wieder hinzugefügt",
+                "ru": "Исправлен отсутствующий виджет VIS",
+                "pt": "Widget VIS ausente corrigido",
+                "nl": "Vaste ontbrekende VIS-widget",
+                "fr": "Correction du widget VIS manquant",
+                "it": "Risolto il problema con il widget VIS mancante",
+                "es": "Se corrigió el widget VIS que faltaba",
+                "pl": "Naprawiono brakujący widżet VIS",
+                "zh-cn": "修复了丢失的 VIS 小部件"
             },
             "1.3.1": {
                 "en": "Fixed missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt"
+                "de": "Fehlende Übersetzungen hinzugefügt",
+                "ru": "Исправлены отсутствующие переводы",
+                "pt": "Traduções em falta corrigidas",
+                "nl": "Ontbrekende vertalingen verholpen",
+                "fr": "Correction des traductions manquantes",
+                "it": "Risolte le traduzioni mancanti",
+                "es": "Se corrigieron las traducciones faltantes",
+                "pl": "Naprawiono brakujące tłumaczenia",
+                "zh-cn": "修复了丢失的翻译"
             },
             "1.3.0": {
                 "en": "Admin 5 Support",
-                "de": "Admin 5 Support"
+                "de": "Admin 5 Support",
+                "ru": "Admin 5 Поддержка",
+                "pt": "Suporte Admin 5",
+                "nl": "Beheerder 5 Ondersteuning",
+                "fr": "Assistance administrateur 5",
+                "it": "Supporto amministratore 5",
+                "es": "Soporte Admin 5",
+                "pl": "Wsparcie administratora 5",
+                "zh-cn": "管理员 5 支持"
             },
             "1.2.0": {
                 "en": "Added compatibility with iCal 1.10.0",
-                "de": "Kompatibilität zu iCal 1.10.0 hergestellt"
-            },
-            "1.1.3": {
-                "en": "Fixed weekday state type (string -> number)",
-                "de": "Typ von weekday geändert (string zu number)"
-            },
-            "1.1.2": {
-                "en": "Nodejs 12 required",
-                "de": "Nodejs 12 erforderlich"
-            },
-            "1.1.1": {
-                "en": "Added log message if the match pattern contains leading or trailing whitespaces",
-                "de": "Warnung eingefügt, falls zu suchender Treffer mit Leerzeichen beginnt oder endet"
-            },
-            "1.1.0": {
-                "en": "Just allow clean trash type names",
-                "de": "Datenpunkte für Abfalltypen von Sonderzeichen befreien"
+                "de": "Kompatibilität zu iCal 1.10.0 hergestellt",
+                "ru": "Добавлена ​​совместимость с iCal 1.10.0.",
+                "pt": "Adicionada compatibilidade com iCal 1.10.0",
+                "nl": "Compatibiliteit toegevoegd met iCal 1.10.0",
+                "fr": "Ajout de la compatibilité avec iCal 1.10.0",
+                "it": "Aggiunta compatibilità con iCal 1.10.0",
+                "es": "Compatibilidad agregada con iCal 1.10.0",
+                "pl": "Dodano kompatybilność z iCal 1.10.0",
+                "zh-cn": "添加了与 iCal 1.10.0 的兼容性"
             }
         },
         "title": "Trash Schedule",
         "titleLang": {
             "en": "Trash Schedule",
-            "de": "Müllabfuhr-Zeitplan"
+            "de": "Müllabfuhr-Zeitplan",
+            "ru": "Расписание мусора",
+            "pt": "Agenda de lixo",
+            "nl": "Prullenbak Schema",
+            "fr": "Horaire de la corbeille",
+            "it": "Programma del cestino",
+            "es": "Horario de basura",
+            "pl": "Harmonogram śmieci",
+            "zh-cn": "垃圾分类"
         },
         "desc": {
             "en": "Calculates the days until next trash pickup",
-            "de": "Berechnet die Tage bis zur nächsten Müllabfuhr"
+            "de": "Berechnet die Tage bis zur nächsten Müllabfuhr",
+            "ru": "Подсчитывает количество дней до следующего вывоза мусора",
+            "pt": "Calcula os dias até a próxima coleta de lixo",
+            "nl": "Berekent de dagen tot de volgende ophaling van afval",
+            "fr": "Calcule les jours jusqu'au prochain ramassage des ordures",
+            "it": "Calcola i giorni fino al prossimo ritiro della spazzatura",
+            "es": "Calcula los días hasta la próxima recolección de basura",
+            "pl": "Oblicza dni do następnego odbioru śmieci",
+            "zh-cn": "计算距离下一次垃圾回收的天数"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -79,7 +123,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=5.1.19",
+                "admin": ">=5.1.28",
                 "ical": ">=1.11.0"
             }
         ],
@@ -97,33 +141,33 @@
     "objects": [],
     "instanceObjects": [
         {
-          "_id":  "info",
-          "type": "channel",
-          "common": {
-            "name": "Information"
-          },
-          "native": {}
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
         },
         {
-          "_id":  "info.connection",
-          "type": "state",
-          "common": {
-            "role":  "indicator.reachable",
-            "name":  "If connected to ical device",
-            "type":  "boolean",
-            "read":  true,
-            "write": false,
-            "def":   false
-          },
-          "native": {}
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.reachable",
+                "name": "If connected to ical device",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
         },
         {
-          "_id":  "type",
-          "type": "channel",
-          "common": {
-            "name": "Type"
-          },
-          "native": {}
+            "_id": "type",
+            "type": "channel",
+            "common": {
+                "name": "Type"
+            },
+            "native": {}
         },
         {
             "_id": "type.json",
@@ -138,12 +182,12 @@
             "native": {}
         },
         {
-          "_id":  "next",
-          "type": "channel",
-          "common": {
-            "name": "Next"
-          },
-          "native": {}
+            "_id": "next",
+            "type": "channel",
+            "common": {
+                "name": "Next"
+            },
+            "native": {}
         },
         {
             "_id": "next.types",
@@ -231,12 +275,12 @@
             "native": {}
         },
         {
-          "_id":  "nextAfter",
-          "type": "channel",
-          "common": {
-            "name": "After next"
-          },
-          "native": {}
+            "_id": "nextAfter",
+            "type": "channel",
+            "common": {
+                "name": "After next"
+            },
+            "native": {}
         },
         {
             "_id": "nextAfter.types",

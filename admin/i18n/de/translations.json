@@ -1,12 +1,8 @@
 {
-    "color": "Farbe",
-    "event match": "Gilt für Termine",
-    "exact match": "Genauer Treffer",
     "global offset": "Globaler Offset (Tage)",
     "global offset help": "Anzahl der Tage, welche zum Termin im Kalender hinzugefügt (oder abgezogen) werden",
     "ical instance": "ical-Instanz",
     "ical instance help": "Wähle die ical-Instanz, welche die Abfuhrtermine bereitstellt",
-    "name": "Name",
     "next separator": "Trenner für Nächste-Text",
     "next separator help": "Wird genutzt, um Abfall-Typen am gleichen Tag als Text zu verketten (und)",
     "options": "Einstellungen",

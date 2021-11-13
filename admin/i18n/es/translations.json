@@ -1,12 +1,8 @@
 {
-    "color": "color",
-    "event match": "Eventos de partidos",
-    "exact match": "Coincidencia exacta",
     "global offset": "Compensación global (días)",
     "global offset help": "Número de días agregados (o restados) de cada fecha de evento",
     "ical instance": "instancia ical",
     "ical instance help": "Elija su instancia ical con eventos de recogida",
-    "name": "Nombre",
     "next separator": "Separador de texto siguiente",
     "next separator help": "Se usará para concatenar múltiples tipos de basura el mismo día que el texto (y)",
     "options": "Opciones",

@@ -1,12 +1,8 @@
 {
-    "color": "color",
-    "event match": "Matches events",
-    "exact match": "Exact Match",
     "global offset": "Global Offset (days)",
     "global offset help": "Number of days added (or substracted) from each event date",
     "ical instance": "ical instance",
     "ical instance help": "Choose your ical instance with pickup events",
-    "name": "Name",
     "next separator": "Next-Text Separator",
     "next separator help": "Will be used to concatenate multiple trash types on the same day as text (and)",
     "options": "Options",

@@ -1,12 +1,8 @@
 {
-    "color": "Couleur",
-    "event match": "Matchs d'événements",
-    "exact match": "Correspondance exacte",
     "global offset": "Décalage global (jours)",
     "global offset help": "Nombre de jours ajoutés (ou soustraits) à partir de chaque date d'événement",
     "ical instance": "instance ical",
     "ical instance help": "Choisissez votre instance ical avec les événements de ramassage",
-    "name": "Nom",
     "next separator": "Séparateur de texte suivant",
     "next separator help": "Sera utilisé pour concaténer plusieurs types de corbeille le même jour que le texte (et)",
     "options": "Options",

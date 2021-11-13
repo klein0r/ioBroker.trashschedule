@@ -1,12 +1,8 @@
 {
-    "color": "colore",
-    "event match": "Incontri eventi",
-    "exact match": "Corrispondenza esatta",
     "global offset": "Offset globale (giorni)",
     "global offset help": "Numero di giorni aggiunti (o sottratti) da ogni data dell'evento",
     "ical instance": "istanza ical",
     "ical instance help": "Scegli la tua istanza ical con eventi di ritiro",
-    "name": "Nome",
     "next separator": "Separatore testo successivo",
     "next separator help": "Verrà utilizzato per concatenare più tipi di cestino nello stesso giorno del testo (e)",
     "options": "Opzioni",

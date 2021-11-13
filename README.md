@@ -220,6 +220,10 @@ iobroker add trashschedule
   ### **WORK IN PROGRESS**
 -->
 
+### 1.3.3
+
+* (klein0r) Translated admin table headers
+
 ### 1.3.2
 
 * (klein0r) Fixed missing VIS widget

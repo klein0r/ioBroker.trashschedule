@@ -1,12 +1,8 @@
 {
-    "color": "kleur",
-    "event match": "Komt overeen met evenementen",
-    "exact match": "Exacte overeenkomst",
     "global offset": "Wereldwijde offset (dagen)",
     "global offset help": "Aantal dagen toegevoegd (of afgetrokken) vanaf elke afspraakdatum",
     "ical instance": "ical exemplaar",
     "ical instance help": "Kies uw ical exemplaar met ophaalgebeurtenissen",
-    "name": "Naam",
     "next separator": "Volgende-tekstscheider",
     "next separator help": "Wordt gebruikt om meerdere soorten prullenbak op dezelfde dag samen te voegen als tekst (en)",
     "options": "opties",
