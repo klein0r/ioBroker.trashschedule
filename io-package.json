@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.3.3",
+        "version": "1.3.4",
         "news": {
+            "1.3.4": {
+                "en": "Translated all objects",
+                "de": "Alle Objekte übersetzt",
+                "ru": "Переведены все объекты",
+                "pt": "Todos os objetos traduzidos",
+                "nl": "Alle objecten vertaald",
+                "fr": "Traduit tous les objets",
+                "it": "Tradotto tutti gli oggetti",
+                "es": "Traducido todos los objetos",
+                "pl": "Przetłumaczono wszystkie obiekty",
+                "zh-cn": "翻译所有对象"
+            },
             "1.3.3": {
                 "en": "Translated admin table headers",
                 "de": "Übersetzte Kopfzeilen der Admin-Tabelle",

@@ -220,6 +220,10 @@ iobroker add trashschedule
   ### **WORK IN PROGRESS**
 -->
 
+### 1.3.4
+
+* (klein0r) Translated all objects
+
 ### 1.3.3
 
 * (klein0r) Translated admin table headers
