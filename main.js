@@ -78,7 +78,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDate', {
                                 type: 'state',
                                 common: {
-                                    name: 'Next date ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - date (' + trashName + ')',
+                                        de: 'Nächste Abholung - Datum (' + trashName + ')',
+                                        ru: 'Следующий пикап - дата (' + trashName + ')',
+                                        pt: 'Próxima coleta - data (' + trashName + ')',
+                                        nl: 'Volgende afhaling - datum (' + trashName + ')',
+                                        fr: 'Prochaine collecte - date (' + trashName + ')',
+                                        it: 'Prossimo ritiro - data (' + trashName + ')',
+                                        es: 'Próxima recogida: fecha (' + trashName + ')',
+                                        pl: 'Następny odbiór — data (' + trashName + ')',
+                                        'zh-cn': '下次取件 - 日期 (' + trashName + ')'
+                                    },
                                     type: 'number',
                                     role: 'date',
                                     read: true,
@@ -90,7 +101,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFormat', {
                                 type: 'state',
                                 common: {
-                                    name: 'Next date format ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - date formatted (' + trashName + ')',
+                                        de: 'Nächste Abholung - Datum formatiert (' + trashName + ')',
+                                        ru: 'Следующее получение - дата в формате (' + trashName + ')',
+                                        pt: 'Próxima coleta - data formatada (' + trashName + ')',
+                                        nl: 'Volgende afhaling - datum geformatteerd (' + trashName + ')',
+                                        fr: 'Prochaine collecte - date formatée (' + trashName + ')',
+                                        it: 'Prossimo ritiro - data formattata (' + trashName + ')',
+                                        es: 'Próxima recogida: fecha formateada (' + trashName + ')',
+                                        pl: 'Następny odbiór — sformatowana data (' + trashName + ')',
+                                        'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')'
+                                    },
                                     type: 'string',
                                     role: 'value',
                                     read: true,
@@ -102,7 +124,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDescription', {
                                 type: 'state',
                                 common: {
-                                    name: 'Next description ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - description (' + trashName + ')',
+                                        de: 'Nächste Abholung - Beschreibung (' + trashName + ')',
+                                        ru: 'Следующий пикап - описание (' + trashName + ')',
+                                        pt: 'Próxima coleta - descrição (' + trashName + ')',
+                                        nl: 'Volgende afhaling - beschrijving (' + trashName + ')',
+                                        fr: 'Prochain ramassage - description (' + trashName + ')',
+                                        it: 'Prossimo ritiro - descrizione (' + trashName + ')',
+                                        es: 'Próxima recogida - descripción (' + trashName + ')',
+                                        pl: 'Następny odbiór — opis (' + trashName + ')',
+                                        'zh-cn': '下次取件 - 描述 (' + trashName + ')'
+                                    },
                                     type: 'string',
                                     role: 'value',
                                     read: true,
@@ -114,7 +147,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextWeekday', {
                                 type: 'state',
                                 common: {
-                                    name: 'Next week day ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - weekday (' + trashName + ')',
+                                        de: 'Nächste Abholung - Wochentag (' + trashName + ')',
+                                        ru: 'Следующий пикап - будний день (' + trashName + ')',
+                                        pt: 'Próxima coleta - dia da semana (' + trashName + ')',
+                                        nl: 'Volgende afhaling - weekdag (' + trashName + ')',
+                                        fr: 'Prochain ramassage - jour de la semaine (' + trashName + ')',
+                                        it: 'Prossimo ritiro - giorno della settimana (' + trashName + ')',
+                                        es: 'Próxima recogida: día de la semana (' + trashName + ')',
+                                        pl: 'Następny odbiór — dzień powszedni (' + trashName + ')',
+                                        'zh-cn': '下一个取件 - 工作日 (' + trashName + ')'
+                                    },
                                     type: 'number',
                                     role: 'value',
                                     read: true,
@@ -126,7 +170,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.daysLeft', {
                                 type: 'state',
                                 common: {
-                                    name: 'Days left ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - days left (' + trashName + ')',
+                                        de: 'Nächste Abholung - verbleibende Tage (' + trashName + ')',
+                                        ru: 'Следующий самовывоз - осталось дней (' + trashName + ')',
+                                        pt: 'Próxima coleta - faltam dias (' + trashName + ')',
+                                        nl: 'Volgende afhaling - resterende dagen (' + trashName + ')',
+                                        fr: 'Prochain ramassage - jours restants (' + trashName + ')',
+                                        it: 'Prossimo ritiro - giorni rimasti (' + trashName + ')',
+                                        es: 'Próxima recogida: quedan días (' + trashName + ')',
+                                        pl: 'Następny odbiór — pozostały dni (' + trashName + ')',
+                                        'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')'
+                                    },
                                     type: 'number',
                                     role: 'value',
                                     unit: 'days',
@@ -139,7 +194,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFound', {
                                 type: 'state',
                                 common: {
-                                    name: 'Date found ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - date found (' + trashName + ')',
+                                        de: 'Nächste Abholung - Termin gefunden (' + trashName + ')',
+                                        ru: 'Следующий пикап - дата нахождения (' + trashName + ')',
+                                        pt: 'Próxima coleta - data encontrada (' + trashName + ')',
+                                        nl: 'Volgende afhaling - datum gevonden (' + trashName + ')',
+                                        fr: 'Prochain ramassage - date trouvée (' + trashName + ')',
+                                        it: 'Prossimo ritiro - data trovata (' + trashName + ')',
+                                        es: 'Próxima recogida: fecha encontrada (' + trashName + ')',
+                                        pl: 'Następny odbiór — znaleziono datę (' + trashName + ')',
+                                        'zh-cn': '下次取件 - 找到日期 (' + trashName + ')'
+                                    },
                                     type: 'boolean',
                                     role: 'value',
                                     def: false,
@@ -152,7 +218,18 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean + '.color', {
                                 type: 'state',
                                 common: {
-                                    name: 'Color ' + trashName,
+                                    name: {
+                                        en: 'Next pickup - color (' + trashName + ')',
+                                        de: 'Nächste Abholung - Farbe (' + trashName + ')',
+                                        ru: 'Следующий пикап - цвет (' + trashName + ')',
+                                        pt: 'Próxima coleta - cor (' + trashName + ')',
+                                        nl: 'Volgende afhaling - kleur (' + trashName + ')',
+                                        fr: 'Prochain ramassage - couleur (' + trashName + ')',
+                                        it: 'Prossimo ritiro - colore (' + trashName + ')',
+                                        es: 'Siguiente recogida - color (' + trashName + ')',
+                                        pl: 'Następny odbiór — kolor (' + trashName + ')',
+                                        'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')'
+                                    },
                                     type: 'string',
                                     role: 'level.color.rgb',
                                     read: true,
