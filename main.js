@@ -274,6 +274,7 @@ class Trashschedule extends utils.Adapter {
         this.getForeignState(iCalInstance + '.data.table', (err, state) => {
             // state can be null!
             if (state) {
+                this.log.debug('(0) Update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
                 this.updateByCalendarTable(state.val);
             }
         });
@@ -292,6 +293,7 @@ class Trashschedule extends utils.Adapter {
 
     onStateChange(id, state) {
         if (id && state && id == this.config.ical + '.data.table') {
+            this.log.debug('(0) Update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
             this.updateByCalendarTable(state.val);
         }
     }
@@ -343,14 +345,14 @@ class Trashschedule extends utils.Adapter {
     }
 
     updateByCalendarTable(data) {
-        this.log.debug('updating data');
+        this.log.debug('(0) updating data');
 
         // Added compatibility with iCal 1.10.0
         if (typeof data === 'string') {
             try {
                 data = JSON.parse(data);
             } catch (e) {
-                this.log.error('unable to parse iCal json: ' + e.toString());
+                this.log.error('(0) unable to parse iCal json: ' + e.toString());
             }
         }
 
@@ -358,7 +360,7 @@ class Trashschedule extends utils.Adapter {
         if (data && Array.isArray(data) && data.length > 0) {
             this.setStateAsync('info.connection', true, true);
 
-            this.log.debug('Start processing ' + data.length + ' iCal events');
+            this.log.debug('(0) start processing ' + data.length + ' iCal events');
 
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = (new Date()).getHours();
