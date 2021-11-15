@@ -1,6 +1,6 @@
 /*!
  * ioBroker gulpfile
- * Date: 2019-01-28
+ * Date: 2021-11-15
  */
 'use strict';
 
@@ -35,8 +35,12 @@ async function translateNotExisting(obj, baseText, yandex) {
         for (let l in languages) {
             if (!obj[l]) {
                 const time = new Date().getTime();
-                obj[l] = await translate(t, l, yandex);
-                console.log('en -> ' + l + ' ' + (new Date().getTime() - time) + ' ms');
+                try {
+                    obj[l] = await translate(t, l, yandex);
+                    console.log('en -> ' + l + ' ' + (new Date().getTime() - time) + ' ms');
+                } catch (ex) {
+                    console.log('err: ' + ex.message);
+                }
             }
         }
     }
@@ -117,6 +121,16 @@ gulp.task('translate', async function (done) {
         if (iopackage.common.desc) {
             console.log('Translate Description');
             await translateNotExisting(iopackage.common.desc, null, yandex);
+        }
+
+        if (iopackage.instanceObjects) {
+            for (var j = 0; j < iopackage.instanceObjects.length; j++) {
+                if (iopackage.instanceObjects[j].common.name && typeof iopackage.instanceObjects[j].common.name === 'string') {
+                    iopackage.instanceObjects[j].common.name = {en: iopackage.instanceObjects[j].common.name};
+                }
+
+                await translateNotExisting(iopackage.instanceObjects[j].common.name, null, yandex);
+            }
         }
 
         if (fs.existsSync('./admin/i18n/en/translations.json')) {
