@@ -42,6 +42,10 @@ iobroker add trashschedule
 
 ![VIS widget](images/vis.png)
 
+**Credits**
+
+- SVG: https://pixabay.com/de/vectors/behälter-kann-deckel-offen-grün-310937/
+
 ## Blockly example
 
 ![Blockly example](images/exampleBlockly.png)
