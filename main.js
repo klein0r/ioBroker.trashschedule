@@ -414,13 +414,13 @@ class Trashschedule extends utils.Adapter {
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
 
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDate', date.getTime(), true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', this.formatDate(date), true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDescription', entry._section, true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', date.getDay(), true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.daysLeft', dayDiff, true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', true, true);
-                                        await this.setStateAsync('type.' + trashNameClean + '.color', trashType.color, true);
+                                        await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: date.getTime(), ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', {val: this.formatDate(date), ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: entry._section, ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: date.getDay(), ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: dayDiff, ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: true, ack: true});
+                                        await this.setStateAsync('type.' + trashNameClean + '.color', {val: trashType.color, ack: true});
 
                                         jsonSummary.push(
                                             {
@@ -468,11 +468,11 @@ class Trashschedule extends utils.Adapter {
                     this.log.warn('no events matches type "' + trashName + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
 
                     // reset values
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDate', 0, true);
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', '', true);
-                    await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', null, true);
-                    await this.setStateAsync('type.' + trashNameClean + '.daysLeft', null, true);
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', false, true);
+                    await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
+                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', {val: '', ack: true});
+                    await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: null, ack: true});
+                    await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: null, ack: true});
+                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: false, ack: true});
                 }
             }
 
@@ -481,7 +481,7 @@ class Trashschedule extends utils.Adapter {
                 return a.daysLeft - b.daysLeft;
             });
 
-            this.setStateAsync('type.json', JSON.stringify(jsonSummary), true);
+            await this.setStateAsync('type.json', {val: JSON.stringify(jsonSummary), ack: true});
 
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
@@ -498,23 +498,23 @@ class Trashschedule extends utils.Adapter {
         this.log.debug('(5) filling "' + statePrefix + '" event with data: ' + JSON.stringify(obj));
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            await this.setStateAsync(statePrefix + '.date', obj.minDate.getTime(), true);
-            await this.setStateAsync(statePrefix + '.dateFormat', this.formatDate(obj.minDate), true);
-            await this.setStateAsync(statePrefix + '.weekday', obj.minDate.getDay(), true);
-            await this.setStateAsync(statePrefix + '.daysLeft', obj.minDays, true);
-            await this.setStateAsync(statePrefix + '.types', obj.minTypes.join(','), true);
-            await this.setStateAsync(statePrefix + '.typesText', obj.minTypes.join(this.config.nextseparator), true);
-            await this.setStateAsync(statePrefix + '.dateFound', true, true);
+            await this.setStateAsync(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});
+            await this.setStateAsync(statePrefix + '.dateFormat', {val: this.formatDate(obj.minDate), ack: true});
+            await this.setStateAsync(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
+            await this.setStateAsync(statePrefix + '.daysLeft', {val: obj.minDays, ack: true});
+            await this.setStateAsync(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
+            await this.setStateAsync(statePrefix + '.typesText', {val: obj.minTypes.join(this.config.nextseparator), ack: true});
+            await this.setStateAsync(statePrefix + '.dateFound', {val: true, ack: true});
         } else {
             this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
 
-            await this.setStateAsync(statePrefix + '.date', 0, true);
-            await this.setStateAsync(statePrefix + '.dateFormat', '', true);
-            await this.setStateAsync(statePrefix + '.weekday', null, true);
-            await this.setStateAsync(statePrefix + '.daysLeft', null, true);
-            await this.setStateAsync(statePrefix + '.types', 'n/a', true);
-            await this.setStateAsync(statePrefix + '.typesText', 'n/a', true);
-            await this.setStateAsync(statePrefix + '.dateFound', false, true);
+            await this.setStateAsync(statePrefix + '.date', {val: 0, ack: true});
+            await this.setStateAsync(statePrefix + '.dateFormat', {val: '', ack: true});
+            await this.setStateAsync(statePrefix + '.weekday', {val: null, ack: true});
+            await this.setStateAsync(statePrefix + '.daysLeft', {val: null, ack: true});
+            await this.setStateAsync(statePrefix + '.types', {val: 'n/a', ack: true});
+            await this.setStateAsync(statePrefix + '.typesText', {val: 'n/a', ack: true});
+            await this.setStateAsync(statePrefix + '.dateFound', {val: false, ack: true});
         }
 
     }
