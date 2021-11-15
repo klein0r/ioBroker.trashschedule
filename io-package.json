@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "trashschedule",
-        "version": "1.3.4",
+        "version": "1.3.5",
         "news": {
+            "1.3.5": {
+                "en": "Added checks for calendar description",
+                "de": "Überprüfungen für Kalenderbeschreibung hinzugefügt",
+                "ru": "Добавлены проверки для описания календаря",
+                "pt": "Adicionadas verificações para a descrição do calendário",
+                "nl": "Controles toegevoegd voor kalenderbeschrijving",
+                "fr": "Ajout de vérifications pour la description du calendrier",
+                "it": "Aggiunti controlli per la descrizione del calendario",
+                "es": "Comprobaciones añadidas para la descripción del calendario",
+                "pl": "Dodano kontrole dla opisu kalendarza",
+                "zh-cn": "添加了对日历描述的检查"
+            },
             "1.3.4": {
                 "en": "Translated all objects",
                 "de": "Alle Objekte übersetzt",

@@ -224,6 +224,10 @@ iobroker add trashschedule
   ### **WORK IN PROGRESS**
 -->
 
+### 1.3.5
+
+* (klein0r) Added checks for calendar description
+
 ### 1.3.4
 
 * (klein0r) Translated all objects
