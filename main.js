@@ -469,7 +469,7 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
-                    this.log.warn('no events matches type "' + trashName + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
+                    this.log.info('no events matches type "' + trashName + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
 
                     // reset values
                     await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
