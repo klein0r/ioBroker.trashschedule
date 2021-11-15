@@ -416,11 +416,15 @@ class Trashschedule extends utils.Adapter {
 
                                         await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: date.getTime(), ack: true});
                                         await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', {val: this.formatDate(date), ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: entry._section, ack: true});
                                         await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: date.getDay(), ack: true});
                                         await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: dayDiff, ack: true});
                                         await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: true, ack: true});
                                         await this.setStateAsync('type.' + trashNameClean + '.color', {val: trashType.color, ack: true});
+
+                                        // Do not store objects as value
+                                        if (typeof entry._section !== 'object') {
+                                            await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: entry._section, ack: true});
+                                        }
 
                                         jsonSummary.push(
                                             {
@@ -473,6 +477,7 @@ class Trashschedule extends utils.Adapter {
                     await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: null, ack: true});
                     await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: null, ack: true});
                     await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: false, ack: true});
+                    await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: '', ack: true});
                 }
             }
 
