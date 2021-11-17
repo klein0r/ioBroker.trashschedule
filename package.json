@@ -65,7 +65,6 @@
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*).json",
     "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
-    "admin/build/",
     "lib/",
     "www/",
     "io-package.json",
