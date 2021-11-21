@@ -231,6 +231,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (klein0r) Require new version for translated instance objects
+* (klein0r) Fixed timeout issues
 
 ### 1.3.5
 

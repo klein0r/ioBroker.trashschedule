@@ -279,11 +279,17 @@ class Trashschedule extends utils.Adapter {
             }
         });
 
+        // Clear existing timeout
+        if (this.refreshEverythingTimeout) {
+            this.log.debug('clearing old refresh timeout');
+            this.clearTimeout(this.refreshEverythingTimeout);
+        }
+
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
         this.log.debug('re-creating refresh timeout in ' + nexTimeoutMilli + 'ms (' + this.convertMillisecondsToDuration(nexTimeoutMilli) + ')');
-        this.refreshEverythingTimeout = this.refreshEverythingTimeout || setTimeout(() => {
+        this.refreshEverythingTimeout = this.setTimeout(() => {
             this.log.debug('started automatic refresh (every full hour)');
 
             this.refreshEverythingTimeout = null;
@@ -530,7 +536,7 @@ class Trashschedule extends utils.Adapter {
 
             if (this.refreshEverythingTimeout) {
                 this.log.debug('clearing refresh timeout');
-                clearTimeout(this.refreshEverythingTimeout);
+                this.clearTimeout(this.refreshEverythingTimeout);
             }
 
             callback();
