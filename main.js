@@ -53,10 +53,10 @@ class Trashschedule extends utils.Adapter {
 
                         if (trashNameClean && !!trashType.match) {
                             typesKeep.push('type.' + trashNameClean);
-                            this.log.debug('Trash type found: "' + trashName + '"');
+                            this.log.debug(`Trash type found: "${trashName}"`);
 
                             if (trashType.match != trashType.match.trim()) {
-                                this.log.info('Attention: Trash type "' + trashName + '" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "' + trashType.match + '"');
+                                this.log.info(`Attention: Trash type "${trashName}" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "${trashType.match}"`);
                             }
 
                             await this.setObjectNotExistsAsync('type.' + trashNameClean, {
@@ -239,7 +239,7 @@ class Trashschedule extends utils.Adapter {
                             });
 
                         } else {
-                            this.log.warn('Skipping invalid/empty trash name or match: ' + trashName);
+                            this.log.warn(`Skipping invalid/empty trash name or match: ${trashName}`);
                         }
                     }
                 } else {
@@ -252,7 +252,7 @@ class Trashschedule extends utils.Adapter {
 
                     if (typesKeep.indexOf(id) === -1) {
                         this.delObject(id, {recursive: true}, () => {
-                            this.log.debug('Trash type deleted: "' + id + '"');
+                            this.log.debug(`Trash type deleted: "${id}"`);
                         });
                     }
                 }
@@ -260,9 +260,32 @@ class Trashschedule extends utils.Adapter {
                 if (iCalInstance) {
                     this.subscribeForeignStates(iCalInstance + '.data.table');
 
+                    // Check ical configuration
+                    this.getForeignObject('system.adapter.' + iCalInstance, (err, object) => {
+                        if (err) {
+                            this.log.error(err);
+                        } else {
+                            const daysPreview = object.native.daysPreview;
+                            this.log.info(`configurured iCal preview is ${daysPreview} days - increase this value to find more events in the future`);
+
+                            // check for events
+                            if (Array.isArray(object.native.events) && object.native.events.length > 0) {
+                                for (const e in object.native.events) {
+                                    const event = object.native.events[e];
+                                    this.log.debug('found ical event: ' + JSON.stringify(event));
+
+                                    // check for display flag
+                                    if (!event.display) {
+                                        this.log.info(`found configured iCal event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a "trash schedule" event.`);
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                     this.refreshEverything();
                 } else {
-                    this.setStateAsync('info.connection', false, true);
+                    this.setStateAsync('info.connection', {val: false, ack: true});
                 }
             }
         );
@@ -274,7 +297,7 @@ class Trashschedule extends utils.Adapter {
         this.getForeignState(iCalInstance + '.data.table', (err, state) => {
             // state can be null!
             if (state) {
-                this.log.debug('(0) Update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
+                this.log.debug('(0) update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
                 this.updateByCalendarTable(state.val);
             }
         });
@@ -299,7 +322,7 @@ class Trashschedule extends utils.Adapter {
 
     onStateChange(id, state) {
         if (id && state && id == this.config.ical + '.data.table') {
-            this.log.debug('(0) Update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
+            this.log.debug('(0) update started by foreign state change - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
             this.updateByCalendarTable(state.val);
         }
     }
@@ -364,7 +387,7 @@ class Trashschedule extends utils.Adapter {
 
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data) && data.length > 0) {
-            await this.setStateAsync('info.connection', true, true);
+            await this.setStateAsync('info.connection', {val: true, ack: true});
 
             this.log.debug('(0) start processing ' + data.length + ' iCal events');
 
@@ -475,7 +498,7 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
-                    this.log.info('no events matches type "' + trashName + '" with match "' + trashType.match + '". Check configuration of iCal (increase preview) and trashschedule!');
+                    this.log.info(`no events matches type "${trashName}" with match "${trashType.match}". Check configuration of iCal (increase preview) and trashschedule!`);
 
                     // reset values
                     await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
@@ -500,7 +523,7 @@ class Trashschedule extends utils.Adapter {
         } else {
             this.log.error('no events found in iCal instance - check configuration and restart adapter');
 
-            await this.setStateAsync('info.connection', false, true);
+            await this.setStateAsync('info.connection', {val: false, ack: true});
         }
     }
 
