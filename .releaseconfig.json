@@ -1,7 +1,7 @@
 {
   "plugins": ["iobroker", "license"],
   "versionFiles": [
-      ["widget/*.html", "(?<=Version: ')(.*?)(?=')"],
-      ["widget/js/*.js", "(?<=version: ')(.*?)(?=',)"]
+      ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
+      ["widgets/js/*.js", "(?<=version: ')(.*?)(?=',)"]
   ]
 }
