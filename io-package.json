@@ -1,615 +1,615 @@
 {
-    "common": {
-        "name": "trashschedule",
-        "version": "1.3.5",
-        "news": {
-            "1.3.5": {
-                "en": "Added checks for calendar description",
-                "de": "Überprüfungen für Kalenderbeschreibung hinzugefügt",
-                "ru": "Добавлены проверки для описания календаря",
-                "pt": "Adicionadas verificações para a descrição do calendário",
-                "nl": "Controles toegevoegd voor kalenderbeschrijving",
-                "fr": "Ajout de vérifications pour la description du calendrier",
-                "it": "Aggiunti controlli per la descrizione del calendario",
-                "es": "Comprobaciones añadidas para la descripción del calendario",
-                "pl": "Dodano kontrole dla opisu kalendarza",
-                "zh-cn": "添加了对日历描述的检查"
-            },
-            "1.3.4": {
-                "en": "Translated all objects",
-                "de": "Alle Objekte übersetzt",
-                "ru": "Переведены все объекты",
-                "pt": "Todos os objetos traduzidos",
-                "nl": "Alle objecten vertaald",
-                "fr": "Traduit tous les objets",
-                "it": "Tradotto tutti gli oggetti",
-                "es": "Traducido todos los objetos",
-                "pl": "Przetłumaczono wszystkie obiekty",
-                "zh-cn": "翻译所有对象"
-            },
-            "1.3.3": {
-                "en": "Translated admin table headers",
-                "de": "Übersetzte Kopfzeilen der Admin-Tabelle",
-                "ru": "Переведены заголовки административной таблицы",
-                "pt": "Cabeçalhos de tabela de administração traduzidos",
-                "nl": "Vertaalde beheerderstabelkoppen",
-                "fr": "En-têtes de table d'administration traduits",
-                "it": "Intestazioni della tabella di amministrazione tradotte",
-                "es": "Encabezados de la tabla de administración traducidos",
-                "pl": "Przetłumaczone nagłówki tabeli administratora",
-                "zh-cn": "翻译的管理表标题"
-            },
-            "1.3.2": {
-                "en": "Fixed missing VIS widget",
-                "de": "Fehlendes VIS widget wieder hinzugefügt",
-                "ru": "Исправлен отсутствующий виджет VIS",
-                "pt": "Widget VIS ausente corrigido",
-                "nl": "Vaste ontbrekende VIS-widget",
-                "fr": "Correction du widget VIS manquant",
-                "it": "Risolto il problema con il widget VIS mancante",
-                "es": "Se corrigió el widget VIS que faltaba",
-                "pl": "Naprawiono brakujący widżet VIS",
-                "zh-cn": "修复了丢失的 VIS 小部件"
-            },
-            "1.3.1": {
-                "en": "Fixed missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt",
-                "ru": "Исправлены отсутствующие переводы",
-                "pt": "Traduções em falta corrigidas",
-                "nl": "Ontbrekende vertalingen verholpen",
-                "fr": "Correction des traductions manquantes",
-                "it": "Risolte le traduzioni mancanti",
-                "es": "Se corrigieron las traducciones faltantes",
-                "pl": "Naprawiono brakujące tłumaczenia",
-                "zh-cn": "修复了丢失的翻译"
-            },
-            "1.3.0": {
-                "en": "Admin 5 Support",
-                "de": "Admin 5 Support",
-                "ru": "Admin 5 Поддержка",
-                "pt": "Suporte Admin 5",
-                "nl": "Beheerder 5 Ondersteuning",
-                "fr": "Assistance administrateur 5",
-                "it": "Supporto amministratore 5",
-                "es": "Soporte Admin 5",
-                "pl": "Wsparcie administratora 5",
-                "zh-cn": "管理员 5 支持"
-            },
-            "1.2.0": {
-                "en": "Added compatibility with iCal 1.10.0",
-                "de": "Kompatibilität zu iCal 1.10.0 hergestellt",
-                "ru": "Добавлена ​​совместимость с iCal 1.10.0.",
-                "pt": "Adicionada compatibilidade com iCal 1.10.0",
-                "nl": "Compatibiliteit toegevoegd met iCal 1.10.0",
-                "fr": "Ajout de la compatibilité avec iCal 1.10.0",
-                "it": "Aggiunta compatibilità con iCal 1.10.0",
-                "es": "Compatibilidad agregada con iCal 1.10.0",
-                "pl": "Dodano kompatybilność z iCal 1.10.0",
-                "zh-cn": "添加了与 iCal 1.10.0 的兼容性"
-            }
-        },
-        "title": "Trash Schedule",
-        "titleLang": {
-            "en": "Trash Schedule",
-            "de": "Müllabfuhr-Zeitplan",
-            "ru": "Расписание мусора",
-            "pt": "Agenda de lixo",
-            "nl": "Prullenbak Schema",
-            "fr": "Horaire de la corbeille",
-            "it": "Programma del cestino",
-            "es": "Horario de basura",
-            "pl": "Harmonogram śmieci",
-            "zh-cn": "垃圾分类"
-        },
-        "desc": {
-            "en": "Calculates the days until next trash pickup",
-            "de": "Berechnet die Tage bis zur nächsten Müllabfuhr",
-            "ru": "Подсчитывает количество дней до следующего вывоза мусора",
-            "pt": "Calcula os dias até a próxima coleta de lixo",
-            "nl": "Berekent de dagen tot de volgende ophaling van afval",
-            "fr": "Calcule les jours jusqu'au prochain ramassage des ordures",
-            "it": "Calcola i giorni fino al prossimo ritiro della spazzatura",
-            "es": "Calcula los días hasta la próxima recolección de basura",
-            "pl": "Oblicza dni do następnego odbioru śmieci",
-            "zh-cn": "计算距离下一次垃圾回收的天数"
-        },
-        "authors": [
-            "Matthias Kleine <info@haus-automatisierung.com>"
-        ],
-        "keywords": [
-            "trash",
-            "calendar",
-            "muell",
-            "muellabfuhr"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "icon": "trashschedule.png",
-        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.trashschedule/master/admin/trashschedule.png",
-        "enabled": true,
-        "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "date-and-time",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "restartAdapters": [
-            "vis"
-        ],
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.19"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.28",
-                "ical": ">=1.11.0"
-            }
-        ],
-        "plugins": {
-            "sentry": {
-                "dsn": "https://ae5180dfac964a4d8d1c74657dd14281@sentry.iobroker.net/102"
-            }
-        }
+  "common": {
+    "name": "trashschedule",
+    "version": "1.3.6",
+    "news": {
+      "1.3.6": {
+        "en": "Require new version for translated instance objects\nFixed timeout issues",
+        "de": "Neue Version für übersetzte Instanzobjekte erforderlich\nTimeout-Probleme behoben",
+        "ru": "Требовать новую версию для переведенных экземпляров объектов\nИсправлены проблемы с тайм-аутом",
+        "pt": "Requer nova versão para objetos de instância traduzidos\nProblemas de tempo limite corrigidos",
+        "nl": "Nieuwe versie vereisen voor vertaalde instantieobjecten\nTime-outproblemen opgelost",
+        "fr": "Exiger une nouvelle version pour les objets d'instance traduits\nCorrection des problèmes de délai d'attente",
+        "it": "Richiedi una nuova versione per gli oggetti istanza tradotti\nRisolti problemi di timeout",
+        "es": "Requerir una nueva versión para los objetos de instancia traducidos\nProblemas de tiempo de espera solucionados",
+        "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono problemy z limitem czasu",
+        "zh-cn": "需要新版本的翻译实例对象\n修复超时问题"
+      },
+      "1.3.5": {
+        "en": "Added checks for calendar description",
+        "de": "Überprüfungen für Kalenderbeschreibung hinzugefügt",
+        "ru": "Добавлены проверки для описания календаря",
+        "pt": "Adicionadas verificações para a descrição do calendário",
+        "nl": "Controles toegevoegd voor kalenderbeschrijving",
+        "fr": "Ajout de vérifications pour la description du calendrier",
+        "it": "Aggiunti controlli per la descrizione del calendario",
+        "es": "Comprobaciones añadidas para la descripción del calendario",
+        "pl": "Dodano kontrole dla opisu kalendarza",
+        "zh-cn": "添加了对日历描述的检查"
+      },
+      "1.3.4": {
+        "en": "Translated all objects",
+        "de": "Alle Objekte übersetzt",
+        "ru": "Переведены все объекты",
+        "pt": "Todos os objetos traduzidos",
+        "nl": "Alle objecten vertaald",
+        "fr": "Traduit tous les objets",
+        "it": "Tradotto tutti gli oggetti",
+        "es": "Traducido todos los objetos",
+        "pl": "Przetłumaczono wszystkie obiekty",
+        "zh-cn": "翻译所有对象"
+      },
+      "1.3.3": {
+        "en": "Translated admin table headers",
+        "de": "Übersetzte Kopfzeilen der Admin-Tabelle",
+        "ru": "Переведены заголовки административной таблицы",
+        "pt": "Cabeçalhos de tabela de administração traduzidos",
+        "nl": "Vertaalde beheerderstabelkoppen",
+        "fr": "En-têtes de table d'administration traduits",
+        "it": "Intestazioni della tabella di amministrazione tradotte",
+        "es": "Encabezados de la tabla de administración traducidos",
+        "pl": "Przetłumaczone nagłówki tabeli administratora",
+        "zh-cn": "翻译的管理表标题"
+      },
+      "1.3.2": {
+        "en": "Fixed missing VIS widget",
+        "de": "Fehlendes VIS widget wieder hinzugefügt",
+        "ru": "Исправлен отсутствующий виджет VIS",
+        "pt": "Widget VIS ausente corrigido",
+        "nl": "Vaste ontbrekende VIS-widget",
+        "fr": "Correction du widget VIS manquant",
+        "it": "Risolto il problema con il widget VIS mancante",
+        "es": "Se corrigió el widget VIS que faltaba",
+        "pl": "Naprawiono brakujący widżet VIS",
+        "zh-cn": "修复了丢失的 VIS 小部件"
+      },
+      "1.3.1": {
+        "en": "Fixed missing translations",
+        "de": "Fehlende Übersetzungen hinzugefügt",
+        "ru": "Исправлены отсутствующие переводы",
+        "pt": "Traduções em falta corrigidas",
+        "nl": "Ontbrekende vertalingen verholpen",
+        "fr": "Correction des traductions manquantes",
+        "it": "Risolte le traduzioni mancanti",
+        "es": "Se corrigieron las traducciones faltantes",
+        "pl": "Naprawiono brakujące tłumaczenia",
+        "zh-cn": "修复了丢失的翻译"
+      },
+      "1.3.0": {
+        "en": "Admin 5 Support",
+        "de": "Admin 5 Support",
+        "ru": "Admin 5 Поддержка",
+        "pt": "Suporte Admin 5",
+        "nl": "Beheerder 5 Ondersteuning",
+        "fr": "Assistance administrateur 5",
+        "it": "Supporto amministratore 5",
+        "es": "Soporte Admin 5",
+        "pl": "Wsparcie administratora 5",
+        "zh-cn": "管理员 5 支持"
+      }
     },
-    "native": {
-        "nextseparator": ", ",
-        "skipsamedayathour": 18,
-        "globaloffset": 0
+    "title": "Trash Schedule",
+    "titleLang": {
+      "en": "Trash Schedule",
+      "de": "Müllabfuhr-Zeitplan",
+      "ru": "Расписание мусора",
+      "pt": "Agenda de lixo",
+      "nl": "Prullenbak Schema",
+      "fr": "Horaire de la corbeille",
+      "it": "Programma del cestino",
+      "es": "Horario de basura",
+      "pl": "Harmonogram śmieci",
+      "zh-cn": "垃圾分类"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Information",
-                    "de": "Information",
-                    "ru": "Информация",
-                    "pt": "Em formação",
-                    "nl": "Informatie",
-                    "fr": "Informations",
-                    "it": "Informazione",
-                    "es": "Información",
-                    "pl": "Informacja",
-                    "zh-cn": "信息"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.reachable",
-                "name": {
-                    "en": "Connected to ical instance",
-                    "de": "Verbunden mit ical-Instanz",
-                    "ru": "Подключено к ical экземпляру",
-                    "pt": "Conectado a instância ical",
-                    "nl": "Verbonden met ical instantie",
-                    "fr": "Connecté à l'instance ical",
-                    "it": "Collegato all'istanza ical",
-                    "es": "Conectado a instancia ical",
-                    "pl": "Połączony z instancją ic",
-                    "zh-cn": "连接到ical实例"
-                },
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "type",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Type",
-                    "de": "Typ",
-                    "ru": "Тип",
-                    "pt": "Modelo",
-                    "nl": "Type",
-                    "fr": "Taper",
-                    "it": "Tipo",
-                    "es": "Escribe",
-                    "pl": "Rodzaj",
-                    "zh-cn": "类型"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "type.json",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Types as JSON",
-                    "de": "Typen als JSON",
-                    "ru": "Типы как JSON",
-                    "pt": "Tipos como JSON",
-                    "nl": "Typen als JSON",
-                    "fr": "Types en JSON",
-                    "it": "Digita come JSON",
-                    "es": "Tipos como JSON",
-                    "pl": "Typy jako JSON",
-                    "zh-cn": "类型为 JSON"
-                },
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Next pickup",
-                    "de": "Nächste Abholung",
-                    "ru": "Следующий пикап",
-                    "pt": "Próxima coleta",
-                    "nl": "Volgende afhaling",
-                    "fr": "Prochaine prise en charge",
-                    "it": "Prossimo ritiro",
-                    "es": "Próxima recogida",
-                    "pl": "Następny odbiór",
-                    "zh-cn": "下次取件"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.types",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - types",
-                    "de": "Nächste Abholung - Typen",
-                    "ru": "Следующий пикап - виды",
-                    "pt": "Próxima coleta - tipos",
-                    "nl": "Volgende afhaling - soorten",
-                    "fr": "Prochain ramassage - types",
-                    "it": "Prossimo ritiro - tipi",
-                    "es": "Próxima recogida - tipos",
-                    "pl": "Następny odbiór - rodzaje",
-                    "zh-cn": "下次取件 - 类型"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.typesText",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - as text",
-                    "de": "Nächste Abholung - als Text",
-                    "ru": "Следующий самовывоз - в виде текста",
-                    "pt": "Próxima retirada - como texto",
-                    "nl": "Volgende afhaling - als tekst",
-                    "fr": "Prochain ramassage - sous forme de texte",
-                    "it": "Prossimo ritiro - come testo",
-                    "es": "Próxima recogida: como texto",
-                    "pl": "Następny odbiór - jako tekst",
-                    "zh-cn": "下次取件 - 作为文本"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.daysLeft",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - days left",
-                    "de": "Nächste Abholung - verbleibende Tage",
-                    "ru": "Следующий самовывоз - осталось дней",
-                    "pt": "Próxima coleta - faltam dias",
-                    "nl": "Volgende afhaling - nog dagen",
-                    "fr": "Prochain ramassage - jours restants",
-                    "it": "Prossimo ritiro - giorni rimasti",
-                    "es": "Próxima recogida: quedan días",
-                    "pl": "Następny odbiór – pozostały dni",
-                    "zh-cn": "下次取件 - 剩余天数"
-                },
-                "type": "number",
-                "role": "value",
-                "unit": "days",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.date",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - date",
-                    "de": "Nächste Abholung - Datum",
-                    "ru": "Следующий пикап - дата",
-                    "pt": "Próxima coleta - data",
-                    "nl": "Volgende afhaling - datum",
-                    "fr": "Prochain ramassage - date",
-                    "it": "Prossimo ritiro - data",
-                    "es": "Próxima recogida: fecha",
-                    "pl": "Następny odbiór — data",
-                    "zh-cn": "下次取件 - 日期"
-                },
-                "type": "number",
-                "role": "date",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.dateFormat",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - date formatted",
-                    "de": "Nächste Abholung - Datum formatiert",
-                    "ru": "Следующее получение - дата в формате",
-                    "pt": "Próxima coleta - data formatada",
-                    "nl": "Volgende afhaling - datum geformatteerd",
-                    "fr": "Prochain ramassage - date formatée",
-                    "it": "Prossimo ritiro - data formattata",
-                    "es": "Próxima recogida: fecha formateada",
-                    "pl": "Następny odbiór — sformatowana data",
-                    "zh-cn": "下次取件 - 日期格式化"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.weekday",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - weekday",
-                    "de": "Nächste Abholung - Wochentag",
-                    "ru": "Следующий пикап - будний день",
-                    "pt": "Próxima coleta - dia da semana",
-                    "nl": "Volgende afhaling - weekdag",
-                    "fr": "Prochain ramassage - en semaine",
-                    "it": "Prossimo ritiro - giorno della settimana",
-                    "es": "Próxima recogida: día laborable",
-                    "pl": "Następny odbiór – dzień powszedni",
-                    "zh-cn": "下次取件 - 工作日"
-                },
-                "type": "number",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.dateFound",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next pickup - found event",
-                    "de": "Nächste Abholung - Termin gefunden",
-                    "ru": "Следующий пикап - найденное событие",
-                    "pt": "Próxima coleta - evento encontrado",
-                    "nl": "Volgende afhaling - evenement gevonden",
-                    "fr": "Prochain ramassage - événement trouvé",
-                    "it": "Prossimo ritiro - evento trovato",
-                    "es": "Próxima recogida: evento encontrado",
-                    "pl": "Następny odbiór — znalezione wydarzenie",
-                    "zh-cn": "下一个取件 - 找到事件"
-                },
-                "type": "boolean",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "After next pickup",
-                    "de": "Nach nächster Abholung",
-                    "ru": "После следующего пикапа",
-                    "pt": "Após a próxima coleta",
-                    "nl": "Na volgende afhaling",
-                    "fr": "Après le prochain ramassage",
-                    "it": "Dopo il prossimo ritiro",
-                    "es": "Después de la próxima recogida",
-                    "pl": "Po następnym odbiorze",
-                    "zh-cn": "下次取件后"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.types",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - types",
-                    "de": "Nach nächster Abholung - Typen",
-                    "ru": "После следующего самовывоза - виды",
-                    "pt": "Após a próxima coleta - tipos",
-                    "nl": "Na volgende afhaling - soorten",
-                    "fr": "Après le prochain ramassage - types",
-                    "it": "Dopo il prossimo ritiro - tipi",
-                    "es": "Después de la próxima recogida: tipos",
-                    "pl": "Po kolejnym odbiorze - rodzaje",
-                    "zh-cn": "下次取件后 - 类型"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.typesText",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - as text",
-                    "de": "Nach nächster Abholung - als Text",
-                    "ru": "После следующего получения - в виде текста",
-                    "pt": "Após a próxima coleta - como texto",
-                    "nl": "Na volgende afhaling - als tekst",
-                    "fr": "Après le prochain ramassage - sous forme de texte",
-                    "it": "Dopo il prossimo ritiro - come testo",
-                    "es": "Después de la próxima recogida: como texto",
-                    "pl": "Po kolejnym odbiorze - jako tekst",
-                    "zh-cn": "下次取件后 - 作为文本"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.daysLeft",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - days left",
-                    "de": "Nach nächster Abholung - verbleibende Tage",
-                    "ru": "После следующего самовывоза - осталось дней",
-                    "pt": "Após a próxima coleta - faltam dias",
-                    "nl": "Na volgende afhaling - resterende dagen",
-                    "fr": "Après le prochain ramassage - jours restants",
-                    "it": "Dopo il prossimo ritiro - giorni rimasti",
-                    "es": "Después de la próxima recogida: quedan días",
-                    "pl": "Po kolejnym odbiorze - pozostały dni",
-                    "zh-cn": "下次取件后 - 剩余天数"
-                },
-                "type": "number",
-                "role": "value",
-                "unit": "days",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.date",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - date",
-                    "de": "Nach nächster Abholung - Datum",
-                    "ru": "После следующего самовывоза - дата",
-                    "pt": "Após a próxima coleta - data",
-                    "nl": "Na volgende afhaling - datum",
-                    "fr": "Après le prochain ramassage - date",
-                    "it": "Dopo il prossimo ritiro - data",
-                    "es": "Después de la próxima recogida: fecha",
-                    "pl": "Po kolejnym odbiorze - data",
-                    "zh-cn": "下次取件后 - 日期"
-                },
-                "type": "number",
-                "role": "date",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.dateFormat",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - date formatted",
-                    "de": "Nach nächster Abholung - Datum formatiert",
-                    "ru": "После следующего получения - дата в формате",
-                    "pt": "Após a próxima coleta - data formatada",
-                    "nl": "Na volgende afhaling - datum geformatteerd",
-                    "fr": "Après le prochain ramassage - date formatée",
-                    "it": "Dopo il prossimo ritiro - data formattata",
-                    "es": "Después de la próxima recolección: fecha formateada",
-                    "pl": "Po następnym odbiorze - data sformatowana",
-                    "zh-cn": "下次取件后 - 日期格式化"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.weekday",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - weekday",
-                    "de": "Nach nächster Abholung - Wochentag",
-                    "ru": "После следующего самовывоза - будний день",
-                    "pt": "Após a próxima coleta - dia da semana",
-                    "nl": "Na volgende afhaling - weekdag",
-                    "fr": "Après le prochain ramassage - en semaine",
-                    "it": "Dopo il prossimo ritiro - giorno della settimana",
-                    "es": "Después de la próxima recogida: día laborable",
-                    "pl": "Po następnym odbiorze - dzień powszedni",
-                    "zh-cn": "下次取件后 - 工作日"
-                },
-                "type": "number",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.dateFound",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next pickup - found event",
-                    "de": "Nach nächster Abholung - Termin gefunden",
-                    "ru": "После следующего пикапа - найдено событие",
-                    "pt": "Após a próxima coleta - evento encontrado",
-                    "nl": "Na volgende afhaling - evenement gevonden",
-                    "fr": "Après le prochain ramassage - événement trouvé",
-                    "it": "Dopo il prossimo ritiro - evento trovato",
-                    "es": "Después de la siguiente recogida: evento encontrado",
-                    "pl": "Po kolejnym odbiorze - znalezione wydarzenie",
-                    "zh-cn": "下次取件后 - 找到事件"
-                },
-                "type": "boolean",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
+    "desc": {
+      "en": "Calculates the days until next trash pickup",
+      "de": "Berechnet die Tage bis zur nächsten Müllabfuhr",
+      "ru": "Подсчитывает количество дней до следующего вывоза мусора",
+      "pt": "Calcula os dias até a próxima coleta de lixo",
+      "nl": "Berekent de dagen tot de volgende ophaling van afval",
+      "fr": "Calcule les jours jusqu'au prochain ramassage des ordures",
+      "it": "Calcola i giorni fino al prossimo ritiro della spazzatura",
+      "es": "Calcula los días hasta la próxima recolección de basura",
+      "pl": "Oblicza dni do następnego odbioru śmieci",
+      "zh-cn": "计算距离下一次垃圾回收的天数"
+    },
+    "authors": [
+      "Matthias Kleine <info@haus-automatisierung.com>"
+    ],
+    "keywords": [
+      "trash",
+      "calendar",
+      "muell",
+      "muellabfuhr"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "trashschedule.png",
+    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.trashschedule/master/admin/trashschedule.png",
+    "enabled": true,
+    "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "date-and-time",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "restartAdapters": [
+      "vis"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.19"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.28",
+        "ical": ">=1.11.0"
+      }
+    ],
+    "plugins": {
+      "sentry": {
+        "dsn": "https://ae5180dfac964a4d8d1c74657dd14281@sentry.iobroker.net/102"
+      }
+    }
+  },
+  "native": {
+    "nextseparator": ", ",
+    "skipsamedayathour": 18,
+    "globaloffset": 0
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Information",
+          "de": "Information",
+          "ru": "Информация",
+          "pt": "Em formação",
+          "nl": "Informatie",
+          "fr": "Informations",
+          "it": "Informazione",
+          "es": "Información",
+          "pl": "Informacja",
+          "zh-cn": "信息"
         }
-    ]
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.reachable",
+        "name": {
+          "en": "Connected to ical instance",
+          "de": "Verbunden mit ical-Instanz",
+          "ru": "Подключено к ical экземпляру",
+          "pt": "Conectado a instância ical",
+          "nl": "Verbonden met ical instantie",
+          "fr": "Connecté à l'instance ical",
+          "it": "Collegato all'istanza ical",
+          "es": "Conectado a instancia ical",
+          "pl": "Połączony z instancją ic",
+          "zh-cn": "连接到ical实例"
+        },
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "type",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Type",
+          "de": "Typ",
+          "ru": "Тип",
+          "pt": "Modelo",
+          "nl": "Type",
+          "fr": "Taper",
+          "it": "Tipo",
+          "es": "Escribe",
+          "pl": "Rodzaj",
+          "zh-cn": "类型"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.json",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Types as JSON",
+          "de": "Typen als JSON",
+          "ru": "Типы как JSON",
+          "pt": "Tipos como JSON",
+          "nl": "Typen als JSON",
+          "fr": "Types en JSON",
+          "it": "Digita come JSON",
+          "es": "Tipos como JSON",
+          "pl": "Typy jako JSON",
+          "zh-cn": "类型为 JSON"
+        },
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Next pickup",
+          "de": "Nächste Abholung",
+          "ru": "Следующий пикап",
+          "pt": "Próxima coleta",
+          "nl": "Volgende afhaling",
+          "fr": "Prochaine prise en charge",
+          "it": "Prossimo ritiro",
+          "es": "Próxima recogida",
+          "pl": "Następny odbiór",
+          "zh-cn": "下次取件"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.types",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - types",
+          "de": "Nächste Abholung - Typen",
+          "ru": "Следующий пикап - виды",
+          "pt": "Próxima coleta - tipos",
+          "nl": "Volgende afhaling - soorten",
+          "fr": "Prochain ramassage - types",
+          "it": "Prossimo ritiro - tipi",
+          "es": "Próxima recogida - tipos",
+          "pl": "Następny odbiór - rodzaje",
+          "zh-cn": "下次取件 - 类型"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.typesText",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - as text",
+          "de": "Nächste Abholung - als Text",
+          "ru": "Следующий самовывоз - в виде текста",
+          "pt": "Próxima retirada - como texto",
+          "nl": "Volgende afhaling - als tekst",
+          "fr": "Prochain ramassage - sous forme de texte",
+          "it": "Prossimo ritiro - come testo",
+          "es": "Próxima recogida: como texto",
+          "pl": "Następny odbiór - jako tekst",
+          "zh-cn": "下次取件 - 作为文本"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.daysLeft",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - days left",
+          "de": "Nächste Abholung - verbleibende Tage",
+          "ru": "Следующий самовывоз - осталось дней",
+          "pt": "Próxima coleta - faltam dias",
+          "nl": "Volgende afhaling - nog dagen",
+          "fr": "Prochain ramassage - jours restants",
+          "it": "Prossimo ritiro - giorni rimasti",
+          "es": "Próxima recogida: quedan días",
+          "pl": "Następny odbiór – pozostały dni",
+          "zh-cn": "下次取件 - 剩余天数"
+        },
+        "type": "number",
+        "role": "value",
+        "unit": "days",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.date",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - date",
+          "de": "Nächste Abholung - Datum",
+          "ru": "Следующий пикап - дата",
+          "pt": "Próxima coleta - data",
+          "nl": "Volgende afhaling - datum",
+          "fr": "Prochain ramassage - date",
+          "it": "Prossimo ritiro - data",
+          "es": "Próxima recogida: fecha",
+          "pl": "Następny odbiór — data",
+          "zh-cn": "下次取件 - 日期"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.dateFormat",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - date formatted",
+          "de": "Nächste Abholung - Datum formatiert",
+          "ru": "Следующее получение - дата в формате",
+          "pt": "Próxima coleta - data formatada",
+          "nl": "Volgende afhaling - datum geformatteerd",
+          "fr": "Prochain ramassage - date formatée",
+          "it": "Prossimo ritiro - data formattata",
+          "es": "Próxima recogida: fecha formateada",
+          "pl": "Następny odbiór — sformatowana data",
+          "zh-cn": "下次取件 - 日期格式化"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.weekday",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - weekday",
+          "de": "Nächste Abholung - Wochentag",
+          "ru": "Следующий пикап - будний день",
+          "pt": "Próxima coleta - dia da semana",
+          "nl": "Volgende afhaling - weekdag",
+          "fr": "Prochain ramassage - en semaine",
+          "it": "Prossimo ritiro - giorno della settimana",
+          "es": "Próxima recogida: día laborable",
+          "pl": "Następny odbiór – dzień powszedni",
+          "zh-cn": "下次取件 - 工作日"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.dateFound",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next pickup - found event",
+          "de": "Nächste Abholung - Termin gefunden",
+          "ru": "Следующий пикап - найденное событие",
+          "pt": "Próxima coleta - evento encontrado",
+          "nl": "Volgende afhaling - evenement gevonden",
+          "fr": "Prochain ramassage - événement trouvé",
+          "it": "Prossimo ritiro - evento trovato",
+          "es": "Próxima recogida: evento encontrado",
+          "pl": "Następny odbiór — znalezione wydarzenie",
+          "zh-cn": "下一个取件 - 找到事件"
+        },
+        "type": "boolean",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "After next pickup",
+          "de": "Nach nächster Abholung",
+          "ru": "После следующего пикапа",
+          "pt": "Após a próxima coleta",
+          "nl": "Na volgende afhaling",
+          "fr": "Après le prochain ramassage",
+          "it": "Dopo il prossimo ritiro",
+          "es": "Después de la próxima recogida",
+          "pl": "Po następnym odbiorze",
+          "zh-cn": "下次取件后"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.types",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - types",
+          "de": "Nach nächster Abholung - Typen",
+          "ru": "После следующего самовывоза - виды",
+          "pt": "Após a próxima coleta - tipos",
+          "nl": "Na volgende afhaling - soorten",
+          "fr": "Après le prochain ramassage - types",
+          "it": "Dopo il prossimo ritiro - tipi",
+          "es": "Después de la próxima recogida: tipos",
+          "pl": "Po kolejnym odbiorze - rodzaje",
+          "zh-cn": "下次取件后 - 类型"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.typesText",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - as text",
+          "de": "Nach nächster Abholung - als Text",
+          "ru": "После следующего получения - в виде текста",
+          "pt": "Após a próxima coleta - como texto",
+          "nl": "Na volgende afhaling - als tekst",
+          "fr": "Après le prochain ramassage - sous forme de texte",
+          "it": "Dopo il prossimo ritiro - come testo",
+          "es": "Después de la próxima recogida: como texto",
+          "pl": "Po kolejnym odbiorze - jako tekst",
+          "zh-cn": "下次取件后 - 作为文本"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.daysLeft",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - days left",
+          "de": "Nach nächster Abholung - verbleibende Tage",
+          "ru": "После следующего самовывоза - осталось дней",
+          "pt": "Após a próxima coleta - faltam dias",
+          "nl": "Na volgende afhaling - resterende dagen",
+          "fr": "Après le prochain ramassage - jours restants",
+          "it": "Dopo il prossimo ritiro - giorni rimasti",
+          "es": "Después de la próxima recogida: quedan días",
+          "pl": "Po kolejnym odbiorze - pozostały dni",
+          "zh-cn": "下次取件后 - 剩余天数"
+        },
+        "type": "number",
+        "role": "value",
+        "unit": "days",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.date",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - date",
+          "de": "Nach nächster Abholung - Datum",
+          "ru": "После следующего самовывоза - дата",
+          "pt": "Após a próxima coleta - data",
+          "nl": "Na volgende afhaling - datum",
+          "fr": "Après le prochain ramassage - date",
+          "it": "Dopo il prossimo ritiro - data",
+          "es": "Después de la próxima recogida: fecha",
+          "pl": "Po kolejnym odbiorze - data",
+          "zh-cn": "下次取件后 - 日期"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.dateFormat",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - date formatted",
+          "de": "Nach nächster Abholung - Datum formatiert",
+          "ru": "После следующего получения - дата в формате",
+          "pt": "Após a próxima coleta - data formatada",
+          "nl": "Na volgende afhaling - datum geformatteerd",
+          "fr": "Après le prochain ramassage - date formatée",
+          "it": "Dopo il prossimo ritiro - data formattata",
+          "es": "Después de la próxima recolección: fecha formateada",
+          "pl": "Po następnym odbiorze - data sformatowana",
+          "zh-cn": "下次取件后 - 日期格式化"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.weekday",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - weekday",
+          "de": "Nach nächster Abholung - Wochentag",
+          "ru": "После следующего самовывоза - будний день",
+          "pt": "Após a próxima coleta - dia da semana",
+          "nl": "Na volgende afhaling - weekdag",
+          "fr": "Après le prochain ramassage - en semaine",
+          "it": "Dopo il prossimo ritiro - giorno della settimana",
+          "es": "Después de la próxima recogida: día laborable",
+          "pl": "Po następnym odbiorze - dzień powszedni",
+          "zh-cn": "下次取件后 - 工作日"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.dateFound",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next pickup - found event",
+          "de": "Nach nächster Abholung - Termin gefunden",
+          "ru": "После следующего пикапа - найдено событие",
+          "pt": "Após a próxima coleta - evento encontrado",
+          "nl": "Na volgende afhaling - evenement gevonden",
+          "fr": "Après le prochain ramassage - événement trouvé",
+          "it": "Dopo il prossimo ritiro - evento trovato",
+          "es": "Después de la siguiente recogida: evento encontrado",
+          "pl": "Po kolejnym odbiorze - znalezione wydarzenie",
+          "zh-cn": "下次取件后 - 找到事件"
+        },
+        "type": "boolean",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    }
+  ]
 }
