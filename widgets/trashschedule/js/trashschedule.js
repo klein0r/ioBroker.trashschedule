@@ -1,9 +1,7 @@
 /*
     ioBroker.vis TrashSchedule Widget-Set
 
-    version: "1.0.3"
-
-    Copyright 2020 Matthias Kleine info@haus-automatisierung.com
+    Copyright 2021 Matthias Kleine info@haus-automatisierung.com
 */
 'use strict';
 
@@ -124,7 +122,7 @@ $.extend(
 );
 
 vis.binds['trashschedule'] = {
-    version: '1.0.3',
+    version: '1.3.5',
     showVersion: function () {
         if (vis.binds['trashschedule'].version) {
             console.log('Version trashschedule: ' + vis.binds['trashschedule'].version);

@@ -1,3 +1,7 @@
 {
-  "plugins": ["iobroker", "license"]
+  "plugins": ["iobroker", "license"],
+  "versionFiles": [
+      ["widget/*.html", "(?<=Version: ')(.*?)(?=')"],
+      ["widget/js/*.js", "(?<=version: ')(.*?)(?=',)"]
+  ]
 }
