@@ -2,6 +2,6 @@
   "plugins": ["iobroker", "license"],
   "versionFiles": [
       ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
-      ["widgets/js/*.js", "(?<=version: ')(.*?)(?=',)"]
+      ["widgets/trashschedule/js/*.js", "(?<=version: ')(.*?)(?=',)"]
   ]
 }
