@@ -9,6 +9,8 @@
 3. Set "Preview days" to a range which includes every trash type at least twice (e.g. 30 days)
 4. If you use the "events" tab, ensure to enable the "display" checkbox for each event type which should also be used in your trash schedule (otherwise the event will be hidden by the ical instance)
 
+![ical](./ical.png)
+
 ## Configuration
 
 1. Create a ```trashschedule``` instance and choose the ical instance as source
@@ -17,6 +19,10 @@
 4. Start the instance
 
 **Questions?** Check the [FAQ](./faq.md)
+
+![trashschedule](./trashschedule.png)
+
+![trashschedule_types](./trashschedule_types.png)
 
 ## VIS Widget
 

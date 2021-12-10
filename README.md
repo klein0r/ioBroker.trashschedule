@@ -32,7 +32,7 @@ iobroker add trashschedule
 
 [🇩🇪 Dokumentation](./docs/de/basics.md)
 
-**Credits**
+## Credits
 
 - SVG: https://pixabay.com/de/vectors/behälter-kann-deckel-offen-grün-310937/
 

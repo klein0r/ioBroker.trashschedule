@@ -9,6 +9,8 @@
 3. Setze die "Tagesvorschau" auf einen Wert, welcher möglichst jeden Abfalltyp mindestens zweimal enthält (z.B. 30 Tage)
 4. Falls Du die "Ereignisse" verwendest, stelle sicher, dass bei jedem Ereignis "anzeigen" ausgewählt wurde, welches für den Müllkalender ebenfalls relevant ist (andernfalls werden die Termine vom iCal Adapter ausgeblendet)
 
+![ical](./ical.png)
+
 ## Konfiguration
 
 1. Erstelle eine ```trashschedule``` Instanz und wähle die ical-Instanz aus, welche den Müllkalender enthält
@@ -17,6 +19,10 @@
 4. Starte die Instanz
 
 **Fragen?** Schaue in die [FAQ](./faq.md)
+
+![trashschedule](./trashschedule.png)
+
+![trashschedule_types](./trashschedule_types.png)
 
 ## VIS Widget
 
