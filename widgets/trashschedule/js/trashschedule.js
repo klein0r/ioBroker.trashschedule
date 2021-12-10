@@ -35,43 +35,55 @@ $.extend(
             "zh-cn": "限制"
         },
         "glow": {
-            "en": "glow when due",
-            "de": "leuchten, wenn fällig",
-            "ru": "светиться, когда из-за",
-            "pt": "brilhar quando devido",
-            "nl": "gloeien wanneer verschuldigd",
-            "fr": "briller quand vient le temps",
-            "it": "bagliore quando dovuto",
-            "es": "brilla cuando es debido",
-            "pl": "świecić w odpowiednim czasie",
+            "en": "Glow when due",
+            "de": "Leuchten, wenn fällig",
+            "ru": "Свечение, когда из-за",
+            "pt": "Brilhar quando devido",
+            "nl": "Gloed wanneer het moet",
+            "fr": "Briller à l'échéance",
+            "it": "Bagliore quando dovuto",
+            "es": "Resplandece cuando es debido",
+            "pl": "Świeci się, gdy należy",
             "zh-cn": "到期时发光"
         },
+        "showName": {
+            "en": "Show name",
+            "de": "Name anzeigen",
+            "ru": "Показать имя",
+            "pt": "Mostrar nome",
+            "nl": "Toon naam",
+            "fr": "Afficher le nom",
+            "it": "Mostra nome",
+            "es": "Mostrar nombre",
+            "pl": "Pokaż nazwę",
+            "zh-cn": "显示名称" 
+        },
         "showDate": {
-            "en": "show date",
+            "en": "Show date",
             "de": "Datum anzeigen",
-            "ru": "показать дату",
-            "pt": "show data",
-            "nl": "toon datum",
-            "fr": "montrer la date",
-            "it": "data dello spettacolo",
-            "es": "mostrar fecha",
+            "ru": "Показать дату",
+            "pt": "Mostrar data",
+            "nl": "Toon datum",
+            "fr": "Afficher la date",
+            "it": "Mostra data",
+            "es": "Mostrar fecha",
             "pl": "Pokaż datę",
-            "zh-cn": "演出日期"
+            "zh-cn": "显示日期"
         },
         "dateLocale": {
-            "en": "date locale",
-            "de": "Datum Gebietsschema",
-            "ru": "дата Локаль",
-            "pt": "data local",
-            "nl": "datum Locale",
-            "fr": "date Locale",
-            "it": "data Locale",
-            "es": "fecha Locale",
-            "pl": "data Lokalizacja",
+            "en": "Date locale",
+            "de": "Datumsgebietsschema",
+            "ru": "Язык даты",
+            "pt": "Local de data",
+            "nl": "Datum locale",
+            "fr": "Paramètres régionaux de date",
+            "it": "Data locale",
+            "es": "Configuración regional de la fecha",
+            "pl": "Lokalizacja daty",
             "zh-cn": "日期语言环境"
         },
         "de-DE": {
-            "en": "german",
+            "en": "German",
             "de": "Deutsch",
             "ru": "Немецкий",
             "pt": "alemão",
@@ -83,16 +95,16 @@ $.extend(
             "zh-cn": "德语"
         },
         "dateWeekday": {
-            "en": "weekday",
+            "en": "Weekday",
             "de": "Wochentag",
-            "ru": "будний день",
-            "pt": "dia da semana",
-            "nl": "weekdag",
-            "fr": "jour de la semaine",
+            "ru": "Будний день",
+            "pt": "Dia da semana",
+            "nl": "Weekdag",
+            "fr": "Jour de la semaine",
             "it": "giorno della settimana",
-            "es": "día laborable",
-            "pl": "dzień powszedni",
-            "zh-cn": "平日"
+            "es": "Día laborable",
+            "pl": "Dzień powszedni",
+            "zh-cn": "工作日"
         },
         "hide": {
             "en": "hide",
@@ -154,6 +166,7 @@ vis.binds['trashschedule'] = {
         const size = data.size ? parseInt(data.size) : 100;
         const limit = data.limit ? parseInt(data.limit) : 0; // 0 = no limit
         const glow = !!data.glow;
+        const showName = Object.prototype.hasOwnProperty.call(data, 'showName') ? !!data.showName : true;
         const showDate = !!data.showDate;
         const dateLocale = data.dateLocale ? data.dateLocale : 'de-DE';
         const dateWeekday = data.dateWeekday ? data.dateWeekday : 'long';
@@ -165,12 +178,12 @@ vis.binds['trashschedule'] = {
         }
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, showDate, dateLocale, dateOptions);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, showName, showDate, dateLocale, dateOptions);
 
         // subscribe on updates of value
         if (oid) {
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, showDate, dateLocale, dateOptions);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, showName, showDate, dateLocale, dateOptions);
             });
         }
     },
@@ -317,7 +330,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json, size, limit, glow, showDate, dateLocale, dateOptions) {
+    redraw: function(target, json, size, limit, glow, showName, showDate, dateLocale, dateOptions) {
 
         if (json) {
             target.empty();
@@ -344,7 +357,10 @@ vis.binds['trashschedule'] = {
                         newItem.addClass('trash-glow');
                     }
 
-                    $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
+                    if (showName) {
+                        $('<span class="name"></span>').html(trashType.name).appendTo(newItem);
+                    }
+
                     $('<div class="dumpster"></div>').html(trashType.daysLeft).wrapInner('<span class="daysleft"></span>').appendTo(newItem);
 
                     if (showDate) {
