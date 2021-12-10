@@ -227,6 +227,11 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+* (klein0r) Allow to hide "not found" warnings for single trash types (like christmas tree pickup)
+
 ### 1.3.6 (2021-11-24)
 
 * (klein0r) Require new version for translated instance objects

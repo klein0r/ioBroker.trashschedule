@@ -106,7 +106,7 @@
                         {
                             "type": "checkbox",
                             "attr": "exactmatch",
-                            "width": "15%",
+                            "width": "10%",
                             "title": {
                                 "en": "Exact match",
                                 "de": "Genaue Übereinstimmung",
@@ -124,9 +124,29 @@
                             "default": false
                         },
                         {
+                            "type": "checkbox",
+                            "attr": "hidewarnings",
+                            "width": "10%",
+                            "title": {
+                                "en": "Hide warnings",
+                                "de": "Warnungen ausblenden",
+                                "ru": "Скрыть предупреждения",
+                                "pt": "Esconder avisos",
+                                "nl": "Waarschuwingen verbergen",
+                                "fr": "Masquer les avertissements",
+                                "it": "Nascondi avvisi",
+                                "es": "Ocultar advertencias",
+                                "pl": "Ukryj ostrzeżenia",
+                                "zh-cn": "隐藏警告"
+                            },
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
                             "type": "color",
                             "attr": "color",
-                            "width": "15%",
+                            "width": "10%",
                             "title": {
                                 "en": "Color",
                                 "de": "Farbe",

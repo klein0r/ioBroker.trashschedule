@@ -496,9 +496,12 @@ class Trashschedule extends utils.Adapter {
                 const trashType = trashTypesConfig[t];
                 const trashName = trashType.name.trim();
                 const trashNameClean = this.cleanNamespace(trashName);
+                const hideWarnings = trashType.hidewarnings || false;
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
-                    this.log.info(`no events matches type "${trashName}" with match "${trashType.match}". Check configuration of iCal (increase preview) and trashschedule!`);
+                    if (!hideWarnings) {
+                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}". Check configuration of iCal (increase preview) and trashschedule!`);
+                    }
 
                     // reset values
                     await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
@@ -540,7 +543,7 @@ class Trashschedule extends utils.Adapter {
             await this.setStateAsync(statePrefix + '.typesText', {val: obj.minTypes.join(this.config.nextseparator), ack: true});
             await this.setStateAsync(statePrefix + '.dateFound', {val: true, ack: true});
         } else {
-            this.log.warn(statePrefix + ' has no entries. Check configuration of iCal and trashschedule!');
+            this.log.warn(`${statePrefix} has no entries. Check configuration of iCal and trashschedule!`);
 
             await this.setStateAsync(statePrefix + '.date', {val: 0, ack: true});
             await this.setStateAsync(statePrefix + '.dateFormat', {val: '', ack: true});
