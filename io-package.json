@@ -137,6 +137,10 @@
     "adminUI": {
       "config": "json"
     },
+    "docs": {
+      "en": "docs/en/basics.md",
+      "de": "docs/de/basics.md"
+    },
     "restartAdapters": [
       "vis"
     ],
