@@ -227,8 +227,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.4.0 (2021-12-10)
 
 * (klein0r) Allow to hide "not found" warnings for single trash types (like christmas tree pickup)
 * (klein0r) Added limit option for VIS widget
