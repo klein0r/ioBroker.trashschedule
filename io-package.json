@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "news": {
+      "1.4.1": {
+        "en": "Updated dependencies",
+        "de": "Aktualisierte Abhängigkeiten",
+        "ru": "Обновленные зависимости",
+        "pt": "Dependências atualizadas",
+        "nl": "Bijgewerkte afhankelijkheden",
+        "fr": "Dépendances mises à jour",
+        "it": "Dipendenze aggiornate",
+        "es": "Dependencias actualizadas",
+        "pl": "Zaktualizowane zależności",
+        "zh-cn": "更新的依赖项"
+      },
       "1.4.0": {
         "en": "Allow to hide \"not found\" warnings for single trash types (like christmas tree pickup)\nAdded limit option for VIS widget\nAdded option for VIS widget to hide the name",
         "de": "Erlauben Sie, \"nicht gefunden\"-Warnungen für einzelne Müllarten auszublenden (wie die Abholung von Weihnachtsbaum)\nLimit-Option für VIS-Widget hinzugefügt\nOption für VIS-Widget hinzugefügt, um den Namen zu verbergen",
@@ -74,18 +86,6 @@
         "es": "Se corrigió el widget VIS que faltaba",
         "pl": "Naprawiono brakujący widżet VIS",
         "zh-cn": "修复了丢失的 VIS 小部件"
-      },
-      "1.3.1": {
-        "en": "Fixed missing translations",
-        "de": "Fehlende Übersetzungen hinzugefügt",
-        "ru": "Исправлены отсутствующие переводы",
-        "pt": "Traduções em falta corrigidas",
-        "nl": "Ontbrekende vertalingen verholpen",
-        "fr": "Correction des traductions manquantes",
-        "it": "Risolte le traduzioni mancanti",
-        "es": "Se corrigieron las traducciones faltantes",
-        "pl": "Naprawiono brakujące tłumaczenia",
-        "zh-cn": "修复了丢失的翻译"
       }
     },
     "title": "Trash Schedule",
