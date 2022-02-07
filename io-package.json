@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "news": {
+      "1.4.2": {
+        "en": "Added check for ical configuration",
+        "de": "Prüfung auf ical-Konfiguration hinzugefügt",
+        "ru": "Добавлена проверка ical конфигурации",
+        "pt": "Verificação adicionada para configuração ical",
+        "nl": "Controle toegevoegd voor ical configuratie",
+        "fr": "Ajout de la vérification de la configuration ical",
+        "it": "Aggiunto controllo per la configurazione ical",
+        "es": "Verificación agregada para la configuración ical",
+        "pl": "Dodano sprawdzanie konfiguracji ical",
+        "zh-cn": "添加了对 ical 配置的检查"
+      },
       "1.4.1": {
         "en": "Updated dependencies",
         "de": "Aktualisierte Abhängigkeiten",
@@ -74,18 +86,6 @@
         "es": "Encabezados de la tabla de administración traducidos",
         "pl": "Przetłumaczone nagłówki tabeli administratora",
         "zh-cn": "翻译的管理表标题"
-      },
-      "1.3.2": {
-        "en": "Fixed missing VIS widget",
-        "de": "Fehlendes VIS widget wieder hinzugefügt",
-        "ru": "Исправлен отсутствующий виджет VIS",
-        "pt": "Widget VIS ausente corrigido",
-        "nl": "Vaste ontbrekende VIS-widget",
-        "fr": "Correction du widget VIS manquant",
-        "it": "Risolto il problema con il widget VIS mancante",
-        "es": "Se corrigió el widget VIS que faltaba",
-        "pl": "Naprawiono brakujący widżet VIS",
-        "zh-cn": "修复了丢失的 VIS 小部件"
       }
     },
     "title": "Trash Schedule",
