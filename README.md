@@ -46,6 +46,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added check for ical configuration
+
 ### 1.4.1 (2021-12-23)
 
 * (klein0r) Updated dependencies

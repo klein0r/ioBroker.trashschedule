@@ -260,28 +260,37 @@ class Trashschedule extends utils.Adapter {
                 if (iCalInstance) {
                     this.subscribeForeignStates(iCalInstance + '.data.table');
 
-                    // Check ical configuration
-                    this.getForeignObject('system.adapter.' + iCalInstance, (err, object) => {
-                        if (err) {
-                            this.log.error(err);
-                        } else {
-                            const daysPreview = object.native.daysPreview;
-                            this.log.info(`configurured iCal preview is ${daysPreview} days - increase this value to find more events in the future`);
+                    try {
+                        // Check ical configuration
+                        const iCalObject = await this.getForeignObjectAsync('system.adapter.' + iCalInstance);
 
-                            // check for events
-                            if (Array.isArray(object.native.events) && object.native.events.length > 0) {
-                                for (const e in object.native.events) {
-                                    const event = object.native.events[e];
-                                    this.log.debug('found ical event: ' + JSON.stringify(event));
+                        if (iCalObject && typeof iCalObject === 'object') {
+                            if (typeof iCalObject.common === 'object') {
+                                this.log.debug(`Used iCal version: ${iCalObject.common.version}`);
+                            }
 
-                                    // check for display flag
-                                    if (!event.display) {
-                                        this.log.info(`found configured iCal event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a "trash schedule" event.`);
+                            if (typeof iCalObject.native === 'object') {
+                                const daysPreview = iCalObject.native.daysPreview;
+                                this.log.info(`configurured iCal preview is ${daysPreview} days - increase this value to find more events in the future`);
+
+                                // check for events
+                                if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
+                                    for (const e in iCalObject.native.events) {
+                                        const event = iCalObject.native.events[e];
+                                        this.log.debug('found ical event: ' + JSON.stringify(event));
+    
+                                        // check for display flag
+                                        if (!event.display) {
+                                            this.log.info(`found configured iCal event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a "trash schedule" event.`);
+                                        }
                                     }
                                 }
                             }
                         }
-                    });
+
+                    } catch (err) {
+                        this.log.error(JSON.stringify(err));
+                    }
 
                     this.refreshEverything();
                 } else {
