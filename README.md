@@ -46,6 +46,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added hint for Admin 4 configuration
+
 ### 1.4.2 (2022-02-07)
 
 * (klein0r) Added check for ical configuration
