@@ -48,6 +48,7 @@ iobroker add trashschedule
 -->
 ### **WORK IN PROGRESS**
 
+* (klein0r) Updated state roles
 * (klein0r) Added hint for Admin 4 configuration
 
 ### 1.4.2 (2022-02-07)

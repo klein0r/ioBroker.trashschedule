@@ -192,7 +192,6 @@
       "_id": "info.connection",
       "type": "state",
       "common": {
-        "role": "indicator.reachable",
         "name": {
           "en": "Connected to ical instance",
           "de": "Verbunden mit ical-Instanz",
@@ -206,6 +205,7 @@
           "zh-cn": "连接到ical实例"
         },
         "type": "boolean",
+        "role": "indicator.reachable",
         "read": true,
         "write": false,
         "def": false
@@ -290,7 +290,7 @@
           "zh-cn": "下次取件 - 类型"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -313,7 +313,7 @@
           "zh-cn": "下次取件 - 作为文本"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -383,7 +383,7 @@
           "zh-cn": "下次取件 - 日期格式化"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -429,7 +429,7 @@
           "zh-cn": "下一个取件 - 找到事件"
         },
         "type": "boolean",
-        "role": "value",
+        "role": "indicator",
         "read": true,
         "write": false
       },
@@ -471,7 +471,7 @@
           "zh-cn": "下次取件后 - 类型"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -494,7 +494,7 @@
           "zh-cn": "下次取件后 - 作为文本"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -564,7 +564,7 @@
           "zh-cn": "下次取件后 - 日期格式化"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -610,7 +610,7 @@
           "zh-cn": "下次取件后 - 找到事件"
         },
         "type": "boolean",
-        "role": "value",
+        "role": "indicator",
         "read": true,
         "write": false
       },

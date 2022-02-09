@@ -114,7 +114,7 @@ class Trashschedule extends utils.Adapter {
                                         'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')'
                                     },
                                     type: 'string',
-                                    role: 'value',
+                                    role: 'text',
                                     read: true,
                                     write: false
                                 },
@@ -137,7 +137,7 @@ class Trashschedule extends utils.Adapter {
                                         'zh-cn': '下次取件 - 描述 (' + trashName + ')'
                                     },
                                     type: 'string',
-                                    role: 'value',
+                                    role: 'text',
                                     read: true,
                                     write: false
                                 },
@@ -207,7 +207,7 @@ class Trashschedule extends utils.Adapter {
                                         'zh-cn': '下次取件 - 找到日期 (' + trashName + ')'
                                     },
                                     type: 'boolean',
-                                    role: 'value',
+                                    role: 'indicator',
                                     def: false,
                                     read: true,
                                     write: false
