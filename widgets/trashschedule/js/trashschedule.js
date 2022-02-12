@@ -1,7 +1,7 @@
 /*
     ioBroker.vis TrashSchedule Widget-Set
 
-    Copyright 2021 Matthias Kleine info@haus-automatisierung.com
+    Copyright 2022 Matthias Kleine info@haus-automatisierung.com
 */
 'use strict';
 
