@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "news": {
+      "1.4.3": {
+        "en": "Updated state roles\nAdded hint for Admin 4 configuration",
+        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
+        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
+        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
+        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
+        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
+        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
+        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
+        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
+        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
+      },
       "1.4.2": {
         "en": "Added check for ical configuration",
         "de": "Prüfung auf ical-Konfiguration hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Traducido todos los objetos",
         "pl": "Przetłumaczono wszystkie obiekty",
         "zh-cn": "翻译所有对象"
-      },
-      "1.3.3": {
-        "en": "Translated admin table headers",
-        "de": "Übersetzte Kopfzeilen der Admin-Tabelle",
-        "ru": "Переведены заголовки административной таблицы",
-        "pt": "Cabeçalhos de tabela de administração traduzidos",
-        "nl": "Vertaalde beheerderstabelkoppen",
-        "fr": "En-têtes de table d'administration traduits",
-        "it": "Intestazioni della tabella di amministrazione tradotte",
-        "es": "Encabezados de la tabla de administración traducidos",
-        "pl": "Przetłumaczone nagłówki tabeli administratora",
-        "zh-cn": "翻译的管理表标题"
       }
     },
     "titleLang": {
