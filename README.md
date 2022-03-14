@@ -46,6 +46,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Updated dependencies
+
 ### 1.4.3 (2022-02-21)
 
 * (klein0r) Updated state roles
