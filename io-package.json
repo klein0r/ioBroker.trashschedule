@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "news": {
+      "1.4.4": {
+        "en": "Updated dependencies",
+        "de": "Aktualisierte Abhängigkeiten",
+        "ru": "Обновленные зависимости",
+        "pt": "Dependências atualizadas",
+        "nl": "Bijgewerkte afhankelijkheden",
+        "fr": "Dépendances mises à jour",
+        "it": "Dipendenze aggiornate",
+        "es": "Dependencias actualizadas",
+        "pl": "Zaktualizowane zależności",
+        "zh-cn": "更新的依赖项"
+      },
       "1.4.3": {
         "en": "Updated state roles\nAdded hint for Admin 4 configuration",
         "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Comprobaciones añadidas para la descripción del calendario",
         "pl": "Dodano kontrole dla opisu kalendarza",
         "zh-cn": "添加了对日历描述的检查"
-      },
-      "1.3.4": {
-        "en": "Translated all objects",
-        "de": "Alle Objekte übersetzt",
-        "ru": "Переведены все объекты",
-        "pt": "Todos os objetos traduzidos",
-        "nl": "Alle objecten vertaald",
-        "fr": "Traduit tous les objets",
-        "it": "Tradotto tutti gli oggetti",
-        "es": "Traducido todos los objetos",
-        "pl": "Przetłumaczono wszystkie obiekty",
-        "zh-cn": "翻译所有对象"
       }
     },
     "titleLang": {
