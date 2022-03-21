@@ -46,6 +46,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Allow spaces in next text seperator
+
 ### 1.4.4 (2022-03-14)
 
 * (klein0r) Updated dependencies
