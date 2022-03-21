@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "news": {
+      "1.4.5": {
+        "en": "Allow spaces in next text seperator",
+        "de": "Leerzeichen im nächsten Texttrennzeichen zulassen",
+        "ru": "Разрешить пробелы в следующем текстовом разделителе",
+        "pt": "Permitir espaços no próximo separador de texto",
+        "nl": "Spaties toestaan in volgende tekstscheidingsteken",
+        "fr": "Autoriser les espaces dans le séparateur de texte suivant",
+        "it": "Consenti spazi nel separatore di testo successivo",
+        "es": "Permitir espacios en el siguiente separador de texto",
+        "pl": "Zezwalaj na spacje w następnym separatorze tekstu",
+        "zh-cn": "在下一个文本分隔符中允许空格"
+      },
       "1.4.4": {
         "en": "Updated dependencies",
         "de": "Aktualisierte Abhängigkeiten",
@@ -74,18 +86,6 @@
         "es": "Requerir una nueva versión para los objetos de instancia traducidos\nProblemas de tiempo de espera solucionados",
         "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono problemy z limitem czasu",
         "zh-cn": "需要新版本的翻译实例对象\n修复超时问题"
-      },
-      "1.3.5": {
-        "en": "Added checks for calendar description",
-        "de": "Überprüfungen für Kalenderbeschreibung hinzugefügt",
-        "ru": "Добавлены проверки для описания календаря",
-        "pt": "Adicionadas verificações para a descrição do calendário",
-        "nl": "Controles toegevoegd voor kalenderbeschrijving",
-        "fr": "Ajout de vérifications pour la description du calendrier",
-        "it": "Aggiunti controlli per la descrizione del calendario",
-        "es": "Comprobaciones añadidas para la descripción del calendario",
-        "pl": "Dodano kontrole dla opisu kalendarza",
-        "zh-cn": "添加了对日历描述的检查"
       }
     },
     "titleLang": {

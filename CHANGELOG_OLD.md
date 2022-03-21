@@ -1,4 +1,10 @@
 # Older changes
+## 1.4.0 (2021-12-10)
+
+* (klein0r) Allow to hide "not found" warnings for single trash types (like christmas tree pickup)
+* (klein0r) Added limit option for VIS widget
+* (klein0r) Added option for VIS widget to hide the name
+
 ## 1.3.6 (2021-11-24)
 
 * (klein0r) Require new version for translated instance objects

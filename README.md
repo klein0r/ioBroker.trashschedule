@@ -46,7 +46,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.4.5 (2022-03-21)
 
 * (klein0r) Allow spaces in next text seperator
 
@@ -66,12 +66,6 @@ iobroker add trashschedule
 ### 1.4.1 (2021-12-23)
 
 * (klein0r) Updated dependencies
-
-### 1.4.0 (2021-12-10)
-
-* (klein0r) Allow to hide "not found" warnings for single trash types (like christmas tree pickup)
-* (klein0r) Added limit option for VIS widget
-* (klein0r) Added option for VIS widget to hide the name
 
 ## License
 
