@@ -46,6 +46,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+(klein0r) Updated depedency for js-controller to 4.0.15
+
 ### 1.4.5 (2022-03-21)
 
 * (klein0r) Allow spaces in next text seperator
