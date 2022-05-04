@@ -447,7 +447,7 @@ class Trashschedule extends utils.Adapter {
                                 // Fill type if event matches
                                 if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}" ${(trashType.exactmatch ? ' (exact match)' : '')}`);
+                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}"${(trashType.exactmatch ? ' (exact match)' : '')}`);
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
@@ -496,7 +496,7 @@ class Trashschedule extends utils.Adapter {
                         }
                     }
                 } else {
-                    this.log.debug(`Skipped event (event is in the past) ${JSON.stringify(entry)}`);
+                    this.log.debug(`skipped event (is in the past) ${JSON.stringify(entry)}`);
                 }
             }
 
@@ -509,7 +509,7 @@ class Trashschedule extends utils.Adapter {
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
                     if (!hideWarnings) {
-                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}". Check configuration of iCal (increase preview) and trashschedule!`);
+                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${(trashType.exactmatch ? ' (exact match)' : '')}. Check configuration of ical (increase preview) and trashschedule!`);
                     }
 
                     // reset values
@@ -534,7 +534,7 @@ class Trashschedule extends utils.Adapter {
             await this.fillNext(nextAfter, 'nextAfter');
 
         } else {
-            this.log.error('no events found in iCal instance - check configuration and restart adapter');
+            this.log.error('no events found in ical instance - check configuration and restart instance');
 
             await this.setStateAsync('info.connection', {val: false, ack: true});
         }
