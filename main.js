@@ -52,14 +52,14 @@ class Trashschedule extends utils.Adapter {
                         const trashNameClean = this.cleanNamespace(trashName);
 
                         if (trashNameClean && !!trashType.match) {
-                            typesKeep.push('type.' + trashNameClean);
+                            typesKeep.push(`type.${trashNameClean}`);
                             this.log.debug(`Trash type found: "${trashName}"`);
 
                             if (trashType.match != trashType.match.trim()) {
                                 this.log.info(`Attention: Trash type "${trashName}" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "${trashType.match}"`);
                             }
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean, {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}`, {
                                 type: 'channel',
                                 common: {
                                     name: trashName,
@@ -69,14 +69,14 @@ class Trashschedule extends utils.Adapter {
                             });
 
                             if (trashType.color) {
-                                this.extendObjectAsync('type.' + trashNameClean, {
+                                this.extendObjectAsync(`type.${trashNameClean}`, {
                                     common: {
                                         color: `${trashType.color}FF`
                                     }
                                 });
                             }
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDate', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDate`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -99,7 +99,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFormat', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFormat`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -122,7 +122,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDescription', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDescription`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -145,7 +145,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextWeekday', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextWeekday`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -168,7 +168,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.daysLeft', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.daysLeft`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -192,7 +192,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.nextDateFound', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFound`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -216,7 +216,7 @@ class Trashschedule extends utils.Adapter {
                                 native: {}
                             });
 
-                            await this.setObjectNotExistsAsync('type.' + trashNameClean + '.color', {
+                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.color`, {
                                 type: 'state',
                                 common: {
                                     name: {
@@ -259,30 +259,30 @@ class Trashschedule extends utils.Adapter {
                 }
 
                 if (iCalInstance) {
-                    this.subscribeForeignStates(iCalInstance + '.data.table');
+                    this.subscribeForeignStates(`${iCalInstance}.data.table`);
 
                     try {
                         // Check ical configuration
-                        const iCalObject = await this.getForeignObjectAsync('system.adapter.' + iCalInstance);
+                        const iCalObject = await this.getForeignObjectAsync(`system.adapter.${iCalInstance}`);
 
                         if (iCalObject && typeof iCalObject === 'object') {
                             if (typeof iCalObject.common === 'object') {
-                                this.log.debug(`Used iCal version: ${iCalObject.common.version}`);
+                                this.log.debug(`[ical] current ical version: ${iCalObject.common.version}`);
                             }
 
                             if (typeof iCalObject.native === 'object') {
                                 const daysPreview = iCalObject.native.daysPreview;
-                                this.log.info(`configurured iCal preview is ${daysPreview} days - increase this value to find more events in the future`);
+                                this.log.info(`[ical] configurured ical preview is ${daysPreview} days - increase this value to find more events in the future`);
 
                                 // check for events
                                 if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
                                     for (const e in iCalObject.native.events) {
                                         const event = iCalObject.native.events[e];
-                                        this.log.debug(`found ical event: ${JSON.stringify(event)}`);
+                                        this.log.debug(`[ical] found ical event(s): ${JSON.stringify(event)}`);
 
                                         // check for display flag
                                         if (!event.display) {
-                                            this.log.info(`found configured iCal event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a "trash schedule" event.`);
+                                            this.log.info(`[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`);
                                         }
                                     }
                                 }
@@ -305,7 +305,7 @@ class Trashschedule extends utils.Adapter {
     refreshEverything() {
         const iCalInstance = this.config.ical;
 
-        this.getForeignState(iCalInstance + '.data.table', (err, state) => {
+        this.getForeignState(`${iCalInstance}.data.table`, (err, state) => {
             // state can be null!
             if (state) {
                 this.log.debug(`(0) update started by foreign state value - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
@@ -354,7 +354,7 @@ class Trashschedule extends utils.Adapter {
         minutes = (minutes < 10) ? '0' + minutes : minutes;
         seconds = (seconds < 10) ? '0' + seconds : seconds;
 
-        return hours + ':' + minutes + ':' + seconds;
+        return `${hours}:${minutes}:${seconds}`;
     }
 
     getDateWithoutTime(date, offset) {
@@ -454,16 +454,16 @@ class Trashschedule extends utils.Adapter {
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
 
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: date.getTime(), ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', {val: this.formatDate(date), ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: date.getDay(), ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: dayDiff, ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: true, ack: true});
-                                        await this.setStateAsync('type.' + trashNameClean + '.color', {val: trashType.color, ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDate`, {val: date.getTime(), ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, {val: this.formatDate(date), ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, {val: date.getDay(), ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.daysLeft`, {val: dayDiff, ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, {val: true, ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.color`, {val: trashType.color, ack: true});
 
                                         // Do not store objects as value
                                         if (typeof entry._section !== 'object') {
-                                            await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: entry._section, ack: true});
+                                            await this.setStateAsync(`type.${trashNameClean}.nextDescription`, {val: entry._section, ack: true});
                                         }
 
                                         jsonSummary.push(
@@ -515,12 +515,12 @@ class Trashschedule extends utils.Adapter {
                     }
 
                     // reset values
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDate', {val: 0, ack: true});
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFormat', {val: '', ack: true});
-                    await this.setStateAsync('type.' + trashNameClean + '.nextWeekday', {val: null, ack: true});
-                    await this.setStateAsync('type.' + trashNameClean + '.daysLeft', {val: null, ack: true});
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDateFound', {val: false, ack: true});
-                    await this.setStateAsync('type.' + trashNameClean + '.nextDescription', {val: '', ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextDate`, {val: 0, ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, {val: '', ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, {val: null, ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.daysLeft`, {val: null, ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, {val: false, ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextDescription`, {val: '', ack: true});
                 }
             }
 
@@ -542,27 +542,26 @@ class Trashschedule extends utils.Adapter {
     }
 
     async fillNext(obj, statePrefix) {
-
         this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            await this.setStateAsync(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});
-            await this.setStateAsync(statePrefix + '.dateFormat', {val: this.formatDate(obj.minDate), ack: true});
-            await this.setStateAsync(statePrefix + '.weekday', {val: obj.minDate.getDay(), ack: true});
-            await this.setStateAsync(statePrefix + '.daysLeft', {val: obj.minDays, ack: true});
-            await this.setStateAsync(statePrefix + '.types', {val: obj.minTypes.join(','), ack: true});
-            await this.setStateAsync(statePrefix + '.typesText', {val: obj.minTypes.join(this.config.nextseparator), ack: true});
-            await this.setStateAsync(statePrefix + '.dateFound', {val: true, ack: true});
+            await this.setStateAsync(`${statePrefix}.date`, {val: obj.minDate.getTime(), ack: true});
+            await this.setStateAsync(`${statePrefix}.dateFormat`, {val: this.formatDate(obj.minDate), ack: true});
+            await this.setStateAsync(`${statePrefix}.weekday`, {val: obj.minDate.getDay(), ack: true});
+            await this.setStateAsync(`${statePrefix}.daysLeft`, {val: obj.minDays, ack: true});
+            await this.setStateAsync(`${statePrefix}.types`, {val: obj.minTypes.join(','), ack: true});
+            await this.setStateAsync(`${statePrefix}.typesText`, {val: obj.minTypes.join(this.config.nextseparator), ack: true});
+            await this.setStateAsync(`${statePrefix}.dateFound`, {val: true, ack: true});
         } else {
-            this.log.warn(`${statePrefix} has no entries. Check configuration of iCal and trashschedule!`);
+            this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of ical and trashschedule!`);
 
-            await this.setStateAsync(statePrefix + '.date', {val: 0, ack: true});
-            await this.setStateAsync(statePrefix + '.dateFormat', {val: '', ack: true});
-            await this.setStateAsync(statePrefix + '.weekday', {val: null, ack: true});
-            await this.setStateAsync(statePrefix + '.daysLeft', {val: null, ack: true});
-            await this.setStateAsync(statePrefix + '.types', {val: 'n/a', ack: true});
-            await this.setStateAsync(statePrefix + '.typesText', {val: 'n/a', ack: true});
-            await this.setStateAsync(statePrefix + '.dateFound', {val: false, ack: true});
+            await this.setStateAsync(`${statePrefix}.date`, {val: 0, ack: true});
+            await this.setStateAsync(`${statePrefix}.dateFormat`, {val: '', ack: true});
+            await this.setStateAsync(`${statePrefix}.weekday`, {val: null, ack: true});
+            await this.setStateAsync(`${statePrefix}.daysLeft`, {val: null, ack: true});
+            await this.setStateAsync(`${statePrefix}.types`, {val: 'n/a', ack: true});
+            await this.setStateAsync(`${statePrefix}.typesText`, {val: 'n/a', ack: true});
+            await this.setStateAsync(`${statePrefix}.dateFound`, {val: false, ack: true});
         }
 
     }
