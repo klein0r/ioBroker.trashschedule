@@ -300,6 +300,52 @@
       "native": {}
     },
     {
+      "_id": "type.lastRefresh",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Last refresh",
+          "de": "Letzte Aktualisierung",
+          "ru": "Последнее обновление",
+          "pt": "Última atualização",
+          "nl": "Laatste verversing",
+          "fr": "Dernière actualisation",
+          "it": "Ultimo aggiornamento",
+          "es": "última actualización",
+          "pl": "Ostatnie odświeżenie",
+          "zh-cn": "上次刷新"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.nextRefresh",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next refresh",
+          "de": "Nächste Aktualisierung",
+          "ru": "Следующее обновление",
+          "pt": "Próxima atualização",
+          "nl": "Volgende verversen",
+          "fr": "Actualisation suivante",
+          "it": "Prossimo aggiornamento",
+          "es": "Siguiente actualización",
+          "pl": "Następne odświeżenie",
+          "zh-cn": "下次刷新"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "next",
       "type": "channel",
       "common": {

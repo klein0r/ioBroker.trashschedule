@@ -31,7 +31,7 @@ class Trashschedule extends utils.Adapter {
         try {
             const typeChannels = await this.getChannelsOfAsync('type');
 
-            // Collect all types
+            // Collect all existing types
             if (typeChannels) {
                 for (let i = 0; i < typeChannels.length; i++) {
                     const id = this.removeNamespace(typeChannels[i]._id);
@@ -322,7 +322,9 @@ class Trashschedule extends utils.Adapter {
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
-        this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
+        this.setStateAsync('type.nextRefresh', {val: new Date().getTime() + nexTimeoutMilli, ack: true});
+
+        this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
         this.refreshEverythingTimeout = this.setTimeout(() => {
             this.log.debug('started automatic refresh (every full hour)');
 
@@ -346,15 +348,11 @@ class Trashschedule extends utils.Adapter {
     }
 
     convertMillisecondsToDuration(duration) {
-        let seconds = Math.floor((duration / 1000) % 60);
-        let minutes = Math.floor((duration / (1000 * 60)) % 60);
-        let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+        const seconds = Math.floor((duration / 1000) % 60);
+        const minutes = Math.floor((duration / (1000 * 60)) % 60);
+        const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-        hours = (hours < 10) ? '0' + hours : hours;
-        minutes = (minutes < 10) ? '0' + minutes : minutes;
-        seconds = (seconds < 10) ? '0' + seconds : seconds;
-
-        return `${hours}:${minutes}:${seconds}`;
+        return `${(hours < 10) ? '0' + hours : hours}:${(minutes < 10) ? '0' + minutes : minutes}:${(seconds < 10) ? '0' + seconds : seconds}`;
     }
 
     getDateWithoutTime(date, offset) {
@@ -387,12 +385,12 @@ class Trashschedule extends utils.Adapter {
     async updateByCalendarTable(data) {
         this.log.debug('(0) updating data');
 
-        // Added compatibility with iCal 1.10.0
+        // Added compatibility with iCal >= 1.10.0
         if (typeof data === 'string') {
             try {
                 data = JSON.parse(data);
             } catch (e) {
-                this.log.error('(0) unable to parse iCal json: ' + e.toString());
+                this.log.error(`(0) unable to parse iCal json: ${e.toString()}`);
             }
         }
 
@@ -530,6 +528,7 @@ class Trashschedule extends utils.Adapter {
             });
 
             await this.setStateAsync('type.json', {val: JSON.stringify(jsonSummary), ack: true});
+            await this.setStateAsync('type.lastRefresh', {val: new Date().getTime(), ack: true});
 
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
