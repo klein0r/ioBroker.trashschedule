@@ -62,7 +62,8 @@ class Trashschedule extends utils.Adapter {
                             await this.setObjectNotExistsAsync('type.' + trashNameClean, {
                                 type: 'channel',
                                 common: {
-                                    name: trashName
+                                    name: trashName,
+                                    icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgoJPHBhdGggZmlsbD0icmdiYSgwLCAwLCAwLCAwLjU0KSIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiPjwvcGF0aD4KPC9zdmc+'
                                 },
                                 native: {}
                             });
@@ -70,7 +71,7 @@ class Trashschedule extends utils.Adapter {
                             if (trashType.color) {
                                 this.extendObjectAsync('type.' + trashNameClean, {
                                     common: {
-                                        color: trashType.color
+                                        color: `${trashType.color}FF`
                                     }
                                 });
                             }
@@ -278,7 +279,7 @@ class Trashschedule extends utils.Adapter {
                                     for (const e in iCalObject.native.events) {
                                         const event = iCalObject.native.events[e];
                                         this.log.debug('found ical event: ' + JSON.stringify(event));
-    
+
                                         // check for display flag
                                         if (!event.display) {
                                             this.log.info(`found configured iCal event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a "trash schedule" event.`);
@@ -294,6 +295,7 @@ class Trashschedule extends utils.Adapter {
 
                     this.refreshEverything();
                 } else {
+                    this.log.error(`No ical instance configured. Check instance configuration and retry.`);
                     this.setStateAsync('info.connection', {val: false, ack: true});
                 }
             }

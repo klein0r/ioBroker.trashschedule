@@ -160,7 +160,7 @@
     "globalDependencies": [
       {
         "admin": ">=5.3.2",
-        "ical": ">=1.11.4"
+        "ical": ">=1.12.1"
       }
     ],
     "plugins": {
@@ -170,9 +170,11 @@
     }
   },
   "native": {
+    "ical": "",
     "nextseparator": ", ",
     "skipsamedayathour": 18,
-    "globaloffset": 0
+    "globaloffset": 0,
+    "trashtypes": []
   },
   "objects": [],
   "instanceObjects": [
