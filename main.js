@@ -25,281 +25,281 @@ class Trashschedule extends utils.Adapter {
         const iCalInstance = this.config.ical;
         const trashTypesConfig = this.config.trashtypes;
 
-        this.getChannelsOf(
-            'type',
-            async (err, states) => {
+        const typesAll = [];
+        const typesKeep = [];
 
-                const typesAll = [];
-                const typesKeep = [];
+        try {
+            const typeChannels = await this.getChannelsOfAsync('type');
 
-                // Collect all types
-                if (states) {
-                    for (let i = 0; i < states.length; i++) {
-                        const id = this.removeNamespace(states[i]._id);
+            // Collect all types
+            if (typeChannels) {
+                for (let i = 0; i < typeChannels.length; i++) {
+                    const id = this.removeNamespace(typeChannels[i]._id);
 
-                        // Check if the state is a direct child (e.g. type.YourTrashType)
-                        if (id.split('.').length === 2) {
-                            typesAll.push(id);
-                        }
+                    // Check if the state is a direct child (e.g. type.YourTrashType)
+                    if (id.split('.').length === 2) {
+                        typesAll.push(id);
                     }
                 }
+            }
+        } catch (err) {
+            this.log.warn(err);
+        }
 
-                // Create states and channels
-                if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
-                    for (const t in trashTypesConfig) {
-                        const trashType = trashTypesConfig[t];
-                        const trashName = trashType.name.trim();
-                        const trashNameClean = this.cleanNamespace(trashName);
+        // Create states and channels
+        if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
+            for (const t in trashTypesConfig) {
+                const trashType = trashTypesConfig[t];
+                const trashName = trashType.name.trim();
+                const trashNameClean = this.cleanNamespace(trashName);
 
-                        if (trashNameClean && !!trashType.match) {
-                            typesKeep.push(`type.${trashNameClean}`);
-                            this.log.debug(`Trash type found: "${trashName}"`);
+                if (trashNameClean && !!trashType.match) {
+                    this.log.debug(`Trash type found: "${trashName}"`);
+                    typesKeep.push(`type.${trashNameClean}`);
 
-                            if (trashType.match != trashType.match.trim()) {
-                                this.log.info(`Attention: Trash type "${trashName}" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "${trashType.match}"`);
-                            }
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}`, {
-                                type: 'channel',
-                                common: {
-                                    name: trashName,
-                                    icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgoJPHBhdGggZmlsbD0icmdiYSgwLCAwLCAwLCAwLjU0KSIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiPjwvcGF0aD4KPC9zdmc+'
-                                },
-                                native: {}
-                            });
-
-                            if (trashType.color) {
-                                this.extendObjectAsync(`type.${trashNameClean}`, {
-                                    common: {
-                                        color: `${trashType.color}FF`.toUpperCase()
-                                    }
-                                });
-                            }
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDate`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - date (' + trashName + ')',
-                                        de: 'Nächste Abholung - Datum (' + trashName + ')',
-                                        ru: 'Следующий пикап - дата (' + trashName + ')',
-                                        pt: 'Próxima coleta - data (' + trashName + ')',
-                                        nl: 'Volgende afhaling - datum (' + trashName + ')',
-                                        fr: 'Prochaine collecte - date (' + trashName + ')',
-                                        it: 'Prossimo ritiro - data (' + trashName + ')',
-                                        es: 'Próxima recogida: fecha (' + trashName + ')',
-                                        pl: 'Następny odbiór — data (' + trashName + ')',
-                                        'zh-cn': '下次取件 - 日期 (' + trashName + ')'
-                                    },
-                                    type: 'number',
-                                    role: 'date',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFormat`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - date formatted (' + trashName + ')',
-                                        de: 'Nächste Abholung - Datum formatiert (' + trashName + ')',
-                                        ru: 'Следующее получение - дата в формате (' + trashName + ')',
-                                        pt: 'Próxima coleta - data formatada (' + trashName + ')',
-                                        nl: 'Volgende afhaling - datum geformatteerd (' + trashName + ')',
-                                        fr: 'Prochaine collecte - date formatée (' + trashName + ')',
-                                        it: 'Prossimo ritiro - data formattata (' + trashName + ')',
-                                        es: 'Próxima recogida: fecha formateada (' + trashName + ')',
-                                        pl: 'Następny odbiór — sformatowana data (' + trashName + ')',
-                                        'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')'
-                                    },
-                                    type: 'string',
-                                    role: 'text',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDescription`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - description (' + trashName + ')',
-                                        de: 'Nächste Abholung - Beschreibung (' + trashName + ')',
-                                        ru: 'Следующий пикап - описание (' + trashName + ')',
-                                        pt: 'Próxima coleta - descrição (' + trashName + ')',
-                                        nl: 'Volgende afhaling - beschrijving (' + trashName + ')',
-                                        fr: 'Prochain ramassage - description (' + trashName + ')',
-                                        it: 'Prossimo ritiro - descrizione (' + trashName + ')',
-                                        es: 'Próxima recogida - descripción (' + trashName + ')',
-                                        pl: 'Następny odbiór — opis (' + trashName + ')',
-                                        'zh-cn': '下次取件 - 描述 (' + trashName + ')'
-                                    },
-                                    type: 'string',
-                                    role: 'text',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextWeekday`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - weekday (' + trashName + ')',
-                                        de: 'Nächste Abholung - Wochentag (' + trashName + ')',
-                                        ru: 'Следующий пикап - будний день (' + trashName + ')',
-                                        pt: 'Próxima coleta - dia da semana (' + trashName + ')',
-                                        nl: 'Volgende afhaling - weekdag (' + trashName + ')',
-                                        fr: 'Prochain ramassage - jour de la semaine (' + trashName + ')',
-                                        it: 'Prossimo ritiro - giorno della settimana (' + trashName + ')',
-                                        es: 'Próxima recogida: día de la semana (' + trashName + ')',
-                                        pl: 'Następny odbiór — dzień powszedni (' + trashName + ')',
-                                        'zh-cn': '下一个取件 - 工作日 (' + trashName + ')'
-                                    },
-                                    type: 'number',
-                                    role: 'value',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.daysLeft`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - days left (' + trashName + ')',
-                                        de: 'Nächste Abholung - verbleibende Tage (' + trashName + ')',
-                                        ru: 'Следующий самовывоз - осталось дней (' + trashName + ')',
-                                        pt: 'Próxima coleta - faltam dias (' + trashName + ')',
-                                        nl: 'Volgende afhaling - resterende dagen (' + trashName + ')',
-                                        fr: 'Prochain ramassage - jours restants (' + trashName + ')',
-                                        it: 'Prossimo ritiro - giorni rimasti (' + trashName + ')',
-                                        es: 'Próxima recogida: quedan días (' + trashName + ')',
-                                        pl: 'Następny odbiór — pozostały dni (' + trashName + ')',
-                                        'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')'
-                                    },
-                                    type: 'number',
-                                    role: 'value',
-                                    unit: 'days',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFound`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - date found (' + trashName + ')',
-                                        de: 'Nächste Abholung - Termin gefunden (' + trashName + ')',
-                                        ru: 'Следующий пикап - дата нахождения (' + trashName + ')',
-                                        pt: 'Próxima coleta - data encontrada (' + trashName + ')',
-                                        nl: 'Volgende afhaling - datum gevonden (' + trashName + ')',
-                                        fr: 'Prochain ramassage - date trouvée (' + trashName + ')',
-                                        it: 'Prossimo ritiro - data trovata (' + trashName + ')',
-                                        es: 'Próxima recogida: fecha encontrada (' + trashName + ')',
-                                        pl: 'Następny odbiór — znaleziono datę (' + trashName + ')',
-                                        'zh-cn': '下次取件 - 找到日期 (' + trashName + ')'
-                                    },
-                                    type: 'boolean',
-                                    role: 'indicator',
-                                    def: false,
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                            await this.setObjectNotExistsAsync(`type.${trashNameClean}.color`, {
-                                type: 'state',
-                                common: {
-                                    name: {
-                                        en: 'Next pickup - color (' + trashName + ')',
-                                        de: 'Nächste Abholung - Farbe (' + trashName + ')',
-                                        ru: 'Следующий пикап - цвет (' + trashName + ')',
-                                        pt: 'Próxima coleta - cor (' + trashName + ')',
-                                        nl: 'Volgende afhaling - kleur (' + trashName + ')',
-                                        fr: 'Prochain ramassage - couleur (' + trashName + ')',
-                                        it: 'Prossimo ritiro - colore (' + trashName + ')',
-                                        es: 'Siguiente recogida - color (' + trashName + ')',
-                                        pl: 'Następny odbiór — kolor (' + trashName + ')',
-                                        'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')'
-                                    },
-                                    type: 'string',
-                                    role: 'level.color.rgb',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-
-                        } else {
-                            this.log.warn(`Skipping invalid/empty trash name or match: ${trashName}`);
-                        }
+                    if (trashType.match != trashType.match.trim()) {
+                        this.log.info(`Attention: Trash type "${trashName}" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "${trashType.match}"`);
                     }
-                } else {
-                    this.log.warn('No trash types configured');
-                }
 
-                // Delete non existent trash types
-                for (let i = 0; i < typesAll.length; i++) {
-                    const id = typesAll[i];
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}`, {
+                        type: 'channel',
+                        common: {
+                            name: trashName,
+                            icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgoJPHBhdGggZmlsbD0icmdiYSgwLCAwLCAwLCAwLjU0KSIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiPjwvcGF0aD4KPC9zdmc+'
+                        },
+                        native: {}
+                    });
 
-                    if (typesKeep.indexOf(id) === -1) {
-                        this.delObject(id, {recursive: true}, () => {
-                            this.log.debug(`Trash type deleted: "${id}"`);
+                    if (trashType.color) {
+                        await this.extendObjectAsync(`type.${trashNameClean}`, {
+                            common: {
+                                color: `${trashType.color}FF`.toUpperCase()
+                            }
                         });
                     }
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDate`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - date (' + trashName + ')',
+                                de: 'Nächste Abholung - Datum (' + trashName + ')',
+                                ru: 'Следующий пикап - дата (' + trashName + ')',
+                                pt: 'Próxima coleta - data (' + trashName + ')',
+                                nl: 'Volgende afhaling - datum (' + trashName + ')',
+                                fr: 'Prochaine collecte - date (' + trashName + ')',
+                                it: 'Prossimo ritiro - data (' + trashName + ')',
+                                es: 'Próxima recogida: fecha (' + trashName + ')',
+                                pl: 'Następny odbiór — data (' + trashName + ')',
+                                'zh-cn': '下次取件 - 日期 (' + trashName + ')'
+                            },
+                            type: 'number',
+                            role: 'date',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFormat`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - date formatted (' + trashName + ')',
+                                de: 'Nächste Abholung - Datum formatiert (' + trashName + ')',
+                                ru: 'Следующее получение - дата в формате (' + trashName + ')',
+                                pt: 'Próxima coleta - data formatada (' + trashName + ')',
+                                nl: 'Volgende afhaling - datum geformatteerd (' + trashName + ')',
+                                fr: 'Prochaine collecte - date formatée (' + trashName + ')',
+                                it: 'Prossimo ritiro - data formattata (' + trashName + ')',
+                                es: 'Próxima recogida: fecha formateada (' + trashName + ')',
+                                pl: 'Następny odbiór — sformatowana data (' + trashName + ')',
+                                'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')'
+                            },
+                            type: 'string',
+                            role: 'text',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDescription`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - description (' + trashName + ')',
+                                de: 'Nächste Abholung - Beschreibung (' + trashName + ')',
+                                ru: 'Следующий пикап - описание (' + trashName + ')',
+                                pt: 'Próxima coleta - descrição (' + trashName + ')',
+                                nl: 'Volgende afhaling - beschrijving (' + trashName + ')',
+                                fr: 'Prochain ramassage - description (' + trashName + ')',
+                                it: 'Prossimo ritiro - descrizione (' + trashName + ')',
+                                es: 'Próxima recogida - descripción (' + trashName + ')',
+                                pl: 'Następny odbiór — opis (' + trashName + ')',
+                                'zh-cn': '下次取件 - 描述 (' + trashName + ')'
+                            },
+                            type: 'string',
+                            role: 'text',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextWeekday`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - weekday (' + trashName + ')',
+                                de: 'Nächste Abholung - Wochentag (' + trashName + ')',
+                                ru: 'Следующий пикап - будний день (' + trashName + ')',
+                                pt: 'Próxima coleta - dia da semana (' + trashName + ')',
+                                nl: 'Volgende afhaling - weekdag (' + trashName + ')',
+                                fr: 'Prochain ramassage - jour de la semaine (' + trashName + ')',
+                                it: 'Prossimo ritiro - giorno della settimana (' + trashName + ')',
+                                es: 'Próxima recogida: día de la semana (' + trashName + ')',
+                                pl: 'Następny odbiór — dzień powszedni (' + trashName + ')',
+                                'zh-cn': '下一个取件 - 工作日 (' + trashName + ')'
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.daysLeft`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - days left (' + trashName + ')',
+                                de: 'Nächste Abholung - verbleibende Tage (' + trashName + ')',
+                                ru: 'Следующий самовывоз - осталось дней (' + trashName + ')',
+                                pt: 'Próxima coleta - faltam dias (' + trashName + ')',
+                                nl: 'Volgende afhaling - resterende dagen (' + trashName + ')',
+                                fr: 'Prochain ramassage - jours restants (' + trashName + ')',
+                                it: 'Prossimo ritiro - giorni rimasti (' + trashName + ')',
+                                es: 'Próxima recogida: quedan días (' + trashName + ')',
+                                pl: 'Następny odbiór — pozostały dni (' + trashName + ')',
+                                'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')'
+                            },
+                            type: 'number',
+                            role: 'value',
+                            unit: 'days',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFound`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - date found (' + trashName + ')',
+                                de: 'Nächste Abholung - Termin gefunden (' + trashName + ')',
+                                ru: 'Следующий пикап - дата нахождения (' + trashName + ')',
+                                pt: 'Próxima coleta - data encontrada (' + trashName + ')',
+                                nl: 'Volgende afhaling - datum gevonden (' + trashName + ')',
+                                fr: 'Prochain ramassage - date trouvée (' + trashName + ')',
+                                it: 'Prossimo ritiro - data trovata (' + trashName + ')',
+                                es: 'Próxima recogida: fecha encontrada (' + trashName + ')',
+                                pl: 'Następny odbiór — znaleziono datę (' + trashName + ')',
+                                'zh-cn': '下次取件 - 找到日期 (' + trashName + ')'
+                            },
+                            type: 'boolean',
+                            role: 'indicator',
+                            def: false,
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.color`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - color (' + trashName + ')',
+                                de: 'Nächste Abholung - Farbe (' + trashName + ')',
+                                ru: 'Следующий пикап - цвет (' + trashName + ')',
+                                pt: 'Próxima coleta - cor (' + trashName + ')',
+                                nl: 'Volgende afhaling - kleur (' + trashName + ')',
+                                fr: 'Prochain ramassage - couleur (' + trashName + ')',
+                                it: 'Prossimo ritiro - colore (' + trashName + ')',
+                                es: 'Siguiente recogida - color (' + trashName + ')',
+                                pl: 'Następny odbiór — kolor (' + trashName + ')',
+                                'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')'
+                            },
+                            type: 'string',
+                            role: 'level.color.rgb',
+                            read: true,
+                            write: false
+                        },
+                        native: {}
+                    });
+
+                } else {
+                    this.log.warn(`Skipping invalid/empty trash name or match: ${trashName}`);
                 }
+            }
+        } else {
+            this.log.warn('No trash types configured');
+        }
 
-                if (iCalInstance) {
-                    this.subscribeForeignStates(`${iCalInstance}.data.table`);
+        // Delete non existent trash types
+        for (let i = 0; i < typesAll.length; i++) {
+            const id = typesAll[i];
 
-                    try {
-                        // Check ical configuration
-                        const iCalObject = await this.getForeignObjectAsync(`system.adapter.${iCalInstance}`);
+            if (typesKeep.indexOf(id) === -1) {
+                this.delObject(id, {recursive: true}, () => {
+                    this.log.debug(`Trash type deleted: "${id}"`);
+                });
+            }
+        }
 
-                        if (iCalObject && typeof iCalObject === 'object') {
-                            if (typeof iCalObject.common === 'object') {
-                                this.log.debug(`[ical] current ical version: ${iCalObject.common.version}`);
-                            }
+        if (iCalInstance) {
+            this.subscribeForeignStates(`${iCalInstance}.data.table`);
 
-                            if (typeof iCalObject.native === 'object') {
-                                const daysPreview = iCalObject.native.daysPreview;
-                                this.log.info(`[ical] configurured ical preview is ${daysPreview} days - increase this value to find more events in the future`);
+            try {
+                // Check ical configuration
+                const iCalObject = await this.getForeignObjectAsync(`system.adapter.${iCalInstance}`);
 
-                                // check for events
-                                if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
-                                    for (const e in iCalObject.native.events) {
-                                        const event = iCalObject.native.events[e];
-                                        this.log.debug(`[ical] found ical event(s): ${JSON.stringify(event)}`);
+                if (iCalObject && typeof iCalObject === 'object') {
+                    if (typeof iCalObject.common === 'object') {
+                        this.log.debug(`[ical] current ical version: ${iCalObject.common.version}`);
+                    }
 
-                                        // check for display flag
-                                        if (!event.display) {
-                                            this.log.info(`[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`);
-                                        }
-                                    }
+                    if (typeof iCalObject.native === 'object') {
+                        const daysPreview = iCalObject.native.daysPreview;
+                        this.log.info(`[ical] configurured ical preview is ${daysPreview} days - increase this value to find more events in the future`);
+
+                        // check for events
+                        if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
+                            for (const e in iCalObject.native.events) {
+                                const event = iCalObject.native.events[e];
+                                this.log.debug(`[ical] found ical event(s): ${JSON.stringify(event)}`);
+
+                                // check for display flag
+                                if (!event.display) {
+                                    this.log.info(`[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`);
                                 }
                             }
                         }
-
-                    } catch (err) {
-                        this.log.error(JSON.stringify(err));
                     }
-
-                    this.refreshEverything();
-                } else {
-                    this.log.error(`No ical instance configured. Check instance configuration and retry.`);
-                    this.setStateAsync('info.connection', {val: false, ack: true});
                 }
+
+            } catch (err) {
+                this.log.error(JSON.stringify(err));
             }
-        );
+
+            this.refreshEverything();
+        } else {
+            this.log.error(`No ical instance configured. Check instance configuration and retry.`);
+            this.setStateAsync('info.connection', {val: false, ack: true});
+        }
     }
 
     refreshEverything() {
