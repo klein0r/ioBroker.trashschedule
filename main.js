@@ -71,7 +71,7 @@ class Trashschedule extends utils.Adapter {
                             if (trashType.color) {
                                 this.extendObjectAsync(`type.${trashNameClean}`, {
                                     common: {
-                                        color: `${trashType.color}FF`
+                                        color: `${trashType.color}FF`.toUpperCase()
                                     }
                                 });
                             }
