@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "1.4.5",
+    "version": "2.0.0",
     "news": {
+      "2.0.0": {
+        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added timestamp of last and next refresh\n* Added icon to channels and fixed color\n* Added default trash types for new installations\n* Updated dependency for ical to 1.12.1\n* Updated depedency for js-controller to 4.0.15",
+        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Zeitstempel der letzten und nächsten Aktualisierung hinzugefügt\n* Symbol zu Kanälen und feste Farbe hinzugefügt\n* Standard-Papierkorbtypen für neue Installationen hinzugefügt\n* Aktualisierte Abhängigkeit für ical auf 1.12.1\n* Abhängigkeit für js-controller auf 4.0.15 aktualisiert",
+        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Добавлена временная метка последнего и следующего обновления\n* Добавлена иконка каналам и фиксированный цвет\n* Добавлены типы корзины по умолчанию для новых установок\n* Обновлена зависимость для ical до 1.12.1\n* Обновлена зависимость js-контроллера до версии 4.0.15.",
+        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Adicionado timestamp da última e próxima atualização\n* Adicionado ícone aos canais e cor fixa\n* Adicionados tipos de lixo padrão para novas instalações\n* Dependência atualizada para ical para 1.12.1\n* Dependência atualizada para js-controller para 4.0.15",
+        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Tijdstempel van laatste en volgende verversing toegevoegd\n* Pictogram toegevoegd aan kanalen en vaste kleur\n* Standaard prullenbaktypen toegevoegd voor nieuwe installaties\n* Bijgewerkte afhankelijkheid voor ical naar 1.12.1\n* Afhankelijkheid voor js-controller bijgewerkt naar 4.0.15",
+        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Ajout de l'horodatage de la dernière et de la prochaine actualisation\n* Icône ajoutée aux chaînes et couleur fixe\n* Ajout de types de corbeille par défaut pour les nouvelles installations\n* Dépendance mise à jour pour ical vers 1.12.1\n* Mise à jour de la dépendance pour js-controller vers 4.0.15",
+        "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Aggiunto timestamp dell'ultimo e del prossimo aggiornamento\n* Aggiunta icona ai canali e colore fisso\n* Aggiunti tipi di cestino predefiniti per le nuove installazioni\n* Aggiornata la dipendenza per ical a 1.12.1\n* Aggiornata la dipendenza per js-controller a 4.0.15",
+        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Marca de tiempo agregada de la última y próxima actualización\n* Icono agregado a los canales y color fijo\n* Se agregaron tipos de basura predeterminados para nuevas instalaciones\n* Dependencia actualizada para ical a 1.12.1\n* Dependencia actualizada para js-controller a 4.0.15",
+        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano znacznik czasu ostatniego i następnego odświeżenia\n* Dodano ikonę do kanałów i stały kolor\n* Dodano domyślne typy kosza dla nowych instalacji\n* Zaktualizowano zależność dla ical do 1.12.1\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
+        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15"
+      },
       "1.4.5": {
         "en": "Allow spaces in next text seperator",
         "de": "Leerzeichen im nächsten Texttrennzeichen zulassen",
@@ -74,18 +86,6 @@
         "es": "Permitir ocultar las advertencias de \"no encontrado\" para tipos de basura individuales (como la recolección del árbol de Navidad)\nOpción de límite agregada para el widget VIS\nOpción agregada para el widget VIS para ocultar el nombre",
         "pl": "Zezwalaj na ukrywanie ostrzeżeń „nie znaleziono” dla pojedynczych typów śmieci (takich jak zbieranie choinek)\nDodano opcję limitu dla widżetu VIS\nDodano opcję dla widżetu VIS, aby ukryć nazwę",
         "zh-cn": "允许隐藏单个垃圾类型的“未找到”警告（如圣诞树捡拾）\n为 VIS 小部件添加了限制选项\n为 VIS 小部件添加了隐藏名称的选项"
-      },
-      "1.3.6": {
-        "en": "Require new version for translated instance objects\nFixed timeout issues",
-        "de": "Neue Version für übersetzte Instanzobjekte erforderlich\nTimeout-Probleme behoben",
-        "ru": "Требовать новую версию для переведенных экземпляров объектов\nИсправлены проблемы с тайм-аутом",
-        "pt": "Requer nova versão para objetos de instância traduzidos\nProblemas de tempo limite corrigidos",
-        "nl": "Nieuwe versie vereisen voor vertaalde instantieobjecten\nTime-outproblemen opgelost",
-        "fr": "Exiger une nouvelle version pour les objets d'instance traduits\nCorrection des problèmes de délai d'attente",
-        "it": "Richiedi una nuova versione per gli oggetti istanza tradotti\nRisolti problemi di timeout",
-        "es": "Requerir una nueva versión para los objetos de instancia traducidos\nProblemas de tiempo de espera solucionados",
-        "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono problemy z limitem czasu",
-        "zh-cn": "需要新版本的翻译实例对象\n修复超时问题"
       }
     },
     "titleLang": {

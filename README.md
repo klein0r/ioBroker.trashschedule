@@ -45,7 +45,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.0 (2022-05-04)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
@@ -71,10 +71,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 ### 1.4.2 (2022-02-07)
 
 * (klein0r) Added check for ical configuration
-
-### 1.4.1 (2021-12-23)
-
-* (klein0r) Updated dependencies
 
 ## License
 
