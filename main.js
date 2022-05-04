@@ -54,11 +54,11 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (trashNameClean && !!trashType.match) {
-                    this.log.debug(`Trash type found: "${trashName}"`);
+                    this.log.debug(`configured trash type found: "${trashName}"`);
                     typesKeep.push(`type.${trashNameClean}`);
 
                     if (trashType.match != trashType.match.trim()) {
-                        this.log.info(`Attention: Trash type "${trashName}" contains leading or trailing whitespaces in the match pattern. This could lead to an unexpected behavior! -> "${trashType.match}"`);
+                        this.log.info(`attention: trash type "${trashName}" contains leading or trailing whitespaces in the match pattern - this could lead to an unexpected behavior! -> "${trashType.match}"`);
                     }
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}`, {
@@ -242,11 +242,11 @@ class Trashschedule extends utils.Adapter {
                     });
 
                 } else {
-                    this.log.warn(`Skipping invalid/empty trash name or match: ${trashName}`);
+                    this.log.warn(`skipping invalid/empty trash name or match: ${trashName}`);
                 }
             }
         } else {
-            this.log.warn('No trash types configured');
+            this.log.warn('no trash types configured');
         }
 
         // Delete non existent trash types
@@ -254,9 +254,8 @@ class Trashschedule extends utils.Adapter {
             const id = typesAll[i];
 
             if (typesKeep.indexOf(id) === -1) {
-                this.delObject(id, {recursive: true}, () => {
-                    this.log.debug(`Trash type deleted: "${id}"`);
-                });
+                await this.delObjectAsync(id, {recursive: true});
+                this.log.debug(`trash type deleted: "${id}"`);
             }
         }
 
@@ -297,7 +296,7 @@ class Trashschedule extends utils.Adapter {
 
             this.refreshEverything();
         } else {
-            this.log.error(`No ical instance configured. Check instance configuration and retry.`);
+            this.log.error(`no ical instance configured. Check instance configuration and retry.`);
             this.setStateAsync('info.connection', {val: false, ack: true});
         }
     }
