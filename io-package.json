@@ -174,7 +174,43 @@
     "nextseparator": ", ",
     "skipsamedayathour": 18,
     "globaloffset": 0,
-    "trashtypes": []
+    "trashtypes": [
+      {
+        "name": "Restabfalltonne",
+        "match": "Restabfall",
+        "exactmatch": false,
+        "color": "#545454",
+        "hidewarnings": false
+      },
+      {
+        "name": "Wertstofftonne",
+        "match": "Wertstoff",
+        "exactmatch": false,
+        "color": "#bab827",
+        "hidewarnings": false
+      },
+      {
+        "name": "Biotonne",
+        "match": "Bio",
+        "exactmatch": false,
+        "color": "#27ba4e",
+        "hidewarnings": false
+      },
+      {
+        "name": "Papiertonne",
+        "match": "Papier",
+        "exactmatch": false,
+        "color": "#2764ba",
+        "hidewarnings": false
+      },
+      {
+        "name": "Weihnachtsbaum",
+        "match": "Weihnacht",
+        "exactmatch": false,
+        "hidewarnings": true,
+        "color": "#418338"
+      }
+    ]
   },
   "objects": [],
   "instanceObjects": [

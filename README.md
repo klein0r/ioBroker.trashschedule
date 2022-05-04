@@ -50,6 +50,7 @@ iobroker add trashschedule
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Added icon to channels and fixed color
+* (klein0r) Added default trash types for new installations
 * (klein0r) Updated dependency for ical to 1.12.1
 * (klein0r) Updated depedency for js-controller to 4.0.15
 
