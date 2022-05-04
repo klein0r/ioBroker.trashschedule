@@ -278,7 +278,7 @@ class Trashschedule extends utils.Adapter {
                                 if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
                                     for (const e in iCalObject.native.events) {
                                         const event = iCalObject.native.events[e];
-                                        this.log.debug('found ical event: ' + JSON.stringify(event));
+                                        this.log.debug(`found ical event: ${JSON.stringify(event)}`);
 
                                         // check for display flag
                                         if (!event.display) {
@@ -308,7 +308,7 @@ class Trashschedule extends utils.Adapter {
         this.getForeignState(iCalInstance + '.data.table', (err, state) => {
             // state can be null!
             if (state) {
-                this.log.debug('(0) update started by foreign state value - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
+                this.log.debug(`(0) update started by foreign state value - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
                 this.updateByCalendarTable(state.val);
             }
         });
@@ -322,7 +322,7 @@ class Trashschedule extends utils.Adapter {
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
-        this.log.debug('re-creating refresh timeout in ' + nexTimeoutMilli + 'ms (' + this.convertMillisecondsToDuration(nexTimeoutMilli) + ')');
+        this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
         this.refreshEverythingTimeout = this.setTimeout(() => {
             this.log.debug('started automatic refresh (every full hour)');
 
@@ -333,7 +333,7 @@ class Trashschedule extends utils.Adapter {
 
     onStateChange(id, state) {
         if (id && state && id == this.config.ical + '.data.table') {
-            this.log.debug('(0) update started by foreign state change - lc: ' + new Date(state.lc) + ' - ts: ' + new Date(state.ts));
+            this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
             this.updateByCalendarTable(state.val);
         }
     }
@@ -400,7 +400,7 @@ class Trashschedule extends utils.Adapter {
         if (data && Array.isArray(data) && data.length > 0) {
             await this.setStateAsync('info.connection', {val: true, ack: true});
 
-            this.log.debug('(0) start processing ' + data.length + ' iCal events');
+            this.log.debug(`(0) start processing ${data.length} iCal events`);
 
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = (new Date()).getHours();
@@ -424,19 +424,19 @@ class Trashschedule extends utils.Adapter {
                 minTypes: []
             };
 
-            this.log.debug('(0) offset (config): ' + globalOffset);
+            this.log.debug(`(0) offset (config): ${globalOffset}`);
 
             for (const i in data) {
                 const entry = data[i];
                 const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
 
-                this.log.debug('(1) parsing next event ' + JSON.stringify(entry) + ' // originalDate: ' + entry._date + ' // calculated date (with offset): ' + date);
+                this.log.debug(`(1) parsing next event ${JSON.stringify(entry)} // originalDate: ${entry._date} // calculated date (with offset): ${date}`);
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
-                    this.log.debug('(2) processing: ' + entry.event + ' (' + date.getTime() + ') // dayDiff: ' + dayDiff + ' // current hour (date): ' + hourNow + ' (' + dateNow.getTime() + ') // skipsamedayathour (config): ' + skipsamedayathour);
+                    this.log.debug(`(2) processing: "${entry.event}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} (${dateNow.getTime()}) // skipsamedayathour (config): ${skipsamedayathour}`);
 
                     // Check if event matches trash type and fill information
                     for (const t in trashTypesConfig) {
@@ -449,7 +449,7 @@ class Trashschedule extends utils.Adapter {
                                 // Fill type if event matches
                                 if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
 
-                                    this.log.debug('(3) event match: "' + entry.event + '" matches type "' + trashName + '" with pattern "' + trashType.match + (trashType.exactmatch ? ' (exact match)' : '') + '"');
+                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}" ${(trashType.exactmatch ? ' (exact match)' : '')}`);
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
@@ -476,7 +476,7 @@ class Trashschedule extends utils.Adapter {
                                             }
                                         );
 
-                                        this.log.debug('(4) filled type: "' + trashName + '"');
+                                        this.log.debug(`(4) filled type: "${trashName}"`);
                                     }
 
                                     // Set next type
@@ -498,7 +498,7 @@ class Trashschedule extends utils.Adapter {
                         }
                     }
                 } else {
-                    this.log.debug('Skipped event (event is in the past) ' + JSON.stringify(entry));
+                    this.log.debug(`Skipped event (event is in the past) ${JSON.stringify(entry)}`);
                 }
             }
 
@@ -543,7 +543,7 @@ class Trashschedule extends utils.Adapter {
 
     async fillNext(obj, statePrefix) {
 
-        this.log.debug('(5) filling "' + statePrefix + '" event with data: ' + JSON.stringify(obj));
+        this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
             await this.setStateAsync(statePrefix + '.date', {val: obj.minDate.getTime(), ack: true});
