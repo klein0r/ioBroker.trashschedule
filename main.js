@@ -6,12 +6,11 @@
 const utils = require('@iobroker/adapter-core');
 
 class Trashschedule extends utils.Adapter {
-
     constructor(options) {
         super({
             ...options,
             name: 'trashschedule',
-            useFormatDate: true
+            useFormatDate: true,
         });
 
         this.refreshEverythingTimeout = null;
@@ -58,23 +57,25 @@ class Trashschedule extends utils.Adapter {
                     typesKeep.push(`type.${trashNameClean}`);
 
                     if (trashType.match != trashType.match.trim()) {
-                        this.log.info(`attention: trash type "${trashName}" contains leading or trailing whitespaces in the match pattern - this could lead to an unexpected behavior! -> "${trashType.match}"`);
+                        this.log.info(
+                            `attention: trash type "${trashName}" contains leading or trailing whitespaces in the match pattern - this could lead to an unexpected behavior! -> "${trashType.match}"`,
+                        );
                     }
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}`, {
                         type: 'channel',
                         common: {
                             name: trashName,
-                            icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgoJPHBhdGggZmlsbD0icmdiYSgwLCAwLCAwLCAwLjU0KSIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiPjwvcGF0aD4KPC9zdmc+'
+                            icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgoJPHBhdGggZmlsbD0icmdiYSgwLCAwLCAwLCAwLjU0KSIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiPjwvcGF0aD4KPC9zdmc+',
                         },
-                        native: {}
+                        native: {},
                     });
 
                     if (trashType.color) {
                         await this.extendObjectAsync(`type.${trashNameClean}`, {
                             common: {
-                                color: `${trashType.color}FF`.toUpperCase()
-                            }
+                                color: `${trashType.color}FF`.toUpperCase(),
+                            },
                         });
                     }
 
@@ -91,14 +92,14 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - data (' + trashName + ')',
                                 es: 'Próxima recogida: fecha (' + trashName + ')',
                                 pl: 'Następny odbiór — data (' + trashName + ')',
-                                'zh-cn': '下次取件 - 日期 (' + trashName + ')'
+                                'zh-cn': '下次取件 - 日期 (' + trashName + ')',
                             },
                             type: 'number',
                             role: 'date',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFormat`, {
@@ -114,14 +115,14 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - data formattata (' + trashName + ')',
                                 es: 'Próxima recogida: fecha formateada (' + trashName + ')',
                                 pl: 'Następny odbiór — sformatowana data (' + trashName + ')',
-                                'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')'
+                                'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')',
                             },
                             type: 'string',
                             role: 'text',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDescription`, {
@@ -137,14 +138,14 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - descrizione (' + trashName + ')',
                                 es: 'Próxima recogida - descripción (' + trashName + ')',
                                 pl: 'Następny odbiór — opis (' + trashName + ')',
-                                'zh-cn': '下次取件 - 描述 (' + trashName + ')'
+                                'zh-cn': '下次取件 - 描述 (' + trashName + ')',
                             },
                             type: 'string',
                             role: 'text',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextWeekday`, {
@@ -160,14 +161,14 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - giorno della settimana (' + trashName + ')',
                                 es: 'Próxima recogida: día de la semana (' + trashName + ')',
                                 pl: 'Następny odbiór — dzień powszedni (' + trashName + ')',
-                                'zh-cn': '下一个取件 - 工作日 (' + trashName + ')'
+                                'zh-cn': '下一个取件 - 工作日 (' + trashName + ')',
                             },
                             type: 'number',
                             role: 'value',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.daysLeft`, {
@@ -183,15 +184,15 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - giorni rimasti (' + trashName + ')',
                                 es: 'Próxima recogida: quedan días (' + trashName + ')',
                                 pl: 'Następny odbiór — pozostały dni (' + trashName + ')',
-                                'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')'
+                                'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')',
                             },
                             type: 'number',
                             role: 'value',
                             unit: 'days',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDateFound`, {
@@ -207,15 +208,15 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - data trovata (' + trashName + ')',
                                 es: 'Próxima recogida: fecha encontrada (' + trashName + ')',
                                 pl: 'Następny odbiór — znaleziono datę (' + trashName + ')',
-                                'zh-cn': '下次取件 - 找到日期 (' + trashName + ')'
+                                'zh-cn': '下次取件 - 找到日期 (' + trashName + ')',
                             },
                             type: 'boolean',
                             role: 'indicator',
                             def: false,
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
 
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.color`, {
@@ -231,16 +232,15 @@ class Trashschedule extends utils.Adapter {
                                 it: 'Prossimo ritiro - colore (' + trashName + ')',
                                 es: 'Siguiente recogida - color (' + trashName + ')',
                                 pl: 'Następny odbiór — kolor (' + trashName + ')',
-                                'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')'
+                                'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')',
                             },
                             type: 'string',
                             role: 'level.color.rgb',
                             read: true,
-                            write: false
+                            write: false,
                         },
-                        native: {}
+                        native: {},
                     });
-
                 } else {
                     this.log.warn(`skipping invalid/empty trash name or match: ${trashName}`);
                 }
@@ -254,7 +254,7 @@ class Trashschedule extends utils.Adapter {
             const id = typesAll[i];
 
             if (typesKeep.indexOf(id) === -1) {
-                await this.delObjectAsync(id, {recursive: true});
+                await this.delObjectAsync(id, { recursive: true });
                 this.log.debug(`trash type deleted: "${id}"`);
             }
         }
@@ -283,13 +283,14 @@ class Trashschedule extends utils.Adapter {
 
                                 // check for display flag
                                 if (!event.display) {
-                                    this.log.info(`[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`);
+                                    this.log.info(
+                                        `[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`,
+                                    );
                                 }
                             }
                         }
                     }
                 }
-
             } catch (err) {
                 this.log.error(JSON.stringify(err));
             }
@@ -297,7 +298,7 @@ class Trashschedule extends utils.Adapter {
             this.refreshEverything();
         } else {
             this.log.error(`no ical instance configured. Check instance configuration and retry.`);
-            this.setStateAsync('info.connection', {val: false, ack: true});
+            this.setStateAsync('info.connection', { val: false, ack: true });
         }
     }
 
@@ -321,7 +322,7 @@ class Trashschedule extends utils.Adapter {
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
-        this.setStateAsync('type.nextRefresh', {val: new Date().getTime() + nexTimeoutMilli, ack: true});
+        this.setStateAsync('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
 
         this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
         this.refreshEverythingTimeout = this.setTimeout(() => {
@@ -341,7 +342,7 @@ class Trashschedule extends utils.Adapter {
 
     getMillisecondsToNextFullHour() {
         const now = new Date();
-        const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 5, 0);  // add 5 seconds to ensure we are in the next hour
+        const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 5, 0); // add 5 seconds to ensure we are in the next hour
 
         return nextHour.getTime() - now.getTime();
     }
@@ -351,13 +352,13 @@ class Trashschedule extends utils.Adapter {
         const minutes = Math.floor((duration / (1000 * 60)) % 60);
         const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-        return `${(hours < 10) ? '0' + hours : hours}:${(minutes < 10) ? '0' + minutes : minutes}:${(seconds < 10) ? '0' + seconds : seconds}`;
+        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }
 
     getDateWithoutTime(date, offset) {
         const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
         if (offset != 0) {
-            d.setTime(d.getTime() + (offset * 24 * 60 * 60 * 1000));
+            d.setTime(d.getTime() + offset * 24 * 60 * 60 * 1000);
         }
         return d;
     }
@@ -395,12 +396,12 @@ class Trashschedule extends utils.Adapter {
 
         // Array should be sorted by date (done by ical)
         if (data && Array.isArray(data) && data.length > 0) {
-            await this.setStateAsync('info.connection', {val: true, ack: true});
+            await this.setStateAsync('info.connection', { val: true, ack: true });
 
             this.log.debug(`(0) start processing ${data.length} iCal events`);
 
             const dateNow = this.getDateWithoutTime(new Date(), 0);
-            const hourNow = (new Date()).getHours();
+            const hourNow = new Date().getHours();
 
             const trashTypesConfig = this.config.trashtypes;
             const globalOffset = this.config.globaloffset || 0;
@@ -412,13 +413,13 @@ class Trashschedule extends utils.Adapter {
             const next = {
                 minDays: 999,
                 minDate: null,
-                minTypes: []
+                minTypes: [],
             };
 
             const nextAfter = {
                 minDays: 999,
                 minDate: null,
-                minTypes: []
+                minTypes: [],
             };
 
             this.log.debug(`(0) offset (config): ${globalOffset}`);
@@ -433,7 +434,11 @@ class Trashschedule extends utils.Adapter {
                 if (date.getTime() >= dateNow.getTime()) {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
-                    this.log.debug(`(2) processing: "${entry.event}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} (${dateNow.getTime()}) // skipsamedayathour (config): ${skipsamedayathour}`);
+                    this.log.debug(
+                        `(2) processing: "${
+                            entry.event
+                        }" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} (${dateNow.getTime()}) // skipsamedayathour (config): ${skipsamedayathour}`,
+                    );
 
                     // Check if event matches trash type and fill information
                     for (const t in trashTypesConfig) {
@@ -445,33 +450,30 @@ class Trashschedule extends utils.Adapter {
                             if (dayDiff > 0 || hourNow < skipsamedayathour) {
                                 // Fill type if event matches
                                 if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
-
-                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}"${(trashType.exactmatch ? ' (exact match)' : '')}`);
+                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
 
-                                        await this.setStateAsync(`type.${trashNameClean}.nextDate`, {val: date.getTime(), ack: true});
-                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, {val: this.formatDate(date), ack: true});
-                                        await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, {val: date.getDay(), ack: true});
-                                        await this.setStateAsync(`type.${trashNameClean}.daysLeft`, {val: dayDiff, ack: true});
-                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, {val: true, ack: true});
-                                        await this.setStateAsync(`type.${trashNameClean}.color`, {val: trashType.color, ack: true});
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDate`, { val: date.getTime(), ack: true });
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, { val: this.formatDate(date), ack: true });
+                                        await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, { val: date.getDay(), ack: true });
+                                        await this.setStateAsync(`type.${trashNameClean}.daysLeft`, { val: dayDiff, ack: true });
+                                        await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, { val: true, ack: true });
+                                        await this.setStateAsync(`type.${trashNameClean}.color`, { val: trashType.color, ack: true });
 
                                         // Do not store objects as value
                                         if (typeof entry._section !== 'object') {
-                                            await this.setStateAsync(`type.${trashNameClean}.nextDescription`, {val: entry._section, ack: true});
+                                            await this.setStateAsync(`type.${trashNameClean}.nextDescription`, { val: entry._section, ack: true });
                                         }
 
-                                        jsonSummary.push(
-                                            {
-                                                name: trashName,
-                                                daysLeft: dayDiff,
-                                                nextDate: date.getTime(),
-                                                _description: entry._section,
-                                                _color: trashType.color
-                                            }
-                                        );
+                                        jsonSummary.push({
+                                            name: trashName,
+                                            daysLeft: dayDiff,
+                                            nextDate: date.getTime(),
+                                            _description: entry._section,
+                                            _color: trashType.color,
+                                        });
 
                                         this.log.debug(`(4) filled type: "${trashName}"`);
                                     }
@@ -508,16 +510,20 @@ class Trashschedule extends utils.Adapter {
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
                     if (!hideWarnings) {
-                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${(trashType.exactmatch ? ' (exact match)' : '')}. Check configuration of ical (increase preview) and trashschedule!`);
+                        this.log.warn(
+                            `no events matches type "${trashName}" with match "${trashType.match}"${
+                                trashType.exactmatch ? ' (exact match)' : ''
+                            }. Check configuration of ical (increase preview) and trashschedule!`,
+                        );
                     }
 
                     // reset values
-                    await this.setStateAsync(`type.${trashNameClean}.nextDate`, {val: 0, ack: true});
-                    await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, {val: '', ack: true});
-                    await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, {val: null, ack: true});
-                    await this.setStateAsync(`type.${trashNameClean}.daysLeft`, {val: null, ack: true});
-                    await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, {val: false, ack: true});
-                    await this.setStateAsync(`type.${trashNameClean}.nextDescription`, {val: '', ack: true});
+                    await this.setStateAsync(`type.${trashNameClean}.nextDate`, { val: 0, ack: true });
+                    await this.setStateAsync(`type.${trashNameClean}.nextDateFormat`, { val: '', ack: true });
+                    await this.setStateAsync(`type.${trashNameClean}.nextWeekday`, { val: null, ack: true });
+                    await this.setStateAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true });
+                    await this.setStateAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
+                    await this.setStateAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true });
                 }
             }
 
@@ -526,16 +532,15 @@ class Trashschedule extends utils.Adapter {
                 return a.daysLeft - b.daysLeft;
             });
 
-            await this.setStateAsync('type.json', {val: JSON.stringify(jsonSummary), ack: true});
-            await this.setStateAsync('type.lastRefresh', {val: new Date().getTime(), ack: true});
+            await this.setStateAsync('type.json', { val: JSON.stringify(jsonSummary), ack: true });
+            await this.setStateAsync('type.lastRefresh', { val: new Date().getTime(), ack: true });
 
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
-
         } else {
             this.log.error('no events found in ical instance - check configuration and restart instance');
 
-            await this.setStateAsync('info.connection', {val: false, ack: true});
+            await this.setStateAsync('info.connection', { val: false, ack: true });
         }
     }
 
@@ -543,25 +548,24 @@ class Trashschedule extends utils.Adapter {
         this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            await this.setStateAsync(`${statePrefix}.date`, {val: obj.minDate.getTime(), ack: true});
-            await this.setStateAsync(`${statePrefix}.dateFormat`, {val: this.formatDate(obj.minDate), ack: true});
-            await this.setStateAsync(`${statePrefix}.weekday`, {val: obj.minDate.getDay(), ack: true});
-            await this.setStateAsync(`${statePrefix}.daysLeft`, {val: obj.minDays, ack: true});
-            await this.setStateAsync(`${statePrefix}.types`, {val: obj.minTypes.join(','), ack: true});
-            await this.setStateAsync(`${statePrefix}.typesText`, {val: obj.minTypes.join(this.config.nextseparator), ack: true});
-            await this.setStateAsync(`${statePrefix}.dateFound`, {val: true, ack: true});
+            await this.setStateAsync(`${statePrefix}.date`, { val: obj.minDate.getTime(), ack: true });
+            await this.setStateAsync(`${statePrefix}.dateFormat`, { val: this.formatDate(obj.minDate), ack: true });
+            await this.setStateAsync(`${statePrefix}.weekday`, { val: obj.minDate.getDay(), ack: true });
+            await this.setStateAsync(`${statePrefix}.daysLeft`, { val: obj.minDays, ack: true });
+            await this.setStateAsync(`${statePrefix}.types`, { val: obj.minTypes.join(','), ack: true });
+            await this.setStateAsync(`${statePrefix}.typesText`, { val: obj.minTypes.join(this.config.nextseparator), ack: true });
+            await this.setStateAsync(`${statePrefix}.dateFound`, { val: true, ack: true });
         } else {
             this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of ical and trashschedule!`);
 
-            await this.setStateAsync(`${statePrefix}.date`, {val: 0, ack: true});
-            await this.setStateAsync(`${statePrefix}.dateFormat`, {val: '', ack: true});
-            await this.setStateAsync(`${statePrefix}.weekday`, {val: null, ack: true});
-            await this.setStateAsync(`${statePrefix}.daysLeft`, {val: null, ack: true});
-            await this.setStateAsync(`${statePrefix}.types`, {val: 'n/a', ack: true});
-            await this.setStateAsync(`${statePrefix}.typesText`, {val: 'n/a', ack: true});
-            await this.setStateAsync(`${statePrefix}.dateFound`, {val: false, ack: true});
+            await this.setStateAsync(`${statePrefix}.date`, { val: 0, ack: true });
+            await this.setStateAsync(`${statePrefix}.dateFormat`, { val: '', ack: true });
+            await this.setStateAsync(`${statePrefix}.weekday`, { val: null, ack: true });
+            await this.setStateAsync(`${statePrefix}.daysLeft`, { val: null, ack: true });
+            await this.setStateAsync(`${statePrefix}.types`, { val: 'n/a', ack: true });
+            await this.setStateAsync(`${statePrefix}.typesText`, { val: 'n/a', ack: true });
+            await this.setStateAsync(`${statePrefix}.dateFound`, { val: false, ack: true });
         }
-
     }
 
     onUnload(callback) {

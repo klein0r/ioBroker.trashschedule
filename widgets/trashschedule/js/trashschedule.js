@@ -56,7 +56,7 @@ $.extend(
             "it": "Mostra nome",
             "es": "Mostrar nombre",
             "pl": "Pokaż nazwę",
-            "zh-cn": "显示名称" 
+            "zh-cn": "显示名称"
         },
         "showDate": {
             "en": "Show date",
@@ -187,11 +187,11 @@ vis.binds['trashschedule'] = {
             });
         }
     },
-    toPaddedHexString: function(num, len) {
+    toPaddedHexString: function (num, len) {
         let str = num.toString(16);
         return '0'.repeat(len - str.length) + str;
     },
-    rgbToHsl: function(r, g, b) {
+    rgbToHsl: function (r, g, b) {
         r /= 255, g /= 255, b /= 255;
 
         var max = Math.max(r, g, b), min = Math.min(r, g, b);
@@ -208,13 +208,13 @@ vis.binds['trashschedule'] = {
                 case g: h = (b - r) / d + 2; break;
                 case b: h = (r - g) / d + 4; break;
             }
-            
+
             h /= 6;
         }
 
-        return [ h, s, l ];
+        return [h, s, l];
     },
-    hslToRgb: function(h, s, l) {
+    hslToRgb: function (h, s, l) {
         var r, g, b;
 
         if (s == 0) {
@@ -223,18 +223,18 @@ vis.binds['trashschedule'] = {
             function hue2rgb(p, q, t) {
                 if (t < 0) t += 1;
                 if (t > 1) t -= 1;
-                if (t < 1/6) return p + (q - p) * 6 * t;
-                if (t < 1/2) return q;
-                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                if (t < 1 / 6) return p + (q - p) * 6 * t;
+                if (t < 1 / 2) return q;
+                if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
                 return p;
             }
 
             var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
             var p = 2 * l - q;
 
-            r = hue2rgb(p, q, h + 1/3);
+            r = hue2rgb(p, q, h + 1 / 3);
             g = hue2rgb(p, q, h);
-            b = hue2rgb(p, q, h - 1/3);
+            b = hue2rgb(p, q, h - 1 / 3);
         }
 
         return [
@@ -243,7 +243,7 @@ vis.binds['trashschedule'] = {
             Math.max(0, Math.min(Math.round(b * 255), 255))
         ];
     },
-    getRgb: function(hex) {
+    getRgb: function (hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
         var r = parseInt(result[1], 16);
@@ -252,7 +252,7 @@ vis.binds['trashschedule'] = {
 
         return [r, g, b];
     },
-    getHsl: function(hex) {
+    getHsl: function (hex) {
         var result = this.getRgb(hex);
 
         var r = result[0];
@@ -261,13 +261,13 @@ vis.binds['trashschedule'] = {
 
         return this.rgbToHsl(r, g, b);
     },
-    getShiftedColor: function(hex, lightnessShift) {
+    getShiftedColor: function (hex, lightnessShift) {
         var hsl = this.getHsl(hex);
         var rgb = this.hslToRgb(hsl[0], hsl[1], hsl[2] + lightnessShift);
 
         return this.toPaddedHexString(rgb[0], 2) + this.toPaddedHexString(rgb[1], 2) + this.toPaddedHexString(rgb[2], 2);
     },
-    getBackgroundImage: function(color) {
+    getBackgroundImage: function (color) {
 
         const newColor = /^#?([a-f\d]{6})$/i.exec(color);
         let rgb = newColor[1];
@@ -330,7 +330,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function(target, json, size, limit, glow, showName, showDate, dateLocale, dateOptions) {
+    redraw: function (target, json, size, limit, glow, showName, showDate, dateLocale, dateOptions) {
 
         if (json) {
             target.empty();
@@ -340,7 +340,7 @@ vis.binds['trashschedule'] = {
                 target.css('transform', 'scale(' + (size / 100) + ')');
             }
 
-            $.each(JSON.parse(json), function(i, trashType) {
+            $.each(JSON.parse(json), function (i, trashType) {
 
                 if (limit === 0 || rendered < limit) {
                     var newItem = $('<div class="trashtype"></div>');
