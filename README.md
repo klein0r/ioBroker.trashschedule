@@ -2,14 +2,25 @@
 
 # ioBroker.trashschedule
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.trashschedule.svg)](https://www.npmjs.com/package/iobroker.trashschedule)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.trashschedule.svg)](https://www.npmjs.com/package/iobroker.trashschedule)
-[![Stable](http://iobroker.live/badges/trashschedule-stable.svg)](http://iobroker.live/badges/trashschedule-stable.svg)
-[![Installed](http://iobroker.live/badges/trashschedule-installed.svg)](http://iobroker.live/badges/trashschedule-installed.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/klein0r/ioBroker.trashschedule/badge.svg)](https://snyk.io/test/github/klein0r/ioBroker.trashschedule)
-![Test and Release](https://github.com/klein0r/ioBroker.trashschedule/workflows/Test%20and%20Release/badge.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.trashschedule?style=flat-square)](https://www.npmjs.com/package/iobroker.trashschedule)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.trashschedule?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/iobroker.trashschedule)
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/iobroker.trashschedule?label=npm%20vulnerabilities&style=flat-square)
+![node-lts](https://img.shields.io/node/v-lts/iobroker.trashschedule?style=flat-square)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/iobroker.trashschedule?label=npm%20dependencies&style=flat-square)
 
-[![NPM](https://nodei.co/npm/iobroker.trashschedule.png?downloads=true)](https://nodei.co/npm/iobroker.trashschedule/)
+![GitHub](https://img.shields.io/github/license/klein0r/iobroker.trashschedule?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/klein0r/iobroker.trashschedule/Test%20and%20Release?label=Test%20and%20Release&logo=github&style=flat-square)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/klein0r/iobroker.trashschedule?label=repo%20vulnerabilities&logo=github&style=flat-square)
+
+## Versions
+
+![Beta](https://img.shields.io/npm/v/iobroker.trashschedule.svg?color=red&label=beta)
+![Stable](http://iobroker.live/badges/trashschedule-stable.svg)
+![Installed](http://iobroker.live/badges/trashschedule-installed.svg)
 
 Scans an ical calendar to calculate the days left until next trash pickup
 
