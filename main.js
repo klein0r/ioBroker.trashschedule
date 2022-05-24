@@ -435,8 +435,7 @@ class Trashschedule extends utils.Adapter {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
                     this.log.debug(
-                        `(2) processing: "${entry.event
-                        }" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} (${dateNow.getTime()}) // skipsamedayathour (config): ${skipsamedayathour}`,
+                        `(2) processing: "${entry.event}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} // skipsamedayathour (config): ${skipsamedayathour}`,
                     );
 
                     // Check if event matches trash type and fill information
@@ -556,7 +555,7 @@ class Trashschedule extends utils.Adapter {
 
             await this.setStateChangedAsync(`${statePrefix}.dateFound`, { val: true, ack: true });
         } else {
-            this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of ical and trashschedule!`);
+            this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of ical (increase preview) and trashschedule!`);
 
             await this.setStateChangedAsync(`${statePrefix}.date`, { val: 0, ack: true, q: 0x02 });
             await this.setStateChangedAsync(`${statePrefix}.dateFormat`, { val: '', ack: true, q: 0x02 });
