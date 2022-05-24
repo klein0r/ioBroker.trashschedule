@@ -45,6 +45,11 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added ical instance as comment for states
+* (klein0r) Just update states if value changed
+
 ### 2.0.0 (2022-05-04)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
