@@ -508,10 +508,7 @@ class Trashschedule extends utils.Adapter {
 
                 if (!filledTypes.includes(trashName) && !!trashType.match) {
                     if (!hideWarnings) {
-                        this.log.warn(
-                            `no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''
-                            }. Check configuration of ical (increase preview) and trashschedule!`,
-                        );
+                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
                     }
 
                     // reset values
