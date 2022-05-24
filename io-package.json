@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "news": {
+      "2.0.1": {
+        "en": "Added ical instance as comment for states\nJust update states if value changed",
+        "de": "ical-Instanz als Kommentar für Zustände hinzugefügt\nAktualisieren Sie einfach die Zustände, wenn sich der Wert geändert hat",
+        "ru": "Добавлен ical экземпляр в качестве комментария для состояний\nПросто обновите состояния, если значение изменилось",
+        "pt": "Instância ical adicionada como comentário para estados\nApenas atualize os estados se o valor for alterado",
+        "nl": "ical instantie toegevoegd als commentaar voor staten\nWerk de statussen gewoon bij als de waarde is gewijzigd",
+        "fr": "Ajout d'une instance ical en tant que commentaire pour les états\nMettez simplement à jour les états si la valeur a changé",
+        "it": "Aggiunta istanza ical come commento per gli stati\nBasta aggiornare gli stati se il valore è cambiato",
+        "es": "Instancia ical agregada como comentario para estados\nSolo actualice los estados si el valor cambió",
+        "pl": "Dodano instancję ical jako komentarz dla stanów\nPo prostu zaktualizuj stany, jeśli wartość się zmieniła",
+        "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态"
+      },
       "2.0.0": {
         "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added timestamp of last and next refresh\n* Added icon to channels and fixed color\n* Added default trash types for new installations\n* Updated dependency for ical to 1.12.1\n* Updated depedency for js-controller to 4.0.15",
         "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Zeitstempel der letzten und nächsten Aktualisierung hinzugefügt\n* Symbol zu Kanälen und feste Farbe hinzugefügt\n* Standard-Papierkorbtypen für neue Installationen hinzugefügt\n* Aktualisierte Abhängigkeit für ical auf 1.12.1\n* Abhängigkeit für js-controller auf 4.0.15 aktualisiert",
@@ -74,18 +86,6 @@
         "es": "Dependencias actualizadas",
         "pl": "Zaktualizowane zależności",
         "zh-cn": "更新的依赖项"
-      },
-      "1.4.0": {
-        "en": "Allow to hide \"not found\" warnings for single trash types (like christmas tree pickup)\nAdded limit option for VIS widget\nAdded option for VIS widget to hide the name",
-        "de": "Erlauben Sie, \"nicht gefunden\"-Warnungen für einzelne Müllarten auszublenden (wie die Abholung von Weihnachtsbaum)\nLimit-Option für VIS-Widget hinzugefügt\nOption für VIS-Widget hinzugefügt, um den Namen zu verbergen",
-        "ru": "Разрешить скрывать предупреждения \"не найдено\" для отдельных типов мусора (например, при вывозе елки)\nДобавлена опция ограничения для виджета VIS\nДобавлена возможность для виджета VIS скрыть имя",
-        "pt": "Permitir ocultar avisos de \"não encontrado\" para tipos de lixo único (como coleta de árvore de natal)\nAdicionada opção de limite para widget VIS\nAdicionada opção para o widget VIS para ocultar o nome",
-        "nl": "Sta toe om \"niet gevonden\"-waarschuwingen te verbergen voor afzonderlijke soorten afval (zoals het ophalen van de kerstboom)\nLimietoptie toegevoegd voor VIS-widget\nOptie toegevoegd voor VIS-widget om de naam te verbergen",
-        "fr": "Permet de masquer les avertissements « introuvable » pour les types de déchets uniques (comme le ramassage du sapin de Noël)\nAjout d'une option de limite pour le widget VIS\nAjout d'une option pour le widget VIS pour masquer le nom",
-        "it": "Consenti di nascondere gli avvisi \"non trovato\" per i singoli tipi di rifiuti (come il ritiro dell'albero di Natale)\nAggiunta opzione limite per widget VIS\nAggiunta l'opzione per il widget VIS per nascondere il nome",
-        "es": "Permitir ocultar las advertencias de \"no encontrado\" para tipos de basura individuales (como la recolección del árbol de Navidad)\nOpción de límite agregada para el widget VIS\nOpción agregada para el widget VIS para ocultar el nombre",
-        "pl": "Zezwalaj na ukrywanie ostrzeżeń „nie znaleziono” dla pojedynczych typów śmieci (takich jak zbieranie choinek)\nDodano opcję limitu dla widżetu VIS\nDodano opcję dla widżetu VIS, aby ukryć nazwę",
-        "zh-cn": "允许隐藏单个垃圾类型的“未找到”警告（如圣诞树捡拾）\n为 VIS 小部件添加了限制选项\n为 VIS 小部件添加了隐藏名称的选项"
       }
     },
     "titleLang": {

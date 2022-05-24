@@ -56,7 +56,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.1 (2022-05-24)
 
 * (klein0r) Added ical instance as comment for states
 * (klein0r) Just update states if value changed
@@ -83,10 +83,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Updated state roles
 * (klein0r) Added hint for Admin 4 configuration
-
-### 1.4.2 (2022-02-07)
-
-* (klein0r) Added check for ical configuration
 
 ## License
 

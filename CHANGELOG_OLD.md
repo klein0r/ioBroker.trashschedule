@@ -1,4 +1,8 @@
 # Older changes
+## 1.4.2 (2022-02-07)
+
+* (klein0r) Added check for ical configuration
+
 ## 1.4.1 (2021-12-23)
 
 * (klein0r) Updated dependencies
