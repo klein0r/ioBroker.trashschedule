@@ -37,6 +37,7 @@ class Trashschedule extends utils.Adapter {
 
                     // Check if the state is a direct child (e.g. type.YourTrashType)
                     if (id.split('.').length === 2) {
+                        this.log.debug(`found existing trash type with ID "${id}"`);
                         typesAll.push(id);
                     }
                 }
@@ -53,8 +54,9 @@ class Trashschedule extends utils.Adapter {
                 const trashNameClean = this.cleanNamespace(trashName);
 
                 if (trashNameClean && !!trashType.match) {
-                    this.log.debug(`configured trash type found: "${trashName}"`);
                     typesKeep.push(`type.${trashNameClean}`);
+
+                    this.log.debug(`found configured trash type: "${trashName}" with ID "type.${trashNameClean}"`);
 
                     if (trashType.match != trashType.match.trim()) {
                         this.log.info(
@@ -254,8 +256,8 @@ class Trashschedule extends utils.Adapter {
             const id = typesAll[i];
 
             if (typesKeep.indexOf(id) === -1) {
+                this.log.debug(`deleting existing but unconfigured trash type with ID "${id}"`);
                 await this.delObjectAsync(id, { recursive: true });
-                this.log.debug(`trash type deleted: "${id}"`);
             }
         }
 
