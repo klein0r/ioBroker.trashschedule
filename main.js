@@ -506,21 +506,24 @@ class Trashschedule extends utils.Adapter {
                 const trashType = trashTypesConfig[t];
                 const trashName = trashType.name.trim();
                 const trashNameClean = this.cleanNamespace(trashName);
-                const hideWarnings = trashType.hidewarnings || false;
 
-                if (!filledTypes.includes(trashName) && !!trashType.match) {
-                    if (!hideWarnings) {
-                        this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
+                if (trashNameClean && !!trashType.match) {
+                    const hideWarnings = trashType.hidewarnings || false;
+
+                    if (!filledTypes.includes(trashName)) {
+                        if (!hideWarnings) {
+                            this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
+                        }
+
+                        // reset values
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: 0, ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: '', ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: null, ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
+
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
                     }
-
-                    // reset values
-                    await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: 0, ack: true, q: 0x02 });
-                    await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: '', ack: true, q: 0x02 });
-                    await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: null, ack: true, q: 0x02 });
-                    await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
-                    await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
-
-                    await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
                 }
             }
 

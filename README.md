@@ -56,6 +56,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Fixed error handling for trash types with empty name
+
 ### 2.0.1 (2022-05-24)
 
 * (klein0r) Added ical instance as comment for states
