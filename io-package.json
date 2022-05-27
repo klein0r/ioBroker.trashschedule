@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "news": {
+      "2.0.2": {
+        "en": "Fixed error handling for trash types with empty name",
+        "de": "Fehlerbehandlung für Papierkorbtypen mit leerem Namen behoben",
+        "ru": "Исправлена обработка ошибок для типов корзины с пустым именем.",
+        "pt": "Corrigido o tratamento de erros para tipos de lixo com nome vazio",
+        "nl": "Vaste foutafhandeling voor prullenbaktypen met lege naam",
+        "fr": "Correction de la gestion des erreurs pour les types de corbeille avec un nom vide",
+        "it": "Risolto il problema con la gestione degli errori per i tipi di cestino con nome vuoto",
+        "es": "Se corrigió el manejo de errores para tipos de basura con nombre vacío.",
+        "pl": "Naprawiono obsługę błędów dla typów śmieci z pustą nazwą",
+        "zh-cn": "修复了对具有空名称的垃圾类型的错误处理"
+      },
       "2.0.1": {
         "en": "Added ical instance as comment for states\nJust update states if value changed",
         "de": "ical-Instanz als Kommentar für Zustände hinzugefügt\nAktualisieren Sie einfach die Zustände, wenn sich der Wert geändert hat",
@@ -74,18 +86,6 @@
         "es": "Verificación agregada para la configuración ical",
         "pl": "Dodano sprawdzanie konfiguracji ical",
         "zh-cn": "添加了对 ical 配置的检查"
-      },
-      "1.4.1": {
-        "en": "Updated dependencies",
-        "de": "Aktualisierte Abhängigkeiten",
-        "ru": "Обновленные зависимости",
-        "pt": "Dependências atualizadas",
-        "nl": "Bijgewerkte afhankelijkheden",
-        "fr": "Dépendances mises à jour",
-        "it": "Dipendenze aggiornate",
-        "es": "Dependencias actualizadas",
-        "pl": "Zaktualizowane zależności",
-        "zh-cn": "更新的依赖项"
       }
     },
     "titleLang": {

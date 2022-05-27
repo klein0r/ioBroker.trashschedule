@@ -1,4 +1,9 @@
 # Older changes
+## 1.4.3 (2022-02-21)
+
+* (klein0r) Updated state roles
+* (klein0r) Added hint for Admin 4 configuration
+
 ## 1.4.2 (2022-02-07)
 
 * (klein0r) Added check for ical configuration

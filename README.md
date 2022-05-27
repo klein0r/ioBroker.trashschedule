@@ -56,7 +56,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.2 (2022-05-27)
 
 * (klein0r) Fixed error handling for trash types with empty name
 
@@ -82,11 +82,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 ### 1.4.4 (2022-03-14)
 
 * (klein0r) Updated dependencies
-
-### 1.4.3 (2022-02-21)
-
-* (klein0r) Updated state roles
-* (klein0r) Added hint for Admin 4 configuration
 
 ## License
 
