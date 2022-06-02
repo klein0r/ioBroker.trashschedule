@@ -56,7 +56,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.3 (2022-06-02)
 
 * (klein0r) Allow whitespaces in the match pattern
 
@@ -82,10 +82,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 ### 1.4.5 (2022-03-21)
 
 * (klein0r) Allow spaces in next text seperator
-
-### 1.4.4 (2022-03-14)
-
-* (klein0r) Updated dependencies
 
 ## License
 

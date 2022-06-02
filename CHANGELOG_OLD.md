@@ -1,4 +1,8 @@
 # Older changes
+## 1.4.4 (2022-03-14)
+
+* (klein0r) Updated dependencies
+
 ## 1.4.3 (2022-02-21)
 
 * (klein0r) Updated state roles

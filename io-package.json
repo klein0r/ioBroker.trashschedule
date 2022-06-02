@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "news": {
+      "2.0.3": {
+        "en": "Allow whitespaces in the match pattern",
+        "de": "Leerzeichen im Übereinstimmungsmuster zulassen",
+        "ru": "Разрешить пробелы в шаблоне соответствия",
+        "pt": "Permitir espaços em branco no padrão de correspondência",
+        "nl": "Spaties in het overeenkomstpatroon toestaan",
+        "fr": "Autoriser les espaces blancs dans le modèle de correspondance",
+        "it": "Consenti spazi bianchi nel modello di corrispondenza",
+        "es": "Permitir espacios en blanco en el patrón de coincidencia",
+        "pl": "Zezwalaj na białe znaki we wzorcu dopasowania",
+        "zh-cn": "在匹配模式中允许空格"
+      },
       "2.0.2": {
         "en": "Fixed error handling for trash types with empty name",
         "de": "Fehlerbehandlung für Papierkorbtypen mit leerem Namen behoben",
@@ -74,18 +86,6 @@
         "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
         "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
         "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
-      },
-      "1.4.2": {
-        "en": "Added check for ical configuration",
-        "de": "Prüfung auf ical-Konfiguration hinzugefügt",
-        "ru": "Добавлена проверка ical конфигурации",
-        "pt": "Verificação adicionada para configuração ical",
-        "nl": "Controle toegevoegd voor ical configuratie",
-        "fr": "Ajout de la vérification de la configuration ical",
-        "it": "Aggiunto controllo per la configurazione ical",
-        "es": "Verificación agregada para la configuración ical",
-        "pl": "Dodano sprawdzanie konfiguracji ical",
-        "zh-cn": "添加了对 ical 配置的检查"
       }
     },
     "titleLang": {
