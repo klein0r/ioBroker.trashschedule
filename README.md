@@ -56,6 +56,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Allow whitespaces in the match pattern
+
 ### 2.0.2 (2022-05-27)
 
 * (klein0r) Fixed error handling for trash types with empty name
