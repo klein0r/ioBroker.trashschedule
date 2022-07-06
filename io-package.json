@@ -139,12 +139,12 @@
     },
     "docs": {
       "en": [
-        "docs/en/basics.md",
+        "docs/en/README.md",
         "docs/en/blockly.md",
         "docs/en/faq.md"
       ],
       "de": [
-        "docs/de/basics.md",
+        "docs/de/README.md",
         "docs/de/blockly.md",
         "docs/de/faq.md"
       ]
