@@ -335,6 +335,10 @@ class Trashschedule extends utils.Adapter {
         }, nexTimeoutMilli);
     }
 
+    /**
+     * @param {string} id
+     * @param {ioBroker.State | null | undefined} state
+     */
     onStateChange(id, state) {
         if (id && state && id == this.config.ical + '.data.table') {
             this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
@@ -570,6 +574,9 @@ class Trashschedule extends utils.Adapter {
         }
     }
 
+    /**
+     * @param {() => void} callback
+     */
     onUnload(callback) {
         try {
             this.log.info('cleaned everything up...');
