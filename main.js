@@ -33,12 +33,12 @@ class Trashschedule extends utils.Adapter {
             // Collect all existing types
             if (typeChannels) {
                 for (let i = 0; i < typeChannels.length; i++) {
-                    const id = this.removeNamespace(typeChannels[i]._id);
+                    const idNoNamespace = this.removeNamespace(typeChannels[i]._id);
 
                     // Check if the state is a direct child (e.g. type.YourTrashType)
-                    if (id.split('.').length === 2) {
-                        this.log.debug(`found existing trash type with ID "${id}"`);
-                        typesAll.push(id);
+                    if (idNoNamespace.split('.').length === 2) {
+                        this.log.debug(`found existing trash type with ID "${idNoNamespace}"`);
+                        typesAll.push(idNoNamespace);
                     }
                 }
             }
@@ -262,7 +262,7 @@ class Trashschedule extends utils.Adapter {
         }
 
         if (iCalInstance) {
-            this.subscribeForeignStates(`${iCalInstance}.data.table`);
+            await this.subscribeForeignStatesAsync(`${iCalInstance}.data.table`);
 
             try {
                 // Check ical configuration
@@ -300,7 +300,7 @@ class Trashschedule extends utils.Adapter {
             this.refreshEverything();
         } else {
             this.log.error(`no ical instance configured. Check instance configuration and retry.`);
-            this.setStateAsync('info.connection', { val: false, ack: true });
+            await this.setStateAsync('info.connection', { val: false, ack: true });
         }
     }
 
