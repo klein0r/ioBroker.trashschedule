@@ -56,6 +56,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Dropped Admin 5 support
+
 ### 2.0.3 (2022-06-02)
 
 * (klein0r) Allow whitespaces in the match pattern
