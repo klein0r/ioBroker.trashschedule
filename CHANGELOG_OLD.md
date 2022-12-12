@@ -1,4 +1,8 @@
 # Older changes
+## 1.4.5 (2022-03-21)
+
+* (klein0r) Allow spaces in next text seperator
+
 ## 1.4.4 (2022-03-14)
 
 * (klein0r) Updated dependencies

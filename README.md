@@ -56,7 +56,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.1.0 (2022-12-12)
 
 * (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
@@ -83,10 +83,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 * (klein0r) Added default trash types for new installations
 * (klein0r) Updated dependency for ical to 1.12.1
 * (klein0r) Updated depedency for js-controller to 4.0.15
-
-### 1.4.5 (2022-03-21)
-
-* (klein0r) Allow spaces in next text seperator
 
 ## License
 
