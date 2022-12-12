@@ -22,7 +22,7 @@
     "url": "git+https://github.com/klein0r/ioBroker.trashschedule.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.5.0"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.7"
@@ -72,7 +72,8 @@
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint --ext .js,.jsx",
     "translate": "translate-adapter",
-    "release": "release-script patch --yes",
+    "release": "release-script",
+    "release-patch": "release-script patch --yes",
     "release-minor": "release-script minor --yes",
     "release-major": "release-script major --yes"
   },
