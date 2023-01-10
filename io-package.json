@@ -26,8 +26,8 @@
         "it": "Consenti spazi bianchi nel modello di corrispondenza",
         "es": "Permitir espacios en blanco en el patrón de coincidencia",
         "pl": "Zezwalaj na białe znaki we wzorcu dopasowania",
-        "zh-cn": "在匹配模式中允许空格",
-        "uk": "Дозволити пробіли в шаблоні відповідності"
+        "uk": "Дозволити пробіли в шаблоні відповідності",
+        "zh-cn": "在匹配模式中允许空格"
       },
       "2.0.2": {
         "en": "Fixed error handling for trash types with empty name",
@@ -39,8 +39,8 @@
         "it": "Risolto il problema con la gestione degli errori per i tipi di cestino con nome vuoto",
         "es": "Se corrigió el manejo de errores para tipos de basura con nombre vacío.",
         "pl": "Naprawiono obsługę błędów dla typów śmieci z pustą nazwą",
-        "zh-cn": "修复了对具有空名称的垃圾类型的错误处理",
-        "uk": "Виправлено обробку помилок для типів сміття з порожньою назвою"
+        "uk": "Виправлено обробку помилок для типів сміття з порожньою назвою",
+        "zh-cn": "修复了对具有空名称的垃圾类型的错误处理"
       },
       "2.0.1": {
         "en": "Added ical instance as comment for states\nJust update states if value changed",
@@ -52,8 +52,8 @@
         "it": "Aggiunta istanza ical come commento per gli stati\nBasta aggiornare gli stati se il valore è cambiato",
         "es": "Instancia ical agregada como comentario para estados\nSolo actualice los estados si el valor cambió",
         "pl": "Dodano instancję ical jako komentarz dla stanów\nPo prostu zaktualizuj stany, jeśli wartość się zmieniła",
-        "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态",
-        "uk": "Додано ical екземпляр як коментар для станів\nПросто оновіть стани, якщо значення змінилося"
+        "uk": "Додано ical екземпляр як коментар для станів\nПросто оновіть стани, якщо значення змінилося",
+        "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态"
       },
       "2.0.0": {
         "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added timestamp of last and next refresh\n* Added icon to channels and fixed color\n* Added default trash types for new installations\n* Updated dependency for ical to 1.12.1\n* Updated depedency for js-controller to 4.0.15",
@@ -65,8 +65,8 @@
         "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Aggiunto timestamp dell'ultimo e del prossimo aggiornamento\n* Aggiunta icona ai canali e colore fisso\n* Aggiunti tipi di cestino predefiniti per le nuove installazioni\n* Aggiornata la dipendenza per ical a 1.12.1\n* Aggiornata la dipendenza per js-controller a 4.0.15",
         "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Marca de tiempo agregada de la última y próxima actualización\n* Icono agregado a los canales y color fijo\n* Se agregaron tipos de basura predeterminados para nuevas instalaciones\n* Dependencia actualizada para ical a 1.12.1\n* Dependencia actualizada para js-controller a 4.0.15",
         "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano znacznik czasu ostatniego i następnego odświeżenia\n* Dodano ikonę do kanałów i stały kolor\n* Dodano domyślne typy kosza dla nowych instalacji\n* Zaktualizowano zależność dla ical do 1.12.1\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано позначку часу останнього та наступного оновлення\n* Додано значок до каналів і фіксований колір\n* Додано стандартні типи кошика для нових установок\n* Оновлено залежність для ical до 1.12.1\n* Оновлено залежності для js-контролера до 4.0.15"
+        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано позначку часу останнього та наступного оновлення\n* Додано значок до каналів і фіксований колір\n* Додано стандартні типи кошика для нових установок\n* Оновлено залежність для ical до 1.12.1\n* Оновлено залежності для js-контролера до 4.0.15",
+        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15"
       },
       "1.4.5": {
         "en": "Allow spaces in next text seperator",
@@ -78,8 +78,8 @@
         "it": "Consenti spazi nel separatore di testo successivo",
         "es": "Permitir espacios en el siguiente separador de texto",
         "pl": "Zezwalaj na spacje w następnym separatorze tekstu",
-        "zh-cn": "在下一个文本分隔符中允许空格",
-        "uk": "Дозволити пробіли в наступному текстовому розділювачі"
+        "uk": "Дозволити пробіли в наступному текстовому розділювачі",
+        "zh-cn": "在下一个文本分隔符中允许空格"
       },
       "1.4.4": {
         "en": "Updated dependencies",
@@ -91,8 +91,8 @@
         "it": "Dipendenze aggiornate",
         "es": "Dependencias actualizadas",
         "pl": "Zaktualizowane zależności",
-        "zh-cn": "更新的依赖项",
-        "uk": "Оновлені залежності"
+        "uk": "Оновлені залежності",
+        "zh-cn": "更新的依赖项"
       }
     },
     "titleLang": {
@@ -105,8 +105,8 @@
       "it": "Programma del cestino",
       "es": "Horario de basura",
       "pl": "Harmonogram śmieci",
-      "zh-cn": "垃圾分类",
-      "uk": "Розклад сміття"
+      "uk": "Розклад сміття",
+      "zh-cn": "垃圾分类"
     },
     "desc": {
       "en": "Calculates the days until next trash pickup",
@@ -118,8 +118,8 @@
       "it": "Calcola i giorni fino al prossimo ritiro della spazzatura",
       "es": "Calcula los días hasta la próxima recolección de basura",
       "pl": "Oblicza dni do następnego odbioru śmieci",
-      "zh-cn": "计算距离下一次垃圾回收的天数",
-      "uk": "Розраховує дні до наступного вивезення сміття"
+      "uk": "Розраховує дні до наступного вивезення сміття",
+      "zh-cn": "计算距离下一次垃圾回收的天数"
     },
     "authors": [
       "Matthias Kleine <info@haus-automatisierung.com>"
@@ -236,6 +236,7 @@
           "it": "Informazione",
           "es": "Información",
           "pl": "Informacja",
+          "uk": "Інформація",
           "zh-cn": "信息"
         }
       },
@@ -255,6 +256,7 @@
           "it": "Collegato all'istanza ical",
           "es": "Conectado a instancia ical",
           "pl": "Połączony z instancją ic",
+          "uk": "Підключається до ical екземпляра",
           "zh-cn": "连接到ical实例"
         },
         "type": "boolean",
@@ -279,6 +281,7 @@
           "it": "Tipo",
           "es": "Escribe",
           "pl": "Rodzaj",
+          "uk": "Тип",
           "zh-cn": "类型"
         }
       },
@@ -298,6 +301,7 @@
           "it": "Digita come JSON",
           "es": "Tipos como JSON",
           "pl": "Typy jako JSON",
+          "uk": "Типи як JSON",
           "zh-cn": "类型为 JSON"
         },
         "type": "string",
@@ -321,6 +325,7 @@
           "it": "Ultimo aggiornamento",
           "es": "última actualización",
           "pl": "Ostatnie odświeżenie",
+          "uk": "Останнє оновлення",
           "zh-cn": "上次刷新"
         },
         "type": "number",
@@ -344,6 +349,7 @@
           "it": "Prossimo aggiornamento",
           "es": "Siguiente actualización",
           "pl": "Następne odświeżenie",
+          "uk": "Головна",
           "zh-cn": "下次刷新"
         },
         "type": "number",
@@ -367,6 +373,7 @@
           "it": "Prossimo ritiro",
           "es": "Próxima recogida",
           "pl": "Następny odbiór",
+          "uk": "Далі пікап",
           "zh-cn": "下次取件"
         }
       },
@@ -386,6 +393,7 @@
           "it": "Prossimo ritiro - tipi",
           "es": "Próxima recogida - tipos",
           "pl": "Następny odbiór - rodzaje",
+          "uk": "Наступний пікап - види",
           "zh-cn": "下次取件 - 类型"
         },
         "type": "string",
@@ -409,6 +417,7 @@
           "it": "Prossimo ritiro - come testo",
           "es": "Próxima recogida: como texto",
           "pl": "Następny odbiór - jako tekst",
+          "uk": "Наступний пікап - як текст",
           "zh-cn": "下次取件 - 作为文本"
         },
         "type": "string",
@@ -432,6 +441,7 @@
           "it": "Prossimo ritiro - giorni rimasti",
           "es": "Próxima recogida: quedan días",
           "pl": "Następny odbiór – pozostały dni",
+          "uk": "Наступний пікап - дні зліва",
           "zh-cn": "下次取件 - 剩余天数"
         },
         "type": "number",
@@ -456,6 +466,7 @@
           "it": "Prossimo ritiro - data",
           "es": "Próxima recogida: fecha",
           "pl": "Następny odbiór — data",
+          "uk": "Наступний пікап - дата",
           "zh-cn": "下次取件 - 日期"
         },
         "type": "number",
@@ -479,6 +490,7 @@
           "it": "Prossimo ritiro - data formattata",
           "es": "Próxima recogida: fecha formateada",
           "pl": "Następny odbiór — sformatowana data",
+          "uk": "Наступний пікап - дата форматування",
           "zh-cn": "下次取件 - 日期格式化"
         },
         "type": "string",
@@ -502,6 +514,7 @@
           "it": "Prossimo ritiro - giorno della settimana",
           "es": "Próxima recogida: día laborable",
           "pl": "Następny odbiór – dzień powszedni",
+          "uk": "Наступний пікап - тиждень",
           "zh-cn": "下次取件 - 工作日"
         },
         "type": "number",
@@ -525,6 +538,7 @@
           "it": "Prossimo ritiro - evento trovato",
           "es": "Próxima recogida: evento encontrado",
           "pl": "Następny odbiór — znalezione wydarzenie",
+          "uk": "Наступний пікап - знайдений захід",
           "zh-cn": "下一个取件 - 找到事件"
         },
         "type": "boolean",
@@ -548,6 +562,7 @@
           "it": "Dopo il prossimo ritiro",
           "es": "Después de la próxima recogida",
           "pl": "Po następnym odbiorze",
+          "uk": "Після наступного пікапу",
           "zh-cn": "下次取件后"
         }
       },
@@ -567,6 +582,7 @@
           "it": "Dopo il prossimo ritiro - tipi",
           "es": "Después de la próxima recogida: tipos",
           "pl": "Po kolejnym odbiorze - rodzaje",
+          "uk": "Після наступного пікапу - види",
           "zh-cn": "下次取件后 - 类型"
         },
         "type": "string",
@@ -590,6 +606,7 @@
           "it": "Dopo il prossimo ritiro - come testo",
           "es": "Después de la próxima recogida: como texto",
           "pl": "Po kolejnym odbiorze - jako tekst",
+          "uk": "Після наступного пікапу - як текст",
           "zh-cn": "下次取件后 - 作为文本"
         },
         "type": "string",
@@ -613,6 +630,7 @@
           "it": "Dopo il prossimo ritiro - giorni rimasti",
           "es": "Después de la próxima recogida: quedan días",
           "pl": "Po kolejnym odbiorze - pozostały dni",
+          "uk": "Після наступного пікапу - дні зліва",
           "zh-cn": "下次取件后 - 剩余天数"
         },
         "type": "number",
@@ -637,6 +655,7 @@
           "it": "Dopo il prossimo ritiro - data",
           "es": "Después de la próxima recogida: fecha",
           "pl": "Po kolejnym odbiorze - data",
+          "uk": "Після наступного пікапу - дата",
           "zh-cn": "下次取件后 - 日期"
         },
         "type": "number",
@@ -660,6 +679,7 @@
           "it": "Dopo il prossimo ritiro - data formattata",
           "es": "Después de la próxima recolección: fecha formateada",
           "pl": "Po następnym odbiorze - data sformatowana",
+          "uk": "Після наступного пікапу - дата форматування",
           "zh-cn": "下次取件后 - 日期格式化"
         },
         "type": "string",
@@ -683,6 +703,7 @@
           "it": "Dopo il prossimo ritiro - giorno della settimana",
           "es": "Después de la próxima recogida: día laborable",
           "pl": "Po następnym odbiorze - dzień powszedni",
+          "uk": "Після наступного пікапу - вихідний день",
           "zh-cn": "下次取件后 - 工作日"
         },
         "type": "number",
@@ -706,6 +727,7 @@
           "it": "Dopo il prossimo ritiro - evento trovato",
           "es": "Después de la siguiente recogida: evento encontrado",
           "pl": "Po kolejnym odbiorze - znalezione wydarzenie",
+          "uk": "Після наступного пікапу - знайшли захід",
           "zh-cn": "下次取件后 - 找到事件"
         },
         "type": "boolean",

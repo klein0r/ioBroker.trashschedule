@@ -69,15 +69,16 @@
                             "attr": "name",
                             "width": "35%",
                             "title": {
-                                "en": "name",
+                                "en": "Name",
                                 "de": "Name",
-                                "ru": "имя",
-                                "pt": "nome",
-                                "nl": "naam",
+                                "ru": "Имя",
+                                "pt": "Nome",
+                                "nl": "Naam",
                                 "fr": "Nom",
-                                "it": "nome",
-                                "es": "nombre",
+                                "it": "Nome",
+                                "es": "Nombre",
                                 "pl": "Nazwa",
+                                "uk": "Ім'я",
                                 "zh-cn": "姓名"
                             },
                             "filter": true,
@@ -99,6 +100,7 @@
                                 "it": "Si applica agli appuntamenti",
                                 "es": "Se aplica a citas",
                                 "pl": "Dotyczy spotkań",
+                                "uk": "Додаток до призначень",
                                 "zh-cn": "适用于约会"
                             },
                             "filter": false,
@@ -119,6 +121,7 @@
                                 "it": "Corrispondenza esatta",
                                 "es": "Coincidencia exacta",
                                 "pl": "Dokładne dopasowanie",
+                                "uk": "Точний матч",
                                 "zh-cn": "完全符合"
                             },
                             "filter": false,
@@ -139,6 +142,7 @@
                                 "it": "Nascondi avvisi",
                                 "es": "Ocultar advertencias",
                                 "pl": "Ukryj ostrzeżenia",
+                                "uk": "Приховати попередження",
                                 "zh-cn": "隐藏警告"
                             },
                             "filter": false,
@@ -159,6 +163,7 @@
                                 "it": "Colore",
                                 "es": "Color",
                                 "pl": "Kolor",
+                                "uk": "Колір",
                                 "zh-cn": "颜色"
                             },
                             "filter": false,

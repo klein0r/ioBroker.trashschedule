@@ -20,6 +20,7 @@ $.extend(
             "it": "Dimensione",
             "es": "Talla",
             "pl": "Rozmiar",
+            "uk": "Розмір",
             "zh-cn": "尺寸"
         },
         "limit": {
@@ -32,6 +33,7 @@ $.extend(
             "it": "Limite",
             "es": "Límite",
             "pl": "Limit",
+            "uk": "Ліміт",
             "zh-cn": "限制"
         },
         "glow": {
@@ -44,6 +46,7 @@ $.extend(
             "it": "Bagliore quando dovuto",
             "es": "Resplandece cuando es debido",
             "pl": "Świeci się, gdy należy",
+            "uk": "Пожовтий, коли",
             "zh-cn": "到期时发光"
         },
         "showName": {
@@ -56,6 +59,7 @@ $.extend(
             "it": "Mostra nome",
             "es": "Mostrar nombre",
             "pl": "Pokaż nazwę",
+            "uk": "Ім'я",
             "zh-cn": "显示名称"
         },
         "showDate": {
@@ -68,6 +72,7 @@ $.extend(
             "it": "Mostra data",
             "es": "Mostrar fecha",
             "pl": "Pokaż datę",
+            "uk": "Дата завантаження",
             "zh-cn": "显示日期"
         },
         "dateLocale": {
@@ -80,6 +85,7 @@ $.extend(
             "it": "Data locale",
             "es": "Configuración regional de la fecha",
             "pl": "Lokalizacja daty",
+            "uk": "Дата місцевих",
             "zh-cn": "日期语言环境"
         },
         "de-DE": {
@@ -92,6 +98,7 @@ $.extend(
             "it": "Tedesco",
             "es": "alemán",
             "pl": "Niemiecki",
+            "uk": "Німецька",
             "zh-cn": "德语"
         },
         "dateWeekday": {
@@ -104,19 +111,21 @@ $.extend(
             "it": "giorno della settimana",
             "es": "Día laborable",
             "pl": "Dzień powszedni",
+            "uk": "День народження",
             "zh-cn": "工作日"
         },
         "hide": {
-            "en": "hide",
-            "de": "ausblenden",
-            "ru": "скрывать",
-            "pt": "ocultar",
-            "nl": "zich verstoppen",
-            "fr": "cacher",
-            "it": "nascondere",
-            "es": "esconder",
-            "pl": "ukryć",
-            "zh-cn": "隐藏"
+            "en": "Hide",
+            "de": "Hirse",
+            "ru": "Скрыть",
+            "pt": "Esconde-te",
+            "nl": "Verberg je",
+            "fr": "C'est ça",
+            "it": "Nascondi",
+            "es": "Escóndete",
+            "pl": "Hide",
+            "uk": "Приват",
+            "zh-cn": "导 言"
         },
         "long": {
             "en": "long",
@@ -128,6 +137,7 @@ $.extend(
             "it": "lungo",
             "es": "largo",
             "pl": "długie",
+            "uk": "довгий",
             "zh-cn": "长"
         },
         "short": {
@@ -140,6 +150,7 @@ $.extend(
             "it": "corto",
             "es": "corto",
             "pl": "krótki",
+            "uk": "короткий",
             "zh-cn": "短"
         }
     }

@@ -56,6 +56,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added Ukrainian language
+
 ### 2.1.0 (2022-12-12)
 
 * (klein0r) Dropped Admin 5 support
