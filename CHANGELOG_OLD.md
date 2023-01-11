@@ -1,4 +1,14 @@
 # Older changes
+## 2.0.0 (2022-05-04)
+
+NodeJS 14.x is required (NodeJS 12.x is EOL)
+
+* (klein0r) Added timestamp of last and next refresh
+* (klein0r) Added icon to channels and fixed color
+* (klein0r) Added default trash types for new installations
+* (klein0r) Updated dependency for ical to 1.12.1
+* (klein0r) Updated depedency for js-controller to 4.0.15
+
 ## 1.4.5 (2022-03-21)
 
 * (klein0r) Allow spaces in next text seperator

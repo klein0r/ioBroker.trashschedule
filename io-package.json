@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "news": {
+      "2.1.1": {
+        "en": "Added Ukrainian language",
+        "de": "Ukrainische Sprache",
+        "ru": "Добавлен украинский язык",
+        "pt": "Adicionado idioma ucraniano",
+        "nl": "Voeg Oekraïense taal toe",
+        "fr": "Ajout de la langue ukrainienne",
+        "it": "Aggiunto lingua ucraina",
+        "es": "Idioma ucraniano añadido",
+        "pl": "Język ukraiński",
+        "uk": "Українська мова",
+        "zh-cn": "增加乌克兰语"
+      },
       "2.1.0": {
         "en": "Dropped Admin 5 support\nAdded Ukrainian language",
         "de": "Droped Admin 5 Unterstützung\nUkrainische Sprache",
@@ -80,19 +93,6 @@
         "pl": "Zezwalaj na spacje w następnym separatorze tekstu",
         "uk": "Дозволити пробіли в наступному текстовому розділювачі",
         "zh-cn": "在下一个文本分隔符中允许空格"
-      },
-      "1.4.4": {
-        "en": "Updated dependencies",
-        "de": "Aktualisierte Abhängigkeiten",
-        "ru": "Обновленные зависимости",
-        "pt": "Dependências atualizadas",
-        "nl": "Bijgewerkte afhankelijkheden",
-        "fr": "Dépendances mises à jour",
-        "it": "Dipendenze aggiornate",
-        "es": "Dependencias actualizadas",
-        "pl": "Zaktualizowane zależności",
-        "uk": "Оновлені залежності",
-        "zh-cn": "更新的依赖项"
       }
     },
     "titleLang": {
