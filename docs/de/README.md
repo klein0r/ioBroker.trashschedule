@@ -4,12 +4,12 @@
 
 ## Voraussetzungen
 
-1. Erstelle eine neue Instanz des **ical Adapters**
+1. Erstelle eine neue Instanz des [ical Adapters](https://github.com/iobroker-community-adapters/ioBroker.ical)
 2. Konfiguriere die URL zu deinem Müllkalender (zum Beispiel ein Google Kalender)
 3. Setze die "Tagesvorschau" auf einen Wert, welcher möglichst jeden Abfalltyp mindestens zweimal enthält (z.B. 45 Tage)
 4. Falls Du die "Ereignisse" verwendest, stelle sicher, dass bei jedem Ereignis "anzeigen" ausgewählt wurde, welches für den Müllkalender ebenfalls relevant ist (andernfalls werden die Termine vom iCal Adapter ausgeblendet)
 
-![ical](./img/ical.png)
+![iCal](./img/ical.png)
 
 ## Konfiguration
 
@@ -20,10 +20,10 @@
 
 **Fragen?** Schaue in die [FAQ](./faq.md)
 
-![trashschedule](./img/trashschedule.png)
+![Trashschedule](./img/trashschedule.png)
 
-![trashschedule_types](./img/trashschedule_types.png)
+![Trashschedule Types](./img/trashschedule_types.png)
 
-## VIS Widget
+## VIS Widget (VIS version 1.x)
 
 ![VIS widget](./img/vis.png)
