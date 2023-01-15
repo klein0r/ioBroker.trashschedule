@@ -360,6 +360,30 @@
       "native": {}
     },
     {
+      "_id": "type.resetCompleted",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types to pending",
+          "de": "Alle Typen auf ausstehend setzen",
+          "ru": "Сделать все типы ожидающими",
+          "pt": "Definir todos os tipos como pendentes",
+          "nl": "Stel alle typen in op in behandeling",
+          "fr": "Définir tous les types sur en attente",
+          "it": "Imposta tutti i tipi in sospeso",
+          "es": "Establecer todos los tipos como pendientes",
+          "pl": "Ustaw wszystkie typy na oczekujące",
+          "uk": "Встановіть для всіх типів статус очікування",
+          "zh-cn": "确定待决的各类"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "next",
       "type": "channel",
       "common": {

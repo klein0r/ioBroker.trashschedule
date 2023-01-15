@@ -78,6 +78,31 @@ class Trashschedule extends utils.Adapter {
                         });
                     }
 
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.completed`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Completed',
+                                de: 'Erledigt',
+                                ru: 'Завершено',
+                                pt: 'Completada',
+                                nl: 'Gecompliceerd',
+                                fr: 'Complété',
+                                it: 'Completato',
+                                es: 'Completado',
+                                pl: 'Completed',
+                                uk: 'Виконаний',
+                                'zh-cn': '完成',
+                            },
+                            type: 'boolean',
+                            role: 'switch.enable',
+                            read: true,
+                            write: true,
+                            def: false,
+                        },
+                        native: {},
+                    });
+
                     await this.setObjectNotExistsAsync(`type.${trashNameClean}.nextDate`, {
                         type: 'state',
                         common: {
@@ -265,6 +290,9 @@ class Trashschedule extends utils.Adapter {
             }
         }
 
+        // Subscribe for changes
+        await this.subscribeStatesAsync('*');
+
         if (iCalInstance) {
             await this.subscribeForeignStatesAsync(`${iCalInstance}.data.table`);
 
@@ -313,7 +341,7 @@ class Trashschedule extends utils.Adapter {
 
         this.getForeignState(`${iCalInstance}.data.table`, (err, state) => {
             // state can be null!
-            if (state) {
+            if (state && state.val) {
                 this.log.debug(`(0) update started by foreign state value - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
                 this.updateByCalendarTable(state.val);
             }
@@ -343,10 +371,29 @@ class Trashschedule extends utils.Adapter {
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
-    onStateChange(id, state) {
-        if (id && state && id == this.config.ical + '.data.table') {
-            this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
-            this.updateByCalendarTable(state.val);
+    async onStateChange(id, state) {
+        if (id && state) {
+            if (id == this.config.ical + '.data.table') {
+                this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
+                this.updateByCalendarTable(state.val);
+            } else if (id == `${this.namespace}.type.resetCompleted` && state.val && !state.ack) {
+                this.log.debug(`Setting done flags for all types to false`);
+
+                const trashTypesConfig = this.config.trashtypes;
+
+                for (const t in trashTypesConfig) {
+                    const trashType = trashTypesConfig[t];
+                    const trashName = trashType.name.trim();
+                    const trashNameClean = this.cleanNamespace(trashName);
+
+                    await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
+                }
+
+                this.refreshEverything();
+            } else if (id.endsWith('.completed') && !state.ack) {
+                this.refreshEverything();
+                this.setForeignStateAsync(id, { val: state.val, ack: true });
+            }
         }
     }
 
@@ -463,6 +510,16 @@ class Trashschedule extends utils.Adapter {
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
 
+                                        // Complete handling (reset)
+                                        const oldNextDateState = await this.getStateAsync(`type.${trashNameClean}.nextDate`);
+                                        if (oldNextDateState && oldNextDateState.val) {
+                                            const oldNextDate = oldNextDateState.val;
+
+                                            if (oldNextDate < date.getTime()) {
+                                                await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
+                                            }
+                                        }
+
                                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: date.getTime(), ack: true, c: this.config.ical });
                                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: this.formatDate(date), ack: true, c: this.config.ical });
                                         await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: date.getDay(), ack: true, c: this.config.ical });
@@ -475,10 +532,13 @@ class Trashschedule extends utils.Adapter {
                                             await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry._section, ack: true, c: this.config.ical });
                                         }
 
+                                        const isCompletedState = await this.getStateAsync(`type.${trashNameClean}.completed`);
+
                                         jsonSummary.push({
                                             name: trashName,
                                             daysLeft: dayDiff,
                                             nextDate: date.getTime(),
+                                            _completed: isCompletedState ? isCompletedState.val : false,
                                             _description: entry._section,
                                             _color: trashType.color,
                                         });
@@ -529,6 +589,7 @@ class Trashschedule extends utils.Adapter {
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: null, ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, q: 0x02 });
 
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
                     }
