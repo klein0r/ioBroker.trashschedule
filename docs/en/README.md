@@ -2,6 +2,18 @@
 
 # ioBroker.trashschedule
 
+## Table of contents
+
+- [Blockly](blockly.md)
+- [FAQ](faq.md)
+
+## Requirements
+
+1. nodejs 14.5 (or later)
+2. js-controller 4.0.15 (or later)
+3. iCal Adapter 1.12.1 (or later)
+4. Admin Adapter 6.0.0 (or later)
+
 ## Preconditions
 
 1. Create a new instance of the [ical adapter](https://github.com/iobroker-community-adapters/ioBroker.ical)
