@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "news": {
+      "2.2.0": {
+        "en": "Added completed flag for types",
+        "de": "Erweiterte Flagge für Typen hinzugefügt",
+        "ru": "Добавлен заполненный флаг для типов",
+        "pt": "Adicionado bandeira completa para tipos",
+        "nl": "Toegevoegd voltooide vlag voor types",
+        "fr": "Ajout du drapeau complet pour les types",
+        "it": "Aggiunto la bandiera completa per i tipi",
+        "es": "Añadido bandera completa para tipos",
+        "pl": "Dodana flaga dla typów",
+        "uk": "Додано комплект для типів",
+        "zh-cn": "增加按类型填写的旗帜"
+      },
       "2.1.1": {
         "en": "Added Ukrainian language",
         "de": "Ukrainische Sprache",
@@ -80,19 +93,6 @@
         "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano znacznik czasu ostatniego i następnego odświeżenia\n* Dodano ikonę do kanałów i stały kolor\n* Dodano domyślne typy kosza dla nowych instalacji\n* Zaktualizowano zależność dla ical do 1.12.1\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
         "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано позначку часу останнього та наступного оновлення\n* Додано значок до каналів і фіксований колір\n* Додано стандартні типи кошика для нових установок\n* Оновлено залежність для ical до 1.12.1\n* Оновлено залежності для js-контролера до 4.0.15",
         "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15"
-      },
-      "1.4.5": {
-        "en": "Allow spaces in next text seperator",
-        "de": "Leerzeichen im nächsten Texttrennzeichen zulassen",
-        "ru": "Разрешить пробелы в следующем текстовом разделителе",
-        "pt": "Permitir espaços no próximo separador de texto",
-        "nl": "Spaties toestaan in volgende tekstscheidingsteken",
-        "fr": "Autoriser les espaces dans le séparateur de texte suivant",
-        "it": "Consenti spazi nel separatore di testo successivo",
-        "es": "Permitir espacios en el siguiente separador de texto",
-        "pl": "Zezwalaj na spacje w następnym separatorze tekstu",
-        "uk": "Дозволити пробіли в наступному текстовому розділювачі",
-        "zh-cn": "在下一个文本分隔符中允许空格"
       }
     },
     "titleLang": {

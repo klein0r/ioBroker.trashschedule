@@ -56,7 +56,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.0 (2023-01-16)
 
 * (klein0r) Added completed flag for types
 
@@ -76,11 +76,6 @@ iobroker add trashschedule
 ### 2.0.2 (2022-05-27)
 
 * (klein0r) Fixed error handling for trash types with empty name
-
-### 2.0.1 (2022-05-24)
-
-* (klein0r) Added ical instance as comment for states
-* (klein0r) Just update states if value changed
 
 ## License
 
