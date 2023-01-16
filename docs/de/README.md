@@ -5,6 +5,7 @@
 ## Inhaltsverzeichnis
 
 - [Blockly](blockly.md)
+- [JavaScript](javascript.md)
 - [FAQ](faq.md)
 
 ## Anforderungen

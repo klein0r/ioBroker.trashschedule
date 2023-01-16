@@ -5,6 +5,7 @@
 ## Table of contents
 
 - [Blockly](blockly.md)
+- [JavaScript](javascript.md)
 - [FAQ](faq.md)
 
 ## Requirements
