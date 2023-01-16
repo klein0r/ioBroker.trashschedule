@@ -372,11 +372,13 @@ class Trashschedule extends utils.Adapter {
      */
     async onStateChange(id, state) {
         if (id && state) {
+            const idNoNamespace = this.removeNamespace(id);
+
             if (id == this.config.ical + '.data.table') {
                 this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
                 this.updateByCalendarTable(state.val);
-            } else if (id == `${this.namespace}.type.resetCompleted` && state.val && !state.ack) {
-                this.log.debug(`Setting done flags for all types to false`);
+            } else if (idNoNamespace == 'type.resetCompleted' && state.val && !state.ack) {
+                this.log.info(`Setting "completed" flag for all types to false (RESET_ALL)`);
 
                 const trashTypesConfig = this.getTrashTypes();
 
@@ -384,12 +386,15 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
+                    this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`);
                 }
 
                 this.refreshEverything();
-            } else if (id.endsWith('.completed') && !state.ack) {
+            } else if (idNoNamespace.endsWith('.completed') && !state.ack) {
+                this.log.debug(`Setting "completed" flag for ${idNoNamespace} to ${state.val} (MANUALLY_CHANGED)`);
+
                 this.refreshEverything();
-                this.setForeignStateAsync(id, { val: state.val, ack: true });
+                await this.setStateAsync(idNoNamespace, { val: state.val, ack: true, c: 'MANUALLY_CHANGED' });
             }
         }
     }
@@ -522,6 +527,7 @@ class Trashschedule extends utils.Adapter {
                                             const oldNextDate = oldNextDateState.val;
 
                                             if (oldNextDate < date.getTime()) {
+                                                this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`);
                                                 await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
                                             }
                                         }
