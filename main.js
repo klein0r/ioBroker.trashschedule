@@ -19,7 +19,7 @@ class Trashschedule extends utils.Adapter {
 
     async onReady() {
         const iCalInstance = this.config.ical;
-        const trashTypesConfig = this.config.trashtypes;
+        const trashTypesConfig = this.getTrashTypes();
 
         const typesAll = [];
         const typesKeep = [];
@@ -44,11 +44,10 @@ class Trashschedule extends utils.Adapter {
         }
 
         // Create states and channels
-        if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
-            for (const t in trashTypesConfig) {
-                const trashType = trashTypesConfig[t];
-                const trashName = trashType.name.trim();
-                const trashNameClean = this.cleanNamespace(trashName);
+        if (trashTypesConfig.length > 0) {
+            for (const trashType of trashTypesConfig) {
+                const trashName = trashType.name;
+                const trashNameClean = trashType.nameClean;
 
                 if (trashNameClean && !!trashType.match) {
                     typesKeep.push(`type.${trashNameClean}`);
@@ -379,12 +378,10 @@ class Trashschedule extends utils.Adapter {
             } else if (id == `${this.namespace}.type.resetCompleted` && state.val && !state.ack) {
                 this.log.debug(`Setting done flags for all types to false`);
 
-                const trashTypesConfig = this.config.trashtypes;
+                const trashTypesConfig = this.getTrashTypes();
 
-                for (const t in trashTypesConfig) {
-                    const trashType = trashTypesConfig[t];
-                    const trashName = trashType.name.trim();
-                    const trashNameClean = this.cleanNamespace(trashName);
+                for (const trashType of trashTypesConfig) {
+                    const trashNameClean = trashType.nameClean;
 
                     await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                 }
@@ -395,6 +392,16 @@ class Trashschedule extends utils.Adapter {
                 this.setForeignStateAsync(id, { val: state.val, ack: true });
             }
         }
+    }
+
+    getTrashTypes() {
+        const trashTypesConfig = this.config.trashtypes;
+
+        if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
+            return trashTypesConfig.map((trashType) => ({ ...trashType, name: trashType.name.trim(), nameClean: this.cleanNamespace(trashType.name.trim()) }));
+        }
+
+        return [];
     }
 
     getMillisecondsToNextFullHour() {
@@ -460,7 +467,7 @@ class Trashschedule extends utils.Adapter {
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = new Date().getHours();
 
-            const trashTypesConfig = this.config.trashtypes;
+            const trashTypesConfig = this.getTrashTypes();
             const globalOffset = this.config.globaloffset || 0;
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
@@ -496,10 +503,9 @@ class Trashschedule extends utils.Adapter {
                     );
 
                     // Check if event matches trash type and fill information
-                    for (const t in trashTypesConfig) {
-                        const trashType = trashTypesConfig[t];
-                        const trashName = trashType.name.trim();
-                        const trashNameClean = this.cleanNamespace(trashName);
+                    for (const trashType of trashTypesConfig) {
+                        const trashName = trashType.name;
+                        const trashNameClean = trashType.nameClean;
 
                         if (trashNameClean && !!trashType.match) {
                             if (dayDiff > 0 || hourNow < skipsamedayathour) {
@@ -570,10 +576,9 @@ class Trashschedule extends utils.Adapter {
             }
 
             // Check for "unmatched" types
-            for (const t in trashTypesConfig) {
-                const trashType = trashTypesConfig[t];
-                const trashName = trashType.name.trim();
-                const trashNameClean = this.cleanNamespace(trashName);
+            for (const trashType of trashTypesConfig) {
+                const trashName = trashType.name;
+                const trashNameClean = trashType.nameClean;
 
                 if (trashNameClean && !!trashType.match) {
                     const hideWarnings = trashType.hidewarnings || false;
