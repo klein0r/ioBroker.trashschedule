@@ -42,6 +42,19 @@
                     "label": "skip same day at hour",
                     "help": "skip same day at hour help"
                 },
+                "daysuntilaction": {
+                    "newLine": true,
+                    "type": "number",
+                    "min": 0,
+                    "max": 2,
+                    "step": 1,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "trim": false,
+                    "label": "days until action",
+                    "help": "days until action help"
+                },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
                     "type": "staticImage",
