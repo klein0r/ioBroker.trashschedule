@@ -49,6 +49,19 @@ $.extend(
             "uk": "Пожовтий, коли",
             "zh-cn": "到期时发光"
         },
+        "glowLimit": {
+            "en": "Days (Glow)",
+            "de": "Tage (Leuchten)",
+            "ru": "Days (Glow)",
+            "pt": "Days (Glow)",
+            "nl": "Days (Glow)",
+            "fr": "Days (Glow)",
+            "it": "Days (Glow)",
+            "es": "Days (Glow)",
+            "pl": "Days (Glow)",
+            "uk": "Days (Glow)",
+            "zh-cn": "Days (Glow)"
+        },
         "showName": {
             "en": "Show name",
             "de": "Name anzeigen",
@@ -177,6 +190,7 @@ vis.binds['trashschedule'] = {
         const size = data.size ? parseInt(data.size) : 100;
         const limit = data.limit ? parseInt(data.limit) : 0; // 0 = no limit
         const glow = !!data.glow;
+        const glowLimit = data.glowLimit ? parseInt(data.glowLimit) : 1; // 1 defaults to (daysLeft <= 1)
         const showName = Object.prototype.hasOwnProperty.call(data, 'showName') ? !!data.showName : true;
         const showDate = !!data.showDate;
         const dateLocale = data.dateLocale ? data.dateLocale : 'de-DE';
@@ -189,12 +203,12 @@ vis.binds['trashschedule'] = {
         }
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, showName, showDate, dateLocale, dateOptions);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions);
 
         // subscribe on updates of value
         if (oid) {
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, showName, showDate, dateLocale, dateOptions);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions);
             });
         }
     },
@@ -341,7 +355,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function (target, json, size, limit, glow, showName, showDate, dateLocale, dateOptions) {
+    redraw: function (target, json, size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions) {
 
         if (json) {
             target.empty();
@@ -365,7 +379,7 @@ vis.binds['trashschedule'] = {
                             newItem.addClass('trash-today');
                         }
 
-                        if (glow && trashType.daysLeft <= 1) {
+                        if (glow && trashType.daysLeft <= glowLimit) {
                             newItem.addClass('trash-glow');
                         }
 
