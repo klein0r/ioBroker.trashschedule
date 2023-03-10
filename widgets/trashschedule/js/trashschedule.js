@@ -50,17 +50,8 @@ $.extend(
             "zh-cn": "到期时发光"
         },
         "glowLimit": {
-            "en": "days for glowing",
-            "de": "Tage für leuchten",
-            "ru": "Свечение, когда из-за",
-            "pt": "Brilhar quando devido",
-            "nl": "Gloed wanneer het moet",
-            "fr": "Briller à l'échéance",
-            "it": "Bagliore quando dovuto",
-            "es": "Resplandece cuando es debido",
-            "pl": "Świeci się, gdy należy",
-            "uk": "Пожовтий, коли",
-            "zh-cn": "到期时发光"
+            "en": "Days (Glow)",
+            "de": "Tage (Leuchten)",
         },
         "showName": {
             "en": "Show name",
