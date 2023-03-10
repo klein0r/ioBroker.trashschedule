@@ -49,6 +49,19 @@ $.extend(
             "uk": "Пожовтий, коли",
             "zh-cn": "到期时发光"
         },
+        "glowLimit": {
+            "en": "days for glowing",
+            "de": "Tage für leuchten",
+            "ru": "Свечение, когда из-за",
+            "pt": "Brilhar quando devido",
+            "nl": "Gloed wanneer het moet",
+            "fr": "Briller à l'échéance",
+            "it": "Bagliore quando dovuto",
+            "es": "Resplandece cuando es debido",
+            "pl": "Świeci się, gdy należy",
+            "uk": "Пожовтий, коли",
+            "zh-cn": "到期时发光"
+        },
         "showName": {
             "en": "Show name",
             "de": "Name anzeigen",
@@ -177,6 +190,7 @@ vis.binds['trashschedule'] = {
         const size = data.size ? parseInt(data.size) : 100;
         const limit = data.limit ? parseInt(data.limit) : 0; // 0 = no limit
         const glow = !!data.glow;
+        const glowLimit = data.glowLimit ? parseInt(data.glowLimit) : 1; // 1 defaults to (daysLeft <= 1)
         const showName = Object.prototype.hasOwnProperty.call(data, 'showName') ? !!data.showName : true;
         const showDate = !!data.showDate;
         const dateLocale = data.dateLocale ? data.dateLocale : 'de-DE';
@@ -365,7 +379,7 @@ vis.binds['trashschedule'] = {
                             newItem.addClass('trash-today');
                         }
 
-                        if (glow && trashType.daysLeft <= 1) {
+                        if (glow && trashType.daysLeft <= glowLimit) {
                             newItem.addClass('trash-glow');
                         }
 
