@@ -52,6 +52,15 @@ $.extend(
         "glowLimit": {
             "en": "Days (Glow)",
             "de": "Tage (Leuchten)",
+            "ru": "Days (Glow)",
+            "pt": "Days (Glow)",
+            "nl": "Days (Glow)",
+            "fr": "Days (Glow)",
+            "it": "Days (Glow)",
+            "es": "Days (Glow)",
+            "pl": "Days (Glow)",
+            "uk": "Days (Glow)",
+            "zh-cn": "Days (Glow)"
         },
         "showName": {
             "en": "Show name",
