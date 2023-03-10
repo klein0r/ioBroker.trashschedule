@@ -203,12 +203,12 @@ vis.binds['trashschedule'] = {
         }
 
         // update based on current value
-        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, showName, showDate, dateLocale, dateOptions);
+        vis.binds['trashschedule'].redraw($div.find('.trashtypes'), vis.states[oid + '.val'], size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions);
 
         // subscribe on updates of value
         if (oid) {
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, showName, showDate, dateLocale, dateOptions);
+                vis.binds['trashschedule'].redraw($div.find('.trashtypes'), newVal, size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions);
             });
         }
     },
@@ -355,7 +355,7 @@ vis.binds['trashschedule'] = {
             return x;
         });
     },
-    redraw: function (target, json, size, limit, glow, showName, showDate, dateLocale, dateOptions) {
+    redraw: function (target, json, size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions) {
 
         if (json) {
             target.empty();
