@@ -25,7 +25,7 @@
     "node": ">=14.5.0"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.6.7"
+    "@iobroker/adapter-core": "^2.6.8"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.9",
