@@ -52,15 +52,15 @@ $.extend(
         "glowLimit": {
             "en": "Days (Glow)",
             "de": "Tage (Leuchten)",
-            "ru": "Days (Glow)",
-            "pt": "Days (Glow)",
-            "nl": "Days (Glow)",
-            "fr": "Days (Glow)",
-            "it": "Days (Glow)",
-            "es": "Days (Glow)",
-            "pl": "Days (Glow)",
-            "uk": "Days (Glow)",
-            "zh-cn": "Days (Glow)"
+            "ru": "Дни (светящиеся)",
+            "pt": "Dias (brilhantes)",
+            "nl": "Dagen (gloeien)",
+            "fr": "Jours (brillent)",
+            "it": "Giorni (brillano)",
+            "es": "Días (resplandecientes)",
+            "pl": "Dzień (świecenia)",
+            "uk": "Днів (світіння)",
+            "zh-cn": "日子"
         },
         "showName": {
             "en": "Show name",
