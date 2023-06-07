@@ -17,7 +17,7 @@
                 },
                 "globaloffset": {
                     "newLine": true,
-                    "type": "text",
+                    "type": "number",
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
@@ -35,7 +35,7 @@
                     "help": "next separator help"
                 },
                 "skipsamedayathour": {
-                    "type": "text",
+                    "type": "number",
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
