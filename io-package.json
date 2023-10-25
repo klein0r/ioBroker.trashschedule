@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "NodeJS 16.x is required\n\n* Improved log messages\n* Added icons in admin tabs",
+        "de": "NodeJS 16.x ist erforderlich\n\n* Verbesserte Log-Nachrichten\n* Icons in Admin-Tabs hinzugefügt",
+        "ru": "NodeJS 16.x требуется\n\n* Улучшенные лог-сообщения\n* Добавлены иконки в админ табы",
+        "pt": "NodeJS 16.x é necessário\n\n* Mensagens de log melhoradas\n* Ícones adicionados em guias admin",
+        "nl": "NodeJS 16.x is vereist\n\n♪ Improved log berichten\n♪ Added icons in admin tabs ♪",
+        "fr": "NodeJS 16.x est nécessaire\n\n* Amélioration des messages journaux\n* Ajout d'icônes dans les onglets d'administration",
+        "it": "NodeJS 16.x è richiesto\n\n* Messaggi di registro migliorati\n* Aggiunte le icone nelle schede di amministrazione",
+        "es": "NodeJS 16.x es necesario\n\n* Mensajes de registro mejorados\n* iconos añadidos en pestañas de administración",
+        "pl": "NodeJS 16 (ang.)\n\n- Improved log messages\n* Added icons in admin tabs",
+        "uk": "NodeJS 16.x обов'язковий\n\n* Покращені повідомлення журналу\n* Додано іконки в вкладках адміністратора",
+        "zh-cn": "不需要16.JS16x。\n\n* 改进文 件\n* 括号内增列图"
+      },
       "2.2.0": {
         "en": "Added completed flag for types",
         "de": "Erweiterte Flagge für Typen hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Dodano instancję ical jako komentarz dla stanów\nPo prostu zaktualizuj stany, jeśli wartość się zmieniła",
         "uk": "Додано ical екземпляр як коментар для станів\nПросто оновіть стани, якщо значення змінилося",
         "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态"
-      },
-      "2.0.0": {
-        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added timestamp of last and next refresh\n* Added icon to channels and fixed color\n* Added default trash types for new installations\n* Updated dependency for ical to 1.12.1\n* Updated depedency for js-controller to 4.0.15",
-        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Zeitstempel der letzten und nächsten Aktualisierung hinzugefügt\n* Symbol zu Kanälen und feste Farbe hinzugefügt\n* Standard-Papierkorbtypen für neue Installationen hinzugefügt\n* Aktualisierte Abhängigkeit für ical auf 1.12.1\n* Abhängigkeit für js-controller auf 4.0.15 aktualisiert",
-        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Добавлена временная метка последнего и следующего обновления\n* Добавлена иконка каналам и фиксированный цвет\n* Добавлены типы корзины по умолчанию для новых установок\n* Обновлена зависимость для ical до 1.12.1\n* Обновлена зависимость js-контроллера до версии 4.0.15.",
-        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Adicionado timestamp da última e próxima atualização\n* Adicionado ícone aos canais e cor fixa\n* Adicionados tipos de lixo padrão para novas instalações\n* Dependência atualizada para ical para 1.12.1\n* Dependência atualizada para js-controller para 4.0.15",
-        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Tijdstempel van laatste en volgende verversing toegevoegd\n* Pictogram toegevoegd aan kanalen en vaste kleur\n* Standaard prullenbaktypen toegevoegd voor nieuwe installaties\n* Bijgewerkte afhankelijkheid voor ical naar 1.12.1\n* Afhankelijkheid voor js-controller bijgewerkt naar 4.0.15",
-        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Ajout de l'horodatage de la dernière et de la prochaine actualisation\n* Icône ajoutée aux chaînes et couleur fixe\n* Ajout de types de corbeille par défaut pour les nouvelles installations\n* Dépendance mise à jour pour ical vers 1.12.1\n* Mise à jour de la dépendance pour js-controller vers 4.0.15",
-        "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Aggiunto timestamp dell'ultimo e del prossimo aggiornamento\n* Aggiunta icona ai canali e colore fisso\n* Aggiunti tipi di cestino predefiniti per le nuove installazioni\n* Aggiornata la dipendenza per ical a 1.12.1\n* Aggiornata la dipendenza per js-controller a 4.0.15",
-        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Marca de tiempo agregada de la última y próxima actualización\n* Icono agregado a los canales y color fijo\n* Se agregaron tipos de basura predeterminados para nuevas instalaciones\n* Dependencia actualizada para ical a 1.12.1\n* Dependencia actualizada para js-controller a 4.0.15",
-        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano znacznik czasu ostatniego i następnego odświeżenia\n* Dodano ikonę do kanałów i stały kolor\n* Dodano domyślne typy kosza dla nowych instalacji\n* Zaktualizowano zależność dla ical do 1.12.1\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано позначку часу останнього та наступного оновлення\n* Додано значок до каналів і фіксований колір\n* Додано стандартні типи кошика для нових установок\n* Оновлено залежність для ical до 1.12.1\n* Оновлено залежності для js-контролера до 4.0.15",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15"
       }
     },
     "titleLang": {
