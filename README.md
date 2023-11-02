@@ -4,7 +4,6 @@
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.trashschedule?style=flat-square)](https://www.npmjs.com/package/iobroker.trashschedule)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.trashschedule?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/iobroker.trashschedule)
-![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/iobroker.trashschedule?label=npm%20vulnerabilities&style=flat-square)
 ![node-lts](https://img.shields.io/node/v-lts/iobroker.trashschedule?style=flat-square)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/iobroker.trashschedule?label=npm%20dependencies&style=flat-square)
 
@@ -13,8 +12,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/klein0r/iobroker.trashschedule?logo=github&style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/klein0r/iobroker.trashschedule/Test%20and%20Release?label=Test%20and%20Release&logo=github&style=flat-square)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/klein0r/iobroker.trashschedule?label=repo%20vulnerabilities&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/klein0r/iobroker.trashschedule/test-and-release.yml?branch=master&logo=github&style=flat-square)
 
 ## Versions
 
@@ -56,10 +54,16 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
 ### **WORK IN PROGRESS**
 
-* Added advanced handling for trash pickup
+* (Standarduser) Added advanced handling for trash pickup
+
+### 2.3.0 (2023-10-25)
+
+NodeJS 16.x is required
+
+* (klein0r) Improved log messages
+* (klein0r) Added icons in admin tabs
 
 ### 2.2.0 (2023-01-16)
 
@@ -77,10 +81,6 @@ iobroker add trashschedule
 ### 2.0.3 (2022-06-02)
 
 * (klein0r) Allow whitespaces in the match pattern
-
-### 2.0.2 (2022-05-27)
-
-* (klein0r) Fixed error handling for trash types with empty name
 
 ## License
 

@@ -1,7 +1,7 @@
 {
-  "plugins": ["iobroker", "license"],
-  "versionFiles": [
-      ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
-      ["widgets/trashschedule/js/*.js", "(?<=version: ')(.*?)(?=',)"]
-  ]
+    "plugins": ["iobroker", "license"],
+    "versionFiles": [
+        ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
+        ["widgets/trashschedule/js/*.js", "(?<=version: ')(.*?)(?=',)"]
+    ]
 }

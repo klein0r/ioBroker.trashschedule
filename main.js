@@ -323,7 +323,11 @@ class Trashschedule extends utils.Adapter {
 
                     if (typeof iCalObject.native === 'object') {
                         const daysPreview = iCalObject.native.daysPreview;
-                        this.log.info(`[ical] configurured ical preview is ${daysPreview} days - increase this value to find more events in the future`);
+
+                        const maximumPreviewDate = new Date();
+                        maximumPreviewDate.setDate(maximumPreviewDate.getDate() + daysPreview);
+
+                        this.log.info(`[ical] configurured ical preview is ${daysPreview} days (until ${this.formatDate(maximumPreviewDate)}) - increase this value to find more events in the future`);
 
                         // check for events
                         if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
