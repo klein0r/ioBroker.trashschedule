@@ -11,5 +11,7 @@
     "table color help": "Specify a color for the trash type. This color can be used in VIS to colorize the pickup type.",
     "table match help": "Matches events: This text must be included in the event name of the calendar. If \"Exact Match\" is checked, the name has to match exactly.",
     "table name help": "Name: Name of the trash pickup. e.g. \"paper\", \"trash\" or \"general waste\"",
-    "trash types": "Trash Types"
+    "trash types": "Trash Types",
+    "days until action": "Number of days until action is required",
+    "days until action help": "Specify a number of days to get informed before a pickup"
 }

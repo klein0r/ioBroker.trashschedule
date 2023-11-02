@@ -183,6 +183,7 @@
     "ical": "",
     "nextseparator": ", ",
     "skipsamedayathour": 18,
+    "daysuntilaction": 1,
     "globaloffset": 0,
     "trashtypes": [
       {
@@ -377,6 +378,51 @@
           "pl": "Ustaw wszystkie typy na oczekujące",
           "uk": "Встановіть для всіх типів статус очікування",
           "zh-cn": "确定待决的各类"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedToday",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types due today to completed",
+          "de": "Alle Typen, die heute fällig sind, auf Erledigt setzen"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedTomorrow",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types due today and tomorrow to completed",
+          "de": "Alle Typen, die heute und morgen fällig sind, auf Erledigt setzen"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedAll",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types to completed",
+          "de": "Alle Typen, die aktuell fällig sind, auf Erledigt setzen"
         },
         "type": "boolean",
         "role": "button",
