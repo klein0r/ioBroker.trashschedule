@@ -107,6 +107,21 @@
                     "lg": 6,
                     "label": "City"
                 },
+                "_apiMymuellTypes": {
+                    "hidden": "!data.apiMymuellCityId || data.apiMymuellCityId === 'err'",
+                    "type": "textSendTo",
+                    "container": "text",
+                    "copyToClipboard": true,
+                    "command": "getApiMymuellTypesText",
+                    "jsonData": "{\"cityId\": \"${data.apiMymuellCityId}\"}",
+                    "alsoDependsOn": [
+                        "apiMymuellCityId"
+                    ],
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Available types"
+                },
                 "apiMymuellStreetId": {
                     "newLine": true,
                     "hidden": "!data.apiMymuellCityId || data.apiMymuellCityId === 'err'",

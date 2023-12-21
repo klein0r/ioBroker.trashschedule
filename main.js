@@ -333,9 +333,12 @@ class Trashschedule extends utils.Adapter {
         }
     }
 
-    refreshEverything() {
+    async refreshEverything() {
         if (this.source) {
-            this.source.refresh();
+            const data = await this.source.getPickupDates();
+            if (data && data.length) {
+                this.updateByCalendarTable(data);
+            }
         }
 
         // Clear existing timeout
@@ -762,6 +765,25 @@ class Trashschedule extends utils.Adapter {
 
                         //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                         obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                    } else {
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
+                    }
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            } else if (obj.command === 'getApiMymuellTypesText') {
+                try {
+                    const cityId = obj.message.cityId;
+
+                    if (cityId && cityId > 0) {
+                        const myMuellApi = new SourceApiMymuell(this);
+
+                        const response = await myMuellApi.getApiTypes(cityId);
+                        const types = response.map((c) => c.title).join(', ');
+
+                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                        obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
                     } else {
                         obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
                     }
