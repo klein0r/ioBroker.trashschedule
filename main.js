@@ -576,7 +576,10 @@ class Trashschedule extends utils.Adapter {
                         if (trashNameClean && !!trashType.match) {
                             if (dayDiff > 0 || hourNow < skipsamedayathour) {
                                 // Fill type if event matches
-                                if ((!trashType.exactmatch && entry.name.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.name == trashType.match)) {
+                                const lcName = entry.name.toLowerCase();
+                                const lcMatch = trashType.match.toLowerCase();
+
+                                if ((!trashType.exactmatch && lcName.includes(lcMatch)) || (trashType.exactmatch && entry.name == trashType.match)) {
                                     this.log.debug(`(3) event match: "${entry.name}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
 
                                     if (!filledTypes.includes(trashName)) {
