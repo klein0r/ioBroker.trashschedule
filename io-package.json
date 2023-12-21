@@ -170,8 +170,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=6.0.0",
-        "ical": ">=1.12.1"
+        "admin": ">=6.0.0"
       }
     ],
     "plugins": {

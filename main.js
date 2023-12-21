@@ -327,21 +327,16 @@ class Trashschedule extends utils.Adapter {
 
         if (this.source !== null) {
             await this.source.validate();
+            this.refreshEverything(); // start data refresh
         } else {
             this.log.error('');
         }
     }
 
     refreshEverything() {
-        const iCalInstance = this.config.ical;
-
-        this.getForeignState(`${iCalInstance}.data.table`, (err, state) => {
-            // state can be null!
-            if (state && state.val) {
-                this.log.debug(`(0) update started by foreign state value - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
-                this.updateByCalendarTable(state.val);
-            }
-        });
+        if (this.source) {
+            this.source.refresh();
+        }
 
         // Clear existing timeout
         if (this.refreshEverythingTimeout) {
@@ -525,20 +520,18 @@ class Trashschedule extends utils.Adapter {
     async updateByCalendarTable(data) {
         this.log.debug('(0) updating data');
 
-        // Added compatibility with iCal >= 1.10.0
-        if (typeof data === 'string') {
-            try {
-                data = JSON.parse(data);
-            } catch (e) {
-                this.log.error(`(0) unable to parse iCal json: ${e.toString()}`);
-            }
-        }
-
-        // Array should be sorted by date (done by ical)
-        if (data && Array.isArray(data) && data.length > 0) {
+        if (data && data.length > 0) {
             await this.setStateAsync('info.connection', { val: true, ack: true });
 
-            this.log.debug(`(0) start processing ${data.length} iCal events`);
+            // Sort by date
+            data.sort((a, b) => {
+                const aD = new Date(a.date);
+                const bD = new Date(b.date);
+
+                return aD.getTime() - bD.getTime();
+            });
+
+            this.log.debug(`(0) start processing ${data.length} events`);
 
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = new Date().getHours();
@@ -564,19 +557,16 @@ class Trashschedule extends utils.Adapter {
 
             this.log.debug(`(0) offset (config): ${globalOffset}`);
 
-            for (const i in data) {
-                const entry = data[i];
-                const date = this.getDateWithoutTime(new Date(entry._date), globalOffset);
+            for (const entry of data) {
+                const date = this.getDateWithoutTime(new Date(entry.date), globalOffset);
 
-                this.log.debug(`(1) parsing next event ${JSON.stringify(entry)} // originalDate: ${entry._date} // calculated date (with offset): ${date}`);
+                this.log.debug(`(1) parsing next event ${JSON.stringify(entry)} // originalDate: ${entry.date} // calculated date (with offset): ${date}`);
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
-                    this.log.debug(
-                        `(2) processing: "${entry.event}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} // skipsamedayathour (config): ${skipsamedayathour}`,
-                    );
+                    this.log.debug(`(2) processing: "${entry.name}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} // skipsamedayathour (config): ${skipsamedayathour}`);
 
                     // Check if event matches trash type and fill information
                     for (const trashType of trashTypesConfig) {
@@ -586,8 +576,8 @@ class Trashschedule extends utils.Adapter {
                         if (trashNameClean && !!trashType.match) {
                             if (dayDiff > 0 || hourNow < skipsamedayathour) {
                                 // Fill type if event matches
-                                if ((!trashType.exactmatch && entry.event.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.event == trashType.match)) {
-                                    this.log.debug(`(3) event match: "${entry.event}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
+                                if ((!trashType.exactmatch && entry.name.indexOf(trashType.match) > -1) || (trashType.exactmatch && entry.name == trashType.match)) {
+                                    this.log.debug(`(3) event match: "${entry.name}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
@@ -611,9 +601,7 @@ class Trashschedule extends utils.Adapter {
                                         await this.setStateChangedAsync(`type.${trashNameClean}.color`, { val: trashType.color, ack: true });
 
                                         // Do not store objects as value
-                                        if (typeof entry._section !== 'object') {
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry._section, ack: true, c: this.config.ical });
-                                        }
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry.description, ack: true, c: this.config.ical });
 
                                         const isCompletedState = await this.getStateAsync(`type.${trashNameClean}.completed`);
 
@@ -635,7 +623,7 @@ class Trashschedule extends utils.Adapter {
                                             daysLeft: dayDiff,
                                             nextDate: date.getTime(),
                                             _completed: isCompletedState ? isCompletedState.val : false,
-                                            _description: entry._section,
+                                            _description: entry.description,
                                             _color: trashType.color,
                                         });
 
@@ -709,7 +697,7 @@ class Trashschedule extends utils.Adapter {
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
         } else {
-            this.log.error('no events found in ical instance - check configuration and restart instance');
+            this.log.error('no events found - check configuration and restart instance');
 
             await this.setStateAsync('info.connection', { val: false, ack: true });
         }
@@ -754,7 +742,7 @@ class Trashschedule extends utils.Adapter {
                     const response = await myMuellApi.getApiCities();
                     const cities = response.map((c) => ({ value: c.id, label: c.name }));
 
-                    this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
+                    //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
                     obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -762,13 +750,18 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiMymuellStreets') {
                 try {
-                    const myMuellApi = new SourceApiMymuell(this);
+                    const cityId = obj.message.cityId;
+                    if (cityId && cityId > 0) {
+                        const myMuellApi = new SourceApiMymuell(this);
 
-                    const response = await myMuellApi.getApiStreets(obj.message.cityId);
-                    const streets = response.map((c) => ({ value: c.id, label: c.name }));
+                        const response = await myMuellApi.getApiStreets(cityId);
+                        const streets = response.map((c) => ({ value: `${c.id}-${c.area_id}`, label: c.name }));
 
-                    this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                        obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                    } else {
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
+                    }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
                     obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);

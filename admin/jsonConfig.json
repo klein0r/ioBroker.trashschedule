@@ -62,7 +62,6 @@
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "trim": false,
                     "label": "days until action",
                     "help": "days until action help"
                 },
