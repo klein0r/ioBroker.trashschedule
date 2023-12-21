@@ -11,5 +11,13 @@
     "table color help": "Spécifiez une couleur pour le type de corbeille. Cette couleur peut être utilisée dans VIS pour coloriser le type de micro.",
     "table match help": "Correspond aux événements: ce texte doit être inclus dans le nom de l'événement du calendrier. Si \"Correspondance exacte\" est coché, le nom doit correspondre exactement.",
     "table name help": "Nom: nom du ramassage des ordures. par exemple. \"papier\", \"poubelle\" ou \"déchet général\"",
-    "trash types": "Types de corbeille"
+    "trash types": "Types de corbeille",
+    "days until action": "Nombre de jours avant qu'une action soit requise",
+    "days until action help": "Précisez un nombre de jours pour être informé avant un ramassage",
+    "Data source": "La source de données",
+    "ical settings": "paramètres iques",
+    "Webservice settings": "Paramètres du service Web",
+    "City": "Ville",
+    "Street": "Rue",
+    "Available types": "Types disponibles"
 }

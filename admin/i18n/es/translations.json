@@ -11,5 +11,13 @@
     "table color help": "Especifique un color para el tipo de basura. Este color se puede usar en VIS para colorear el tipo de recolección.",
     "table match help": "Eventos de coincidencias: este texto debe incluirse en el nombre del evento del calendario. Si se marca \"Exact Match\", el nombre debe coincidir exactamente.",
     "table name help": "Nombre: Nombre de la recolección de basura. p.ej. \"papel\", \"basura\" o \"desperdicio general\"",
-    "trash types": "Tipos de basura"
+    "trash types": "Tipos de basura",
+    "days until action": "Número de días hasta que se requiera acción",
+    "days until action help": "Especifique una cantidad de días para recibir información antes de una recogida.",
+    "Data source": "Fuente de datos",
+    "ical settings": "configuraciones físicas",
+    "Webservice settings": "Configuración del servicio web",
+    "City": "Ciudad",
+    "Street": "Calle",
+    "Available types": "Tipos disponibles"
 }

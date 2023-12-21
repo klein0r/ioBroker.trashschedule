@@ -11,5 +11,13 @@
     "table color help": "指定垃圾桶类型的颜色。可以在VIS中使用此颜色为拾取器类型着色。",
     "table match help": "匹配事件：此文本必须包含在日历的事件名称中。如果选中“完全匹配”，则名称必须完全匹配。",
     "table name help": "名称：垃圾箱的名称。例如“纸张”，“垃圾”或“一般废物”",
-    "trash types": "垃圾类型"
+    "trash types": "垃圾类型",
+    "days until action": "需要采取行动之前的天数",
+    "days until action help": "指定取件前获得通知的天数",
+    "Data source": "数据源",
+    "ical settings": "物理设置",
+    "Webservice settings": "网络服务设置",
+    "City": "城市",
+    "Street": "街道",
+    "Available types": "可用类型"
 }

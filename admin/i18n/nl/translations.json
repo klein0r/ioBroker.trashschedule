@@ -11,5 +11,13 @@
     "table color help": "Geef een kleur op voor het type prullenbak. Deze kleur kan in VIS worden gebruikt om het ophaaltype te kleuren.",
     "table match help": "Komt overeen met evenementen: deze tekst moet worden opgenomen in de naam van de agenda. Als \"Exact zoeken\" is aangevinkt, moet de naam exact overeenkomen.",
     "table name help": "Naam: naam van de prullenbak. bijv. \"papier\", \"afval\" of \"algemeen afval\"",
-    "trash types": "Soorten afval"
+    "trash types": "Soorten afval",
+    "days until action": "Aantal dagen totdat er actie nodig is",
+    "days until action help": "Geef een aantal dagen op waarop u geïnformeerd wilt worden vóór een afhaling",
+    "Data source": "Databron",
+    "ical settings": "ische instellingen",
+    "Webservice settings": "Webservice-instellingen",
+    "City": "Stad",
+    "Street": "Straat",
+    "Available types": "Beschikbare typen"
 }

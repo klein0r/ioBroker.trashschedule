@@ -11,5 +11,13 @@
     "table color help": "Określ kolor dla typu kosza. Tego koloru można użyć w VIS do pokolorowania typu odbioru.",
     "table match help": "Pasuje do wydarzeń: ten tekst musi być zawarty w nazwie wydarzenia kalendarza. Jeśli zaznaczone jest „Dopasowanie ścisłe”, nazwa musi być dokładnie taka sama.",
     "table name help": "Nazwa: nazwa odbioru śmieci. na przykład „papier”, „śmieci” lub „odpady ogólne”",
-    "trash types": "Rodzaje śmieci"
+    "trash types": "Rodzaje śmieci",
+    "days until action": "Liczba dni do wymaganego działania",
+    "days until action help": "Określ liczbę dni, na które chcesz otrzymywać informacje przed odbiorem",
+    "Data source": "Źródło danych",
+    "ical settings": "ustawienia iczne",
+    "Webservice settings": "Ustawienia serwisu",
+    "City": "Miasto",
+    "Street": "Ulica",
+    "Available types": "Dostępne typy"
 }

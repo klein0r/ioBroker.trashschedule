@@ -11,5 +11,13 @@
     "table color help": "Especifique uma cor para o tipo de lixo. Essa cor pode ser usada no VIS para colorir o tipo de coleta.",
     "table match help": "Corresponde a eventos: este texto deve ser incluído no nome do evento do calendário. Se a opção \"Correspondência exata\" estiver marcada, o nome deverá corresponder exatamente.",
     "table name help": "Nome: nome da coleta de lixo. por exemplo. \"papel\", \"lixo\" ou \"lixo geral\"",
-    "trash types": "Tipos de Lixo"
+    "trash types": "Tipos de Lixo",
+    "days until action": "Número de dias até que uma ação seja necessária",
+    "days until action help": "Especifique um número de dias para ser informado antes da retirada",
+    "Data source": "Fonte de dados",
+    "ical settings": "configurações legais",
+    "Webservice settings": "Configurações de serviço da web",
+    "City": "Cidade",
+    "Street": "Rua",
+    "Available types": "Tipos disponíveis"
 }

@@ -11,5 +11,13 @@
     "table color help": "Specifica un colore per il tipo di cestino. Questo colore può essere utilizzato in VIS per colorare il tipo di pickup.",
     "table match help": "Abbina eventi: questo testo deve essere incluso nel nome dell'evento del calendario. Se si seleziona \"Corrispondenza esatta\", il nome deve corrispondere esattamente.",
     "table name help": "Nome: nome del cestino. per esempio. \"carta\", \"spazzatura\" o \"rifiuti generici\"",
-    "trash types": "Tipi di rifiuti"
+    "trash types": "Tipi di rifiuti",
+    "days until action": "Numero di giorni prima che sia richiesta un'azione",
+    "days until action help": "Specifica un numero di giorni per essere informato prima del ritiro",
+    "Data source": "Fonte di dati",
+    "ical settings": "impostazioni fisiche",
+    "Webservice settings": "Impostazioni del servizio Web",
+    "City": "Città",
+    "Street": "Strada",
+    "Available types": "Tipi disponibili"
 }

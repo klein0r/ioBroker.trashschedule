@@ -1,8 +1,8 @@
 {
     "global offset": "Globaler Offset (Tage)",
     "global offset help": "Anzahl der Tage, welche zum Termin im Kalender hinzugefügt (oder abgezogen) werden",
-    "ical instance": "ical-Instanz",
-    "ical instance help": "Wähle die ical-Instanz, welche die Abfuhrtermine bereitstellt",
+    "ical instance": "iCal-Instanz",
+    "ical instance help": "Wähle die iCal-Instanz, welche die Abfuhrtermine bereitstellt",
     "next separator": "Trenner für Nächste-Text",
     "next separator help": "Wird genutzt, um Abfall-Typen am gleichen Tag als Text zu verketten (und)",
     "options": "Einstellungen",
@@ -11,5 +11,13 @@
     "table color help": "Mit diesem Farbcode können die einzelnen Termine in VIS eingefärbt werden.",
     "table match help": "Gilt für Termine: Dieser Text muss als Termin im Kalender enthalten sein, damit dieser als Abholtermin des Typs erkannt wird. Wird \"Genauer Treffer\" muss der Termin genau übereinstimmen.",
     "table name help": "Name: Name der Abholung. Zum Beispiel \"Papiertonne\", \"Restabfalltonne\", \"Biotonne\" oder \"Gelber Sack\"",
-    "trash types": "Abfall-Typen"
+    "trash types": "Abfall-Typen",
+    "days until action": "Anzahl der Tage, bis Maßnahmen erforderlich sind",
+    "days until action help": "Geben Sie eine Anzahl von Tagen an, um vor einer Abholung informiert zu werden",
+    "Data source": "Datenquelle",
+    "ical settings": "iCal Einstellungen",
+    "Webservice settings": "Webservice-Einstellungen",
+    "City": "Stadt",
+    "Street": "Straße",
+    "Available types": "Verfügbare Typen"
 }
