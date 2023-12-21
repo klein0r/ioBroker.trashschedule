@@ -2,6 +2,9 @@
 
 const utils = require('@iobroker/adapter-core');
 
+const SourceIcal = require('./lib/source/ical');
+const SourceApiMymuell = require('./lib/source/api-mymuell');
+
 class Trashschedule extends utils.Adapter {
     constructor(options) {
         super({
@@ -10,15 +13,21 @@ class Trashschedule extends utils.Adapter {
             useFormatDate: true,
         });
 
+        /**
+         * @type {import('./lib/source/base') | null}
+         */
+        this.source = null;
         this.refreshEverythingTimeout = null;
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
+        this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
 
     async onReady() {
-        const iCalInstance = this.config.ical;
+        await this.setStateAsync('info.connection', { val: false, ack: true });
+
         const trashTypesConfig = this.getTrashTypes();
 
         const typesAll = [];
@@ -309,50 +318,17 @@ class Trashschedule extends utils.Adapter {
         // Subscribe for changes
         await this.subscribeStatesAsync('*');
 
-        if (iCalInstance) {
-            await this.subscribeForeignStatesAsync(`${iCalInstance}.data.table`);
+        const configSource = this.config.source;
+        if (configSource === 'ical') {
+            this.source = new SourceIcal(this);
+        } else if (configSource === 'api-mymuell') {
+            this.source = new SourceApiMymuell(this);
+        }
 
-            try {
-                // Check ical configuration
-                const iCalObject = await this.getForeignObjectAsync(`system.adapter.${iCalInstance}`);
-
-                if (iCalObject && typeof iCalObject === 'object') {
-                    if (typeof iCalObject.common === 'object') {
-                        this.log.debug(`[ical] current ical version: ${iCalObject.common.version}`);
-                    }
-
-                    if (typeof iCalObject.native === 'object') {
-                        const daysPreview = iCalObject.native.daysPreview;
-
-                        const maximumPreviewDate = new Date();
-                        maximumPreviewDate.setDate(maximumPreviewDate.getDate() + daysPreview);
-
-                        this.log.info(`[ical] configurured ical preview is ${daysPreview} days (until ${this.formatDate(maximumPreviewDate)}) - increase this value to find more events in the future`);
-
-                        // check for events
-                        if (Array.isArray(iCalObject.native.events) && iCalObject.native.events.length > 0) {
-                            for (const e in iCalObject.native.events) {
-                                const event = iCalObject.native.events[e];
-                                this.log.debug(`[ical] found ical event(s): ${JSON.stringify(event)}`);
-
-                                // check for display flag
-                                if (!event.display) {
-                                    this.log.info(
-                                        `[ical] found configured ical event "${event.name}" without "display" flag. Activate the display flag on this entry if this is a relevant "trash event".`,
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            } catch (err) {
-                this.log.error(JSON.stringify(err));
-            }
-
-            this.refreshEverything();
+        if (this.source !== null) {
+            await this.source.validate();
         } else {
-            this.log.error(`no ical instance configured. Check instance configuration and retry.`);
-            await this.setStateAsync('info.connection', { val: false, ack: true });
+            this.log.error('');
         }
     }
 
@@ -762,6 +738,42 @@ class Trashschedule extends utils.Adapter {
             await this.setStateChangedAsync(`${statePrefix}.typesText`, { val: 'n/a', ack: true, q: 0x02 });
 
             await this.setStateChangedAsync(`${statePrefix}.dateFound`, { val: false, ack: true });
+        }
+    }
+
+    /**
+     * @param {ioBroker.Message} obj
+     */
+    async onMessage(obj) {
+        if (obj) {
+            this.log.debug(`[onMessage] ${obj.command}, ${obj.from}, ${JSON.stringify(obj.message)}`);
+            if (obj.command === 'getApiMymuellCities') {
+                try {
+                    const myMuellApi = new SourceApiMymuell(this);
+
+                    const response = await myMuellApi.getApiCities();
+                    const cities = response.map((c) => ({ value: c.id, label: c.name }));
+
+                    this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            } else if (obj.command === 'getApiMymuellStreets') {
+                try {
+                    const myMuellApi = new SourceApiMymuell(this);
+
+                    const response = await myMuellApi.getApiStreets(obj.message.cityId);
+                    const streets = response.map((c) => ({ value: c.id, label: c.name }));
+
+                    this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            }
         }
     }
 

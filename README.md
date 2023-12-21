@@ -20,7 +20,7 @@
 ![Stable](http://iobroker.live/badges/trashschedule-stable.svg)
 ![Installed](http://iobroker.live/badges/trashschedule-installed.svg)
 
-Scans an ical calendar to calculate the days left until next trash pickup
+Calculates the days left until next trash pickup
 
 ## Sponsored by
 
@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added API source myMuell
+
 ### 2.4.0 (2023-12-21)
 
 * (Standarduser) Added advanced handling for trash pickup

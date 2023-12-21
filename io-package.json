@@ -137,11 +137,12 @@
     "enabled": true,
     "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
     "loglevel": "info",
+    "messagebox": true,
     "mode": "daemon",
     "type": "date-and-time",
     "compact": true,
-    "connectionType": "local",
-    "dataSource": "push",
+    "connectionType": "cloud",
+    "dataSource": "poll",
     "adminUI": {
       "config": "json"
     },
@@ -180,11 +181,14 @@
     }
   },
   "native": {
-    "ical": "",
+    "source": "ical",
     "nextseparator": ", ",
     "skipsamedayathour": 18,
     "daysuntilaction": 1,
     "globaloffset": 0,
+    "ical": "",
+    "apiMymuellCityId": "",
+    "apiMymuellStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",
