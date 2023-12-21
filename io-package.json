@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "news": {
+      "2.4.0": {
+        "en": "Added advanced handling for trash pickup\nAdded list of missing / not found trash types as JSON (type.jsonNotFound)",
+        "de": "Erweiterte Handhabung für Müllabholung hinzugefügt\nHinzugefügt Liste der fehlenden / nicht gefunden Mülltypen wie JSON (Typ.jsonNotFound)",
+        "ru": "Добавлена расширенная обработка для мусора пикап\nДобавлен список отсутствующих / не найденных видов мусора как JSON (type.jsonNotFound)",
+        "pt": "Adicionado manuseio avançado para captador de lixo\nLista adicionada de tipos de lixo perdidos / não encontrados como JSON (type.jsonNotFound)",
+        "nl": "Gevorderd voor het afval\nVermeldde lijst van vermiste / niet gevonden afvaltypes als JSON (type)",
+        "fr": "Ajout de la manipulation avancée pour le ramassage des ordures\nAjout de la liste des types de déchets manquants / non trouvés comme JSON (type.jsonNotFound)",
+        "it": "Aggiunta gestione avanzata per il pickup spazzatura\nElenco Aggiunto dei tipi di rifiuti mancanti / non trovati come JSON (type.jsonNotFound)",
+        "es": "Manejo avanzado adicional para la recolección de basura\nLista agregada de tipos de basura desaparecidos / no encontrados como JSON (tipo.jsonNotFound)",
+        "pl": "Dodać zaawansowaną obsługę śmieci\nLista zaginionych i nieznana jako JSON (typ.json NotFound)",
+        "uk": "Додана розширена обробка для сміття\nДодано список відсутніх / не знайдено типів сміття як JSON (type.jsonNotFound)",
+        "zh-cn": "增加突发事件的先进处理\n增列失踪/未发现过事故的清单(原为Json NotFound)"
+      },
       "2.3.0": {
         "en": "NodeJS 16.x is required\n\n* Improved log messages\n* Added icons in admin tabs",
         "de": "NodeJS 16.x ist erforderlich\n\n* Verbesserte Log-Nachrichten\n* Icons in Admin-Tabs hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Naprawiono obsługę błędów dla typów śmieci z pustą nazwą",
         "uk": "Виправлено обробку помилок для типів сміття з порожньою назвою",
         "zh-cn": "修复了对具有空名称的垃圾类型的错误处理"
-      },
-      "2.0.1": {
-        "en": "Added ical instance as comment for states\nJust update states if value changed",
-        "de": "ical-Instanz als Kommentar für Zustände hinzugefügt\nAktualisieren Sie einfach die Zustände, wenn sich der Wert geändert hat",
-        "ru": "Добавлен ical экземпляр в качестве комментария для состояний\nПросто обновите состояния, если значение изменилось",
-        "pt": "Instância ical adicionada como comentário para estados\nApenas atualize os estados se o valor for alterado",
-        "nl": "ical instantie toegevoegd als commentaar voor staten\nWerk de statussen gewoon bij als de waarde is gewijzigd",
-        "fr": "Ajout d'une instance ical en tant que commentaire pour les états\nMettez simplement à jour les états si la valeur a changé",
-        "it": "Aggiunta istanza ical come commento per gli stati\nBasta aggiornare gli stati se il valore è cambiato",
-        "es": "Instancia ical agregada como comentario para estados\nSolo actualice los estados si el valor cambió",
-        "pl": "Dodano instancję ical jako komentarz dla stanów\nPo prostu zaktualizuj stany, jeśli wartość się zmieniła",
-        "uk": "Додано ical екземпляр як коментар для станів\nПросто оновіть стани, якщо значення змінилося",
-        "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态"
       }
     },
     "titleLang": {

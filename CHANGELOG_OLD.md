@@ -1,4 +1,8 @@
 # Older changes
+## 2.0.3 (2022-06-02)
+
+* (klein0r) Allow whitespaces in the match pattern
+
 ## 2.0.2 (2022-05-27)
 
 * (klein0r) Fixed error handling for trash types with empty name

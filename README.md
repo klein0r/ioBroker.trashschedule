@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2023-12-21)
 
 * (Standarduser) Added advanced handling for trash pickup
 * (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
@@ -78,10 +78,6 @@ NodeJS 16.x is required
 
 * (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
-
-### 2.0.3 (2022-06-02)
-
-* (klein0r) Allow whitespaces in the match pattern
 
 ## License
 
