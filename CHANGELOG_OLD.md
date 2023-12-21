@@ -1,4 +1,9 @@
 # Older changes
+## 2.1.0 (2022-12-12)
+
+* (klein0r) Dropped Admin 5 support
+* (klein0r) Added Ukrainian language
+
 ## 2.0.3 (2022-06-02)
 
 * (klein0r) Allow whitespaces in the match pattern

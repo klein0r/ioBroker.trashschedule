@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0 (2023-12-21)
 
 * (klein0r) Added API source myMuell
 
@@ -76,11 +76,6 @@ NodeJS 16.x is required
 
 ### 2.1.1 (2023-01-11)
 
-* (klein0r) Added Ukrainian language
-
-### 2.1.0 (2022-12-12)
-
-* (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
 
 ## License

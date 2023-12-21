@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.4.0",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "Added API source myMuell",
+        "de": "Hinzugefügt API-Quelle myMuell",
+        "ru": "Добавлен источник API myMuell",
+        "pt": "Adicionado API source myMuell",
+        "nl": "_",
+        "fr": "Ajout d'une source API myMuell",
+        "it": "Sorgente API aggiunto myMuell",
+        "es": "Añadido fuente de API miMuell",
+        "pl": "Źródło danych API MyMuell",
+        "uk": "Додано джерело API myMuell",
+        "zh-cn": "增加我Muell的API来源"
+      },
       "2.4.0": {
         "en": "Added advanced handling for trash pickup\nAdded list of missing / not found trash types as JSON (type.jsonNotFound)",
         "de": "Erweiterte Handhabung für Müllabholung hinzugefügt\nHinzugefügt Liste der fehlenden / nicht gefunden Mülltypen wie JSON (Typ.jsonNotFound)",
@@ -80,19 +93,6 @@
         "pl": "Zezwalaj na białe znaki we wzorcu dopasowania",
         "uk": "Дозволити пробіли в шаблоні відповідності",
         "zh-cn": "在匹配模式中允许空格"
-      },
-      "2.0.2": {
-        "en": "Fixed error handling for trash types with empty name",
-        "de": "Fehlerbehandlung für Papierkorbtypen mit leerem Namen behoben",
-        "ru": "Исправлена обработка ошибок для типов корзины с пустым именем.",
-        "pt": "Corrigido o tratamento de erros para tipos de lixo com nome vazio",
-        "nl": "Vaste foutafhandeling voor prullenbaktypen met lege naam",
-        "fr": "Correction de la gestion des erreurs pour les types de corbeille avec un nom vide",
-        "it": "Risolto il problema con la gestione degli errori per i tipi di cestino con nome vuoto",
-        "es": "Se corrigió el manejo de errores para tipos de basura con nombre vacío.",
-        "pl": "Naprawiono obsługę błędów dla typów śmieci z pustą nazwą",
-        "uk": "Виправлено обробку помилок для типів сміття з порожньою назвою",
-        "zh-cn": "修复了对具有空名称的垃圾类型的错误处理"
       }
     },
     "titleLang": {
