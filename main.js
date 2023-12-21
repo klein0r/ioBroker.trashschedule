@@ -389,8 +389,7 @@ class Trashschedule extends utils.Adapter {
             const idNoNamespace = this.removeNamespace(id);
 
             if (id == this.config.ical + '.data.table') {
-                this.log.debug(`(0) update started by foreign state change - lc: ${new Date(state.lc).toISOString()} - ts: ${new Date(state.ts).toISOString()}`);
-                this.updateByCalendarTable(state.val);
+                this.refreshEverything();
             } else if (idNoNamespace == 'type.resetCompleted' && state.val && !state.ack) {
                 this.log.info(`Setting "completed" flag for all types to false (RESET_ALL)`);
 
@@ -415,7 +414,7 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
-                    if (daysLeft && daysLeft.val <= this.config.daysuntilaction) {
+                    if (daysLeft && Number(daysLeft.val) <= this.config.daysuntilaction) {
                         await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true ('???')`);
                     }
@@ -434,7 +433,7 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
-                    if (daysLeft && daysLeft.val == 0) {
+                    if (daysLeft && Number(daysLeft.val) == 0) {
                         await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (???)`);
                     }
@@ -452,7 +451,7 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
-                    if (daysLeft && daysLeft.val <= 1) {
+                    if (daysLeft && Number(daysLeft.val) <= 1) {
                         await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (???)`);
                     }
@@ -591,7 +590,7 @@ class Trashschedule extends utils.Adapter {
                                         // Complete handling (reset)
                                         const oldNextDateState = await this.getStateAsync(`type.${trashNameClean}.nextDate`);
                                         if (oldNextDateState && oldNextDateState.val) {
-                                            const oldNextDate = oldNextDateState.val;
+                                            const oldNextDate = Number(oldNextDateState.val);
 
                                             if (oldNextDate < date.getTime()) {
                                                 this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`);
@@ -599,15 +598,15 @@ class Trashschedule extends utils.Adapter {
                                             }
                                         }
 
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: date.getTime(), ack: true, c: this.config.ical });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: this.formatDate(date), ack: true, c: this.config.ical });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: date.getDay(), ack: true, c: this.config.ical });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: dayDiff, ack: true, c: this.config.ical });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: date.getTime(), ack: true, c: this.source?.getType() });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: this.formatDate(date), ack: true, c: this.source?.getType() });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: date.getDay(), ack: true, c: this.source?.getType() });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: dayDiff, ack: true, c: this.source?.getType() });
                                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: true, ack: true });
                                         await this.setStateChangedAsync(`type.${trashNameClean}.color`, { val: trashType.color, ack: true });
 
                                         // Do not store objects as value
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry.description, ack: true, c: this.config.ical });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry.description, ack: true, c: this.source?.getType() });
 
                                         const isCompletedState = await this.getStateAsync(`type.${trashNameClean}.completed`);
 
@@ -713,16 +712,16 @@ class Trashschedule extends utils.Adapter {
         this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            await this.setStateChangedAsync(`${statePrefix}.date`, { val: obj.minDate.getTime(), ack: true, c: this.config.ical });
-            await this.setStateChangedAsync(`${statePrefix}.dateFormat`, { val: this.formatDate(obj.minDate), ack: true, c: this.config.ical });
-            await this.setStateChangedAsync(`${statePrefix}.weekday`, { val: obj.minDate.getDay(), ack: true, c: this.config.ical });
-            await this.setStateChangedAsync(`${statePrefix}.daysLeft`, { val: obj.minDays, ack: true, c: this.config.ical });
-            await this.setStateChangedAsync(`${statePrefix}.types`, { val: obj.minTypes.join(','), ack: true, c: this.config.ical });
-            await this.setStateChangedAsync(`${statePrefix}.typesText`, { val: obj.minTypes.join(this.config.nextseparator), ack: true, c: this.config.ical });
+            await this.setStateChangedAsync(`${statePrefix}.date`, { val: obj.minDate.getTime(), ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.dateFormat`, { val: this.formatDate(obj.minDate), ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.weekday`, { val: obj.minDate.getDay(), ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.daysLeft`, { val: obj.minDays, ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.types`, { val: obj.minTypes.join(','), ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.typesText`, { val: obj.minTypes.join(this.config.nextseparator), ack: true, c: this.source?.getType() });
 
             await this.setStateChangedAsync(`${statePrefix}.dateFound`, { val: true, ack: true });
         } else {
-            this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of ical (increase preview) and trashschedule!`);
+            this.log.warn(`(5) ${statePrefix} has no entries. Check configuration of trashschedule!`);
 
             await this.setStateChangedAsync(`${statePrefix}.date`, { val: 0, ack: true, q: 0x02 });
             await this.setStateChangedAsync(`${statePrefix}.dateFormat`, { val: '', ack: true, q: 0x02 });
