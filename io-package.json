@@ -315,6 +315,30 @@
       "native": {}
     },
     {
+      "_id": "type.jsonNotFound",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Types not found (as JSON array)",
+          "de": "Nicht gefundene Typen (als JSON-Array)",
+          "ru": "Типы не найдены (как JSON массив)",
+          "pt": "Tipos não encontrados (como array JSON)",
+          "nl": "Types niet gevonden",
+          "fr": "Types non trouvés (comme tableau JSON)",
+          "it": "Tipi non trovati (come array JSON)",
+          "es": "Tipos no encontrados (como matriz JSON)",
+          "pl": "Typy nie są znane (jak np. tablica JSON)",
+          "uk": "Види не знайдені (як масив JSON)",
+          "zh-cn": "未发现的类型(作为联合体)"
+        },
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "type.lastRefresh",
       "type": "state",
       "common": {

@@ -57,6 +57,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (Standarduser) Added advanced handling for trash pickup
+* (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
 
 ### 2.3.0 (2023-10-25)
 

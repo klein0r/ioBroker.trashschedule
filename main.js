@@ -690,6 +690,7 @@ class Trashschedule extends utils.Adapter {
             }
 
             // Check for "unmatched" types
+            const notFoundTypes = [];
             for (const trashType of trashTypesConfig) {
                 const trashName = trashType.name;
                 const trashNameClean = trashType.nameClean;
@@ -711,6 +712,11 @@ class Trashschedule extends utils.Adapter {
                         await this.setStateChangedAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, q: 0x02 });
 
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
+
+                        notFoundTypes.push({
+                            name: trashName,
+                            hideWarnings,
+                        });
                     }
                 }
             }
@@ -721,6 +727,7 @@ class Trashschedule extends utils.Adapter {
             });
 
             await this.setStateAsync('type.json', { val: JSON.stringify(jsonSummary), ack: true });
+            await this.setStateAsync('type.jsonNotFound', { val: JSON.stringify(notFoundTypes), ack: true });
             await this.setStateAsync('type.lastRefresh', { val: new Date().getTime(), ack: true });
 
             await this.fillNext(next, 'next');
