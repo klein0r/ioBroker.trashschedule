@@ -2,6 +2,9 @@
   "common": {
     "name": "trashschedule",
     "version": "3.1.0",
+    "blockedVersions": [
+      "3.0.0"
+    ],
     "news": {
       "3.1.0": {
         "en": "Use meta storage for cache files\nAdded configured source type as state",

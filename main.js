@@ -327,11 +327,18 @@ class Trashschedule extends utils.Adapter {
 
         if (this.source !== null) {
             await this.setStateChangedAsync('source', { val: this.source.getType(), ack: true });
-            await this.source.validate();
+            const isValid = await this.source.validate();
 
-            this.refreshEverything(); // start data refresh
+            if (isValid) {
+                this.refreshEverything(); // start data refresh
+            } else {
+                typeof this.terminate === 'function' ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG) : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
+                return;
+            }
         } else {
-            this.log.error('');
+            this.log.error('Source is not defined');
+            typeof this.terminate === 'function' ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG) : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
+            return;
         }
     }
 
