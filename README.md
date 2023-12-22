@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.1.2 (2023-12-22)
 
 * (klein0r) Fixed exception when cache dir doesn't exist
 
@@ -75,13 +75,6 @@ iobroker add trashschedule
 
 * (Standarduser) Added advanced handling for trash pickup
 * (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
-
-### 2.3.0 (2023-10-25)
-
-NodeJS 16.x is required
-
-* (klein0r) Improved log messages
-* (klein0r) Added icons in admin tabs
 
 ## License
 

@@ -1,4 +1,11 @@
 # Older changes
+## 2.3.0 (2023-10-25)
+
+NodeJS 16.x is required
+
+* (klein0r) Improved log messages
+* (klein0r) Added icons in admin tabs
+
 ## 2.2.0 (2023-01-16)
 
 * (klein0r) Added completed flag for types

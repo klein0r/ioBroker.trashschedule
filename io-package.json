@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.1.1",
+    "version": "3.1.2",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "3.1.2": {
+        "en": "Fixed exception when cache dir doesn't exist",
+        "de": "Behobene Ausnahme, wenn Cache dir nicht existiert",
+        "ru": "Фиксированное исключение, когда cache dir не существует",
+        "pt": "Exceção fixa quando o cache dir não existe",
+        "nl": "Uitzondering als cache dir niet bestaat",
+        "fr": "Exception fixe lorsque cache dir n'existe pas",
+        "it": "Eccezione fissa quando il dir della cache non esiste",
+        "es": "Excepción fija cuando cache dir no existe",
+        "pl": "Wyjątkiem jest fakt, że pamięć cache nie istnieje",
+        "uk": "Виняток кеш-копія не існує",
+        "zh-cn": "如果存在因果关系而异,则有固定的例外。"
+      },
       "3.1.1": {
         "en": "Fixed config validation / integration test",
         "de": "Feste config Validierung / Integrationstest",
@@ -85,19 +98,6 @@
         "pl": "Dodana flaga dla typów",
         "uk": "Додано комплект для типів",
         "zh-cn": "增加按类型填写的旗帜"
-      },
-      "2.1.1": {
-        "en": "Added Ukrainian language",
-        "de": "Ukrainische Sprache",
-        "ru": "Добавлен украинский язык",
-        "pt": "Adicionado idioma ucraniano",
-        "nl": "Voeg Oekraïense taal toe",
-        "fr": "Ajout de la langue ukrainienne",
-        "it": "Aggiunto lingua ucraina",
-        "es": "Idioma ucraniano añadido",
-        "pl": "Język ukraiński",
-        "uk": "Українська мова",
-        "zh-cn": "增加乌克兰语"
       }
     },
     "titleLang": {
