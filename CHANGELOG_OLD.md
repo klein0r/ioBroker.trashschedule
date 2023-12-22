@@ -1,4 +1,8 @@
 # Older changes
+## 2.2.0 (2023-01-16)
+
+* (klein0r) Added completed flag for types
+
 ## 2.1.1 (2023-01-11)
 
 * (klein0r) Added Ukrainian language

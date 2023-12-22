@@ -1,11 +1,24 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "blockedVersions": [
       "3.0.0"
     ],
     "news": {
+      "3.1.1": {
+        "en": "Fixed config validation / integration test",
+        "de": "Feste config Validierung / Integrationstest",
+        "ru": "Исправлена конфиговая проверка / интеграционный тест",
+        "pt": "Teste de validação / integração de configuração fixa",
+        "nl": "Bevestigde config validatie/ integratie test",
+        "fr": "Essai de validation/intégration de la configuration fixe",
+        "it": "Prova di validazione/integrazione di configurazione fissa",
+        "es": "Validación de config fijo / prueba de integración",
+        "pl": "Walidowanie i test integracji",
+        "uk": "Виправлено перевірку конфігурації / тестування інтеграції",
+        "zh-cn": "固定验证/一体化试验"
+      },
       "3.1.0": {
         "en": "Use meta storage for cache files\nAdded configured source type as state",
         "de": "Verwenden Sie Meta-Speicher für Cache-Dateien\nHinzugefügt konfigurierter Quelltyp als Zustand",
@@ -83,19 +96,6 @@
         "pl": "Język ukraiński",
         "uk": "Українська мова",
         "zh-cn": "增加乌克兰语"
-      },
-      "2.1.0": {
-        "en": "Dropped Admin 5 support\nAdded Ukrainian language",
-        "de": "Droped Admin 5 Unterstützung\nUkrainische Sprache",
-        "ru": "Dropped Admin 5 поддержка\nДобавлен украинский язык",
-        "pt": "Suporte de Admin 5 Dropped\nAdicionado idioma ucraniano",
-        "nl": "Vertaling:\nVoeg Oekraïense taal toe",
-        "fr": "Soutien Admin 5 abandonné\nAjout de la langue ukrainienne",
-        "it": "Supporto per admin goccia 5\nAggiunto lingua ucraina",
-        "es": "Soporte de Admin 5\nIdioma ucraniano añadido",
-        "pl": "Dropped Admin 5 (ang.)\nJęzyk ukraiński",
-        "uk": "Підтримка Dropped Admin 5\nУкраїнська мова",
-        "zh-cn": "D. 减少5个支助\n增加乌克兰语"
       }
     },
     "titleLang": {

@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.1.1 (2023-12-22)
 
 * (klein0r) Fixed config validation / integration test
 
@@ -78,10 +78,6 @@ NodeJS 16.x is required
 
 * (klein0r) Improved log messages
 * (klein0r) Added icons in admin tabs
-
-### 2.2.0 (2023-01-16)
-
-* (klein0r) Added completed flag for types
 
 ## License
 
