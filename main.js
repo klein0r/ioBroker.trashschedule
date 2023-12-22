@@ -328,6 +328,7 @@ class Trashschedule extends utils.Adapter {
         if (this.source !== null) {
             await this.setStateChangedAsync('source', { val: this.source.getType(), ack: true });
             await this.source.validate();
+
             this.refreshEverything(); // start data refresh
         } else {
             this.log.error('');
@@ -336,6 +337,8 @@ class Trashschedule extends utils.Adapter {
 
     async refreshEverything() {
         if (this.source) {
+            await this.source.removeOldCacheFiles();
+
             const data = await this.source.getPickupDates();
             if (data && data.length) {
                 this.updateByCalendarTable(data);
