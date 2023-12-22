@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Fixed exception when cache dir doesn't exist
+
 ### 3.1.1 (2023-12-22)
 
 * (klein0r) Fixed config validation / integration test

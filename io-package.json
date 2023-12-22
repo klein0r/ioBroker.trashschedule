@@ -3,7 +3,9 @@
     "name": "trashschedule",
     "version": "3.1.1",
     "blockedVersions": [
-      "3.0.0"
+      "3.0.0",
+      "3.1.0",
+      "3.1.1"
     ],
     "news": {
       "3.1.1": {
