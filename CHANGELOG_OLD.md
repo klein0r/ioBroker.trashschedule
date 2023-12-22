@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.1 (2023-01-11)
+
+* (klein0r) Added Ukrainian language
+
 ## 2.1.0 (2022-12-12)
 
 * (klein0r) Dropped Admin 5 support

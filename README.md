@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.1.0 (2023-12-22)
 
 * (klein0r) Use meta storage for cache files
 * (klein0r) Added configured source type as state
@@ -78,10 +78,6 @@ NodeJS 16.x is required
 ### 2.2.0 (2023-01-16)
 
 * (klein0r) Added completed flag for types
-
-### 2.1.1 (2023-01-11)
-
-* (klein0r) Added Ukrainian language
 
 ## License
 

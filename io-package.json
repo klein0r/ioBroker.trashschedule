@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "news": {
+      "3.1.0": {
+        "en": "Use meta storage for cache files\nAdded configured source type as state",
+        "de": "Verwenden Sie Meta-Speicher für Cache-Dateien\nHinzugefügt konfigurierter Quelltyp als Zustand",
+        "ru": "Используйте мета-хранилище для кэш-файлов\nДобавлена настройка типа источника как государство",
+        "pt": "Use o armazenamento meta para arquivos de cache\nAdicionado tipo de fonte configurado como estado",
+        "nl": "Gebruik meta opslag voor cachebestanden\nToegevoegd brontype als staat",
+        "fr": "Utiliser le stockage méta pour les fichiers cache\nAjout du type de source configuré comme état",
+        "it": "Utilizzare meta storage per i file di cache\nAggiunto tipo di sorgente configurato come stato",
+        "es": "Utilice el almacenamiento meta para los archivos de caché\nTipo de fuente configurado como estado",
+        "pl": "Wykorzystywanie metafor do pliku pamięci podręcznej\nZapomniany typ źródła jako stan",
+        "uk": "Використовуйте мета-сховище для файлів кешу\nДодано налаштований тип джерела як стан",
+        "zh-cn": "D. 藏匿档案的代用品\n增加按国家分类的源类别"
+      },
       "3.0.0": {
         "en": "Added API source myMuell",
         "de": "Hinzugefügt API-Quelle myMuell",
@@ -80,19 +93,6 @@
         "pl": "Dropped Admin 5 (ang.)\nJęzyk ukraiński",
         "uk": "Підтримка Dropped Admin 5\nУкраїнська мова",
         "zh-cn": "D. 减少5个支助\n增加乌克兰语"
-      },
-      "2.0.3": {
-        "en": "Allow whitespaces in the match pattern",
-        "de": "Leerzeichen im Übereinstimmungsmuster zulassen",
-        "ru": "Разрешить пробелы в шаблоне соответствия",
-        "pt": "Permitir espaços em branco no padrão de correspondência",
-        "nl": "Spaties in het overeenkomstpatroon toestaan",
-        "fr": "Autoriser les espaces blancs dans le modèle de correspondance",
-        "it": "Consenti spazi bianchi nel modello di corrispondenza",
-        "es": "Permitir espacios en blanco en el patrón de coincidencia",
-        "pl": "Zezwalaj na białe znaki we wzorcu dopasowania",
-        "uk": "Дозволити пробіли в шаблоні відповідності",
-        "zh-cn": "在匹配模式中允许空格"
       }
     },
     "titleLang": {
