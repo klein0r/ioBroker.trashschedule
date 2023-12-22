@@ -326,6 +326,7 @@ class Trashschedule extends utils.Adapter {
         }
 
         if (this.source !== null) {
+            await this.setStateChangedAsync('source', { val: this.source.getType(), ack: true });
             await this.source.validate();
             this.refreshEverything(); // start data refresh
         } else {

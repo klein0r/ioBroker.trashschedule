@@ -57,6 +57,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (klein0r) Use meta storage for cache files
+* (klein0r) Added configured source type as state
 
 ### 3.0.0 (2023-12-21)
 

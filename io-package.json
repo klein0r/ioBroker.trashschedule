@@ -250,6 +250,30 @@
       "native": {}
     },
     {
+      "_id": "source",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Used data source",
+          "de": "Genutzte Datenquelle",
+          "ru": "Использованный источник данных",
+          "pt": "Fonte de dados usada",
+          "nl": "Gebruikt gegevens",
+          "fr": "Source de données utilisée",
+          "it": "Fonte di dati utilizzata",
+          "es": "Fuente de datos usados",
+          "pl": "Źródło danych",
+          "uk": "Використовується джерело даних",
+          "zh-cn": "使用数据来源"
+        },
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "info",
       "type": "channel",
       "common": {
