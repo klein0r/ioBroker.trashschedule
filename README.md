@@ -58,6 +58,7 @@ iobroker add trashschedule
 
 * (klein0r) fixed configuration validation
 * (klein0r) enhanced error logging
+* (klein0r) some cities have no streets (API)
 
 ### 3.1.2 (2023-12-22)
 

@@ -102,6 +102,7 @@
                 "apiMymuellCityId": {
                     "type": "autocompleteSendTo",
                     "command": "getApiMymuellCities",
+                    "freeSolo": false,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
@@ -127,6 +128,7 @@
                     "hidden": "!data.apiMymuellCityId || data.apiMymuellCityId === 'err'",
                     "type": "autocompleteSendTo",
                     "command": "getApiMymuellStreets",
+                    "freeSolo": false,
                     "jsonData": "{\"cityId\": \"${data.apiMymuellCityId}\"}",
                     "alsoDependsOn": [
                         "apiMymuellCityId"

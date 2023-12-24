@@ -770,9 +770,8 @@ class Trashschedule extends utils.Adapter {
                         const myMuellApi = new SourceApiMymuell(this);
 
                         const response = await myMuellApi.getApiStreets(cityId);
-                        const streets = response.map((c) => ({ value: `${c.id}-${c.area_id}`, label: c.name }));
+                        const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: c.name }));
 
-                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                         obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
                     } else {
                         obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
@@ -791,7 +790,6 @@ class Trashschedule extends utils.Adapter {
                         const response = await myMuellApi.getApiTypes(cityId);
                         const types = response.map((c) => c.title).join(', ');
 
-                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                         if (types) {
                             obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
                         } else {
