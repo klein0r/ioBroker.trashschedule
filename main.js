@@ -347,7 +347,7 @@ class Trashschedule extends utils.Adapter {
 
             const data = await this.source.getPickupDates();
             if (data && data.length) {
-                this.updateByCalendarTable(data);
+                this.updateAll(data);
             }
         }
 
@@ -528,7 +528,7 @@ class Trashschedule extends utils.Adapter {
         return id.replace(re, '');
     }
 
-    async updateByCalendarTable(data) {
+    async updateAll(data) {
         this.log.debug('(0) updating data');
 
         if (data && data.length > 0) {
@@ -770,7 +770,7 @@ class Trashschedule extends utils.Adapter {
                         const myMuellApi = new SourceApiMymuell(this);
 
                         const response = await myMuellApi.getApiStreets(cityId);
-                        const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: c.name }));
+                        const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: s.name }));
 
                         obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
                     } else {
