@@ -332,8 +332,7 @@ class Trashschedule extends utils.Adapter {
             if (isValid) {
                 this.refreshEverything(); // start data refresh
             } else {
-                typeof this.terminate === 'function' ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG) : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
-                return;
+                this.log.info(`instance configuration is invalid or incomplete - please configure a valid source`);
             }
         } else {
             this.log.error('Source is not defined');
@@ -398,7 +397,6 @@ class Trashschedule extends utils.Adapter {
     async onStateChange(id, state) {
         if (id && state) {
             const idNoNamespace = this.removeNamespace(id);
-
             if (id == this.config.ical + '.data.table') {
                 this.refreshEverything();
             } else if (idNoNamespace == 'type.resetCompleted' && state.val && !state.ack) {
@@ -766,7 +764,8 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiMymuellStreets') {
                 try {
-                    const cityId = obj.message.cityId;
+                    const cityId = parseInt(obj.message.cityId);
+
                     if (cityId && cityId > 0) {
                         const myMuellApi = new SourceApiMymuell(this);
 
@@ -784,7 +783,7 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiMymuellTypesText') {
                 try {
-                    const cityId = obj.message.cityId;
+                    const cityId = parseInt(obj.message.cityId);
 
                     if (cityId && cityId > 0) {
                         const myMuellApi = new SourceApiMymuell(this);
@@ -793,13 +792,17 @@ class Trashschedule extends utils.Adapter {
                         const types = response.map((c) => c.title).join(', ');
 
                         //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
-                        obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
+                        if (types) {
+                            obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
+                        } else {
+                            obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get types', obj.callback);
+                        }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, 'Missing cityId', obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback && this.sendTo(obj.from, obj.command, `Error: ${err}`, obj.callback);
                 }
             }
         }
