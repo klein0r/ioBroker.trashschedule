@@ -170,7 +170,7 @@ $.extend(
 );
 
 vis.binds['trashschedule'] = {
-    version: '3.1.2',
+    version: '3.1.3',
     showVersion: function () {
         if (vis.binds['trashschedule'].version) {
             console.log('Version trashschedule: ' + vis.binds['trashschedule'].version);

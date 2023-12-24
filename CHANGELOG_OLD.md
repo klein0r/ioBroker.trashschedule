@@ -1,4 +1,9 @@
 # Older changes
+## 2.4.0 (2023-12-21)
+
+* (Standarduser) Added advanced handling for trash pickup
+* (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
+
 ## 2.3.0 (2023-10-25)
 
 NodeJS 16.x is required

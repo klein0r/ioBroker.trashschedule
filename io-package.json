@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.1.2",
+    "version": "3.1.3",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "3.1.3": {
+        "en": "fixed configuration validation\nenhanced error logging\nsome cities have no streets (API)",
+        "de": "feste konfigurationsvalidierung\nverbesserte fehlersuche\neinige Städte haben keine Straßen (API)",
+        "ru": "фиксированная проверка конфигурации\nулучшенный логинг ошибок\nнекоторые города не имеют улиц (API)",
+        "pt": "validação de configuração fixa\nregistro de erro aprimorado\nalgumas cidades não têm ruas (API)",
+        "nl": "vertaling:\nverhoogde fout\nsommige steden hebben geen straten",
+        "fr": "validation de la configuration fixe\njournalisation des erreurs améliorées\ncertaines villes n'ont pas de rue (API)",
+        "it": "convalida di configurazione fissa\nregistrazione degli errori migliorata\nalcune città non hanno strade (API)",
+        "es": "validación de configuración fija\nregistro de errores mejorado\nalgunas ciudades no tienen calles (API)",
+        "pl": "walidacja ustalana\nulepszenie błędów\nniektóre miasta nie posiadają ulic (API)",
+        "uk": "фіксована перевірка конфігурації\nрозширений журнал помилок\nдеякі міста не мають вулиць (API)",
+        "zh-cn": "固定单元验证\na. 增加的错误伐木\n有些城市没有街道(API)"
+      },
       "3.1.2": {
         "en": "Fixed exception when cache dir doesn't exist",
         "de": "Behobene Ausnahme, wenn Cache dir nicht existiert",
@@ -85,19 +98,6 @@
         "pl": "NodeJS 16 (ang.)\n\n- Improved log messages\n* Added icons in admin tabs",
         "uk": "NodeJS 16.x обов'язковий\n\n* Покращені повідомлення журналу\n* Додано іконки в вкладках адміністратора",
         "zh-cn": "不需要16.JS16x。\n\n* 改进文 件\n* 括号内增列图"
-      },
-      "2.2.0": {
-        "en": "Added completed flag for types",
-        "de": "Erweiterte Flagge für Typen hinzugefügt",
-        "ru": "Добавлен заполненный флаг для типов",
-        "pt": "Adicionado bandeira completa para tipos",
-        "nl": "Toegevoegd voltooide vlag voor types",
-        "fr": "Ajout du drapeau complet pour les types",
-        "it": "Aggiunto la bandiera completa per i tipi",
-        "es": "Añadido bandera completa para tipos",
-        "pl": "Dodana flaga dla typów",
-        "uk": "Додано комплект для типів",
-        "zh-cn": "增加按类型填写的旗帜"
       }
     },
     "titleLang": {

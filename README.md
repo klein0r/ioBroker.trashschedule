@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.1.3 (2023-12-24)
 
 * (klein0r) fixed configuration validation
 * (klein0r) enhanced error logging
@@ -76,11 +76,6 @@ iobroker add trashschedule
 ### 3.0.0 (2023-12-21)
 
 * (klein0r) Added API source myMuell
-
-### 2.4.0 (2023-12-21)
-
-* (Standarduser) Added advanced handling for trash pickup
-* (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
 
 ## License
 
