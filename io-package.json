@@ -193,6 +193,8 @@
     "ical": "",
     "apiMymuellCityId": "",
     "apiMymuellStreetId": "",
+    "apiAbfallioCityId": "",
+    "apiAbfallioStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",
