@@ -3,7 +3,7 @@
 const utils = require('@iobroker/adapter-core');
 
 const SourceIcal = require('./lib/source/ical');
-const SourceApiMymuell = require('./lib/source/api-mymuell');
+const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 
 class Trashschedule extends utils.Adapter {
@@ -323,7 +323,7 @@ class Trashschedule extends utils.Adapter {
 
         this.sources = {
             ical: new SourceIcal(this),
-            'api-mymuell': new SourceApiMymuell(this),
+            'api-jumomind': new SourceApiJumomind(this),
             'api-abfallio': new SourceApiAbfallIo(this),
         };
 
@@ -757,17 +757,35 @@ class Trashschedule extends utils.Adapter {
     async onMessage(obj) {
         if (obj) {
             this.log.debug(`[onMessage] ${obj.command}, ${obj.from}, ${JSON.stringify(obj.message)}`);
-            if (obj.command === 'getApiCities') {
+            if (obj.command === 'getApiProviders') {
                 try {
                     const source = this.sources[obj.message.source];
                     if (source) {
-                        const response = await source.getApiCities();
+                        const response = await source.getApiProviders();
                         const cities = response.map((c) => ({ value: c.id, label: c.name }));
 
                         //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
                         obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source not defined/found` }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
+                    }
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            } else if (obj.command === 'getApiCities') {
+                try {
+                    const source = this.sources[obj.message.source];
+                    if (source) {
+                        const provider = obj.message.provider;
+
+                        const response = await source.getApiCities(provider);
+                        const cities = response.map((c) => ({ value: c.id, label: c.name }));
+
+                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
+                        obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
+                    } else {
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -778,10 +796,11 @@ class Trashschedule extends utils.Adapter {
                     const source = this.sources[obj.message.source];
 
                     if (source) {
+                        const provider = obj.message.provider;
                         const cityId = parseInt(obj.message.cityId);
 
                         if (cityId && cityId > 0) {
-                            const response = await source.getApiStreets(cityId);
+                            const response = await source.getApiStreets(provider, cityId);
                             const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: s.name }));
 
                             obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
@@ -789,29 +808,36 @@ class Trashschedule extends utils.Adapter {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing cityId` }], obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source not defined/found` }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
                     obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
-            } else if (obj.command === 'getApiMymuellTypesText') {
+            } else if (obj.command === 'getApiTypesText') {
                 try {
-                    const cityId = parseInt(obj.message.cityId);
+                    const source = this.sources[obj.message.source];
 
-                    if (cityId && cityId > 0) {
-                        const myMuellApi = this.sources['api-mymuell'];
+                    if (source) {
+                        const provider = obj.message.provider;
+                        const cityId = parseInt(obj.message.cityId);
 
-                        const response = await myMuellApi.getApiTypes(cityId);
-                        const types = response.map((c) => c.title).join(', ');
+                        if (cityId && cityId > 0) {
+                            const jumomindApi = this.sources['api-jumomind'];
 
-                        if (types) {
-                            obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
+                            const response = await jumomindApi.getApiTypes(provider, cityId);
+                            const types = response.map((c) => c.title).join(', ');
+
+                            if (types) {
+                                obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
+                            } else {
+                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get types', obj.callback);
+                            }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get types', obj.callback);
+                            obj.callback && this.sendTo(obj.from, obj.command, 'Missing cityId', obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, 'Missing cityId', obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, 'Error: Source not defined/found', obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);

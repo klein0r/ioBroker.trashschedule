@@ -191,8 +191,9 @@
     "daysuntilaction": 1,
     "globaloffset": 0,
     "ical": "",
-    "apiMymuellCityId": "",
-    "apiMymuellStreetId": "",
+    "apiJumomindProvider": "",
+    "apiJumomindCityId": "",
+    "apiJumomindStreetId": "",
     "apiAbfallioCityId": "",
     "apiAbfallioStreetId": "",
     "trashtypes": [
