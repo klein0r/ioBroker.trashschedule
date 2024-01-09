@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added more providers
+
 ### 3.1.3 (2023-12-24)
 
 * (klein0r) fixed configuration validation
