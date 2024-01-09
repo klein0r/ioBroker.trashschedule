@@ -807,7 +807,7 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiStreets(provider, cityId);
                             const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: s.name }));
 
-                            this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                             obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
