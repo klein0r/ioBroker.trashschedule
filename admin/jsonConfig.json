@@ -19,8 +19,8 @@
                             "value": "ical"
                         },
                         {
-                            "label": "Webservice (My Müll)",
-                            "value": "api-mymuell"
+                            "label": "Webservice (Jumomind)",
+                            "value": "api-jumomind"
                         },
                         {
                             "label": "Webservice (abfall.io / Abfall+)",
@@ -98,45 +98,62 @@
             }
         },
         "_sourceApiMymuell": {
-            "hidden": "data.source !== 'api-mymuell'",
+            "hidden": "data.source !== 'api-jumomind'",
             "type": "panel",
-            "label": "Webservice (My Müll)",
+            "label": "Webservice (Jumomind)",
             "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi41LjEgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyMyBGb250aWNvbnMsIEluYy4tLT48cGF0aCBvcGFjaXR5PSIxIiBmaWxsPSIjMUUzMDUwIiBkPSJNMzUyIDI1NmMwIDIyLjItMS4yIDQzLjYtMy4zIDY0SDE2My4zYy0yLjItMjAuNC0zLjMtNDEuOC0zLjMtNjRzMS4yLTQzLjYgMy4zLTY0SDM0OC43YzIuMiAyMC40IDMuMyA0MS44IDMuMyA2NHptMjguOC02NEg1MDMuOWM1LjMgMjAuNSA4LjEgNDEuOSA4LjEgNjRzLTIuOCA0My41LTguMSA2NEgzODAuOGMyLjEtMjAuNiAzLjItNDIgMy4yLTY0cy0xLjEtNDMuNC0zLjItNjR6bTExMi42LTMySDM3Ni43Yy0xMC02My45LTI5LjgtMTE3LjQtNTUuMy0xNTEuNmM3OC4zIDIwLjcgMTQyIDc3LjUgMTcxLjkgMTUxLjZ6bS0xNDkuMSAwSDE2Ny43YzYuMS0zNi40IDE1LjUtNjguNiAyNy05NC43YzEwLjUtMjMuNiAyMi4yLTQwLjcgMzMuNS01MS41QzIzOS40IDMuMiAyNDguNyAwIDI1NiAwczE2LjYgMy4yIDI3LjggMTMuOGMxMS4zIDEwLjggMjMgMjcuOSAzMy41IDUxLjVjMTEuNiAyNiAyMC45IDU4LjIgMjcgOTQuN3ptLTIwOSAwSDE4LjZDNDguNiA4NS45IDExMi4yIDI5LjEgMTkwLjYgOC40QzE2NS4xIDQyLjYgMTQ1LjMgOTYuMSAxMzUuMyAxNjB6TTguMSAxOTJIMTMxLjJjLTIuMSAyMC42LTMuMiA0Mi0zLjIgNjRzMS4xIDQzLjQgMy4yIDY0SDguMUMyLjggMjk5LjUgMCAyNzguMSAwIDI1NnMyLjgtNDMuNSA4LjEtNjR6TTE5NC43IDQ0Ni42Yy0xMS42LTI2LTIwLjktNTguMi0yNy05NC42SDM0NC4zYy02LjEgMzYuNC0xNS41IDY4LjYtMjcgOTQuNmMtMTAuNSAyMy42LTIyLjIgNDAuNy0zMy41IDUxLjVDMjcyLjYgNTA4LjggMjYzLjMgNTEyIDI1NiA1MTJzLTE2LjYtMy4yLTI3LjgtMTMuOGMtMTEuMy0xMC44LTIzLTI3LjktMzMuNS01MS41ek0xMzUuMyAzNTJjMTAgNjMuOSAyOS44IDExNy40IDU1LjMgMTUxLjZDMTEyLjIgNDgyLjkgNDguNiA0MjYuMSAxOC42IDM1MkgxMzUuM3ptMzU4LjEgMGMtMzAgNzQuMS05My42IDEzMC45LTE3MS45IDE1MS42YzI1LjUtMzQuMiA0NS4yLTg3LjcgNTUuMy0xNTEuNkg0OTMuNHoiLz48L3N2Zz4=",
             "items": {
-                "apiMymuellCityId": {
+                "apiJumomindProvider": {
+                    "type": "autocompleteSendTo",
+                    "command": "getApiProviders",
+                    "jsonData": "{\"source\": \"api-jumomind\"}",
+                    "freeSolo": false,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Provider"
+                },
+                "apiJumomindCityId": {
+                    "newLine": true,
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err'",
                     "type": "autocompleteSendTo",
                     "command": "getApiCities",
-                    "jsonData": "{\"source\": \"api-mymuell\"}",
                     "freeSolo": false,
+                    "jsonData": "{\"source\": \"api-jumomind\", \"provider\": \"${data.apiJumomindProvider}\"}",
+                    "alsoDependsOn": [
+                        "apiJumomindProvider"
+                    ],
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
                     "label": "City"
                 },
-                "_apiMymuellTypes": {
-                    "hidden": "!data.apiMymuellCityId || data.apiMymuellCityId === 'err'",
+                "_apiJumomindTypes": {
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err' || !data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
                     "type": "textSendTo",
                     "container": "text",
                     "copyToClipboard": true,
-                    "command": "getApiMymuellTypesText",
-                    "jsonData": "{\"source\": \"api-mymuell\", \"cityId\": \"${data.apiMymuellCityId}\"}",
+                    "command": "getApiTypesText",
+                    "jsonData": "{\"source\": \"api-jumomind\", \"provider\": \"${data.apiJumomindProvider}\", \"cityId\": \"${data.apiJumomindCityId}\"}",
                     "alsoDependsOn": [
-                        "apiMymuellCityId"
+                        "apiJumomindProvider",
+                        "apiJumomindCityId"
                     ],
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
                     "label": "Available types"
                 },
-                "apiMymuellStreetId": {
+                "apiJumomindStreetId": {
                     "newLine": true,
-                    "hidden": "!data.apiMymuellCityId || data.apiMymuellCityId === 'err'",
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err' || !data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
                     "type": "autocompleteSendTo",
                     "command": "getApiStreets",
                     "freeSolo": false,
-                    "jsonData": "{\"source\": \"api-mymuell\", \"cityId\": \"${data.apiMymuellCityId}\"}",
+                    "jsonData": "{\"source\": \"api-jumomind\", \"provider\": \"${data.apiJumomindProvider}\", \"cityId\": \"${data.apiJumomindCityId}\"}",
                     "alsoDependsOn": [
-                        "apiMymuellCityId"
+                        "apiJumomindProvider",
+                        "apiJumomindCityId"
                     ],
                     "sm": 12,
                     "md": 6,
