@@ -762,10 +762,10 @@ class Trashschedule extends utils.Adapter {
                     const source = this.sources[obj.message.source];
                     if (source) {
                         const response = await source.getApiProviders();
-                        const cities = response.map((c) => ({ value: c.id, label: c.name }));
+                        const providers = response.map((p) => ({ value: p.id, label: `${p.title} (${p.url})` }));
 
-                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
-                        obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
+                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
+                        obj.callback && this.sendTo(obj.from, obj.command, providers, obj.callback);
                     } else {
                         obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
                     }
