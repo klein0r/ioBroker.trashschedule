@@ -1,8 +1,10 @@
-# My Müll API (app)
+# Jumomind API (app)
 
 ## Cities
 
-https://mymuell.jumomind.com/mmapp/api.php?r=cities
+`https://<service>.jumomind.com/mmapp/api.php?r=cities`
+
+`https://mymuell.jumomind.com/mmapp/api.php?r=cities`
 
 e.g.
 
@@ -40,7 +42,7 @@ e.g.
 
 ## Streets
 
-https://mymuell.jumomind.com/mmapp/api.php?r=streets&city_id=3150
+`https://mymuell.jumomind.com/mmapp/api.php?r=streets&city_id=3150`
 
 e.g.
 
@@ -72,7 +74,7 @@ e.g.
 
 ## Types
 
-https://mymuell.jumomind.com/mmapp/api.php?r=trash&city_id=3150
+`https://mymuell.jumomind.com/mmapp/api.php?r=trash&city_id=3150`
 
 e.g.
 
@@ -125,7 +127,7 @@ e.g.
 
 ## Pickups
 
-https://mymuell.jumomind.com/webservice.php?idx=termins&city_id=3150&area_id=3&ws=3
+`https://mymuell.jumomind.com/webservice.php?idx=termins&city_id=3150&area_id=3&ws=3`
 
 e.g.
 
@@ -181,4 +183,3 @@ e.g.
   }
 ]
 ```
-

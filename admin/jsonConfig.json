@@ -111,10 +111,11 @@
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "City"
+                    "label": "Provider"
                 },
                 "apiJumomindCityId": {
                     "newLine": true,
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err'",
                     "type": "autocompleteSendTo",
                     "command": "getApiCities",
                     "freeSolo": false,
@@ -128,7 +129,7 @@
                     "label": "City"
                 },
                 "_apiJumomindTypes": {
-                    "hidden": "!data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err' || !data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
                     "type": "textSendTo",
                     "container": "text",
                     "copyToClipboard": true,
@@ -143,9 +144,9 @@
                     "lg": 6,
                     "label": "Available types"
                 },
-                "apiJumomindllStreetId": {
+                "apiJumomindStreetId": {
                     "newLine": true,
-                    "hidden": "!data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
+                    "hidden": "!data.apiJumomindProvider || data.apiJumomindProvider === 'err' || !data.apiJumomindCityId || data.apiJumomindCityId === 'err'",
                     "type": "autocompleteSendTo",
                     "command": "getApiStreets",
                     "freeSolo": false,
