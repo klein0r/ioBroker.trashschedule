@@ -19,5 +19,6 @@
     "Webservice settings": "Настройки веб-сервиса",
     "City": "Город",
     "Street": "Улица",
-    "Available types": "Доступные типы"
+    "Available types": "Доступные типы",
+    "Provider": "Поставщик"
 }
