@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.2.0 (2024-01-22)
 
 * (klein0r) Added more providers
 
@@ -76,10 +76,6 @@ iobroker add trashschedule
 
 * (klein0r) Use meta storage for cache files
 * (klein0r) Added configured source type as state
-
-### 3.0.0 (2023-12-21)
-
-* (klein0r) Added API source myMuell
 
 ## License
 

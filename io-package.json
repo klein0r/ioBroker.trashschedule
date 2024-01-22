@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.1.3",
+    "version": "3.2.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "3.2.0": {
+        "en": "Added more providers",
+        "de": "Weitere Anbieter",
+        "ru": "Добавлено больше провайдеров",
+        "pt": "Adicionado mais provedores",
+        "nl": "Meer aanbieders toegevoegd",
+        "fr": "Plus de fournisseurs",
+        "it": "Aggiunto più fornitori",
+        "es": "Añadido más proveedores",
+        "pl": "Dodano więcej dostawców",
+        "uk": "Додано більше провайдерів",
+        "zh-cn": "添加更多提供者"
+      },
       "3.1.3": {
         "en": "fixed configuration validation\nenhanced error logging\nsome cities have no streets (API)",
         "de": "feste konfigurationsvalidierung\nverbesserte fehlersuche\neinige Städte haben keine Straßen (API)",
@@ -85,19 +98,6 @@
         "pl": "Dodać zaawansowaną obsługę śmieci\nLista zaginionych i nieznana jako JSON (typ.json NotFound)",
         "uk": "Додана розширена обробка для сміття\nДодано список відсутніх / не знайдено типів сміття як JSON (type.jsonNotFound)",
         "zh-cn": "增加突发事件的先进处理\n增列失踪/未发现过事故的清单(原为Json NotFound)"
-      },
-      "2.3.0": {
-        "en": "NodeJS 16.x is required\n\n* Improved log messages\n* Added icons in admin tabs",
-        "de": "NodeJS 16.x ist erforderlich\n\n* Verbesserte Log-Nachrichten\n* Icons in Admin-Tabs hinzugefügt",
-        "ru": "NodeJS 16.x требуется\n\n* Улучшенные лог-сообщения\n* Добавлены иконки в админ табы",
-        "pt": "NodeJS 16.x é necessário\n\n* Mensagens de log melhoradas\n* Ícones adicionados em guias admin",
-        "nl": "NodeJS 16.x is vereist\n\n♪ Improved log berichten\n♪ Added icons in admin tabs ♪",
-        "fr": "NodeJS 16.x est nécessaire\n\n* Amélioration des messages journaux\n* Ajout d'icônes dans les onglets d'administration",
-        "it": "NodeJS 16.x è richiesto\n\n* Messaggi di registro migliorati\n* Aggiunte le icone nelle schede di amministrazione",
-        "es": "NodeJS 16.x es necesario\n\n* Mensajes de registro mejorados\n* iconos añadidos en pestañas de administración",
-        "pl": "NodeJS 16 (ang.)\n\n- Improved log messages\n* Added icons in admin tabs",
-        "uk": "NodeJS 16.x обов'язковий\n\n* Покращені повідомлення журналу\n* Додано іконки в вкладках адміністратора",
-        "zh-cn": "不需要16.JS16x。\n\n* 改进文 件\n* 括号内增列图"
       }
     },
     "titleLang": {
