@@ -759,7 +759,7 @@ class Trashschedule extends utils.Adapter {
             this.log.debug(`[onMessage] ${obj.command}, ${obj.from}, ${JSON.stringify(obj.message)}`);
             if (obj.command === 'getApiProviders') {
                 try {
-                    const source = this.sources[obj.message.source];
+                    const source = this.sources[obj.message?.source];
                     if (source) {
                         const response = await source.getApiProviders();
                         const providers = response.map((p) => ({ value: p.id, label: `${p.title} (${p.url})` }));
@@ -767,7 +767,7 @@ class Trashschedule extends utils.Adapter {
                         //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
                         obj.callback && this.sendTo(obj.from, obj.command, providers, obj.callback);
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -775,7 +775,7 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiCities') {
                 try {
-                    const source = this.sources[obj.message.source];
+                    const source = this.sources[obj.message?.source];
                     if (source) {
                         const provider = obj.message?.provider;
 
@@ -789,7 +789,7 @@ class Trashschedule extends utils.Adapter {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'No provider selected' }], obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -797,13 +797,13 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiStreets') {
                 try {
-                    const source = this.sources[obj.message.source];
+                    const source = this.sources[obj.message?.source];
 
                     if (source) {
                         const provider = obj.message?.provider;
-                        const cityId = parseInt(obj.message?.cityId);
+                        const cityId = obj.message?.cityId;
 
-                        if (provider && cityId && cityId > 0) {
+                        if (provider && cityId) {
                             const response = await source.getApiStreets(provider, cityId);
                             const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: s.name }));
 
@@ -813,7 +813,7 @@ class Trashschedule extends utils.Adapter {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Error: Source not defined/found' }], obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -821,7 +821,7 @@ class Trashschedule extends utils.Adapter {
                 }
             } else if (obj.command === 'getApiTypesText') {
                 try {
-                    const source = this.sources[obj.message.source];
+                    const source = this.sources[obj.message?.source];
 
                     if (source) {
                         const provider = obj.message?.provider;
@@ -843,7 +843,7 @@ class Trashschedule extends utils.Adapter {
                             obj.callback && this.sendTo(obj.from, obj.command, 'Missing provider or cityId', obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, 'Error: Source not defined/found', obj.callback);
+                        obj.callback && this.sendTo(obj.from, obj.command, `Error: Source "${obj.message?.source}" not defined/found`, obj.callback);
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);

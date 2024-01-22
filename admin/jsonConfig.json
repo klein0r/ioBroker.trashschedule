@@ -171,7 +171,7 @@
                 "apiAbfallioCityId": {
                     "type": "autocompleteSendTo",
                     "command": "getApiCities",
-                    "jsonData": "{\"source\": \"api-abfallio\"}",
+                    "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"default\"}",
                     "freeSolo": false,
                     "sm": 12,
                     "md": 6,
@@ -184,7 +184,7 @@
                     "type": "autocompleteSendTo",
                     "command": "getApiStreets",
                     "freeSolo": false,
-                    "jsonData": "{\"source\": \"api-abfallio\", \"cityId\": \"${data.apiAbfallioCityId}\"}",
+                    "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"default\", \"cityId\": \"${data.apiAbfallioCityId}\"}",
                     "alsoDependsOn": [
                         "apiAbfallioCityId"
                     ],
