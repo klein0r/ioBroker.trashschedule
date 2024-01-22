@@ -21,10 +21,6 @@
                         {
                             "label": "Webservice (Jumomind)",
                             "value": "api-jumomind"
-                        },
-                        {
-                            "label": "Webservice (abfall.io / Abfall+)",
-                            "value": "api-abfallio"
                         }
                     ],
                     "default": "ical",
