@@ -69,9 +69,20 @@
                     "label": "days until action",
                     "help": "days until action help"
                 },
+                "_headerOptionsSupport": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Support this project",
+                    "size": 3,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
                     "type": "staticImage",
+                    "tooltip": "ioBroker Master Kurs",
+                    "noTranslation": true,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
