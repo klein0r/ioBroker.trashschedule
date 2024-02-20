@@ -135,7 +135,12 @@
       "muell",
       "muellabfuhr"
     ],
-    "license": "MIT",
+    "tier": 3,
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "automaticUpgrade": "patch",
     "platform": "Javascript/Node.js",
     "icon": "trashschedule.png",
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.trashschedule/master/admin/trashschedule.png",
