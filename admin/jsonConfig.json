@@ -108,7 +108,7 @@
                 }
             }
         },
-        "_sourceApiMymuell": {
+        "_sourceApiJumomind": {
             "hidden": "data.source !== 'api-jumomind'",
             "type": "panel",
             "label": "Webservice (Jumomind)",
