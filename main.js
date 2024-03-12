@@ -46,7 +46,7 @@ class Trashschedule extends utils.Adapter {
 
                     // Check if the state is a direct child (e.g. type.YourTrashType)
                     if (idNoNamespace.split('.').length === 2) {
-                        this.log.debug(`found existing trash type with ID "${idNoNamespace}"`);
+                        this.log.debug(`[onReady] found existing trash type with ID "${idNoNamespace}"`);
                         typesAll.push(idNoNamespace);
                     }
                 }
@@ -64,7 +64,7 @@ class Trashschedule extends utils.Adapter {
                 if (trashNameClean && !!trashType.match) {
                     typesKeep.push(`type.${trashNameClean}`);
 
-                    this.log.debug(`found configured trash type: "${trashName}" with ID "type.${trashNameClean}"`);
+                    this.log.debug(`[onReady] found configured trash type: "${trashName}" with ID "type.${trashNameClean}"`);
 
                     if (trashType.match != trashType.match.trim()) {
                         this.log.info(
@@ -301,11 +301,11 @@ class Trashschedule extends utils.Adapter {
                         native: {},
                     });
                 } else {
-                    this.log.warn(`skipping invalid/empty trash name or match: ${trashName}`);
+                    this.log.warn(`[onReady] skipping invalid/empty trash name or match: ${trashName}`);
                 }
             }
         } else {
-            this.log.warn('no trash types configured');
+            this.log.warn('[onReady] no trash types configured');
         }
 
         // Delete non existent trash types
@@ -313,7 +313,7 @@ class Trashschedule extends utils.Adapter {
             const id = typesAll[i];
 
             if (typesKeep.indexOf(id) === -1) {
-                this.log.debug(`deleting existing but unconfigured trash type with ID "${id}"`);
+                this.log.debug(`[onReady] deleting existing but unconfigured trash type with ID "${id}"`);
                 await this.delObjectAsync(id, { recursive: true });
             }
         }
@@ -334,16 +334,18 @@ class Trashschedule extends utils.Adapter {
         }
 
         if (this.source !== null) {
+            this.log.info(`[onReady] starting with source "${configSource}" -> ${this.source.getType()}`);
+
             await this.setStateChangedAsync('source', { val: this.source.getType(), ack: true });
             const isValid = await this.source.validate();
 
             if (isValid) {
                 this.refreshEverything(); // start data refresh
             } else {
-                this.log.info(`instance configuration is invalid or incomplete - please configure a valid source`);
+                this.log.info(`[onReady] instance configuration is invalid or incomplete - please configure a valid source`);
             }
         } else {
-            this.log.error('Source is not defined');
+            this.log.error('[onReady] source is not defined');
             typeof this.terminate === 'function' ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG) : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
             return;
         }
@@ -356,6 +358,8 @@ class Trashschedule extends utils.Adapter {
             const data = await this.source.getPickupDates();
             if (data && data.length) {
                 this.updateAll(data);
+            } else {
+                this.log.error('[refreshEverything] no pickup dates found - check configuration and restart instance');
             }
         }
 
@@ -719,7 +723,7 @@ class Trashschedule extends utils.Adapter {
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
         } else {
-            this.log.error('no events found - check configuration and restart instance');
+            this.log.error('[updateAll] no pickup dates found - check configuration and restart instance');
 
             await this.setStateAsync('info.connection', { val: false, ack: true });
         }
