@@ -56,6 +56,8 @@ iobroker add trashschedule
 -->
 ### **WORK IN PROGRESS**
 
+NodeJS 18.x is required
+
 * (klein0r) Improved error reporting / log messages
 
 ### 3.2.0 (2024-01-22)
