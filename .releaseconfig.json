@@ -1,7 +1,10 @@
 {
-    "plugins": ["iobroker", "license"],
+    "plugins": ["iobroker", "license", "manual-review"],
     "versionFiles": [
         ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
         ["widgets/trashschedule/js/*.js", "(?<=version: ')(.*?)(?=',)"]
-    ]
+    ],
+    "exec": {
+        "before_commit": "npm run update-readme"
+    }
 }

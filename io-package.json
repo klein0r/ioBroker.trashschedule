@@ -158,12 +158,14 @@
     "docs": {
       "en": [
         "docs/en/README.md",
+        "docs/en/providers.md",
         "docs/en/blockly.md",
         "docs/en/faq.md",
         "docs/en/javascript.md"
       ],
       "de": [
         "docs/de/README.md",
+        "docs/de/providers.md",
         "docs/de/blockly.md",
         "docs/de/faq.md",
         "docs/de/javascript.md"

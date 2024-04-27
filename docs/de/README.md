@@ -4,6 +4,7 @@
 
 ## Inhaltsverzeichnis
 
+- [Anbieter](providers.md)
 - [Blockly](blockly.md)
 - [JavaScript](javascript.md)
 - [FAQ](faq.md)
