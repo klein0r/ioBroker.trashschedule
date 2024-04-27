@@ -1,7 +1,7 @@
 /*
     ioBroker.vis TrashSchedule Widget-Set
 
-    Copyright 2022 Matthias Kleine info@haus-automatisierung.com
+    Copyright 2024 Matthias Kleine info@haus-automatisierung.com
 */
 'use strict';
 
@@ -128,17 +128,17 @@ $.extend(
             "zh-cn": "工作日"
         },
         "hide": {
-            "en": "Hide",
-            "de": "Hirse",
-            "ru": "Скрыть",
-            "pt": "Esconde-te",
-            "nl": "Verberg je",
-            "fr": "C'est ça",
-            "it": "Nascondi",
-            "es": "Escóndete",
-            "pl": "Hide",
-            "uk": "Приват",
-            "zh-cn": "导 言"
+            "en": "Hidden",
+            "de": "Versteckt",
+            "ru": "Hidden",
+            "pt": "Escondido",
+            "nl": "Verborgen",
+            "fr": "Caché",
+            "it": "Nascosto",
+            "es": "Oculto",
+            "pl": "Ukryte",
+            "uk": "Прихована",
+            "zh-cn": "隐藏"
         },
         "long": {
             "en": "long",
