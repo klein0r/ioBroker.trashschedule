@@ -37,6 +37,19 @@
 
 ![iCal](./img/ical.png)
 
+## Abfall-Handling - Funktionsweise
+
+- In den Instanzeinstellungen wird mit 'daysuntilaction' eine Vorlaufzeit eingestellt, wieviele Tage im Voraus über die bevorstehende Abholung informiert wird. Annahme: Der Standard dürfte bei vielen 1 Tag, also der Abend vor der Abholung sein.
+- Wird diese Vorlaufzeit erreicht, wird der State `actionNeeded` auf `true` gesetzt.
+- Wurde der Abfallbehälter an die Straße gestellt, wird dies über den State `completed` bestätigt. Daraufhin wird `actionNeeded` auf `false` gesetzt.
+- Um mehrere gleichzeitig auf completed zu setzen gibt es folgende zusätzliche States:
+    - `completedToday`= setzt alle Behälter, die heute fällig sind, auf completed
+    - `completedTomorrow` = setzt alle Behälter, die morgen fällig sind, auf completed (einschließlich heute)
+    - `completedAll` = setzt alle Behälter auf completed, die aktuell anstehen
+
+ttd:
+- Übersetzung der Texte
+- '???' durch einen sinnvollen Text ersetzen
 
 ## VIS Widget (VIS version 1.x)
 

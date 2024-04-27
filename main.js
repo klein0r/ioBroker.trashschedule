@@ -384,32 +384,13 @@ class Trashschedule extends utils.Adapter {
     }
 
     /**
-     * Abfall-Handling: Funktionsweise:
-     * - In den Instanzeinstellungen wird mit 'daysuntilaction' eine Vorlaufzeit eingestellt, wieviele
-     *   Tage im Voraus über die bevorstehende Abholung informiert wird.
-     *   Annahme: Der Standard dürfte bei vielen 1 Tag, also der Abend vor der Abholung sein.
-     * - Wird diese Vorlaufzeit erreicht, wird der State 'actionNeeded' auf true gesetzt.
-     * - Wurde der Abfallbehälter an die Straße gestellt, wird dies über den State 'completed' bestätigt.
-     *   Daraufhin wird 'actionNeeded' auf false gesetzt.
-     * - Um mehrere gleichzeitig auf completed zu setzen gibt es folgende zusätzliche States:
-     *     - 'completedToday'    = setzt alle Behälter, die heute fällig sind, auf completed
-     *     - 'completedTomorrow' = setzt alle Behälter, die morgen fällig sind, auf completed (einschließlich heute)
-     *     - 'completedAll'      = setzt alle Behälter auf completed, die aktuell anstehen
-     *
-     * ttd:
-     * - Sinnvollen Namen für 'daysuntilaction' vergeben
-     * - Übersetzung der Texte
-     * - '???' durch einen sinnvollen Text ersetzen
-     */
-
-    /**
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
     async onStateChange(id, state) {
         if (id && state) {
             const idNoNamespace = this.removeNamespace(id);
-            if (id == this.config.ical + '.data.table') {
+            if (id == `${this.config.ical}.data.table`) {
                 this.refreshEverything();
             } else if (idNoNamespace == 'type.resetCompleted' && state.val && !state.ack) {
                 this.log.info(`Setting "completed" flag for all types to false (RESET_ALL)`);
@@ -419,15 +400,13 @@ class Trashschedule extends utils.Adapter {
                 for (const trashType of trashTypesConfig) {
                     const trashNameClean = trashType.nameClean;
 
-                    await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                     this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`);
+                    await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                 }
 
                 this.refreshEverything();
-
-                // Abfall-Handling: alle auf Erledigt setzen
             } else if (idNoNamespace == 'type.completedAll' && state.val && !state.ack) {
-                this.log.info(`Setting "completed" flag for all types to true (???)`);
+                this.log.info(`Setting "completed" flag for all types to true (COMPLETE_ALL)`);
 
                 const trashTypesConfig = this.getTrashTypes();
 
@@ -436,17 +415,14 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= this.config.daysuntilaction) {
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true ('???')`);
+                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_ALL)`);
+                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
                     }
                 }
 
                 this.refreshEverything();
-
-                // Abfall-Handling: alle von heute auf Erledigt setzen
             } else if (idNoNamespace == 'type.completedToday' && state.val && !state.ack) {
-                this.log.info('completedToday');
-                this.log.info(`Setting "completed" flag for all types of today to true ('???')`);
+                this.log.info(`Setting "completed" flag for all types of today to true (COMPLETE_TODAY)`);
 
                 const trashTypesConfig = this.getTrashTypes();
 
@@ -455,16 +431,14 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) == 0) {
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (???)`);
+                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TODAY)`);
+                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
                     }
                 }
 
                 this.refreshEverything();
-
-                // Abfall-Handling: alle von heute und morgen auf Erledigt setzen
             } else if (idNoNamespace == 'type.completedTomorrow' && state.val && !state.ack) {
-                this.log.info(`Setting "completed" flag for all types of today and tomorrow to true (???)`);
+                this.log.info(`Setting "completed" flag for all types of today and tomorrow to true (COMPLETE_TOMORROW)`);
 
                 const trashTypesConfig = this.getTrashTypes();
 
@@ -473,8 +447,8 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= 1) {
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: '???' });
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (???)`);
+                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TOMORROW)`);
+                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
                     }
                 }
 
@@ -631,17 +605,14 @@ class Trashschedule extends utils.Adapter {
 
                                         const isCompletedState = await this.getStateAsync(`type.${trashNameClean}.completed`);
 
-                                        // Abfall-Handling: wenn 'daysLeft' <= eingestellter Wert in der Config und noch nicht completed, 'actionNeeded' auf true setzen,
-                                        // um die Bewohner darüber zu informieren, dass sie tätig werden müssen
                                         if (dayDiff <= this.config.daysuntilaction && isCompletedState && !isCompletedState.val) {
-                                            this.log.info(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true (???)`);
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: true, ack: true, c: '???' });
+                                            this.log.debug(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true`);
+                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: true, ack: true });
                                         }
 
-                                        // Abfall-Handling: wenn completed, 'actionNeeded' auf false setzen, da erledigt
                                         if (isCompletedState && isCompletedState.val) {
-                                            this.log.info(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false (???)`);
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: false, ack: true, c: '???' });
+                                            this.log.debug(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false`);
+                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: false, ack: true });
                                         }
 
                                         jsonSummary.push({
