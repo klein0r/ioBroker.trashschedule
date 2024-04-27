@@ -7,10 +7,14 @@ const Mustache = require('mustache');
 const templateDir = path.join(__dirname, './templates/');
 const targetDirs = [path.join(__dirname, './docs/de/'), path.join(__dirname, './docs/en/')];
 
+const providerJumomind = require('./lib/provider/api-jumomind');
+
 function generateProviders() {
     const MUSTACHE_TEMPLATE = path.join(templateDir, 'providers.mustache');
 
-    const templateData = {};
+    const templateData = {
+        jumomind: Object.keys(providerJumomind).map((k) => ({ title: providerJumomind[k].title, cities: providerJumomind[k].cities.join(', ') })),
+    };
 
     try {
         const template = fs.readFileSync(MUSTACHE_TEMPLATE);
