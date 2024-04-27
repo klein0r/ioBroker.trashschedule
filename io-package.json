@@ -200,8 +200,11 @@
     "apiJumomindProvider": "",
     "apiJumomindCityId": "",
     "apiJumomindStreetId": "",
+    "apiAbfallioProvider": "",
     "apiAbfallioCityId": "",
+    "apiAbfallioDistrictId": "",
     "apiAbfallioStreetId": "",
+    "apiAbfallioHouseNumber": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",

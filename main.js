@@ -735,6 +735,7 @@ class Trashschedule extends utils.Adapter {
             if (obj.command === 'getApiProviders') {
                 try {
                     const source = this.sources[obj.message?.source];
+
                     if (source) {
                         const response = await source.getApiProviders();
                         const providers = response.map((p) => ({ value: p.id, label: `${p.title} (${p.url})` }));
@@ -751,6 +752,7 @@ class Trashschedule extends utils.Adapter {
             } else if (obj.command === 'getApiCities') {
                 try {
                     const source = this.sources[obj.message?.source];
+
                     if (source) {
                         const provider = obj.message?.provider;
 
@@ -770,7 +772,7 @@ class Trashschedule extends utils.Adapter {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
                     obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
-            } else if (obj.command === 'getApiStreets') {
+            } else if (obj.command === 'getApiDistricts') {
                 try {
                     const source = this.sources[obj.message?.source];
 
@@ -779,11 +781,62 @@ class Trashschedule extends utils.Adapter {
                         const cityId = obj.message?.cityId;
 
                         if (provider && cityId) {
-                            const response = await source.getApiStreets(provider, cityId);
-                            const streets = response.map((s) => ({ value: `${s.id}-${s.area_id}`, label: s.name }));
+                            const response = await source.getApiDistricts(provider, cityId);
+                            const districts = response.map((d) => ({ value: d.id, label: d.name }));
+
+                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
+                            obj.callback && this.sendTo(obj.from, obj.command, districts, obj.callback);
+                        } else {
+                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Missing provider or cityId' }], obj.callback);
+                        }
+                    } else {
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                    }
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            } else if (obj.command === 'getApiStreets') {
+                try {
+                    const source = this.sources[obj.message?.source];
+
+                    if (source) {
+                        const provider = obj.message?.provider;
+                        const cityId = obj.message?.cityId;
+                        const districtId = obj.message?.districtId;
+
+                        if (provider && cityId) {
+                            const response = await source.getApiStreets(provider, cityId, districtId);
+                            const streets = response.map((s) => ({ value: s.id, label: s.name }));
 
                             //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                             obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                        } else {
+                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
+                        }
+                    } else {
+                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                    }
+                } catch (err) {
+                    this.log.error(`[onMessage] ${obj.command} err: ${err}`);
+                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                }
+            } else if (obj.command === 'getApiHouseNumbers') {
+                try {
+                    const source = this.sources[obj.message?.source];
+
+                    if (source) {
+                        const provider = obj.message?.provider;
+                        const cityId = obj.message?.cityId;
+                        const districtId = obj.message?.districtId;
+                        const streetId = obj.message?.streetId;
+
+                        if (provider && cityId && districtId && streetId) {
+                            const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
+                            const houseNumbers = response.map((h) => ({ value: h.id, label: h.name }));
+
+                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);
+                            obj.callback && this.sendTo(obj.from, obj.command, houseNumbers, obj.callback);
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
                         }
@@ -801,12 +854,15 @@ class Trashschedule extends utils.Adapter {
                     if (source) {
                         const provider = obj.message?.provider;
                         const cityId = parseInt(obj.message?.cityId);
+                        const districtId = obj.message?.districtId;
+                        const streetId = obj.message?.streetId;
+                        const houseNumber = obj.message?.houseNumber;
 
                         if (provider && cityId && cityId > 0) {
-                            const jumomindApi = this.sources['api-jumomind'];
+                            const source = this.sources[obj.message?.source];
 
-                            const response = await jumomindApi.getApiTypes(provider, cityId);
-                            const types = response.map((c) => c.title).join(', ');
+                            const response = await source.getApiTypes(provider, cityId, districtId, streetId, houseNumber);
+                            const types = response.map((c) => c.name).join(', ');
 
                             //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                             if (types) {

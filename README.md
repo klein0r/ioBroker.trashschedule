@@ -60,6 +60,7 @@ NodeJS >= 18.x and js-controller >= 5 is required
 
 * (klein0r) Improved error reporting / log messages
 * (klein0r) Fixed translations
+* (klein0r) Added Abfall+ as Webservice
 
 ### 3.2.0 (2024-01-22)
 
