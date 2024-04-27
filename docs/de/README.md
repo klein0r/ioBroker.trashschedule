@@ -10,10 +10,10 @@
 
 ## Anforderungen
 
-1. nodejs 16.0 (oder neuer)
-2. js-controller 4.0.15 (oder neuer)
-3. iCal Adapter 1.12.1 (oder neuer)
-4. Admin Adapter 6.0.0 (oder neuer)
+1. nodejs 18.0 (oder neuer)
+2. js-controller 5.0.0 (oder neuer)
+3. Admin Adapter 6.0.0 (oder neuer)
+4. iCal Adapter 1.12.1 (oder neuer) - *optional*
 
 ## Voraussetzungen
 
