@@ -1,4 +1,9 @@
 # Older changes
+## 3.1.0 (2023-12-22)
+
+* (klein0r) Use meta storage for cache files
+* (klein0r) Added configured source type as state
+
 ## 3.0.0 (2023-12-21)
 
 * (klein0r) Added API source myMuell
