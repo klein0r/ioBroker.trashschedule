@@ -740,8 +740,12 @@ class Trashschedule extends utils.Adapter {
                         const response = await source.getApiProviders();
                         const providers = response.map((p) => ({ value: p.id, label: `${p.title} (${p.url})` }));
 
-                        //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
-                        obj.callback && this.sendTo(obj.from, obj.command, providers, obj.callback);
+                        if (providers) {
+                            this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
+                            obj.callback && this.sendTo(obj.from, obj.command, providers, obj.callback);
+                        } else {
+                            obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get providers', obj.callback);
+                        }
                     } else {
                         obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
                     }
@@ -760,8 +764,12 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiCities(provider);
                             const cities = response.map((c) => ({ value: c.id, label: c.name }));
 
-                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
-                            obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
+                            if (cities) {
+                                this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
+                                obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
+                            } else {
+                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get cities', obj.callback);
+                            }
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'No provider selected' }], obj.callback);
                         }
@@ -784,8 +792,12 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiDistricts(provider, cityId);
                             const districts = response.map((d) => ({ value: d.id, label: d.name }));
 
-                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
-                            obj.callback && this.sendTo(obj.from, obj.command, districts, obj.callback);
+                            if (districts) {
+                                this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
+                                obj.callback && this.sendTo(obj.from, obj.command, districts, obj.callback);
+                            } else {
+                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get districts', obj.callback);
+                            }
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Missing provider or cityId' }], obj.callback);
                         }
@@ -809,8 +821,12 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiStreets(provider, cityId, districtId);
                             const streets = response.map((s) => ({ value: s.id, label: s.name }));
 
-                            this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
-                            obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                            if (streets) {
+                                this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                                obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
+                            } else {
+                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get streets', obj.callback);
+                            }
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
                         }
@@ -835,8 +851,12 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
                             const houseNumbers = response.map((h) => ({ value: h.id, label: h.name }));
 
-                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);
-                            obj.callback && this.sendTo(obj.from, obj.command, houseNumbers, obj.callback);
+                            if (houseNumbers) {
+                                this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);
+                                obj.callback && this.sendTo(obj.from, obj.command, houseNumbers, obj.callback);
+                            } else {
+                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get houseNumbers', obj.callback);
+                            }
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
                         }
@@ -864,8 +884,8 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiTypes(provider, cityId, districtId, streetId, houseNumber);
                             const types = response.map((c) => c.title ?? c.name).join(', ');
 
-                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                             if (types) {
+                                this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
                             } else {
                                 obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get types', obj.callback);
