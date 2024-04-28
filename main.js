@@ -809,7 +809,7 @@ class Trashschedule extends utils.Adapter {
                             const response = await source.getApiStreets(provider, cityId, districtId);
                             const streets = response.map((s) => ({ value: s.id, label: s.name }));
 
-                            //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
+                            this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                             obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
                         } else {
                             obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
@@ -862,7 +862,7 @@ class Trashschedule extends utils.Adapter {
                             const source = this.sources[obj.message?.source];
 
                             const response = await source.getApiTypes(provider, cityId, districtId, streetId, houseNumber);
-                            const types = response.map((c) => c.name).join(', ');
+                            const types = response.map((c) => c.title ?? c.name).join(', ');
 
                             //this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                             if (types) {
