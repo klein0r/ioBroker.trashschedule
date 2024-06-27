@@ -147,6 +147,7 @@
     "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
     "loglevel": "info",
     "messagebox": true,
+    "logTransporter": true,
     "mode": "daemon",
     "type": "date-and-time",
     "compact": true,
