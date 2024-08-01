@@ -917,7 +917,7 @@ class Trashschedule extends utils.Adapter {
             }
 
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }

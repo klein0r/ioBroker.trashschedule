@@ -32,9 +32,21 @@ module.exports = [
         },
 
         rules: {
+            indent: ['error', 4, { SwitchCase: 1 }],
+
             'no-console': 'off',
             'no-var': 'error',
+            'no-trailing-spaces': 'error',
             'prefer-const': 'error',
+
+            quotes: [
+                'error',
+                'single',
+                {
+                    avoidEscape: true,
+                    allowTemplateLiterals: true,
+                },
+            ],
         },
     },
 ];
