@@ -55,7 +55,10 @@
                     "md": 6,
                     "lg": 6,
                     "label": "skip same day at hour",
-                    "help": "skip same day at hour help"
+                    "help": "skip same day at hour help",
+                    "min": 0,
+                    "max": 23,
+                    "step": 1
                 },
                 "daysuntilaction": {
                     "newLine": true,

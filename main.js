@@ -537,6 +537,10 @@ class Trashschedule extends utils.Adapter {
             const globalOffset = this.config.globaloffset || 0;
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
+            if (skipsamedayathour > 23 || skipsamedayathour < 0) {
+                this.log.warn(`Skip same day at hour has an invalid configuration: ${skipsamedayathour}. Select a value between 0 and 23 in instance settings`);
+            }
+
             const jsonSummary = [];
             const filledTypes = [];
 
