@@ -25,6 +25,10 @@
                         {
                             "label": "Webservice (abfall.io / Abfall+)",
                             "value": "api-abfallio"
+                        },
+                        {
+                            "label": "Webservice (portal.awido.de / Awido)",
+                            "value": "api-awido"
                         }
                     ],
                     "default": "ical",
@@ -291,6 +295,83 @@
                         "apiAbfallioProvider",
                         "apiAbfallioCityId",
                         "apiAbfallioHouseNumber"
+                    ],
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Available types"
+                }
+            }
+        },
+        "_sourceApiAwido": {
+            "hidden": "data.source !== 'api-awido'",
+            "type": "panel",
+            "label": "Webservice (Awido)",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAMFBMVEVHcEwQescWf8kXgMkWf8kVf8gVfskTfcgXgMkVf8gWf8kWf8kWf8kXgMkXf8kYgMmCJV0KAAAAD3RSTlMACorNYjsrF95PdKyf7bp36fl3AAAA3klEQVQokY1S2xbDIAhDxWu1/P/fDsFZbbed8aQEQogC/BnmF0b2O3jQRB8ckTh8P4WT7qiAVRko3lsTCa/tRWHkQmpEjg/IyQJwTvoe9ObjVlSwTbpKozZYZCFORw5JQcBZ7KlFyIkaylUkUF7scJI5dItyJrzpXlVtoY2j3MTdkew4/DXyMwXkuxzIxxQgGDsz7fTXwEJqaSHHg721V3lXk21RJ7x4Z9Wytsxx2t83HJZdC5h+dcqIakLYwaogu4aHI9xoE+h71ce2KO8tDI8vAmZ8vLDSPat+YFu8AARPDFBSjkzyAAAAAElFTkSuQmCC",
+            "items": {
+                "apiAwidoProvider": {
+                    "type": "autocompleteSendTo",
+                    "command": "getApiProviders",
+                    "jsonData": "{\"source\": \"api-awido\"}",
+                    "freeSolo": false,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Provider"
+                },
+                "_apiAwidoLink": {
+                    "type": "staticLink",
+                    "href": "http://portal.awido.de/",
+                    "label": "awido.com",
+                    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAMFBMVEVHcEwQescWf8kXgMkWf8kVf8gVfskTfcgXgMkVf8gWf8kWf8kWf8kXgMkXf8kYgMmCJV0KAAAAD3RSTlMACorNYjsrF95PdKyf7bp36fl3AAAA3klEQVQokY1S2xbDIAhDxWu1/P/fDsFZbbed8aQEQogC/BnmF0b2O3jQRB8ckTh8P4WT7qiAVRko3lsTCa/tRWHkQmpEjg/IyQJwTvoe9ObjVlSwTbpKozZYZCFORw5JQcBZ7KlFyIkaylUkUF7scJI5dItyJrzpXlVtoY2j3MTdkew4/DXyMwXkuxzIxxQgGDsz7fTXwEJqaSHHg721V3lXk21RJ7x4Z9Wytsxx2t83HJZdC5h+dcqIakLYwaogu4aHI9xoE+h71ce2KO8tDI8vAmZ8vLDSPat+YFu8AARPDFBSjkzyAAAAAElFTkSuQmCC",
+                    "button": true,
+                    "variant": "contained",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "apiAwidoCityId": {
+                    "newLine": true,
+                    "hidden": "!data.apiAwidoProvider || data.apiAwidoProvider === 'err'",
+                    "type": "autocompleteSendTo",
+                    "command": "getApiCities",
+                    "jsonData": "{\"source\": \"api-awido\", \"provider\": \"${data.apiAwidoProvider}\"}",
+                    "freeSolo": false,
+                    "alsoDependsOn": [
+                        "apiAwidoProvider"
+                    ],
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "City"
+                },
+                "apiAwidoStreetId": {
+                    "newLine": true,
+                    "hidden": "!data.apiAwidoProvider || data.apiAwidoProvider === 'err' || !data.apiAwidoCityId || data.apiAwidoCityId === 'err'",
+                    "type": "autocompleteSendTo",
+                    "command": "getApiStreets",
+                    "jsonData": "{\"source\": \"api-awido\", \"provider\": \"${data.apiAwidoProvider}\", \"cityId\": \"${data.apiAwidoCityId}\"}",
+                    "freeSolo": false,
+                    "alsoDependsOn": [
+                        "apiAwidoProvider",
+                        "apiAwidoCityId"
+                    ],
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Street"
+                },
+                "_apiAwidoTypes": {
+                    "hidden": "!data.apiAwidoProvider || data.apiAwidoProvider === 'err' || !data.apiAwidoCityId || data.apiAwidoCityId === 'err' || !data.apiAwidoStreetId || data.apiAwidoStreetId === 'err'",
+                    "type": "textSendTo",
+                    "container": "text",
+                    "copyToClipboard": true,
+                    "command": "getApiTypesText",
+                    "jsonData": "{\"source\": \"api-awido\", \"provider\": \"${data.apiAwidoProvider}\", \"cityId\": \"${data.apiAwidoCityId}\", \"streetId\": \"${data.apiAwidoStreetId}\"}",
+                    "alsoDependsOn": [
+                        "apiAwidoProvider",
+                        "apiAwidoCityId",
+                        "apiAwidoStreetId"
                     ],
                     "sm": 12,
                     "md": 6,

@@ -5,6 +5,7 @@ const utils = require('@iobroker/adapter-core');
 const SourceIcal = require('./lib/source/ical');
 const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
+const SourceApiAwido = require('./lib/source/api-awido');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -325,6 +326,7 @@ class Trashschedule extends utils.Adapter {
             ical: new SourceIcal(this),
             'api-jumomind': new SourceApiJumomind(this),
             'api-abfallio': new SourceApiAbfallIo(this),
+            'api-awido': new SourceApiAwido(this),
         };
 
         // Set active source
@@ -877,12 +879,12 @@ class Trashschedule extends utils.Adapter {
 
                     if (source) {
                         const provider = obj.message?.provider;
-                        const cityId = parseInt(obj.message?.cityId);
+                        const cityId = this.isUUID(obj.message?.cityId) ? obj.message?.cityId : parseInt(obj.message?.cityId);
                         const districtId = obj.message?.districtId;
                         const streetId = obj.message?.streetId;
                         const houseNumber = obj.message?.houseNumber;
 
-                        if (provider && cityId && cityId > 0) {
+                        if (provider && cityId && (this.isUUID(obj.message?.cityId) || cityId > 0)) {
                             const source = this.sources[obj.message?.source];
 
                             const response = await source.getApiTypes(provider, cityId, districtId, streetId, houseNumber);
@@ -906,6 +908,16 @@ class Trashschedule extends utils.Adapter {
                 }
             }
         }
+    }
+
+    /**
+     * validates a UUID
+     *
+     * @param uuid a potential UUID
+     * @returns {boolean} whether uuid is a valid UUID
+     */
+    isUUID(uuid) {
+        return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(uuid);
     }
 
     /**

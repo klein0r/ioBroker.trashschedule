@@ -193,6 +193,9 @@
     "apiAbfallioDistrictId": "",
     "apiAbfallioStreetId": "",
     "apiAbfallioHouseNumber": "",
+    "apiAwidoProvider": "",
+    "apiAwidoCityId": "",
+    "apiAwidoStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",
@@ -226,8 +229,15 @@
         "name": "Weihnachtsbaum",
         "match": "Weihnacht",
         "exactmatch": false,
-        "hidewarnings": true,
-        "color": "#418338"
+        "color": "#418338",
+        "hidewarnings": true
+      },
+      {
+        "name": "Problemmüll",
+        "match": "Problem",
+        "exactmatch": false,
+        "color": "#785005",
+        "hidewarnings": true
       }
     ]
   },
