@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* (@jey-cee) Added http API for abfall.io
+
 ### 3.4.0 (2024-11-07)
 
 * (@klein0r) Validate user inputs in instance configuration
