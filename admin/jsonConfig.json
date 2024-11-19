@@ -235,7 +235,7 @@
                 },
                 "apiAbfallioDistrictId": {
                     "newLine": true,
-                    "hidden": "!data.apiAbfallioProvider || data.apiAbfallioProvider === 'err' || !data.apiAbfallioCityId || data.apiAbfallioCityId === 'err'",
+                    "hidden": "!data.apiAbfallioProvider || data.apiAbfallioProvider === 'err' || !data.apiAbfallioCityId || data.apiAbfallioCityId === 'err' ",
                     "type": "autocompleteSendTo",
                     "command": "getApiDistricts",
                     "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"${data.apiAbfallioProvider}\", \"cityId\": \"${data.apiAbfallioCityId}\"}",
@@ -268,7 +268,7 @@
                 },
                 "apiAbfallioHouseNumber": {
                     "newLine": true,
-                    "hidden": "!data.apiAbfallioProvider || data.apiAbfallioProvider === 'err' || !data.apiAbfallioCityId || data.apiAbfallioCityId === 'err' || !data.apiAbfallioDistrictId || data.apiAbfallioDistrictId === 'err' || !data.apiAbfallioStreetId || data.apiAbfallioStreetId === 'err'",
+                    "hidden": "!data.apiAbfallioProvider || data.apiAbfallioProvider === 'err' || !data.apiAbfallioCityId || data.apiAbfallioCityId === 'err' || !data.apiAbfallioDistrictId || data.apiAbfallioDistrictId === 'err' || !data.apiAbfallioStreetId || data.apiAbfallioStreetId === 'err' || (Array.isArray(data.apiAbfallioStreetId) ? data.apiAbfallioStreetId.some(item => item.label === 'alle Straßen') : data.apiAbfallioStreetId === 'alle Straßen')",
                     "type": "autocompleteSendTo",
                     "command": "getApiHouseNumbers",
                     "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"${data.apiAbfallioProvider}\", \"cityId\": \"${data.apiAbfallioCityId}\", \"districtId\": \"${data.apiAbfallioDistrictId}\", \"streetId\": \"${data.apiAbfallioStreetId}\"}",
@@ -290,7 +290,7 @@
                     "container": "text",
                     "copyToClipboard": true,
                     "command": "getApiTypesText",
-                    "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"${data.apiAbfallioProvider}\", \"cityId\": \"${data.apiAbfallioCityId}\", \"houseNumber\": \"${data.apiAbfallioHouseNumber}\"}",
+                    "jsonData": "{\"source\": \"api-abfallio\", \"provider\": \"${data.apiAbfallioProvider}\", \"cityId\": \"${data.apiAbfallioCityId}\", \"streetId\": \"${data.apiAbfallioStreetId}\", \"houseNumber\": \"${data.apiAbfallioHouseNumber}\"}",
                     "alsoDependsOn": [
                         "apiAbfallioProvider",
                         "apiAbfallioCityId",
