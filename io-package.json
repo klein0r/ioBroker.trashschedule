@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "3.4.1": {
+        "en": "Awido: Increased number of fetched pickups per type (1 month)",
+        "de": "Awido: Erhöhte Anzahl von Abholungen pro Typ (1 Monat)",
+        "ru": "Awido: Увеличение количества выловленных пикапов на один тип (1 месяц)",
+        "pt": "Awido: Aumento do número de captadores fetched por tipo (1 mês)",
+        "nl": "Awido: Toegenomen aantal opgehaalde pickups per type (1 maand)",
+        "fr": "Awido: Augmentation du nombre de ramassage par type (1 mois)",
+        "it": "Awido: aumento del numero di pickup fetched per tipo (1 mese)",
+        "es": "Awido: Mayor número de camionetas por tipo (1 mes)",
+        "pl": "Awido: Zwiększona liczba pobranych odbiorników na typ (1 miesiąc)",
+        "uk": "Awido: Підвищена кількість занурених пікап на тип (1 місяць)",
+        "zh-cn": "Awido:每类小卡车增加(1个月)"
+      },
       "3.4.0": {
         "en": "Validate user inputs in instance configuration\nAdded Awido as Webservice",
         "de": "Validieren Sie Benutzereingänge in Beispielkonfiguration\nAwido als Webservice hinzugefügt",
@@ -85,19 +98,6 @@
         "pl": "Walidowanie i test integracji",
         "uk": "Виправлено перевірку конфігурації / тестування інтеграції",
         "zh-cn": "固定验证/一体化试验"
-      },
-      "3.0.0": {
-        "en": "Added API source myMuell",
-        "de": "Hinzugefügt API-Quelle myMuell",
-        "ru": "Добавлен источник API myMuell",
-        "pt": "Adicionado API source myMuell",
-        "nl": "_",
-        "fr": "Ajout d'une source API myMuell",
-        "it": "Sorgente API aggiunto myMuell",
-        "es": "Añadido fuente de API miMuell",
-        "pl": "Źródło danych API MyMuell",
-        "uk": "Додано джерело API myMuell",
-        "zh-cn": "增加我Muell的API来源"
       }
     },
     "titleLang": {

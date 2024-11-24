@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.4.1 (2024-11-24)
 
 * (@Sickboy78) Awido: Increased number of fetched pickups per type (1 month)
 
@@ -80,10 +80,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 * (klein0r) fixed configuration validation
 * (klein0r) enhanced error logging
 * (klein0r) some cities have no streets (API)
-
-### 3.1.2 (2023-12-22)
-
-* (klein0r) Fixed exception when cache dir doesn't exist
 
 ## License
 
