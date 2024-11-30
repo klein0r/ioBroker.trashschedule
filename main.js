@@ -65,7 +65,7 @@ class Trashschedule extends utils.Adapter {
                 if (trashNameClean && !!trashType.match) {
                     typesKeep.push(`type.${trashNameClean}`);
 
-                    this.log.debug(`[onReady] found configured trash type: "${trashName}" with ID "type.${trashNameClean}"`);
+                    this.log.debug(`[onReady] found config trash type: "${trashName}" with ID "type.${trashNameClean}" (matches "${trashType.match}"${trashType.exactmatch ? ' - exact match' : ''})`);
 
                     if (trashType.match != trashType.match.trim()) {
                         this.log.info(
@@ -530,8 +530,6 @@ class Trashschedule extends utils.Adapter {
                 return aD.getTime() - bD.getTime();
             });
 
-            this.log.debug(`(0) start processing ${data.length} events`);
-
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = new Date().getHours();
 
@@ -542,6 +540,8 @@ class Trashschedule extends utils.Adapter {
             if (skipsamedayathour > 23 || skipsamedayathour < 0) {
                 this.log.warn(`Skip same day at hour has an invalid configuration: ${skipsamedayathour}. Select a value between 0 and 23 in instance settings`);
             }
+
+            this.log.debug(`(0) start processing ${data.length} events // current hour: ${hourNow} // skipsamedayathour (config): ${skipsamedayathour} // offset (config): ${globalOffset}`);
 
             const jsonSummary = [];
             const filledTypes = [];
@@ -558,8 +558,6 @@ class Trashschedule extends utils.Adapter {
                 minTypes: [],
             };
 
-            this.log.debug(`(0) offset (config): ${globalOffset}`);
-
             for (const entry of data) {
                 const date = this.getDateWithoutTime(new Date(entry.date), globalOffset);
 
@@ -569,7 +567,7 @@ class Trashschedule extends utils.Adapter {
                 if (date.getTime() >= dateNow.getTime()) {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
-                    this.log.debug(`(2) processing: "${entry.name}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} // skipsamedayathour (config): ${skipsamedayathour}`);
+                    this.log.debug(`(2) processing: "${entry.name}" (${date.getTime()}) // dayDiff: ${dayDiff}`);
 
                     // Check if event matches trash type and fill information
                     for (const trashType of trashTypesConfig) {
@@ -648,11 +646,13 @@ class Trashschedule extends utils.Adapter {
                                         nextAfter.minTypes.push(trashName);
                                     }
                                 }
+                            } else {
+                                this.log.debug(`(3) skipped event (hour in the past): ${JSON.stringify(entry)}`);
                             }
                         }
                     }
                 } else {
-                    this.log.debug(`skipped event (is in the past) ${JSON.stringify(entry)}`);
+                    this.log.debug(`(3) skipped event (date is in the past): ${JSON.stringify(entry)}`);
                 }
             }
 
