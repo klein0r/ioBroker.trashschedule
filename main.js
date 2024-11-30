@@ -30,7 +30,7 @@ class Trashschedule extends utils.Adapter {
     }
 
     async onReady() {
-        await this.setStateAsync('info.connection', { val: false, ack: true });
+        await this.setState('info.connection', { val: false, ack: true });
 
         const trashTypesConfig = this.getTrashTypes();
 
@@ -374,7 +374,7 @@ class Trashschedule extends utils.Adapter {
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
-        this.setStateAsync('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
+        this.setState('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
 
         this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
         this.refreshEverythingTimeout = this.setTimeout(() => {
@@ -403,7 +403,7 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`);
-                    await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
+                    await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                 }
 
                 this.refreshEverything();
@@ -418,7 +418,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= this.config.daysuntilaction) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_ALL)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
                     }
                 }
 
@@ -434,7 +434,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) == 0) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TODAY)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
                     }
                 }
 
@@ -450,7 +450,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= 1) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TOMORROW)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
                     }
                 }
 
@@ -459,7 +459,7 @@ class Trashschedule extends utils.Adapter {
                 this.log.debug(`Setting "completed" flag for ${idNoNamespace} to ${state.val} (MANUALLY_CHANGED)`);
 
                 this.refreshEverything();
-                await this.setStateAsync(idNoNamespace, { val: state.val, ack: true, c: 'MANUALLY_CHANGED' });
+                await this.setState(idNoNamespace, { val: state.val, ack: true, c: 'MANUALLY_CHANGED' });
             }
         }
     }
@@ -520,7 +520,7 @@ class Trashschedule extends utils.Adapter {
         this.log.debug('(0) updating data');
 
         if (data && data.length > 0) {
-            await this.setStateAsync('info.connection', { val: true, ack: true });
+            await this.setState('info.connection', { val: true, ack: true });
 
             // Sort by date
             data.sort((a, b) => {
@@ -595,7 +595,7 @@ class Trashschedule extends utils.Adapter {
 
                                             if (oldNextDate < date.getTime()) {
                                                 this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`);
-                                                await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
+                                                await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
                                             }
                                         }
 
@@ -693,16 +693,16 @@ class Trashschedule extends utils.Adapter {
                 return a.daysLeft - b.daysLeft;
             });
 
-            await this.setStateAsync('type.json', { val: JSON.stringify(jsonSummary), ack: true });
-            await this.setStateAsync('type.jsonNotFound', { val: JSON.stringify(notFoundTypes), ack: true });
-            await this.setStateAsync('type.lastRefresh', { val: new Date().getTime(), ack: true });
+            await this.setState('type.json', { val: JSON.stringify(jsonSummary), ack: true });
+            await this.setState('type.jsonNotFound', { val: JSON.stringify(notFoundTypes), ack: true });
+            await this.setState('type.lastRefresh', { val: new Date().getTime(), ack: true });
 
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
         } else {
             this.log.error('[updateAll] no pickup dates found - check configuration and restart instance');
 
-            await this.setStateAsync('info.connection', { val: false, ack: true });
+            await this.setState('info.connection', { val: false, ack: true });
         }
     }
 
