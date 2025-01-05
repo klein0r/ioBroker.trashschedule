@@ -57,6 +57,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (@klein0r) Fixed deletion of api cache files
+* (@klein0r) Added additional JSON state for each type
 * (@klein0r) Improved logging
 
 ### 3.4.1 (2024-11-24)

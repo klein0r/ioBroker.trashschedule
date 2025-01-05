@@ -301,6 +301,30 @@ class Trashschedule extends utils.Adapter {
                         },
                         native: {},
                     });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.json`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - JSON (' + trashName + ')',
+                                de: 'Nächste Abholung - JSON (' + trashName + ')',
+                                ru: 'Следующий пикап - JSON (' + trashName + ')',
+                                pt: 'Próxima coleta - JSON (' + trashName + ')',
+                                nl: 'Volgende afhaling - JSON (' + trashName + ')',
+                                fr: 'Prochain ramassage - JSON (' + trashName + ')',
+                                it: 'Prossimo ritiro - JSON (' + trashName + ')',
+                                es: 'Siguiente recogida - JSON (' + trashName + ')',
+                                pl: 'Następny odbiór — JSON (' + trashName + ')',
+                                uk: 'Наступний пікап - JSON (' + trashName + ')',
+                                'zh-cn': '下一个拾音器 - JSON (' + trashName + ')',
+                            },
+                            type: 'string',
+                            role: 'json',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
                 } else {
                     this.log.warn(`[onReady] skipping invalid/empty trash name or match: ${trashName}`);
                 }
@@ -619,14 +643,19 @@ class Trashschedule extends utils.Adapter {
                                             await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: false, ack: true });
                                         }
 
-                                        jsonSummary.push({
+                                        // JSON summary
+                                        const summaryObj = {
                                             name: trashName,
                                             daysLeft: dayDiff,
                                             nextDate: date.getTime(),
                                             _completed: isCompletedState ? isCompletedState.val : false,
                                             _description: entry.description,
                                             _color: trashType.color,
-                                        });
+                                        };
+
+                                        jsonSummary.push(summaryObj);
+
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: JSON.stringify([summaryObj]), ack: true });
 
                                         this.log.debug(`(4) filled type: "${trashName}"`);
                                     }
@@ -677,6 +706,7 @@ class Trashschedule extends utils.Adapter {
                         await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: '[]', ack: true, q: 0x02 });
 
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
 
