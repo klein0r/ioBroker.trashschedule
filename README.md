@@ -56,6 +56,8 @@ iobroker add trashschedule
 -->
 ### **WORK IN PROGRESS**
 
+NodeJS >= 20.x and js-controller >= 6 is required
+
 * (@klein0r) Fixed deletion of api cache files
 * (@klein0r) Added additional JSON state for each type
 * (@klein0r) Improved logging
