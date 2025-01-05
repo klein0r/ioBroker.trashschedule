@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.0 (2025-01-05)
 
 NodeJS >= 20.x and js-controller >= 6 is required
 
@@ -82,12 +82,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 ### 3.2.0 (2024-01-22)
 
 * (klein0r) Added more providers
-
-### 3.1.3 (2023-12-24)
-
-* (klein0r) fixed configuration validation
-* (klein0r) enhanced error logging
-* (klein0r) some cities have no streets (API)
 
 ## License
 
