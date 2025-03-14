@@ -30,7 +30,7 @@ class Trashschedule extends utils.Adapter {
     }
 
     async onReady() {
-        await this.setStateAsync('info.connection', { val: false, ack: true });
+        await this.setState('info.connection', { val: false, ack: true });
 
         const trashTypesConfig = this.getTrashTypes();
 
@@ -65,7 +65,7 @@ class Trashschedule extends utils.Adapter {
                 if (trashNameClean && !!trashType.match) {
                     typesKeep.push(`type.${trashNameClean}`);
 
-                    this.log.debug(`[onReady] found configured trash type: "${trashName}" with ID "type.${trashNameClean}"`);
+                    this.log.debug(`[onReady] found config trash type: "${trashName}" with ID "type.${trashNameClean}" (matches "${trashType.match}"${trashType.exactmatch ? ' - exact match' : ''})`);
 
                     if (trashType.match != trashType.match.trim()) {
                         this.log.info(
@@ -301,6 +301,30 @@ class Trashschedule extends utils.Adapter {
                         },
                         native: {},
                     });
+
+                    await this.setObjectNotExistsAsync(`type.${trashNameClean}.json`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Next pickup - JSON (' + trashName + ')',
+                                de: 'Nächste Abholung - JSON (' + trashName + ')',
+                                ru: 'Следующий пикап - JSON (' + trashName + ')',
+                                pt: 'Próxima coleta - JSON (' + trashName + ')',
+                                nl: 'Volgende afhaling - JSON (' + trashName + ')',
+                                fr: 'Prochain ramassage - JSON (' + trashName + ')',
+                                it: 'Prossimo ritiro - JSON (' + trashName + ')',
+                                es: 'Siguiente recogida - JSON (' + trashName + ')',
+                                pl: 'Następny odbiór — JSON (' + trashName + ')',
+                                uk: 'Наступний пікап - JSON (' + trashName + ')',
+                                'zh-cn': '下一个拾音器 - JSON (' + trashName + ')',
+                            },
+                            type: 'string',
+                            role: 'json',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
                 } else {
                     this.log.warn(`[onReady] skipping invalid/empty trash name or match: ${trashName}`);
                 }
@@ -374,7 +398,7 @@ class Trashschedule extends utils.Adapter {
         // Next Timeout
         const nexTimeoutMilli = this.getMillisecondsToNextFullHour();
 
-        this.setStateAsync('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
+        this.setState('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
 
         this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
         this.refreshEverythingTimeout = this.setTimeout(() => {
@@ -403,7 +427,7 @@ class Trashschedule extends utils.Adapter {
                     const trashNameClean = trashType.nameClean;
 
                     this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`);
-                    await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
+                    await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                 }
 
                 this.refreshEverything();
@@ -418,7 +442,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= this.config.daysuntilaction) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_ALL)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
                     }
                 }
 
@@ -434,7 +458,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) == 0) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TODAY)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
                     }
                 }
 
@@ -450,7 +474,7 @@ class Trashschedule extends utils.Adapter {
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= 1) {
                         this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TOMORROW)`);
-                        await this.setStateAsync(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
+                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
                     }
                 }
 
@@ -459,7 +483,7 @@ class Trashschedule extends utils.Adapter {
                 this.log.debug(`Setting "completed" flag for ${idNoNamespace} to ${state.val} (MANUALLY_CHANGED)`);
 
                 this.refreshEverything();
-                await this.setStateAsync(idNoNamespace, { val: state.val, ack: true, c: 'MANUALLY_CHANGED' });
+                await this.setState(idNoNamespace, { val: state.val, ack: true, c: 'MANUALLY_CHANGED' });
             }
         }
     }
@@ -520,7 +544,7 @@ class Trashschedule extends utils.Adapter {
         this.log.debug('(0) updating data');
 
         if (data && data.length > 0) {
-            await this.setStateAsync('info.connection', { val: true, ack: true });
+            await this.setState('info.connection', { val: true, ack: true });
 
             // Sort by date
             data.sort((a, b) => {
@@ -529,8 +553,6 @@ class Trashschedule extends utils.Adapter {
 
                 return aD.getTime() - bD.getTime();
             });
-
-            this.log.debug(`(0) start processing ${data.length} events`);
 
             const dateNow = this.getDateWithoutTime(new Date(), 0);
             const hourNow = new Date().getHours();
@@ -542,6 +564,8 @@ class Trashschedule extends utils.Adapter {
             if (skipsamedayathour > 23 || skipsamedayathour < 0) {
                 this.log.warn(`Skip same day at hour has an invalid configuration: ${skipsamedayathour}. Select a value between 0 and 23 in instance settings`);
             }
+
+            this.log.debug(`(0) start processing ${data.length} events // current hour: ${hourNow} // skipsamedayathour (config): ${skipsamedayathour} // offset (config): ${globalOffset}`);
 
             const jsonSummary = [];
             const filledTypes = [];
@@ -558,8 +582,6 @@ class Trashschedule extends utils.Adapter {
                 minTypes: [],
             };
 
-            this.log.debug(`(0) offset (config): ${globalOffset}`);
-
             for (const entry of data) {
                 const date = this.getDateWithoutTime(new Date(entry.date), globalOffset);
 
@@ -569,7 +591,7 @@ class Trashschedule extends utils.Adapter {
                 if (date.getTime() >= dateNow.getTime()) {
                     const dayDiff = Math.round((date.getTime() - dateNow.getTime()) / (24 * 60 * 60 * 1000));
 
-                    this.log.debug(`(2) processing: "${entry.name}" (${date.getTime()}) // dayDiff: ${dayDiff} // current hour (date): ${hourNow} // skipsamedayathour (config): ${skipsamedayathour}`);
+                    this.log.debug(`(2) processing: "${entry.name}" (${date.getTime()}) // dayDiff: ${dayDiff}`);
 
                     // Check if event matches trash type and fill information
                     for (const trashType of trashTypesConfig) {
@@ -595,7 +617,7 @@ class Trashschedule extends utils.Adapter {
 
                                             if (oldNextDate < date.getTime()) {
                                                 this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`);
-                                                await this.setStateAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
+                                                await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
                                             }
                                         }
 
@@ -621,14 +643,19 @@ class Trashschedule extends utils.Adapter {
                                             await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: false, ack: true });
                                         }
 
-                                        jsonSummary.push({
+                                        // JSON summary
+                                        const summaryObj = {
                                             name: trashName,
                                             daysLeft: dayDiff,
                                             nextDate: date.getTime(),
                                             _completed: isCompletedState ? isCompletedState.val : false,
                                             _description: entry.description,
                                             _color: trashType.color,
-                                        });
+                                        };
+
+                                        jsonSummary.push(summaryObj);
+
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: JSON.stringify([summaryObj]), ack: true });
 
                                         this.log.debug(`(4) filled type: "${trashName}"`);
                                     }
@@ -648,11 +675,13 @@ class Trashschedule extends utils.Adapter {
                                         nextAfter.minTypes.push(trashName);
                                     }
                                 }
+                            } else {
+                                this.log.debug(`(3) skipped event (hour in the past): ${JSON.stringify(entry)}`);
                             }
                         }
                     }
                 } else {
-                    this.log.debug(`skipped event (is in the past) ${JSON.stringify(entry)}`);
+                    this.log.debug(`(3) skipped event (date is in the past): ${JSON.stringify(entry)}`);
                 }
             }
 
@@ -677,6 +706,7 @@ class Trashschedule extends utils.Adapter {
                         await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
                         await this.setStateChangedAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: '[]', ack: true, q: 0x02 });
 
                         await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
 
@@ -693,16 +723,16 @@ class Trashschedule extends utils.Adapter {
                 return a.daysLeft - b.daysLeft;
             });
 
-            await this.setStateAsync('type.json', { val: JSON.stringify(jsonSummary), ack: true });
-            await this.setStateAsync('type.jsonNotFound', { val: JSON.stringify(notFoundTypes), ack: true });
-            await this.setStateAsync('type.lastRefresh', { val: new Date().getTime(), ack: true });
+            await this.setState('type.json', { val: JSON.stringify(jsonSummary), ack: true });
+            await this.setState('type.jsonNotFound', { val: JSON.stringify(notFoundTypes), ack: true });
+            await this.setState('type.lastRefresh', { val: new Date().getTime(), ack: true });
 
             await this.fillNext(next, 'next');
             await this.fillNext(nextAfter, 'nextAfter');
         } else {
             this.log.error('[updateAll] no pickup dates found - check configuration and restart instance');
 
-            await this.setStateAsync('info.connection', { val: false, ack: true });
+            await this.setState('info.connection', { val: false, ack: true });
         }
     }
 
