@@ -15,9 +15,15 @@ function generateProviders() {
     const MUSTACHE_TEMPLATE = path.join(templateDir, 'providers.mustache');
 
     const templateData = {
-        jumomind: Object.keys(providerJumomind).map((k) => ({ title: providerJumomind[k].title, cities: providerJumomind[k].cities.map((c) => `\t- ${c}`).join('\n') })),
-        abfallio: Object.keys(providerAbfallio).map((k) => ({ title: providerAbfallio[k].title, cities: providerAbfallio[k].cities.map((c) => `\t- ${c}`).join('\n') })),
-        awido: Object.keys(providerAwido).map((k) => ({ title: providerAwido[k].title })),
+        jumomind: Object.keys(providerJumomind).map(k => ({
+            title: providerJumomind[k].title,
+            cities: providerJumomind[k].cities.map(c => `\t- ${c}`).join('\n'),
+        })),
+        abfallio: Object.keys(providerAbfallio).map(k => ({
+            title: providerAbfallio[k].title,
+            cities: providerAbfallio[k].cities.map(c => `\t- ${c}`).join('\n'),
+        })),
+        awido: Object.keys(providerAwido).map(k => ({ title: providerAwido[k].title })),
     };
 
     try {

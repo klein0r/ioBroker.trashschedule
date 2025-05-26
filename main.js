@@ -17,9 +17,6 @@ class Trashschedule extends utils.Adapter {
 
         this.sources = {};
 
-        /**
-         * @type {import('./lib/source/base') | null}
-         */
         this.source = null;
         this.refreshEverythingTimeout = null;
 
@@ -65,7 +62,9 @@ class Trashschedule extends utils.Adapter {
                 if (trashNameClean && !!trashType.match) {
                     typesKeep.push(`type.${trashNameClean}`);
 
-                    this.log.debug(`[onReady] found config trash type: "${trashName}" with ID "type.${trashNameClean}" (matches "${trashType.match}"${trashType.exactmatch ? ' - exact match' : ''})`);
+                    this.log.debug(
+                        `[onReady] found config trash type: "${trashName}" with ID "type.${trashNameClean}" (matches "${trashType.match}"${trashType.exactmatch ? ' - exact match' : ''})`,
+                    );
 
                     if (trashType.match != trashType.match.trim()) {
                         this.log.info(
@@ -136,17 +135,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - date (' + trashName + ')',
-                                de: 'Nächste Abholung - Datum (' + trashName + ')',
-                                ru: 'Следующий пикап - дата (' + trashName + ')',
-                                pt: 'Próxima coleta - data (' + trashName + ')',
-                                nl: 'Volgende afhaling - datum (' + trashName + ')',
-                                fr: 'Prochaine collecte - date (' + trashName + ')',
-                                it: 'Prossimo ritiro - data (' + trashName + ')',
-                                es: 'Próxima recogida: fecha (' + trashName + ')',
-                                pl: 'Następny odbiór — data (' + trashName + ')',
-                                uk: 'Наступний пікап - дата (' + trashName + ')',
-                                'zh-cn': '下次取件 - 日期 (' + trashName + ')',
+                                en: `Next pickup - date (${trashName})`,
+                                de: `Nächste Abholung - Datum (${trashName})`,
+                                ru: `Следующий пикап - дата (${trashName})`,
+                                pt: `Próxima coleta - data (${trashName})`,
+                                nl: `Volgende afhaling - datum (${trashName})`,
+                                fr: `Prochaine collecte - date (${trashName})`,
+                                it: `Prossimo ritiro - data (${trashName})`,
+                                es: `Próxima recogida: fecha (${trashName})`,
+                                pl: `Następny odbiór — data (${trashName})`,
+                                uk: `Наступний пікап - дата (${trashName})`,
+                                'zh-cn': `下次取件 - 日期 (${trashName})`,
                             },
                             type: 'number',
                             role: 'date',
@@ -160,17 +159,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - date formatted (' + trashName + ')',
-                                de: 'Nächste Abholung - Datum formatiert (' + trashName + ')',
-                                ru: 'Следующее получение - дата в формате (' + trashName + ')',
-                                pt: 'Próxima coleta - data formatada (' + trashName + ')',
-                                nl: 'Volgende afhaling - datum geformatteerd (' + trashName + ')',
-                                fr: 'Prochaine collecte - date formatée (' + trashName + ')',
-                                it: 'Prossimo ritiro - data formattata (' + trashName + ')',
-                                es: 'Próxima recogida: fecha formateada (' + trashName + ')',
-                                pl: 'Następny odbiór — sformatowana data (' + trashName + ')',
-                                uk: 'Наступний пікап - дата форматування (' + trashName + ')',
-                                'zh-cn': '下次取件 - 日期格式化 (' + trashName + ')',
+                                en: `Next pickup - date formatted (${trashName})`,
+                                de: `Nächste Abholung - Datum formatiert (${trashName})`,
+                                ru: `Следующее получение - дата в формате (${trashName})`,
+                                pt: `Próxima coleta - data formatada (${trashName})`,
+                                nl: `Volgende afhaling - datum geformatteerd (${trashName})`,
+                                fr: `Prochaine collecte - date formatée (${trashName})`,
+                                it: `Prossimo ritiro - data formattata (${trashName})`,
+                                es: `Próxima recogida: fecha formateada (${trashName})`,
+                                pl: `Następny odbiór — sformatowana data (${trashName})`,
+                                uk: `Наступний пікап - дата форматування (${trashName})`,
+                                'zh-cn': `下次取件 - 日期格式化 (${trashName})`,
                             },
                             type: 'string',
                             role: 'text',
@@ -184,17 +183,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - description (' + trashName + ')',
-                                de: 'Nächste Abholung - Beschreibung (' + trashName + ')',
-                                ru: 'Следующий пикап - описание (' + trashName + ')',
-                                pt: 'Próxima coleta - descrição (' + trashName + ')',
-                                nl: 'Volgende afhaling - beschrijving (' + trashName + ')',
-                                fr: 'Prochain ramassage - description (' + trashName + ')',
-                                it: 'Prossimo ritiro - descrizione (' + trashName + ')',
-                                es: 'Próxima recogida - descripción (' + trashName + ')',
-                                pl: 'Następny odbiór — opis (' + trashName + ')',
-                                uk: 'Наступний пікап - опис (' + trashName + ')',
-                                'zh-cn': '下次取件 - 描述 (' + trashName + ')',
+                                en: `Next pickup - description (${trashName})`,
+                                de: `Nächste Abholung - Beschreibung (${trashName})`,
+                                ru: `Следующий пикап - описание (${trashName})`,
+                                pt: `Próxima coleta - descrição (${trashName})`,
+                                nl: `Volgende afhaling - beschrijving (${trashName})`,
+                                fr: `Prochain ramassage - description (${trashName})`,
+                                it: `Prossimo ritiro - descrizione (${trashName})`,
+                                es: `Próxima recogida - descripción (${trashName})`,
+                                pl: `Następny odbiór — opis (${trashName})`,
+                                uk: `Наступний пікап - опис (${trashName})`,
+                                'zh-cn': `下次取件 - 描述 (${trashName})`,
                             },
                             type: 'string',
                             role: 'text',
@@ -208,17 +207,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - weekday (' + trashName + ')',
-                                de: 'Nächste Abholung - Wochentag (' + trashName + ')',
-                                ru: 'Следующий пикап - будний день (' + trashName + ')',
-                                pt: 'Próxima coleta - dia da semana (' + trashName + ')',
-                                nl: 'Volgende afhaling - weekdag (' + trashName + ')',
-                                fr: 'Prochain ramassage - jour de la semaine (' + trashName + ')',
-                                it: 'Prossimo ritiro - giorno della settimana (' + trashName + ')',
-                                es: 'Próxima recogida: día de la semana (' + trashName + ')',
-                                pl: 'Następny odbiór — dzień powszedni (' + trashName + ')',
-                                uk: 'Наступний пікап - тиждень (' + trashName + ')',
-                                'zh-cn': '下一个取件 - 工作日 (' + trashName + ')',
+                                en: `Next pickup - weekday (${trashName})`,
+                                de: `Nächste Abholung - Wochentag (${trashName})`,
+                                ru: `Следующий пикап - будний день (${trashName})`,
+                                pt: `Próxima coleta - dia da semana (${trashName})`,
+                                nl: `Volgende afhaling - weekdag (${trashName})`,
+                                fr: `Prochain ramassage - jour de la semaine (${trashName})`,
+                                it: `Prossimo ritiro - giorno della settimana (${trashName})`,
+                                es: `Próxima recogida: día de la semana (${trashName})`,
+                                pl: `Następny odbiór — dzień powszedni (${trashName})`,
+                                uk: `Наступний пікап - тиждень (${trashName})`,
+                                'zh-cn': `下一个取件 - 工作日 (${trashName})`,
                             },
                             type: 'number',
                             role: 'value',
@@ -232,17 +231,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - days left (' + trashName + ')',
-                                de: 'Nächste Abholung - verbleibende Tage (' + trashName + ')',
-                                ru: 'Следующий самовывоз - осталось дней (' + trashName + ')',
-                                pt: 'Próxima coleta - faltam dias (' + trashName + ')',
-                                nl: 'Volgende afhaling - resterende dagen (' + trashName + ')',
-                                fr: 'Prochain ramassage - jours restants (' + trashName + ')',
-                                it: 'Prossimo ritiro - giorni rimasti (' + trashName + ')',
-                                es: 'Próxima recogida: quedan días (' + trashName + ')',
-                                pl: 'Następny odbiór — pozostały dni (' + trashName + ')',
-                                uk: 'Наступний пікап - дні зліва (' + trashName + ')',
-                                'zh-cn': '下次取件 - 剩余天数 (' + trashName + ')',
+                                en: `Next pickup - days left (${trashName})`,
+                                de: `Nächste Abholung - verbleibende Tage (${trashName})`,
+                                ru: `Следующий самовывоз - осталось дней (${trashName})`,
+                                pt: `Próxima coleta - faltam dias (${trashName})`,
+                                nl: `Volgende afhaling - resterende dagen (${trashName})`,
+                                fr: `Prochain ramassage - jours restants (${trashName})`,
+                                it: `Prossimo ritiro - giorni rimasti (${trashName})`,
+                                es: `Próxima recogida: quedan días (${trashName})`,
+                                pl: `Następny odbiór — pozostały dni (${trashName})`,
+                                uk: `Наступний пікап - дні зліва (${trashName})`,
+                                'zh-cn': `下次取件 - 剩余天数 (${trashName})`,
                             },
                             type: 'number',
                             role: 'value',
@@ -257,17 +256,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - date found (' + trashName + ')',
-                                de: 'Nächste Abholung - Termin gefunden (' + trashName + ')',
-                                ru: 'Следующий пикап - дата нахождения (' + trashName + ')',
-                                pt: 'Próxima coleta - data encontrada (' + trashName + ')',
-                                nl: 'Volgende afhaling - datum gevonden (' + trashName + ')',
-                                fr: 'Prochain ramassage - date trouvée (' + trashName + ')',
-                                it: 'Prossimo ritiro - data trovata (' + trashName + ')',
-                                es: 'Próxima recogida: fecha encontrada (' + trashName + ')',
-                                pl: 'Następny odbiór — znaleziono datę (' + trashName + ')',
-                                uk: 'Наступний пікап - дата знайдено (' + trashName + ')',
-                                'zh-cn': '下次取件 - 找到日期 (' + trashName + ')',
+                                en: `Next pickup - date found (${trashName})`,
+                                de: `Nächste Abholung - Termin gefunden (${trashName})`,
+                                ru: `Следующий пикап - дата нахождения (${trashName})`,
+                                pt: `Próxima coleta - data encontrada (${trashName})`,
+                                nl: `Volgende afhaling - datum gevonden (${trashName})`,
+                                fr: `Prochain ramassage - date trouvée (${trashName})`,
+                                it: `Prossimo ritiro - data trovata (${trashName})`,
+                                es: `Próxima recogida: fecha encontrada (${trashName})`,
+                                pl: `Następny odbiór — znaleziono datę (${trashName})`,
+                                uk: `Наступний пікап - дата знайдено (${trashName})`,
+                                'zh-cn': `下次取件 - 找到日期 (${trashName})`,
                             },
                             type: 'boolean',
                             role: 'indicator',
@@ -282,17 +281,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - color (' + trashName + ')',
-                                de: 'Nächste Abholung - Farbe (' + trashName + ')',
-                                ru: 'Следующий пикап - цвет (' + trashName + ')',
-                                pt: 'Próxima coleta - cor (' + trashName + ')',
-                                nl: 'Volgende afhaling - kleur (' + trashName + ')',
-                                fr: 'Prochain ramassage - couleur (' + trashName + ')',
-                                it: 'Prossimo ritiro - colore (' + trashName + ')',
-                                es: 'Siguiente recogida - color (' + trashName + ')',
-                                pl: 'Następny odbiór — kolor (' + trashName + ')',
-                                uk: 'Наступний пікап - колір (' + trashName + ')',
-                                'zh-cn': '下一个拾音器 - 颜色 (' + trashName + ')',
+                                en: `Next pickup - color (${trashName})`,
+                                de: `Nächste Abholung - Farbe (${trashName})`,
+                                ru: `Следующий пикап - цвет (${trashName})`,
+                                pt: `Próxima coleta - cor (${trashName})`,
+                                nl: `Volgende afhaling - kleur (${trashName})`,
+                                fr: `Prochain ramassage - couleur (${trashName})`,
+                                it: `Prossimo ritiro - colore (${trashName})`,
+                                es: `Siguiente recogida - color (${trashName})`,
+                                pl: `Następny odbiór — kolor (${trashName})`,
+                                uk: `Наступний пікап - колір (${trashName})`,
+                                'zh-cn': `下一个拾音器 - 颜色 (${trashName})`,
                             },
                             type: 'string',
                             role: 'level.color.rgb',
@@ -306,17 +305,17 @@ class Trashschedule extends utils.Adapter {
                         type: 'state',
                         common: {
                             name: {
-                                en: 'Next pickup - JSON (' + trashName + ')',
-                                de: 'Nächste Abholung - JSON (' + trashName + ')',
-                                ru: 'Следующий пикап - JSON (' + trashName + ')',
-                                pt: 'Próxima coleta - JSON (' + trashName + ')',
-                                nl: 'Volgende afhaling - JSON (' + trashName + ')',
-                                fr: 'Prochain ramassage - JSON (' + trashName + ')',
-                                it: 'Prossimo ritiro - JSON (' + trashName + ')',
-                                es: 'Siguiente recogida - JSON (' + trashName + ')',
-                                pl: 'Następny odbiór — JSON (' + trashName + ')',
-                                uk: 'Наступний пікап - JSON (' + trashName + ')',
-                                'zh-cn': '下一个拾音器 - JSON (' + trashName + ')',
+                                en: `Next pickup - JSON (${trashName})`,
+                                de: `Nächste Abholung - JSON (${trashName})`,
+                                ru: `Следующий пикап - JSON (${trashName})`,
+                                pt: `Próxima coleta - JSON (${trashName})`,
+                                nl: `Volgende afhaling - JSON (${trashName})`,
+                                fr: `Prochain ramassage - JSON (${trashName})`,
+                                it: `Prossimo ritiro - JSON (${trashName})`,
+                                es: `Siguiente recogida - JSON (${trashName})`,
+                                pl: `Następny odbiór — JSON (${trashName})`,
+                                uk: `Наступний пікап - JSON (${trashName})`,
+                                'zh-cn': `下一个拾音器 - JSON (${trashName})`,
                             },
                             type: 'string',
                             role: 'json',
@@ -368,11 +367,15 @@ class Trashschedule extends utils.Adapter {
             if (isValid) {
                 this.refreshEverything(); // start data refresh
             } else {
-                this.log.info(`[onReady] instance configuration is invalid or incomplete - please configure a valid source`);
+                this.log.info(
+                    `[onReady] instance configuration is invalid or incomplete - please configure a valid source`,
+                );
             }
         } else {
             this.log.error('[onReady] source is not defined');
-            typeof this.terminate === 'function' ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG) : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
+            typeof this.terminate === 'function'
+                ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG)
+                : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
             return;
         }
     }
@@ -400,7 +403,9 @@ class Trashschedule extends utils.Adapter {
 
         this.setState('type.nextRefresh', { val: new Date().getTime() + nexTimeoutMilli, ack: true });
 
-        this.log.debug(`re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`);
+        this.log.debug(
+            `re-creating refresh timeout in ${nexTimeoutMilli}ms (in ${this.convertMillisecondsToDuration(nexTimeoutMilli)})`,
+        );
         this.refreshEverythingTimeout = this.setTimeout(() => {
             this.log.debug('started automatic refresh (every full hour)');
 
@@ -426,7 +431,9 @@ class Trashschedule extends utils.Adapter {
                 for (const trashType of trashTypesConfig) {
                     const trashNameClean = trashType.nameClean;
 
-                    this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`);
+                    this.log.debug(
+                        `Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_ALL)`,
+                    );
                     await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_ALL' });
                 }
 
@@ -441,8 +448,14 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= this.config.daysuntilaction) {
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_ALL)`);
-                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_ALL' });
+                        this.log.debug(
+                            `Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_ALL)`,
+                        );
+                        await this.setState(`type.${trashNameClean}.completed`, {
+                            val: true,
+                            ack: true,
+                            c: 'COMPLETE_ALL',
+                        });
                     }
                 }
 
@@ -457,14 +470,22 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) == 0) {
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TODAY)`);
-                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TODAY' });
+                        this.log.debug(
+                            `Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TODAY)`,
+                        );
+                        await this.setState(`type.${trashNameClean}.completed`, {
+                            val: true,
+                            ack: true,
+                            c: 'COMPLETE_TODAY',
+                        });
                     }
                 }
 
                 this.refreshEverything();
             } else if (idNoNamespace == 'type.completedTomorrow' && state.val && !state.ack) {
-                this.log.info(`Setting "completed" flag for all types of today and tomorrow to true (COMPLETE_TOMORROW)`);
+                this.log.info(
+                    `Setting "completed" flag for all types of today and tomorrow to true (COMPLETE_TOMORROW)`,
+                );
 
                 const trashTypesConfig = this.getTrashTypes();
 
@@ -473,8 +494,14 @@ class Trashschedule extends utils.Adapter {
 
                     const daysLeft = await this.getStateAsync(`type.${trashNameClean}.daysLeft`);
                     if (daysLeft && Number(daysLeft.val) <= 1) {
-                        this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TOMORROW)`);
-                        await this.setState(`type.${trashNameClean}.completed`, { val: true, ack: true, c: 'COMPLETE_TOMORROW' });
+                        this.log.debug(
+                            `Setting "completed" flag for type.${trashNameClean}.completed to true (COMPLETE_TOMORROW)`,
+                        );
+                        await this.setState(`type.${trashNameClean}.completed`, {
+                            val: true,
+                            ack: true,
+                            c: 'COMPLETE_TOMORROW',
+                        });
                     }
                 }
 
@@ -492,7 +519,11 @@ class Trashschedule extends utils.Adapter {
         const trashTypesConfig = this.config.trashtypes;
 
         if (trashTypesConfig && Array.isArray(trashTypesConfig)) {
-            return trashTypesConfig.map((trashType) => ({ ...trashType, name: trashType.name.trim(), nameClean: this.cleanNamespace(trashType.name.trim()) }));
+            return trashTypesConfig.map(trashType => ({
+                ...trashType,
+                name: trashType.name.trim(),
+                nameClean: this.cleanNamespace(trashType.name.trim()),
+            }));
         }
 
         return [];
@@ -510,7 +541,7 @@ class Trashschedule extends utils.Adapter {
         const minutes = Math.floor((duration / (1000 * 60)) % 60);
         const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     }
 
     getDateWithoutTime(date, offset) {
@@ -536,7 +567,7 @@ class Trashschedule extends utils.Adapter {
     }
 
     removeNamespace(id) {
-        const re = new RegExp(this.namespace + '*\\.', 'g');
+        const re = new RegExp(`${this.namespace}*\\.`, 'g');
         return id.replace(re, '');
     }
 
@@ -562,10 +593,14 @@ class Trashschedule extends utils.Adapter {
             const skipsamedayathour = this.config.skipsamedayathour || 18;
 
             if (skipsamedayathour > 23 || skipsamedayathour < 0) {
-                this.log.warn(`Skip same day at hour has an invalid configuration: ${skipsamedayathour}. Select a value between 0 and 23 in instance settings`);
+                this.log.warn(
+                    `Skip same day at hour has an invalid configuration: ${skipsamedayathour}. Select a value between 0 and 23 in instance settings`,
+                );
             }
 
-            this.log.debug(`(0) start processing ${data.length} events // current hour: ${hourNow} // skipsamedayathour (config): ${skipsamedayathour} // offset (config): ${globalOffset}`);
+            this.log.debug(
+                `(0) start processing ${data.length} events // current hour: ${hourNow} // skipsamedayathour (config): ${skipsamedayathour} // offset (config): ${globalOffset}`,
+            );
 
             const jsonSummary = [];
             const filledTypes = [];
@@ -585,7 +620,9 @@ class Trashschedule extends utils.Adapter {
             for (const entry of data) {
                 const date = this.getDateWithoutTime(new Date(entry.date), globalOffset);
 
-                this.log.debug(`(1) parsing next event ${JSON.stringify(entry)} // originalDate: ${entry.date} // calculated date (with offset): ${date}`);
+                this.log.debug(
+                    `(1) parsing next event ${JSON.stringify(entry)} // originalDate: ${entry.date} // calculated date (with offset): ${date}`,
+                );
 
                 // Just future events
                 if (date.getTime() >= dateNow.getTime()) {
@@ -604,43 +641,98 @@ class Trashschedule extends utils.Adapter {
                                 const lcName = entry.name.toLowerCase();
                                 const lcMatch = trashType.match.toLowerCase();
 
-                                if ((!trashType.exactmatch && lcName.includes(lcMatch)) || (trashType.exactmatch && entry.name == trashType.match)) {
-                                    this.log.debug(`(3) event match: "${entry.name}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
+                                if (
+                                    (!trashType.exactmatch && lcName.includes(lcMatch)) ||
+                                    (trashType.exactmatch && entry.name == trashType.match)
+                                ) {
+                                    this.log.debug(
+                                        `(3) event match: "${entry.name}" matches type "${trashName}" with pattern "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`,
+                                    );
 
                                     if (!filledTypes.includes(trashName)) {
                                         filledTypes.push(trashName);
 
                                         // Complete handling (reset)
-                                        const oldNextDateState = await this.getStateAsync(`type.${trashNameClean}.nextDate`);
+                                        const oldNextDateState = await this.getStateAsync(
+                                            `type.${trashNameClean}.nextDate`,
+                                        );
                                         if (oldNextDateState && oldNextDateState.val) {
                                             const oldNextDate = Number(oldNextDateState.val);
 
                                             if (oldNextDate < date.getTime()) {
-                                                this.log.debug(`Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`);
-                                                await this.setState(`type.${trashNameClean}.completed`, { val: false, ack: true, c: 'RESET_NEXT_EVENT' });
+                                                this.log.debug(
+                                                    `Setting "completed" flag for type.${trashNameClean}.completed to false (RESET_NEXT_EVENT)`,
+                                                );
+                                                await this.setState(`type.${trashNameClean}.completed`, {
+                                                    val: false,
+                                                    ack: true,
+                                                    c: 'RESET_NEXT_EVENT',
+                                                });
                                             }
                                         }
 
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: date.getTime(), ack: true, c: this.source?.getType() });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: this.formatDate(date), ack: true, c: this.source?.getType() });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: date.getDay(), ack: true, c: this.source?.getType() });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: dayDiff, ack: true, c: this.source?.getType() });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: true, ack: true });
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.color`, { val: trashType.color, ack: true });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, {
+                                            val: date.getTime(),
+                                            ack: true,
+                                            c: this.source?.getType(),
+                                        });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, {
+                                            val: this.formatDate(date),
+                                            ack: true,
+                                            c: this.source?.getType(),
+                                        });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, {
+                                            val: date.getDay(),
+                                            ack: true,
+                                            c: this.source?.getType(),
+                                        });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, {
+                                            val: dayDiff,
+                                            ack: true,
+                                            c: this.source?.getType(),
+                                        });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, {
+                                            val: true,
+                                            ack: true,
+                                        });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.color`, {
+                                            val: trashType.color,
+                                            ack: true,
+                                        });
 
                                         // Do not store objects as value
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: entry.description, ack: true, c: this.source?.getType() });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, {
+                                            val: entry.description,
+                                            ack: true,
+                                            c: this.source?.getType(),
+                                        });
 
-                                        const isCompletedState = await this.getStateAsync(`type.${trashNameClean}.completed`);
+                                        const isCompletedState = await this.getStateAsync(
+                                            `type.${trashNameClean}.completed`,
+                                        );
 
-                                        if (dayDiff <= this.config.daysuntilaction && isCompletedState && !isCompletedState.val) {
-                                            this.log.debug(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true`);
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: true, ack: true });
+                                        if (
+                                            dayDiff <= this.config.daysuntilaction &&
+                                            isCompletedState &&
+                                            !isCompletedState.val
+                                        ) {
+                                            this.log.debug(
+                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true`,
+                                            );
+                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
+                                                val: true,
+                                                ack: true,
+                                            });
                                         }
 
                                         if (isCompletedState && isCompletedState.val) {
-                                            this.log.debug(`Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false`);
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, { val: false, ack: true });
+                                            this.log.debug(
+                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false`,
+                                            );
+                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
+                                                val: false,
+                                                ack: true,
+                                            });
                                         }
 
                                         // JSON summary
@@ -655,7 +747,10 @@ class Trashschedule extends utils.Adapter {
 
                                         jsonSummary.push(summaryObj);
 
-                                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: JSON.stringify([summaryObj]), ack: true });
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, {
+                                            val: JSON.stringify([summaryObj]),
+                                            ack: true,
+                                        });
 
                                         this.log.debug(`(4) filled type: "${trashName}"`);
                                     }
@@ -671,7 +766,10 @@ class Trashschedule extends utils.Adapter {
 
                                     if (!next.minTypes.includes(trashName) && next.minDays == dayDiff) {
                                         next.minTypes.push(trashName);
-                                    } else if (!nextAfter.minTypes.includes(trashName) && nextAfter.minDays == dayDiff) {
+                                    } else if (
+                                        !nextAfter.minTypes.includes(trashName) &&
+                                        nextAfter.minDays == dayDiff
+                                    ) {
                                         nextAfter.minTypes.push(trashName);
                                     }
                                 }
@@ -696,19 +794,52 @@ class Trashschedule extends utils.Adapter {
 
                     if (!filledTypes.includes(trashName)) {
                         if (!hideWarnings) {
-                            this.log.warn(`no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`);
+                            this.log.warn(
+                                `no events matches type "${trashName}" with match "${trashType.match}"${trashType.exactmatch ? ' (exact match)' : ''}`,
+                            );
                         }
 
                         // reset values
-                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, { val: 0, ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, { val: '', ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, { val: null, ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, { val: null, ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, { val: '', ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.completed`, { val: false, ack: true, q: 0x02 });
-                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, { val: '[]', ack: true, q: 0x02 });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDate`, {
+                            val: 0,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFormat`, {
+                            val: '',
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextWeekday`, {
+                            val: null,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.daysLeft`, {
+                            val: null,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDescription`, {
+                            val: '',
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.completed`, {
+                            val: false,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.json`, {
+                            val: '[]',
+                            ack: true,
+                            q: 0x02,
+                        });
 
-                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, { val: false, ack: true });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.nextDateFound`, {
+                            val: false,
+                            ack: true,
+                        });
 
                         notFoundTypes.push({
                             name: trashName,
@@ -740,12 +871,36 @@ class Trashschedule extends utils.Adapter {
         this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
         if (obj.minDays < 999 && obj.minTypes.length > 0) {
-            await this.setStateChangedAsync(`${statePrefix}.date`, { val: obj.minDate.getTime(), ack: true, c: this.source?.getType() });
-            await this.setStateChangedAsync(`${statePrefix}.dateFormat`, { val: this.formatDate(obj.minDate), ack: true, c: this.source?.getType() });
-            await this.setStateChangedAsync(`${statePrefix}.weekday`, { val: obj.minDate.getDay(), ack: true, c: this.source?.getType() });
-            await this.setStateChangedAsync(`${statePrefix}.daysLeft`, { val: obj.minDays, ack: true, c: this.source?.getType() });
-            await this.setStateChangedAsync(`${statePrefix}.types`, { val: obj.minTypes.join(','), ack: true, c: this.source?.getType() });
-            await this.setStateChangedAsync(`${statePrefix}.typesText`, { val: obj.minTypes.join(this.config.nextseparator), ack: true, c: this.source?.getType() });
+            await this.setStateChangedAsync(`${statePrefix}.date`, {
+                val: obj.minDate.getTime(),
+                ack: true,
+                c: this.source?.getType(),
+            });
+            await this.setStateChangedAsync(`${statePrefix}.dateFormat`, {
+                val: this.formatDate(obj.minDate),
+                ack: true,
+                c: this.source?.getType(),
+            });
+            await this.setStateChangedAsync(`${statePrefix}.weekday`, {
+                val: obj.minDate.getDay(),
+                ack: true,
+                c: this.source?.getType(),
+            });
+            await this.setStateChangedAsync(`${statePrefix}.daysLeft`, {
+                val: obj.minDays,
+                ack: true,
+                c: this.source?.getType(),
+            });
+            await this.setStateChangedAsync(`${statePrefix}.types`, {
+                val: obj.minTypes.join(','),
+                ack: true,
+                c: this.source?.getType(),
+            });
+            await this.setStateChangedAsync(`${statePrefix}.typesText`, {
+                val: obj.minTypes.join(this.config.nextseparator),
+                ack: true,
+                c: this.source?.getType(),
+            });
 
             await this.setStateChangedAsync(`${statePrefix}.dateFound`, { val: true, ack: true });
         } else {
@@ -774,7 +929,7 @@ class Trashschedule extends utils.Adapter {
 
                     if (source) {
                         const response = await source.getApiProviders();
-                        const providers = response.map((p) => ({ value: p.id, label: `${p.title} (${p.url})` }));
+                        const providers = response.map(p => ({ value: p.id, label: `${p.title} (${p.url})` }));
 
                         if (providers) {
                             this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
@@ -783,11 +938,18 @@ class Trashschedule extends utils.Adapter {
                             obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get providers', obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }],
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback &&
+                        this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
             } else if (obj.command === 'getApiCities') {
                 try {
@@ -798,23 +960,37 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider) {
                             const response = await source.getApiCities(provider);
-                            const cities = response.map((c) => ({ value: c.id, label: c.name }));
+                            const cities = response.map(c => ({ value: c.id, label: c.name }));
 
                             if (cities) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, cities, obj.callback);
                             } else {
-                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get cities', obj.callback);
+                                obj.callback &&
+                                    this.sendTo(obj.from, obj.command, 'Unable to get cities', obj.callback);
                             }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'No provider selected' }], obj.callback);
+                            obj.callback &&
+                                this.sendTo(
+                                    obj.from,
+                                    obj.command,
+                                    [{ value: 'err', label: 'No provider selected' }],
+                                    obj.callback,
+                                );
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }],
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback &&
+                        this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
             } else if (obj.command === 'getApiDistricts') {
                 try {
@@ -826,23 +1002,37 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiDistricts(provider, cityId);
-                            const districts = response.map((d) => ({ value: d.id, label: d.name }));
+                            const districts = response.map(d => ({ value: d.id, label: d.name }));
 
                             if (districts) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, districts, obj.callback);
                             } else {
-                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get districts', obj.callback);
+                                obj.callback &&
+                                    this.sendTo(obj.from, obj.command, 'Unable to get districts', obj.callback);
                             }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: 'Missing provider or cityId' }], obj.callback);
+                            obj.callback &&
+                                this.sendTo(
+                                    obj.from,
+                                    obj.command,
+                                    [{ value: 'err', label: 'Missing provider or cityId' }],
+                                    obj.callback,
+                                );
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }],
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback &&
+                        this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
             } else if (obj.command === 'getApiStreets') {
                 try {
@@ -855,23 +1045,37 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiStreets(provider, cityId, districtId);
-                            const streets = response.map((s) => ({ value: s.id, label: s.name }));
+                            const streets = response.map(s => ({ value: s.id, label: s.name }));
 
                             if (streets) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, streets, obj.callback);
                             } else {
-                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get streets', obj.callback);
+                                obj.callback &&
+                                    this.sendTo(obj.from, obj.command, 'Unable to get streets', obj.callback);
                             }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
+                            obj.callback &&
+                                this.sendTo(
+                                    obj.from,
+                                    obj.command,
+                                    [{ value: 'err', label: `Missing provider or cityId` }],
+                                    obj.callback,
+                                );
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }],
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback &&
+                        this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
             } else if (obj.command === 'getApiHouseNumbers') {
                 try {
@@ -885,23 +1089,37 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId && districtId && streetId) {
                             const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
-                            const houseNumbers = response.map((h) => ({ value: h.id, label: h.name }));
+                            const houseNumbers = response.map(h => ({ value: h.id, label: h.name }));
 
                             if (houseNumbers) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, houseNumbers, obj.callback);
                             } else {
-                                obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get houseNumbers', obj.callback);
+                                obj.callback &&
+                                    this.sendTo(obj.from, obj.command, 'Unable to get houseNumbers', obj.callback);
                             }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Missing provider or cityId` }], obj.callback);
+                            obj.callback &&
+                                this.sendTo(
+                                    obj.from,
+                                    obj.command,
+                                    [{ value: 'err', label: `Missing provider or cityId` }],
+                                    obj.callback,
+                                );
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }], obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                [{ value: 'err', label: `Error: Source "${obj.message?.source}" not defined/found` }],
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
-                    obj.callback && this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
+                    obj.callback &&
+                        this.sendTo(obj.from, obj.command, [{ value: 'err', label: `Error: ${err}` }], obj.callback);
                 }
             } else if (obj.command === 'getApiTypesText') {
                 try {
@@ -909,7 +1127,9 @@ class Trashschedule extends utils.Adapter {
 
                     if (source) {
                         const provider = obj.message?.provider;
-                        const cityId = this.isUUID(obj.message?.cityId) ? obj.message?.cityId : parseInt(obj.message?.cityId);
+                        const cityId = this.isUUID(obj.message?.cityId)
+                            ? obj.message?.cityId
+                            : parseInt(obj.message?.cityId);
                         const districtId = obj.message?.districtId;
                         const streetId = obj.message?.streetId;
                         const houseNumber = obj.message?.houseNumber;
@@ -917,8 +1137,14 @@ class Trashschedule extends utils.Adapter {
                         if (provider && cityId && (this.isUUID(obj.message?.cityId) || cityId > 0)) {
                             const source = this.sources[obj.message?.source];
 
-                            const response = await source.getApiTypes(provider, cityId, districtId, streetId, houseNumber);
-                            const types = response.map((c) => c.title ?? c.name).join(', ');
+                            const response = await source.getApiTypes(
+                                provider,
+                                cityId,
+                                districtId,
+                                streetId,
+                                houseNumber,
+                            );
+                            const types = response.map(c => c.title ?? c.name).join(', ');
 
                             if (types) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
@@ -927,10 +1153,17 @@ class Trashschedule extends utils.Adapter {
                                 obj.callback && this.sendTo(obj.from, obj.command, 'Unable to get types', obj.callback);
                             }
                         } else {
-                            obj.callback && this.sendTo(obj.from, obj.command, 'Missing provider or cityId', obj.callback);
+                            obj.callback &&
+                                this.sendTo(obj.from, obj.command, 'Missing provider or cityId', obj.callback);
                         }
                     } else {
-                        obj.callback && this.sendTo(obj.from, obj.command, `Error: Source "${obj.message?.source}" not defined/found`, obj.callback);
+                        obj.callback &&
+                            this.sendTo(
+                                obj.from,
+                                obj.command,
+                                `Error: Source "${obj.message?.source}" not defined/found`,
+                                obj.callback,
+                            );
                     }
                 } catch (err) {
                     this.log.error(`[onMessage] ${obj.command} err: ${err}`);
@@ -969,13 +1202,13 @@ class Trashschedule extends utils.Adapter {
     }
 }
 
-// @ts-ignore parent is a valid property on module
+// @ts-expect-error parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<ioBroker.AdapterOptions>} [options={}]
+     * @param {Partial<ioBroker.AdapterOptions>} [options]
      */
-    module.exports = (options) => new Trashschedule(options);
+    module.exports = options => new Trashschedule(options);
 } else {
     // otherwise start the instance directly
     new Trashschedule();
