@@ -56,6 +56,7 @@ iobroker add trashschedule
 -->
 ### **WORK IN PROGRESS**
 
+* (@klein0r) Improved logging of ical source
 * (@klein0r) Updated dependencies
 
 ### 4.0.0 (2025-01-05)

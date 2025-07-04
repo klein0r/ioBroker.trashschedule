@@ -385,11 +385,7 @@ class Trashschedule extends utils.Adapter {
             await this.source.removeOldCacheFiles();
 
             const data = await this.source.getPickupDates();
-            if (data && data.length) {
-                this.updateAll(data);
-            } else {
-                this.log.error('[refreshEverything] no pickup dates found - check configuration and restart instance');
-            }
+            this.updateAll(data);
         }
 
         // Clear existing timeout
