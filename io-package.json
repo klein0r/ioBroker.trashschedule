@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "4.0.1": {
+        "en": "Improved logging of ical source\nUpdated dependencies",
+        "de": "Verbesserte Protokollierung von ical source\nAktualisierte Abhängigkeiten",
+        "ru": "Улучшенная вырубка ical source\nОбновленные зависимости",
+        "pt": "Registo melhorado da fonte ical\nDependências atualizadas",
+        "nl": "Verbeterde logging van de bron\nBijgewerkte afhankelijkheden",
+        "fr": "Amélioration de l'enregistrement des sources ic\nDépendances actualisées",
+        "it": "Registrazione migliorata della fonte ica\nDipendenze aggiornate",
+        "es": "Mejoramiento del registro de la fuente ical\nDependencias actualizadas",
+        "pl": "Ulepszone wylogowanie źródła icznego\nAktualizacja zależności",
+        "uk": "Покращується залога наукового джерела\nОновлені залежності",
+        "zh-cn": "改进了生物源记录\n更新的依赖关系"
+      },
       "4.0.0": {
         "en": "NodeJS >= 20.x and js-controller >= 6 is required\n\n* Fixed deletion of api cache files\n* Added additional JSON state for each type\n* Improved logging",
         "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich\n\n* Behobenes Löschen von api Cache-Dateien\n* Zusätzlicher JSON-Zustand für jeden Typ hinzugefügt\n* Verbesserte Protokollierung",
@@ -85,19 +98,6 @@
         "pl": "walidacja ustalana\nulepszenie błędów\nniektóre miasta nie posiadają ulic (API)",
         "uk": "фіксована перевірка конфігурації\nрозширений журнал помилок\nдеякі міста не мають вулиць (API)",
         "zh-cn": "固定单元验证\na. 增加的错误伐木\n有些城市没有街道(API)"
-      },
-      "3.1.2": {
-        "en": "Fixed exception when cache dir doesn't exist",
-        "de": "Behobene Ausnahme, wenn Cache dir nicht existiert",
-        "ru": "Фиксированное исключение, когда cache dir не существует",
-        "pt": "Exceção fixa quando o cache dir não existe",
-        "nl": "Uitzondering als cache dir niet bestaat",
-        "fr": "Exception fixe lorsque cache dir n'existe pas",
-        "it": "Eccezione fissa quando il dir della cache non esiste",
-        "es": "Excepción fija cuando cache dir no existe",
-        "pl": "Wyjątkiem jest fakt, że pamięć cache nie istnieje",
-        "uk": "Виняток кеш-копія не існує",
-        "zh-cn": "如果存在因果关系而异,则有固定的例外。"
       }
     },
     "titleLang": {

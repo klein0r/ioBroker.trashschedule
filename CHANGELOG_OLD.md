@@ -1,4 +1,8 @@
 # Older changes
+## 3.2.0 (2024-01-22)
+
+* (klein0r) Added more providers
+
 ## 3.1.3 (2023-12-24)
 
 * (klein0r) fixed configuration validation

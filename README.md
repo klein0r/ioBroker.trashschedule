@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.1 (2025-07-04)
 
 * (@klein0r) Improved logging of ical source
 * (@klein0r) Updated dependencies
@@ -83,10 +83,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 * (klein0r) Improved error reporting / log messages
 * (klein0r) Fixed translations
 * (klein0r) Added Abfall+ as Webservice
-
-### 3.2.0 (2024-01-22)
-
-* (klein0r) Added more providers
 
 ## License
 
