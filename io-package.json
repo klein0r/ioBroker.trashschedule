@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "4.0.1",
+    "version": "5.0.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.0.0": {
+        "en": "admin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
+        "de": "admin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
+        "ru": "admin 7.6.17 и js-контроллер 6.0.11 (или более поздние)\nОбновленные зависимости",
+        "pt": "admin 7.6.17 e js-controller 6.0.11 (ou posterior) são necessários\nDependências atualizadas",
+        "nl": "admin 7.6.17 en js-controller 6.0.11 (of later) zijn vereist\nBijgewerkte afhankelijkheden",
+        "fr": "admin 7.6.17 et js-contrôleur 6.0.11 (ou plus tard) sont requis\nDépendances actualisées",
+        "it": "admin 7.6.17 e js-controller 6.0.11 (o successivo) sono richiesti\nDipendenze aggiornate",
+        "es": "admin 7.6.17 y js-controller 6.0.11 (o posterior) son necesarios\nDependencias actualizadas",
+        "pl": "wymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)\nAktualizacja zależności",
+        "uk": "admin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові\nОновлені залежності",
+        "zh-cn": "需要admin 7.6.17和js控制器 6.0.11(或以后)\n更新的依赖关系"
+      },
       "4.0.1": {
         "en": "Improved logging of ical source\nUpdated dependencies",
         "de": "Verbesserte Protokollierung von ical source\nAktualisierte Abhängigkeiten",
@@ -85,19 +98,6 @@
         "pl": "Dodano więcej dostawców",
         "uk": "Додано більше провайдерів",
         "zh-cn": "添加更多提供者"
-      },
-      "3.1.3": {
-        "en": "fixed configuration validation\nenhanced error logging\nsome cities have no streets (API)",
-        "de": "feste konfigurationsvalidierung\nverbesserte fehlersuche\neinige Städte haben keine Straßen (API)",
-        "ru": "фиксированная проверка конфигурации\nулучшенный логинг ошибок\nнекоторые города не имеют улиц (API)",
-        "pt": "validação de configuração fixa\nregistro de erro aprimorado\nalgumas cidades não têm ruas (API)",
-        "nl": "vertaling:\nverhoogde fout\nsommige steden hebben geen straten",
-        "fr": "validation de la configuration fixe\njournalisation des erreurs améliorées\ncertaines villes n'ont pas de rue (API)",
-        "it": "convalida di configurazione fissa\nregistrazione degli errori migliorata\nalcune città non hanno strade (API)",
-        "es": "validación de configuración fija\nregistro de errores mejorado\nalgunas ciudades no tienen calles (API)",
-        "pl": "walidacja ustalana\nulepszenie błędów\nniektóre miasta nie posiadają ulic (API)",
-        "uk": "фіксована перевірка конфігурації\nрозширений журнал помилок\nдеякі міста не мають вулиць (API)",
-        "zh-cn": "固定单元验证\na. 增加的错误伐木\n有些城市没有街道(API)"
       }
     },
     "titleLang": {
