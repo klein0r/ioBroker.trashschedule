@@ -57,6 +57,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
+* (@klein0r) Updated dependencies
 
 ### 4.0.1 (2025-07-04)
 
