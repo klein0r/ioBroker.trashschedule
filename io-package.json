@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.0.1": {
+        "en": "Increased timeout of api calls",
+        "de": "Erhöhte Auszeit von api Anrufen",
+        "ru": "Увеличение времени ожидания звонков api",
+        "pt": "Aumento do tempo livre de chamadas api",
+        "nl": "Verhoogde timeout van api-oproepen",
+        "fr": "Augmentation du temps d'arrêt des appels api",
+        "it": "Aumento del timeout delle chiamate api",
+        "es": "Aumento del tiempo fuera de las llamadas api",
+        "pl": "Zwiększony czas połączeń api",
+        "uk": "Підвищений час відкликання АПІ",
+        "zh-cn": "API 调用时间增加"
+      },
       "5.0.0": {
         "en": "admin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
         "de": "admin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
@@ -85,19 +98,6 @@
         "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Ulepszone raportowanie błędów / logowanie wiadomości\n* Tłumaczenia stałe\n* Dodano upadek + jako serwis internetowy",
         "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\n* Поліпшення звіту про помилку / повідомлення журналу\n* Фіксовані переклади\n* Додано Abfall + як Webservice",
         "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 改进错误报告/日志信息\n* 固定翻译\n* 添加Abfall+作为网络服务"
-      },
-      "3.2.0": {
-        "en": "Added more providers",
-        "de": "Weitere Anbieter",
-        "ru": "Добавлено больше провайдеров",
-        "pt": "Adicionado mais provedores",
-        "nl": "Meer aanbieders toegevoegd",
-        "fr": "Plus de fournisseurs",
-        "it": "Aggiunto più fornitori",
-        "es": "Añadido más proveedores",
-        "pl": "Dodano więcej dostawców",
-        "uk": "Додано більше провайдерів",
-        "zh-cn": "添加更多提供者"
       }
     },
     "titleLang": {

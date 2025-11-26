@@ -1,4 +1,9 @@
 # Older changes
+## 3.4.0 (2024-11-07)
+
+* (@klein0r) Validate user inputs in instance configuration
+* (@Sickboy78) Added Awido as Webservice
+
 ## 3.3.0 (2024-04-28)
 
 NodeJS >= 18.x and js-controller >= 5 is required
