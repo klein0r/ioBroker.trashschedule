@@ -82,6 +82,8 @@
 	- Rosbach Vor Der Höhe
 - Main Kinzig Kreis
 	- Main Kinzig Kreis
+- Landkreis Wolfenbüttel
+	- Landkreis Wolfenbüttel
 
 ## Abfall.io
 

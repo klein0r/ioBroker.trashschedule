@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.0.1",
+    "version": "5.1.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.1.0": {
+        "en": "Added Wolfenbüttel to providers",
+        "de": "Wolfenbüttel zu Anbietern hinzugefügt",
+        "ru": "Добавить Wolfenbüttel к провайдерам",
+        "pt": "Adicionado Wolfenbüttel aos fornecedores",
+        "nl": "Wolfenbüttel toegevoegd aan providers",
+        "fr": "Ajout de Wolfenbüttel aux fournisseurs",
+        "it": "Aggiunto Wolfenbüttel ai fornitori",
+        "es": "Añadido Wolfenbüttel a proveedores",
+        "pl": "Dodano Wolfenbüttel do dostawców",
+        "uk": "Додано Wolfenbüttel для постачальників",
+        "zh-cn": "添加到提供者的 Wolfenbüttel"
+      },
       "5.0.1": {
         "en": "Increased timeout of api calls",
         "de": "Erhöhte Auszeit von api Anrufen",
@@ -85,19 +98,6 @@
         "pl": "Sprawdzanie wejść użytkownika w konfiguracji na przykład\nDodano Awido jako serwis internetowy",
         "uk": "Дійсні записи користувачів в конфігурації екземпляра\nДодано Awido як Webservice",
         "zh-cn": "验证用户配置中的输入\n添加 Awido 作为网络服务"
-      },
-      "3.3.0": {
-        "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Improved error reporting / log messages\n* Fixed translations\n* Added Abfall+ as Webservice",
-        "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Verbesserte Fehlermeldung / Log-Nachrichten\n* Feste Übersetzungen\n* Hinzugefügt Abfall+ als Webservice",
-        "ru": "NodeJS >= 18.x и js-контроллер >= 5 требуется\n\n* Улучшенная информация об ошибках/сообщения журнала\n* Исправленные переводы\n* Добавлено Abfall+ как Webservice",
-        "pt": "NodeJS >= 18.x e js-controller >= 5 é necessário\n\n* Notificação melhorada de erros / mensagens de log\n* Traduções fixas\n* Adicionado Abfall+ como Webservice",
-        "nl": "Voor de toepassing van de onderverdelingen 870190 tot en met 870290 wordt onder post 8702 verstaan: 5 is vereist\n\n* Verbeterde foutmelding / logberichten\n* Vaste vertalingen\n* Toegevoegd Abfall+ als Webservice",
-        "fr": "NodeJS >= 18.x et js-controller >= 5 est nécessaire\n\n* Rapports d'erreurs améliorés / messages de journal\n* Traductions fixes\n* Ajout d'Abfall+ comme service Web",
-        "it": "NodeJS >= 18.x e js-controller 5 è richiesto\n\n* Rapporto di errore migliorato / messaggi di registro\n* Traduzioni fisse\n* Aggiunto Abfall+ come Webservice",
-        "es": "NodeJS >= 18.x y js-controller Se requiere 5\n\n* Mejorar el reporte de errores / mensajes de registro\n* Traducciones fijas\n* Añadido Abfall+ como servicio web",
-        "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Ulepszone raportowanie błędów / logowanie wiadomości\n* Tłumaczenia stałe\n* Dodano upadek + jako serwis internetowy",
-        "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\n* Поліпшення звіту про помилку / повідомлення журналу\n* Фіксовані переклади\n* Додано Abfall + як Webservice",
-        "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 改进错误报告/日志信息\n* 固定翻译\n* 添加Abfall+作为网络服务"
       }
     },
     "titleLang": {

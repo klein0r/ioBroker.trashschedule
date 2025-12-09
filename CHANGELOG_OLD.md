@@ -1,4 +1,8 @@
 # Older changes
+## 3.4.1 (2024-11-24)
+
+* (@Sickboy78) Awido: Increased number of fetched pickups per type (1 month)
+
 ## 3.4.0 (2024-11-07)
 
 * (@klein0r) Validate user inputs in instance configuration
