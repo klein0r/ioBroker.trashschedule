@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Added Wolfenbüttel to providers
+
 ### 5.0.1 (2025-11-26)
 
 * (@klein0r) Increased timeout of api calls
