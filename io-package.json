@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.1.0",
+    "version": "5.2.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.2.0": {
+        "en": "Responsive config layout",
+        "de": "Responsive config Layout",
+        "ru": "Адаптивный конфигурационный макет",
+        "pt": "Disposição de configuração responsiva",
+        "nl": "Responsieve configuratie-indeling",
+        "fr": "Mise en page de configuration réactive",
+        "it": "Layout di configurazione reattiva",
+        "es": "Diseño de configuración responsable",
+        "pl": "Odpowiedni układ konfiguracyjny",
+        "uk": "Рекомендаційні налаштування",
+        "zh-cn": "响应配置布局"
+      },
       "5.1.0": {
         "en": "Added Wolfenbüttel to providers",
         "de": "Wolfenbüttel zu Anbietern hinzugefügt",
@@ -85,19 +98,6 @@
         "pl": "Awido: Zwiększona liczba pobranych odbiorników na typ (1 miesiąc)",
         "uk": "Awido: Підвищена кількість занурених пікап на тип (1 місяць)",
         "zh-cn": "Awido:每类小卡车增加(1个月)"
-      },
-      "3.4.0": {
-        "en": "Validate user inputs in instance configuration\nAdded Awido as Webservice",
-        "de": "Validieren Sie Benutzereingänge in Beispielkonfiguration\nAwido als Webservice hinzugefügt",
-        "ru": "Проверка входов пользователей в конфигурации экземпляра\nДобавлено Awido как Webservice",
-        "pt": "Validar entradas de usuário na configuração de instância\nAdicionado Awido como Webservice",
-        "nl": "Valideren van gebruikersinvoer in instantieconfiguratie\nToegevoegd Awido als Webservice",
-        "fr": "Valider les entrées utilisateur en configuration d'instance\nAjout d'Awido comme service Web",
-        "it": "Convalida gli input utente nella configurazione di istanza\nAggiunto Awido come Webservice",
-        "es": "Validar entradas de usuario en configuración de instancia\nAñadido Awido como servicio web",
-        "pl": "Sprawdzanie wejść użytkownika w konfiguracji na przykład\nDodano Awido jako serwis internetowy",
-        "uk": "Дійсні записи користувачів в конфігурації екземпляра\nДодано Awido як Webservice",
-        "zh-cn": "验证用户配置中的输入\n添加 Awido 作为网络服务"
       }
     },
     "titleLang": {
