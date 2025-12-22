@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Responsive config layout
+
 ### 5.1.0 (2025-12-09)
 
 * (@klein0r) Added Wolfenbüttel to providers
