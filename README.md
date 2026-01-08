@@ -54,6 +54,10 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Fixed responsive config layout on xl screens
+
 ### 5.2.0 (2025-12-22)
 
 * (@klein0r) Responsive config layout
