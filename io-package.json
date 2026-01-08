@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.2.0",
+    "version": "5.2.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.2.1": {
+        "en": "Fixed responsive config layout on xl screens",
+        "de": "Feste ansprechende Konfiguration auf xl Bildschirmen",
+        "ru": "Фиксированная адаптивная компоновка конфигураций на экранах xl",
+        "pt": "Layout de configuração responsivo fixo em telas xl",
+        "nl": "Fixed responsive config layout op xl-schermen",
+        "fr": "Correction de la configuration réactive sur les écrans xl",
+        "it": "Configurazione reattiva fissa su schermi xl",
+        "es": "Diseño de configuración receptivo fijo en pantallas xl",
+        "pl": "Naprawiono reagujący układ konfiguracyjny na ekranach xl",
+        "uk": "Виправлено адаптивну конфігурацію на екранах xl",
+        "zh-cn": "Xl 屏幕上的固定响应配置布局"
+      },
       "5.2.0": {
         "en": "Responsive config layout",
         "de": "Responsive config Layout",
@@ -85,19 +98,6 @@
         "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane\n\n* Naprawiono usuwanie plików Api cache\n* Dodano dodatkowy stan JSON dla każdego typu\n* Ulepszone logowanie",
         "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий\n\n* Виправлено видалення файлів кешу api\n* Додано додатковий стан JSON для кожного типу\n* Покращувати залогу",
         "zh-cn": "节点JS20x和js控制器QQ 需要6个\n\n* 固定删除 api 缓存文件\n* 为每种类型添加的 JSON 状态\n* 改善伐木"
-      },
-      "3.4.1": {
-        "en": "Awido: Increased number of fetched pickups per type (1 month)",
-        "de": "Awido: Erhöhte Anzahl von Abholungen pro Typ (1 Monat)",
-        "ru": "Awido: Увеличение количества выловленных пикапов на один тип (1 месяц)",
-        "pt": "Awido: Aumento do número de captadores fetched por tipo (1 mês)",
-        "nl": "Awido: Toegenomen aantal opgehaalde pickups per type (1 maand)",
-        "fr": "Awido: Augmentation du nombre de ramassage par type (1 mois)",
-        "it": "Awido: aumento del numero di pickup fetched per tipo (1 mese)",
-        "es": "Awido: Mayor número de camionetas por tipo (1 mes)",
-        "pl": "Awido: Zwiększona liczba pobranych odbiorników na typ (1 miesiąc)",
-        "uk": "Awido: Підвищена кількість занурених пікап на тип (1 місяць)",
-        "zh-cn": "Awido:每类小卡车增加(1个月)"
       }
     },
     "titleLang": {

@@ -1,4 +1,9 @@
 # Older changes
+## 4.0.1 (2025-07-04)
+
+* (@klein0r) Improved logging of ical source
+* (@klein0r) Updated dependencies
+
 ## 4.0.0 (2025-01-05)
 
 NodeJS >= 20.x and js-controller >= 6 is required
