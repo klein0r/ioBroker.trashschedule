@@ -1,4 +1,94 @@
 # Older changes
+## 4.0.1 (2025-07-04)
+
+* (@klein0r) Improved logging of ical source
+* (@klein0r) Updated dependencies
+
+## 4.0.0 (2025-01-05)
+
+NodeJS >= 20.x and js-controller >= 6 is required
+
+* (@klein0r) Fixed deletion of api cache files
+* (@klein0r) Added additional JSON state for each type
+* (@klein0r) Improved logging
+
+## 3.4.1 (2024-11-24)
+
+* (@Sickboy78) Awido: Increased number of fetched pickups per type (1 month)
+
+## 3.4.0 (2024-11-07)
+
+* (@klein0r) Validate user inputs in instance configuration
+* (@Sickboy78) Added Awido as Webservice
+
+## 3.3.0 (2024-04-28)
+
+NodeJS >= 18.x and js-controller >= 5 is required
+
+* (klein0r) Improved error reporting / log messages
+* (klein0r) Fixed translations
+* (klein0r) Added Abfall+ as Webservice
+
+## 3.2.0 (2024-01-22)
+
+* (klein0r) Added more providers
+
+## 3.1.3 (2023-12-24)
+
+* (klein0r) fixed configuration validation
+* (klein0r) enhanced error logging
+* (klein0r) some cities have no streets (API)
+
+## 3.1.2 (2023-12-22)
+
+* (klein0r) Fixed exception when cache dir doesn't exist
+
+## 3.1.1 (2023-12-22)
+
+* (klein0r) Fixed config validation / integration test
+
+## 3.1.0 (2023-12-22)
+
+* (klein0r) Use meta storage for cache files
+* (klein0r) Added configured source type as state
+
+## 3.0.0 (2023-12-21)
+
+* (klein0r) Added API source myMuell
+
+## 2.4.0 (2023-12-21)
+
+* (Standarduser) Added advanced handling for trash pickup
+* (klein0r) Added list of missing / not found trash types as JSON (type.jsonNotFound)
+
+## 2.3.0 (2023-10-25)
+
+NodeJS 16.x is required
+
+* (klein0r) Improved log messages
+* (klein0r) Added icons in admin tabs
+
+## 2.2.0 (2023-01-16)
+
+* (klein0r) Added completed flag for types
+
+## 2.1.1 (2023-01-11)
+
+* (klein0r) Added Ukrainian language
+
+## 2.1.0 (2022-12-12)
+
+* (klein0r) Dropped Admin 5 support
+* (klein0r) Added Ukrainian language
+
+## 2.0.3 (2022-06-02)
+
+* (klein0r) Allow whitespaces in the match pattern
+
+## 2.0.2 (2022-05-27)
+
+* (klein0r) Fixed error handling for trash types with empty name
+
 ## 2.0.1 (2022-05-24)
 
 * (klein0r) Added ical instance as comment for states

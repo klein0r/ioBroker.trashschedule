@@ -1,98 +1,103 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "2.2.0",
+    "version": "5.2.1",
+    "blockedVersions": [
+      "3.0.0",
+      "3.1.0",
+      "3.1.1"
+    ],
     "news": {
-      "2.2.0": {
-        "en": "Added completed flag for types",
-        "de": "Erweiterte Flagge für Typen hinzugefügt",
-        "ru": "Добавлен заполненный флаг для типов",
-        "pt": "Adicionado bandeira completa para tipos",
-        "nl": "Toegevoegd voltooide vlag voor types",
-        "fr": "Ajout du drapeau complet pour les types",
-        "it": "Aggiunto la bandiera completa per i tipi",
-        "es": "Añadido bandera completa para tipos",
-        "pl": "Dodana flaga dla typów",
-        "uk": "Додано комплект для типів",
-        "zh-cn": "增加按类型填写的旗帜"
+      "5.2.1": {
+        "en": "Fixed responsive config layout on xl screens",
+        "de": "Feste ansprechende Konfiguration auf xl Bildschirmen",
+        "ru": "Фиксированная адаптивная компоновка конфигураций на экранах xl",
+        "pt": "Layout de configuração responsivo fixo em telas xl",
+        "nl": "Fixed responsive config layout op xl-schermen",
+        "fr": "Correction de la configuration réactive sur les écrans xl",
+        "it": "Configurazione reattiva fissa su schermi xl",
+        "es": "Diseño de configuración receptivo fijo en pantallas xl",
+        "pl": "Naprawiono reagujący układ konfiguracyjny na ekranach xl",
+        "uk": "Виправлено адаптивну конфігурацію на екранах xl",
+        "zh-cn": "Xl 屏幕上的固定响应配置布局"
       },
-      "2.1.1": {
-        "en": "Added Ukrainian language",
-        "de": "Ukrainische Sprache",
-        "ru": "Добавлен украинский язык",
-        "pt": "Adicionado idioma ucraniano",
-        "nl": "Voeg Oekraïense taal toe",
-        "fr": "Ajout de la langue ukrainienne",
-        "it": "Aggiunto lingua ucraina",
-        "es": "Idioma ucraniano añadido",
-        "pl": "Język ukraiński",
-        "uk": "Українська мова",
-        "zh-cn": "增加乌克兰语"
+      "5.2.0": {
+        "en": "Responsive config layout",
+        "de": "Responsive config Layout",
+        "ru": "Адаптивный конфигурационный макет",
+        "pt": "Disposição de configuração responsiva",
+        "nl": "Responsieve configuratie-indeling",
+        "fr": "Mise en page de configuration réactive",
+        "it": "Layout di configurazione reattiva",
+        "es": "Diseño de configuración responsable",
+        "pl": "Odpowiedni układ konfiguracyjny",
+        "uk": "Рекомендаційні налаштування",
+        "zh-cn": "响应配置布局"
       },
-      "2.1.0": {
-        "en": "Dropped Admin 5 support\nAdded Ukrainian language",
-        "de": "Droped Admin 5 Unterstützung\nUkrainische Sprache",
-        "ru": "Dropped Admin 5 поддержка\nДобавлен украинский язык",
-        "pt": "Suporte de Admin 5 Dropped\nAdicionado idioma ucraniano",
-        "nl": "Vertaling:\nVoeg Oekraïense taal toe",
-        "fr": "Soutien Admin 5 abandonné\nAjout de la langue ukrainienne",
-        "it": "Supporto per admin goccia 5\nAggiunto lingua ucraina",
-        "es": "Soporte de Admin 5\nIdioma ucraniano añadido",
-        "pl": "Dropped Admin 5 (ang.)\nJęzyk ukraiński",
-        "uk": "Підтримка Dropped Admin 5\nУкраїнська мова",
-        "zh-cn": "D. 减少5个支助\n增加乌克兰语"
+      "5.1.0": {
+        "en": "Added Wolfenbüttel to providers",
+        "de": "Wolfenbüttel zu Anbietern hinzugefügt",
+        "ru": "Добавить Wolfenbüttel к провайдерам",
+        "pt": "Adicionado Wolfenbüttel aos fornecedores",
+        "nl": "Wolfenbüttel toegevoegd aan providers",
+        "fr": "Ajout de Wolfenbüttel aux fournisseurs",
+        "it": "Aggiunto Wolfenbüttel ai fornitori",
+        "es": "Añadido Wolfenbüttel a proveedores",
+        "pl": "Dodano Wolfenbüttel do dostawców",
+        "uk": "Додано Wolfenbüttel для постачальників",
+        "zh-cn": "添加到提供者的 Wolfenbüttel"
       },
-      "2.0.3": {
-        "en": "Allow whitespaces in the match pattern",
-        "de": "Leerzeichen im Übereinstimmungsmuster zulassen",
-        "ru": "Разрешить пробелы в шаблоне соответствия",
-        "pt": "Permitir espaços em branco no padrão de correspondência",
-        "nl": "Spaties in het overeenkomstpatroon toestaan",
-        "fr": "Autoriser les espaces blancs dans le modèle de correspondance",
-        "it": "Consenti spazi bianchi nel modello di corrispondenza",
-        "es": "Permitir espacios en blanco en el patrón de coincidencia",
-        "pl": "Zezwalaj na białe znaki we wzorcu dopasowania",
-        "uk": "Дозволити пробіли в шаблоні відповідності",
-        "zh-cn": "在匹配模式中允许空格"
+      "5.0.1": {
+        "en": "Increased timeout of api calls",
+        "de": "Erhöhte Auszeit von api Anrufen",
+        "ru": "Увеличение времени ожидания звонков api",
+        "pt": "Aumento do tempo livre de chamadas api",
+        "nl": "Verhoogde timeout van api-oproepen",
+        "fr": "Augmentation du temps d'arrêt des appels api",
+        "it": "Aumento del timeout delle chiamate api",
+        "es": "Aumento del tiempo fuera de las llamadas api",
+        "pl": "Zwiększony czas połączeń api",
+        "uk": "Підвищений час відкликання АПІ",
+        "zh-cn": "API 调用时间增加"
       },
-      "2.0.2": {
-        "en": "Fixed error handling for trash types with empty name",
-        "de": "Fehlerbehandlung für Papierkorbtypen mit leerem Namen behoben",
-        "ru": "Исправлена обработка ошибок для типов корзины с пустым именем.",
-        "pt": "Corrigido o tratamento de erros para tipos de lixo com nome vazio",
-        "nl": "Vaste foutafhandeling voor prullenbaktypen met lege naam",
-        "fr": "Correction de la gestion des erreurs pour les types de corbeille avec un nom vide",
-        "it": "Risolto il problema con la gestione degli errori per i tipi di cestino con nome vuoto",
-        "es": "Se corrigió el manejo de errores para tipos de basura con nombre vacío.",
-        "pl": "Naprawiono obsługę błędów dla typów śmieci z pustą nazwą",
-        "uk": "Виправлено обробку помилок для типів сміття з порожньою назвою",
-        "zh-cn": "修复了对具有空名称的垃圾类型的错误处理"
+      "5.0.0": {
+        "en": "admin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
+        "de": "admin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
+        "ru": "admin 7.6.17 и js-контроллер 6.0.11 (или более поздние)\nОбновленные зависимости",
+        "pt": "admin 7.6.17 e js-controller 6.0.11 (ou posterior) são necessários\nDependências atualizadas",
+        "nl": "admin 7.6.17 en js-controller 6.0.11 (of later) zijn vereist\nBijgewerkte afhankelijkheden",
+        "fr": "admin 7.6.17 et js-contrôleur 6.0.11 (ou plus tard) sont requis\nDépendances actualisées",
+        "it": "admin 7.6.17 e js-controller 6.0.11 (o successivo) sono richiesti\nDipendenze aggiornate",
+        "es": "admin 7.6.17 y js-controller 6.0.11 (o posterior) son necesarios\nDependencias actualizadas",
+        "pl": "wymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)\nAktualizacja zależności",
+        "uk": "admin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові\nОновлені залежності",
+        "zh-cn": "需要admin 7.6.17和js控制器 6.0.11(或以后)\n更新的依赖关系"
       },
-      "2.0.1": {
-        "en": "Added ical instance as comment for states\nJust update states if value changed",
-        "de": "ical-Instanz als Kommentar für Zustände hinzugefügt\nAktualisieren Sie einfach die Zustände, wenn sich der Wert geändert hat",
-        "ru": "Добавлен ical экземпляр в качестве комментария для состояний\nПросто обновите состояния, если значение изменилось",
-        "pt": "Instância ical adicionada como comentário para estados\nApenas atualize os estados se o valor for alterado",
-        "nl": "ical instantie toegevoegd als commentaar voor staten\nWerk de statussen gewoon bij als de waarde is gewijzigd",
-        "fr": "Ajout d'une instance ical en tant que commentaire pour les états\nMettez simplement à jour les états si la valeur a changé",
-        "it": "Aggiunta istanza ical come commento per gli stati\nBasta aggiornare gli stati se il valore è cambiato",
-        "es": "Instancia ical agregada como comentario para estados\nSolo actualice los estados si el valor cambió",
-        "pl": "Dodano instancję ical jako komentarz dla stanów\nPo prostu zaktualizuj stany, jeśli wartość się zmieniła",
-        "uk": "Додано ical екземпляр як коментар для станів\nПросто оновіть стани, якщо значення змінилося",
-        "zh-cn": "添加了 ical 实例作为状态的注释\n如果值发生变化，只需更新状态"
+      "4.0.1": {
+        "en": "Improved logging of ical source\nUpdated dependencies",
+        "de": "Verbesserte Protokollierung von ical source\nAktualisierte Abhängigkeiten",
+        "ru": "Улучшенная вырубка ical source\nОбновленные зависимости",
+        "pt": "Registo melhorado da fonte ical\nDependências atualizadas",
+        "nl": "Verbeterde logging van de bron\nBijgewerkte afhankelijkheden",
+        "fr": "Amélioration de l'enregistrement des sources ic\nDépendances actualisées",
+        "it": "Registrazione migliorata della fonte ica\nDipendenze aggiornate",
+        "es": "Mejoramiento del registro de la fuente ical\nDependencias actualizadas",
+        "pl": "Ulepszone wylogowanie źródła icznego\nAktualizacja zależności",
+        "uk": "Покращується залога наукового джерела\nОновлені залежності",
+        "zh-cn": "改进了生物源记录\n更新的依赖关系"
       },
-      "2.0.0": {
-        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added timestamp of last and next refresh\n* Added icon to channels and fixed color\n* Added default trash types for new installations\n* Updated dependency for ical to 1.12.1\n* Updated depedency for js-controller to 4.0.15",
-        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Zeitstempel der letzten und nächsten Aktualisierung hinzugefügt\n* Symbol zu Kanälen und feste Farbe hinzugefügt\n* Standard-Papierkorbtypen für neue Installationen hinzugefügt\n* Aktualisierte Abhängigkeit für ical auf 1.12.1\n* Abhängigkeit für js-controller auf 4.0.15 aktualisiert",
-        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Добавлена временная метка последнего и следующего обновления\n* Добавлена иконка каналам и фиксированный цвет\n* Добавлены типы корзины по умолчанию для новых установок\n* Обновлена зависимость для ical до 1.12.1\n* Обновлена зависимость js-контроллера до версии 4.0.15.",
-        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Adicionado timestamp da última e próxima atualização\n* Adicionado ícone aos canais e cor fixa\n* Adicionados tipos de lixo padrão para novas instalações\n* Dependência atualizada para ical para 1.12.1\n* Dependência atualizada para js-controller para 4.0.15",
-        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Tijdstempel van laatste en volgende verversing toegevoegd\n* Pictogram toegevoegd aan kanalen en vaste kleur\n* Standaard prullenbaktypen toegevoegd voor nieuwe installaties\n* Bijgewerkte afhankelijkheid voor ical naar 1.12.1\n* Afhankelijkheid voor js-controller bijgewerkt naar 4.0.15",
-        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Ajout de l'horodatage de la dernière et de la prochaine actualisation\n* Icône ajoutée aux chaînes et couleur fixe\n* Ajout de types de corbeille par défaut pour les nouvelles installations\n* Dépendance mise à jour pour ical vers 1.12.1\n* Mise à jour de la dépendance pour js-controller vers 4.0.15",
-        "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Aggiunto timestamp dell'ultimo e del prossimo aggiornamento\n* Aggiunta icona ai canali e colore fisso\n* Aggiunti tipi di cestino predefiniti per le nuove installazioni\n* Aggiornata la dipendenza per ical a 1.12.1\n* Aggiornata la dipendenza per js-controller a 4.0.15",
-        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Marca de tiempo agregada de la última y próxima actualización\n* Icono agregado a los canales y color fijo\n* Se agregaron tipos de basura predeterminados para nuevas instalaciones\n* Dependencia actualizada para ical a 1.12.1\n* Dependencia actualizada para js-controller a 4.0.15",
-        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano znacznik czasu ostatniego i następnego odświeżenia\n* Dodano ikonę do kanałów i stały kolor\n* Dodano domyślne typy kosza dla nowych instalacji\n* Zaktualizowano zależność dla ical do 1.12.1\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано позначку часу останнього та наступного оновлення\n* Додано значок до каналів і фіксований колір\n* Додано стандартні типи кошика для нових установок\n* Оновлено залежність для ical до 1.12.1\n* Оновлено залежності для js-контролера до 4.0.15",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 添加上次和下次刷新的时间戳\n* 为频道添加图标和固定颜色\n*为新安装添加了默认垃圾类型\n* 将 ical 的依赖更新到 1.12.1\n* 将 js-controller 的依赖更新到 4.0.15"
+      "4.0.0": {
+        "en": "NodeJS >= 20.x and js-controller >= 6 is required\n\n* Fixed deletion of api cache files\n* Added additional JSON state for each type\n* Improved logging",
+        "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich\n\n* Behobenes Löschen von api Cache-Dateien\n* Zusätzlicher JSON-Zustand für jeden Typ hinzugefügt\n* Verbesserte Protokollierung",
+        "ru": "NodeJS >= 20.x и js-controller >= 6 требуется\n\n* Исправленное удаление файлов кэша api\n* Добавлено дополнительное состояние JSON для каждого типа\n* Улучшение лесозаготовок",
+        "pt": "NodeJS >= 20.x e js-controller >= 6 é necessário\n\n* Eliminação fixa de arquivos de cache api\n* Adicionado estado JSON adicional para cada tipo\n* Registo melhorado",
+        "nl": "Van niet-gelegeerd staal 6 is vereist\n\n* Vaste verwijdering van api cache bestanden\n* Toegevoegd extra JSON toestand voor elk type\n* Verbeterde logging",
+        "fr": "NodeJS >= 20.x et js-controller >= 6 est nécessaire\n\n* Correction de la suppression des fichiers cache api\n* Ajout d'un état JSON supplémentaire pour chaque type\n* Amélioration de l'exploitation forestière",
+        "it": "NodeJS >= 20.x e js-controller >= 6 è richiesto\n\n* Cancellazione fissa dei file di cache api\n* Aggiunto ulteriore stato JSON per ogni tipo\n* Registrazione migliorata",
+        "es": "NodeJS ю= 20.x y js-controller Se requiere 6\n\n* Eliminación fija de archivos de caché api\n* Estado adicional JSON para cada tipo\n* Mejoramiento de la tala",
+        "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane\n\n* Naprawiono usuwanie plików Api cache\n* Dodano dodatkowy stan JSON dla każdego typu\n* Ulepszone logowanie",
+        "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий\n\n* Виправлено видалення файлів кешу api\n* Додано додатковий стан JSON для кожного типу\n* Покращувати залогу",
+        "zh-cn": "节点JS20x和js控制器QQ 需要6个\n\n* 固定删除 api 缓存文件\n* 为每种类型添加的 JSON 状态\n* 改善伐木"
       }
     },
     "titleLang": {
@@ -130,47 +135,55 @@
       "muell",
       "muellabfuhr"
     ],
-    "license": "MIT",
+    "tier": 3,
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "icon": "trashschedule.png",
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.trashschedule/master/admin/trashschedule.png",
     "enabled": true,
     "readme": "https://github.com/klein0r/ioBroker.trashschedule/blob/master/README.md",
     "loglevel": "info",
+    "messagebox": true,
+    "logTransporter": true,
     "mode": "daemon",
     "type": "date-and-time",
     "compact": true,
-    "connectionType": "local",
-    "dataSource": "push",
+    "connectionType": "cloud",
+    "dataSource": "poll",
     "adminUI": {
       "config": "json"
     },
     "docs": {
       "en": [
         "docs/en/README.md",
+        "docs/en/providers.md",
         "docs/en/blockly.md",
         "docs/en/faq.md",
         "docs/en/javascript.md"
       ],
       "de": [
         "docs/de/README.md",
+        "docs/de/providers.md",
         "docs/de/blockly.md",
         "docs/de/faq.md",
         "docs/de/javascript.md"
       ]
     },
     "restartAdapters": [
-      "vis"
+      "vis",
+      "vis-2"
     ],
     "dependencies": [
       {
-        "js-controller": ">=4.0.15"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=6.0.0",
-        "ical": ">=1.12.1"
+        "admin": ">=7.6.17"
       }
     ],
     "plugins": {
@@ -180,10 +193,23 @@
     }
   },
   "native": {
-    "ical": "",
+    "source": "ical",
     "nextseparator": ", ",
     "skipsamedayathour": 18,
+    "daysuntilaction": 1,
     "globaloffset": 0,
+    "ical": "",
+    "apiJumomindProvider": "",
+    "apiJumomindCityId": "",
+    "apiJumomindStreetId": "",
+    "apiAbfallioProvider": "",
+    "apiAbfallioCityId": "",
+    "apiAbfallioDistrictId": "",
+    "apiAbfallioStreetId": "",
+    "apiAbfallioHouseNumber": "",
+    "apiAwidoProvider": "",
+    "apiAwidoCityId": "",
+    "apiAwidoStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",
@@ -217,13 +243,65 @@
         "name": "Weihnachtsbaum",
         "match": "Weihnacht",
         "exactmatch": false,
-        "hidewarnings": true,
-        "color": "#418338"
+        "color": "#418338",
+        "hidewarnings": true
+      },
+      {
+        "name": "Problemmüll",
+        "match": "Problem",
+        "exactmatch": false,
+        "color": "#785005",
+        "hidewarnings": true
       }
     ]
   },
   "objects": [],
   "instanceObjects": [
+    {
+      "_id": "",
+      "type": "meta",
+      "common": {
+        "name": {
+          "en": "Meta storage for user files",
+          "de": "Meta-Speicher für Benutzerdateien",
+          "ru": "Meta Storage для файлов пользователей",
+          "pt": "Meta de armazenamento para arquivos de usuário",
+          "nl": "Meta opslag voor gebruikersbestanden",
+          "fr": "Stockage Meta pour les fichiers utilisateur",
+          "it": "Meta storage per i file utente",
+          "es": "Meta almacenamiento para archivos de usuario",
+          "pl": "Meta storage for user files",
+          "uk": "Зберігання мета для файлів користувачів",
+          "zh-cn": "用户档案的储存"
+        },
+        "type": "meta.user"
+      },
+      "native": {}
+    },
+    {
+      "_id": "source",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Used data source",
+          "de": "Genutzte Datenquelle",
+          "ru": "Использованный источник данных",
+          "pt": "Fonte de dados usada",
+          "nl": "Gebruikt gegevens",
+          "fr": "Source de données utilisée",
+          "it": "Fonte di dati utilizzata",
+          "es": "Fuente de datos usados",
+          "pl": "Źródło danych",
+          "uk": "Використовується джерело даних",
+          "zh-cn": "使用数据来源"
+        },
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
     {
       "_id": "info",
       "type": "channel",
@@ -314,6 +392,30 @@
       "native": {}
     },
     {
+      "_id": "type.jsonNotFound",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Types not found (as JSON array)",
+          "de": "Nicht gefundene Typen (als JSON-Array)",
+          "ru": "Типы не найдены (как JSON массив)",
+          "pt": "Tipos não encontrados (como array JSON)",
+          "nl": "Types niet gevonden",
+          "fr": "Types non trouvés (comme tableau JSON)",
+          "it": "Tipi non trovati (come array JSON)",
+          "es": "Tipos no encontrados (como matriz JSON)",
+          "pl": "Typy nie są znane (jak np. tablica JSON)",
+          "uk": "Види не знайдені (як масив JSON)",
+          "zh-cn": "未发现的类型(作为联合体)"
+        },
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "type.lastRefresh",
       "type": "state",
       "common": {
@@ -377,6 +479,51 @@
           "pl": "Ustaw wszystkie typy na oczekujące",
           "uk": "Встановіть для всіх типів статус очікування",
           "zh-cn": "确定待决的各类"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedToday",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types due today to completed",
+          "de": "Alle Typen, die heute fällig sind, auf Erledigt setzen"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedTomorrow",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types due today and tomorrow to completed",
+          "de": "Alle Typen, die heute und morgen fällig sind, auf Erledigt setzen"
+        },
+        "type": "boolean",
+        "role": "button",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "type.completedAll",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Set all types to completed",
+          "de": "Alle Typen, die aktuell fällig sind, auf Erledigt setzen"
         },
         "type": "boolean",
         "role": "button",
