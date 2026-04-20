@@ -210,6 +210,9 @@
     "apiAwidoProvider": "",
     "apiAwidoCityId": "",
     "apiAwidoStreetId": "",
+    "apiLobbeStateId": "",
+    "apiLobbeCityId": "",
+    "apiLobbeStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",

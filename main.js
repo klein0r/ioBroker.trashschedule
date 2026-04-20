@@ -6,6 +6,7 @@ const SourceIcal = require('./lib/source/ical');
 const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
+const SourceApiLobbe = require('./lib/source/api-lobbe');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -350,6 +351,7 @@ class Trashschedule extends utils.Adapter {
             'api-jumomind': new SourceApiJumomind(this),
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
+            'api-lobbe': new SourceApiLobbe(this),
         };
 
         // Set active source
