@@ -958,7 +958,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider) {
                             const response = await source.getApiCities(provider);
-                            const cities = response.map(c => ({ value: c.id, label: c.name }));
+                            const cities = response.map(c => ({ value: `${c.id}`, label: c.name }));
 
                             if (cities) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
@@ -1000,7 +1000,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiDistricts(provider, cityId);
-                            const districts = response.map(d => ({ value: d.id, label: d.name }));
+                            const districts = response.map(d => ({ value: `${d.id}`, label: d.name }));
 
                             if (districts) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
@@ -1043,7 +1043,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiStreets(provider, cityId, districtId);
-                            const streets = response.map(s => ({ value: s.id, label: s.name }));
+                            const streets = response.map(s => ({ value: `${s.id}`, label: s.name }));
 
                             if (streets) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
@@ -1087,7 +1087,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId && districtId && streetId) {
                             const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
-                            const houseNumbers = response.map(h => ({ value: h.id, label: h.name }));
+                            const houseNumbers = response.map(h => ({ value: `${h.id}`, label: h.name }));
 
                             if (houseNumbers) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);

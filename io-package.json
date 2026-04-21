@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.0",
+    "version": "5.3.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.3.1": {
+        "en": "Fixed filtering of Lobbe.app address selections in the admin UI",
+        "de": "Filterung der Lobbe.app-Adressauswahl in der Admin-Oberfläche behoben",
+        "ru": "Исправлена фильтрация выбора адреса Lobbe.app в интерфейсе администратора",
+        "pt": "Corrigida a filtragem da seleção de endereços Lobbe.app na interface de administração",
+        "nl": "Filteren van Lobbe.app-adresselecties in de admininterface opgelost",
+        "fr": "Correction du filtrage des sélections d'adresse Lobbe.app dans l'interface d'administration",
+        "it": "Corretto il filtro della selezione indirizzi Lobbe.app nell'interfaccia di amministrazione",
+        "es": "Corregido el filtrado de selecciones de dirección de Lobbe.app en la interfaz de administración",
+        "pl": "Naprawiono filtrowanie wyboru adresu Lobbe.app w interfejsie administratora",
+        "uk": "Виправлено фільтрування вибору адреси Lobbe.app в інтерфейсі адміністратора",
+        "zh-cn": "修复了管理界面中 Lobbe.app 地址选择的筛选问题"
+      },
       "5.3.0": {
         "en": "Added Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
         "de": "Lobbe.app als neue Datenquelle hinzugefügt\nDeutsche Beschriftungen für die Lobbe-Adressauswahl ergänzt",
