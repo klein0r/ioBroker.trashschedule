@@ -1,39 +1,13 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.1",
+    "version": "5.2.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
-      "5.3.1": {
-        "en": "Fixed filtering of Lobbe.app address selections in the admin UI",
-        "de": "Filterung der Lobbe.app-Adressauswahl in der Admin-Oberfläche behoben",
-        "ru": "Исправлена фильтрация выбора адреса Lobbe.app в интерфейсе администратора",
-        "pt": "Corrigida a filtragem da seleção de endereços Lobbe.app na interface de administração",
-        "nl": "Filteren van Lobbe.app-adresselecties in de admininterface opgelost",
-        "fr": "Correction du filtrage des sélections d'adresse Lobbe.app dans l'interface d'administration",
-        "it": "Corretto il filtro della selezione indirizzi Lobbe.app nell'interfaccia di amministrazione",
-        "es": "Corregido el filtrado de selecciones de dirección de Lobbe.app en la interfaz de administración",
-        "pl": "Naprawiono filtrowanie wyboru adresu Lobbe.app w interfejsie administratora",
-        "uk": "Виправлено фільтрування вибору адреси Lobbe.app в інтерфейсі адміністратора",
-        "zh-cn": "修复了管理界面中 Lobbe.app 地址选择的筛选问题"
-      },
-      "5.3.0": {
-        "en": "Added Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
-        "de": "Lobbe.app als neue Datenquelle hinzugefügt\nDeutsche Beschriftungen für die Lobbe-Adressauswahl ergänzt",
-        "ru": "Добавлен Lobbe.app как новый источник данных\nДобавлены немецкие подписи для выбора адреса Lobbe",
-        "pt": "Adicionado o Lobbe.app como nova fonte de dados\nAdicionados rótulos em alemão para a seleção de endereço do Lobbe",
-        "nl": "Lobbe.app toegevoegd als nieuwe gegevensbron\nDuitse labels toegevoegd voor de Lobbe-adresselectie",
-        "fr": "Ajout de Lobbe.app comme nouvelle source de données\nAjout des libellés allemands pour la sélection d'adresse Lobbe",
-        "it": "Aggiunto Lobbe.app come nuova fonte dati\nAggiunte etichette tedesche per la selezione dell'indirizzo Lobbe",
-        "es": "Se añadió Lobbe.app como nueva fuente de datos\nSe añadieron etiquetas en alemán para la selección de dirección de Lobbe",
-        "pl": "Dodano Lobbe.app jako nowe źródło danych\nDodano niemieckie etykiety dla wyboru adresu Lobbe",
-        "uk": "Додано Lobbe.app як нове джерело даних\nДодано німецькі підписи для вибору адреси Lobbe",
-        "zh-cn": "新增 Lobbe.app 数据源\n为 Lobbe 地址选择新增德语标签"
-      },
       "5.2.1": {
         "en": "Fixed responsive config layout on xl screens",
         "de": "Feste ansprechende Konfiguration auf xl Bildschirmen",
