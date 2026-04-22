@@ -1,4 +1,9 @@
 # Older changes
+## 5.0.0 (2025-11-16)
+
+* (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
+* (@klein0r) Updated dependencies
+
 ## 4.0.1 (2025-07-04)
 
 * (@klein0r) Improved logging of ical source

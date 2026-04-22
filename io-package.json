@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.2.1",
+    "version": "5.3.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.3.0": {
+        "en": "Fixed filtering of Lobbe.app address selections in the admin UI\nAdded Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
+        "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt",
+        "ru": "Фиксированная фильтрация выбора адресов Lobbe.app в пользовательском интерфейсе администратора\nLobbe.app стал новым источником данных\nДобавлены немецкие этикетки для выбора адреса Lobbe",
+        "pt": "Filtragem fixa de seleções de endereços Lobbe.app na interface de administração\nAdicionado Lobbe.app como uma nova fonte de dados\nAdicionados rótulos alemães para a seleção de endereços do Lobbe",
+        "nl": "Vaste filtering van Lobbe.app adresselecties in de admin UI\nToegevoegd Lobbe.app als nieuwe databron\nDuitse labels toegevoegd voor de Lobbe adresselectie",
+        "fr": "Correction du filtrage des adresses Lobbe.app dans l'interface utilisateur admin\nAjout de Lobbe.app comme nouvelle source de données\nAjout d'étiquettes allemandes pour la sélection d'adresses Lobbe",
+        "it": "Fissaggio fisso delle selezioni degli indirizzi Lobbe.app nell'interfaccia di amministrazione\nAggiunto Lobbe.app come una nuova fonte di dati\nAggiunto etichette tedesche per la selezione indirizzo Lobbe",
+        "es": "Filtro fijo de las selecciones de direcciones Lobbe.app en el administrador UI\nAñadido Lobbe.app como nueva fuente de datos\nEtiquetas alemanas agregadas para la selección de la dirección de Lobbe",
+        "pl": "Naprawiono filtrowanie wybranych adresów Lobbe.app w UI administratora\nDodano Lobbe.app jako nowe źródło danych\nDodano niemieckie etykiety do wyboru adresu Lobbe",
+        "uk": "Виправлено фільтрацію вибору адреси Lobbe.app в адмін UI\nДодано Lobbe.app як джерело даних\nДодано німецькі етикетки для вибору адреси Lobbe",
+        "zh-cn": "Lobbe.app在管理员UI中的地址选择的固定过滤\n添加了 Lobbe. app 作为新数据源\n为 Lobbe 地址选择添加德国标签"
+      },
       "5.2.1": {
         "en": "Fixed responsive config layout on xl screens",
         "de": "Feste ansprechende Konfiguration auf xl Bildschirmen",
@@ -85,19 +98,6 @@
         "pl": "Ulepszone wylogowanie źródła icznego\nAktualizacja zależności",
         "uk": "Покращується залога наукового джерела\nОновлені залежності",
         "zh-cn": "改进了生物源记录\n更新的依赖关系"
-      },
-      "4.0.0": {
-        "en": "NodeJS >= 20.x and js-controller >= 6 is required\n\n* Fixed deletion of api cache files\n* Added additional JSON state for each type\n* Improved logging",
-        "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich\n\n* Behobenes Löschen von api Cache-Dateien\n* Zusätzlicher JSON-Zustand für jeden Typ hinzugefügt\n* Verbesserte Protokollierung",
-        "ru": "NodeJS >= 20.x и js-controller >= 6 требуется\n\n* Исправленное удаление файлов кэша api\n* Добавлено дополнительное состояние JSON для каждого типа\n* Улучшение лесозаготовок",
-        "pt": "NodeJS >= 20.x e js-controller >= 6 é necessário\n\n* Eliminação fixa de arquivos de cache api\n* Adicionado estado JSON adicional para cada tipo\n* Registo melhorado",
-        "nl": "Van niet-gelegeerd staal 6 is vereist\n\n* Vaste verwijdering van api cache bestanden\n* Toegevoegd extra JSON toestand voor elk type\n* Verbeterde logging",
-        "fr": "NodeJS >= 20.x et js-controller >= 6 est nécessaire\n\n* Correction de la suppression des fichiers cache api\n* Ajout d'un état JSON supplémentaire pour chaque type\n* Amélioration de l'exploitation forestière",
-        "it": "NodeJS >= 20.x e js-controller >= 6 è richiesto\n\n* Cancellazione fissa dei file di cache api\n* Aggiunto ulteriore stato JSON per ogni tipo\n* Registrazione migliorata",
-        "es": "NodeJS ю= 20.x y js-controller Se requiere 6\n\n* Eliminación fija de archivos de caché api\n* Estado adicional JSON para cada tipo\n* Mejoramiento de la tala",
-        "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane\n\n* Naprawiono usuwanie plików Api cache\n* Dodano dodatkowy stan JSON dla każdego typu\n* Ulepszone logowanie",
-        "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий\n\n* Виправлено видалення файлів кешу api\n* Додано додатковий стан JSON для кожного типу\n* Покращувати залогу",
-        "zh-cn": "节点JS20x和js控制器QQ 需要6个\n\n* 固定删除 api 缓存文件\n* 为每种类型添加的 JSON 状态\n* 改善伐木"
       }
     },
     "titleLang": {

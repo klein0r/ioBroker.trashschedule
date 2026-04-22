@@ -54,7 +54,7 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.3.0 (2026-04-22)
 
 * (@Jailobeam) Fixed filtering of Lobbe.app address selections in the admin UI
 * (@Jailobeam) Added Lobbe.app as a new data source
@@ -75,11 +75,6 @@ iobroker add trashschedule
 ### 5.0.1 (2025-11-26)
 
 * (@klein0r) Increased timeout of api calls
-
-### 5.0.0 (2025-11-16)
-
-* (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
-* (@klein0r) Updated dependencies
 
 ## License
 
