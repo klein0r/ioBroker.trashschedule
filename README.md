@@ -54,6 +54,15 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 5.3.1 (2026-04-21)
+
+* (@Jailobeam) Fixed filtering of Lobbe.app address selections in the admin UI
+
+### 5.3.0 (2026-04-20)
+
+* (@Jailobeam) Added Lobbe.app as a new data source
+* (@Jailobeam) Added German labels for the Lobbe address selection
+
 ### 5.2.1 (2026-01-08)
 
 * (@klein0r) Fixed responsive config layout on xl screens

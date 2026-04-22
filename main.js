@@ -6,6 +6,7 @@ const SourceIcal = require('./lib/source/ical');
 const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
+const SourceApiLobbe = require('./lib/source/api-lobbe');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -350,6 +351,7 @@ class Trashschedule extends utils.Adapter {
             'api-jumomind': new SourceApiJumomind(this),
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
+            'api-lobbe': new SourceApiLobbe(this),
         };
 
         // Set active source
@@ -956,7 +958,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider) {
                             const response = await source.getApiCities(provider);
-                            const cities = response.map(c => ({ value: c.id, label: c.name }));
+                            const cities = response.map(c => ({ value: `${c.id}`, label: c.name }));
 
                             if (cities) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
@@ -998,7 +1000,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiDistricts(provider, cityId);
-                            const districts = response.map(d => ({ value: d.id, label: d.name }));
+                            const districts = response.map(d => ({ value: `${d.id}`, label: d.name }));
 
                             if (districts) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
@@ -1041,7 +1043,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiStreets(provider, cityId, districtId);
-                            const streets = response.map(s => ({ value: s.id, label: s.name }));
+                            const streets = response.map(s => ({ value: `${s.id}`, label: s.name }));
 
                             if (streets) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
@@ -1085,7 +1087,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId && districtId && streetId) {
                             const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
-                            const houseNumbers = response.map(h => ({ value: h.id, label: h.name }));
+                            const houseNumbers = response.map(h => ({ value: `${h.id}`, label: h.name }));
 
                             if (houseNumbers) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);
