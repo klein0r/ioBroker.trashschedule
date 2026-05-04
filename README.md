@@ -54,6 +54,9 @@ iobroker add trashschedule
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 5.3.0 (2026-04-22)
 
 * (@Jailobeam) Fixed filtering of Lobbe.app address selections in the admin UI

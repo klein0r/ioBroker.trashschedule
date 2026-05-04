@@ -22,7 +22,7 @@
     "url": "git+https://github.com/klein0r/ioBroker.trashschedule.git"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
