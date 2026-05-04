@@ -55,7 +55,9 @@ iobroker add trashschedule
   ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-- (copilot) Adapter requires node.js >= 22 now
+
+* (copilot) Adapter requires node.js >= 22 now
+* (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
 
 ### 5.3.0 (2026-04-22)
 
