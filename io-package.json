@@ -1,16 +1,20 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.0",
+    "version": "5.3.1",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.3.1": {
+        "en": "Added native vis-2.0 widget support with Vue 3",
+        "de": "Nativer vis-2.0 Widget Support mit Vue 3 hinzugefügt"
+      },
       "5.3.0": {
-        "en": "Fixed filtering of Lobbe.app address selections in the admin UI\nAdded Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection\nAdded native vis-2.0 support (VIS 2.x widget available)",
-        "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt\nNativer vis-2.0 Support hinzugefügt (VIS 2.x Widget verfügbar)"
+        "en": "Fixed filtering of Lobbe.app address selections in the admin UI\nAdded Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
+        "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt"
       },
       "5.2.1": {
         "en": "Fixed responsive config layout on xl screens",
