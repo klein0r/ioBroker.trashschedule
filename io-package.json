@@ -1,13 +1,17 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.1",
+    "version": "5.3.2",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.3.2": {
+        "en": "Fixed vis-2.0 widget not displaying on initial page load\nAdded retry mechanism with StateManager\nImproved error handling",
+        "de": "Behoben: vis-2.0 Widget wird nicht beim initialen Seitenladen angezeigt\nRetry-Mechanismus mit StateManager hinzugefügt\nFehlerbehandlung verbessert"
+      },
       "5.3.1": {
         "en": "Added native vis-2.0 widget support with Vue 3",
         "de": "Nativer vis-2.0 Widget Support mit Vue 3 hinzugefügt"
