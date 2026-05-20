@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis-2 TrashSchedule Widget
 
-    Version: '5.3.0'
+    Version: '5.3.1'
 
     Copyright 2024 Matthias Kleine info@haus-automatisierung.com
 -->
@@ -82,6 +82,10 @@ export default defineComponent({
       trashTypes: [],
       stateValue: null,
       subscription: null,
+      retryCount: 0,
+      maxRetries: 10,
+      retryInterval: null,
+      isInitialized: false,
     };
   },
   computed: {
@@ -130,36 +134,81 @@ export default defineComponent({
     stateValue() {
       this.parseTrashTypes();
     },
+    oid() {
+      // Resubscribe if OID changes
+      this.unsubscribeFromState();
+      this.loadState();
+      this.subscribeToState();
+    },
   },
   mounted() {
-    this.loadState();
-    this.subscribeToState();
+    this.initializeWidget();
   },
   beforeUnmount() {
     this.unsubscribeFromState();
+    if (this.retryInterval) {
+      clearInterval(this.retryInterval);
+    }
   },
   methods: {
+    initializeWidget() {
+      this.loadState();
+      this.subscribeToState();
+
+      // Retry mechanism in case StateManager is not yet ready
+      if (!this.isInitialized && !this.trashTypes.length) {
+        this.retryInterval = setInterval(() => {
+          if (this.retryCount < this.maxRetries) {
+            this.retryCount++;
+            this.loadState();
+            if (this.trashTypes.length > 0) {
+              this.isInitialized = true;
+              clearInterval(this.retryInterval);
+            }
+          } else {
+            clearInterval(this.retryInterval);
+            console.warn('TrashSchedule Widget: Failed to load state after max retries', this.oid);
+          }
+        }, 500); // Retry every 500ms
+      } else {
+        this.isInitialized = true;
+      }
+    },
     loadState() {
       if (window.StateManager) {
-        const state = window.StateManager.getState(this.oid);
-        if (state) {
-          this.stateValue = state.val;
-          this.parseTrashTypes();
+        try {
+          const state = window.StateManager.getState(this.oid);
+          if (state && state.val) {
+            this.stateValue = state.val;
+            this.parseTrashTypes();
+            this.isInitialized = true;
+          }
+        } catch (e) {
+          console.warn('TrashSchedule Widget: Error loading state', e);
         }
       }
     },
     subscribeToState() {
       if (window.StateManager) {
-        this.subscription = window.StateManager.subscribe(this.oid, (state) => {
-          if (state) {
-            this.stateValue = state.val;
-          }
-        });
+        try {
+          this.subscription = window.StateManager.subscribe(this.oid, (state) => {
+            if (state && state.val) {
+              this.stateValue = state.val;
+            }
+          });
+        } catch (e) {
+          console.warn('TrashSchedule Widget: Error subscribing to state', e);
+        }
       }
     },
     unsubscribeFromState() {
       if (this.subscription && window.StateManager) {
-        window.StateManager.unsubscribe(this.subscription);
+        try {
+          window.StateManager.unsubscribe(this.subscription);
+        } catch (e) {
+          console.warn('TrashSchedule Widget: Error unsubscribing from state', e);
+        }
+        this.subscription = null;
       }
     },
     parseTrashTypes() {
@@ -167,7 +216,7 @@ export default defineComponent({
         try {
           this.trashTypes = JSON.parse(this.stateValue);
         } catch (e) {
-          console.error('Failed to parse trash types:', e);
+          console.error('TrashSchedule Widget: Failed to parse trash types:', e);
           this.trashTypes = [];
         }
       } else if (Array.isArray(this.stateValue)) {
