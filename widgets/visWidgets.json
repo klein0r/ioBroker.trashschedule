@@ -1,0 +1,12 @@
+{
+  "name": "trashschedule",
+  "version": "1.0.0",
+  "widgets": {
+    "TrashSchedule": {
+      "component": "TrashSchedule",
+      "label": "Trash Schedule",
+      "group": "custom",
+      "preview": "widgets/trashschedule/preview.png"
+    }
+  }
+}
