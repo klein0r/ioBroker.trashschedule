@@ -375,10 +375,7 @@ class Trashschedule extends utils.Adapter {
             }
         } else {
             this.log.error('[onReady] source is not defined');
-            typeof this.terminate === 'function'
-                ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG)
-                : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
-            return;
+            this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
         }
     }
 
