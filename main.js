@@ -1041,15 +1041,7 @@ class Trashschedule extends utils.Adapter {
                         const districtId = obj.message?.districtId;
 
                         if (provider && cityId) {
-                            var response;
-                            if (obj.message?.source === 'api-muellabfuhrde') {
-                                response = await source.getApiStreets(
-                                    provider,
-                                    cityId
-                                );
-                            } else {
-                                response = await source.getApiStreets(provider, cityId, districtId);
-                            }
+                            const response = await source.getApiStreets(provider, cityId, districtId);
                             const streets = response.map(s => ({ value: `${s.id}`, label: s.name }));
 
                             if (streets) {
@@ -1142,24 +1134,15 @@ class Trashschedule extends utils.Adapter {
                         if (provider && cityId && (this.isUUID(obj.message?.cityId) || cityId > 0)) {
                             const source = this.sources[obj.message?.source];
 
-                            var types;
-                            if (obj.message?.source === 'api-muellabfuhrde') {
-                                const response = await source.getApiTypes(
-                                    provider,
-                                    streetId ?? cityId
-                                );
-
-                                types = response.map(t => t.name).join(', ');
-                            } else {
-                                const response = await source.getApiTypes(
-                                    provider,
-                                    cityId,
-                                    districtId,
-                                    streetId,
-                                    houseNumber,
-                                );
-                                types = response.map(c => c.title ?? c.name).join(', ');
-                            }
+                            const response = await source.getApiTypes(
+                                provider,
+                                cityId,
+                                districtId,
+                                streetId,
+                                houseNumber,
+                            );
+                            const types = response.map(c => c.title ?? c.name).join(', ');
+                            
                             if (types) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
