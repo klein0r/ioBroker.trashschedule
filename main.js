@@ -7,6 +7,7 @@ const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
 const SourceApiLobbe = require('./lib/source/api-lobbe');
+const SourceApiMuellabfuhrde = require('./lib/source/api-muellabfuhrde');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -352,6 +353,7 @@ class Trashschedule extends utils.Adapter {
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
             'api-lobbe': new SourceApiLobbe(this),
+            'api-muellabfuhrde': new SourceApiMuellabfuhrde(this),
         };
 
         // Set active source
@@ -927,7 +929,7 @@ class Trashschedule extends utils.Adapter {
 
                     if (source) {
                         const response = await source.getApiProviders();
-                        const providers = response.map(p => ({ value: p.id, label: `${p.title} (${p.url})` }));
+                        const providers = response.map(p => ({ value: p.id, label: p.title || p.name }));
 
                         if (providers) {
                             this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
@@ -1042,7 +1044,15 @@ class Trashschedule extends utils.Adapter {
                         const districtId = obj.message?.districtId;
 
                         if (provider && cityId) {
-                            const response = await source.getApiStreets(provider, cityId, districtId);
+                            var response;
+                            if (obj.message?.source === 'api-muellabfuhrde') {
+                                response = await source.getApiStreets(
+                                    provider,
+                                    cityId
+                                );
+                            } else {
+                                response = await source.getApiStreets(provider, cityId, districtId);
+                            }
                             const streets = response.map(s => ({ value: `${s.id}`, label: s.name }));
 
                             if (streets) {
@@ -1135,15 +1145,24 @@ class Trashschedule extends utils.Adapter {
                         if (provider && cityId && (this.isUUID(obj.message?.cityId) || cityId > 0)) {
                             const source = this.sources[obj.message?.source];
 
-                            const response = await source.getApiTypes(
-                                provider,
-                                cityId,
-                                districtId,
-                                streetId,
-                                houseNumber,
-                            );
-                            const types = response.map(c => c.title ?? c.name).join(', ');
+                            var types;
+                            if (obj.message?.source === 'api-muellabfuhrde') {
+                                const response = await source.getApiTypes(
+                                    provider,
+                                    streetId ?? cityId
+                                );
 
+                                types = response.map(t => t.name).join(', ');
+                            } else {
+                                const response = await source.getApiTypes(
+                                    provider,
+                                    cityId,
+                                    districtId,
+                                    streetId,
+                                    houseNumber,
+                                );
+                                types = response.map(c => c.title ?? c.name).join(', ');
+                            }
                             if (types) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
