@@ -130,6 +130,9 @@
     "apiLobbeStateId": "",
     "apiLobbeCityId": "",
     "apiLobbeStreetId": "",
+    "apiMuellabfuhrdeProvider": "",
+    "apiMuellabfuhrdeCityId": "",
+    "apiMuellabfuhrdeStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",

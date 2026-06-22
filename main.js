@@ -344,6 +344,9 @@ class Trashschedule extends utils.Adapter {
             }
         }
 
+        await this.ensureNextStates('next');
+        await this.ensureNextStates('nextAfter');
+
         // Subscribe for changes
         await this.subscribeStatesAsync('*');
 
@@ -602,12 +605,14 @@ class Trashschedule extends utils.Adapter {
             const jsonSummary = [];
             const filledTypes = [];
 
+            /** @type {{minDays:number, minDate: Date|null, minTypes:string[]}} */
             const next = {
                 minDays: 999,
                 minDate: null,
                 minTypes: [],
             };
 
+            /** @type {{minDays:number, minDate: Date|null, minTypes:string[]}} */
             const nextAfter = {
                 minDays: 999,
                 minDate: null,
@@ -861,6 +866,85 @@ class Trashschedule extends utils.Adapter {
             this.log.error('[updateAll] no pickup dates found - check configuration and restart instance');
 
             await this.setState('info.connection', { val: false, ack: true });
+        }
+    }
+
+    async ensureNextStates(statePrefix) {
+        await this.setObjectNotExistsAsync(statePrefix, {
+            type: 'channel',
+            common: {
+                name: statePrefix,
+            },
+            native: {},
+        });
+
+        /**
+         * @typedef {Object} StateTemplate
+         * @property {'string'|'number'|'boolean'} type
+         * @property {string} role
+         * @property {boolean} read
+         * @property {boolean} write
+         * @property {string} [unit]
+         * @property {boolean} [def]
+         */
+
+        /** @type {Record<string, StateTemplate>} */
+        const states = {
+            date: {
+                type: 'number',
+                role: 'date',
+                read: true,
+                write: false,
+            },
+            dateFormat: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            weekday: {
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false,
+            },
+            daysLeft: {
+                type: 'number',
+                role: 'value',
+                unit: 'days',
+                read: true,
+                write: false,
+            },
+            types: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            typesText: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            dateFound: {
+                type: 'boolean',
+                role: 'indicator',
+                read: true,
+                write: false,
+                def: false,
+            },
+        };
+
+        for (const [id, common] of Object.entries(states)) {
+            await this.setObjectNotExistsAsync(`${statePrefix}.${id}`, {
+                type: 'state',
+                common: {
+                    name: `${statePrefix}.${id}`,
+                    ...common,
+                },
+                native: {},
+            });
         }
     }
 
