@@ -7,6 +7,7 @@ const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
 const SourceApiLobbe = require('./lib/source/api-lobbe');
+const SourceApiMuellabfuhrde = require('./lib/source/api-muellabfuhrde');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -343,6 +344,9 @@ class Trashschedule extends utils.Adapter {
             }
         }
 
+        await this.ensureNextStates('next');
+        await this.ensureNextStates('nextAfter');
+
         // Subscribe for changes
         await this.subscribeStatesAsync('*');
 
@@ -352,6 +356,7 @@ class Trashschedule extends utils.Adapter {
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
             'api-lobbe': new SourceApiLobbe(this),
+            'api-muellabfuhrde': new SourceApiMuellabfuhrde(this),
         };
 
         // Set active source
@@ -375,10 +380,7 @@ class Trashschedule extends utils.Adapter {
             }
         } else {
             this.log.error('[onReady] source is not defined');
-            typeof this.terminate === 'function'
-                ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG)
-                : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
-            return;
+            this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
         }
     }
 
@@ -603,12 +605,14 @@ class Trashschedule extends utils.Adapter {
             const jsonSummary = [];
             const filledTypes = [];
 
+            /** @type {{minDays:number, minDate: Date|null, minTypes:string[]}} */
             const next = {
                 minDays: 999,
                 minDate: null,
                 minTypes: [],
             };
 
+            /** @type {{minDays:number, minDate: Date|null, minTypes:string[]}} */
             const nextAfter = {
                 minDays: 999,
                 minDate: null,
@@ -865,6 +869,85 @@ class Trashschedule extends utils.Adapter {
         }
     }
 
+    async ensureNextStates(statePrefix) {
+        await this.setObjectNotExistsAsync(statePrefix, {
+            type: 'channel',
+            common: {
+                name: statePrefix,
+            },
+            native: {},
+        });
+
+        /**
+         * @typedef {Object} StateTemplate
+         * @property {'string'|'number'|'boolean'} type
+         * @property {string} role
+         * @property {boolean} read
+         * @property {boolean} write
+         * @property {string} [unit]
+         * @property {boolean} [def]
+         */
+
+        /** @type {Record<string, StateTemplate>} */
+        const states = {
+            date: {
+                type: 'number',
+                role: 'date',
+                read: true,
+                write: false,
+            },
+            dateFormat: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            weekday: {
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false,
+            },
+            daysLeft: {
+                type: 'number',
+                role: 'value',
+                unit: 'days',
+                read: true,
+                write: false,
+            },
+            types: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            typesText: {
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            dateFound: {
+                type: 'boolean',
+                role: 'indicator',
+                read: true,
+                write: false,
+                def: false,
+            },
+        };
+
+        for (const [id, common] of Object.entries(states)) {
+            await this.setObjectNotExistsAsync(`${statePrefix}.${id}`, {
+                type: 'state',
+                common: {
+                    name: `${statePrefix}.${id}`,
+                    ...common,
+                },
+                native: {},
+            });
+        }
+    }
+
     async fillNext(obj, statePrefix) {
         this.log.debug(`(5) filling "${statePrefix}" event with data: ${JSON.stringify(obj)}`);
 
@@ -927,7 +1010,7 @@ class Trashschedule extends utils.Adapter {
 
                     if (source) {
                         const response = await source.getApiProviders();
-                        const providers = response.map(p => ({ value: p.id, label: `${p.title} (${p.url})` }));
+                        const providers = response.map(p => ({ value: p.id, label: p.title || p.name }));
 
                         if (providers) {
                             this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(providers)}`);
@@ -1143,7 +1226,7 @@ class Trashschedule extends utils.Adapter {
                                 houseNumber,
                             );
                             const types = response.map(c => c.title ?? c.name).join(', ');
-
+                            
                             if (types) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(types)}`);
                                 obj.callback && this.sendTo(obj.from, obj.command, types, obj.callback);
