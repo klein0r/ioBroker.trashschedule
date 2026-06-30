@@ -166,7 +166,7 @@ $.extend(true, systemDictionary, {
 });
 
 vis.binds['trashschedule'] = {
-    version: '5.3.0',
+    version: '5.3.0.1',
     showVersion: function () {
         if (vis.binds['trashschedule'].version) {
             console.log(`Version trashschedule: ${vis.binds['trashschedule'].version}`);
@@ -229,6 +229,29 @@ vis.binds['trashschedule'] = {
                 );
             });
         }
+
+        setTimeout(function () {
+            try {
+                const target = $('#' + widgetID);
+        
+                if (target.length) {
+                   vis.binds['trashschedule'].redraw(
+                        $div.find('.trashtypes'),
+                        vis.states[`${oid}.val`],
+                        size,
+                        limit,
+                        glow,
+                        glowLimit,
+                        showName,
+                        showDate,
+                        dateLocale,
+                        dateOptions,
+                    );
+                }
+            } catch (e) {
+                console.error('trashschedule delayed redraw failed', e);
+            }
+        }, 1500);
     },
     toPaddedHexString: function (num, len) {
         let str = num.toString(16);
@@ -396,14 +419,31 @@ vis.binds['trashschedule'] = {
     },
     redraw: function (target, json, size, limit, glow, glowLimit, showName, showDate, dateLocale, dateOptions) {
         if (json) {
-            target.empty();
             var rendered = 0;
 
             if (size < 100 && size > 0) {
                 target.css('transform', `scale(${size / 100})`);
             }
 
-            $.each(JSON.parse(json), function (i, trashType) {
+            let trashTypes = [];
+            try {
+                trashTypes = JSON.parse(json || '[]');
+            } catch (e) {
+                console.error('trashschedule json parse failed', e);
+                trashTypes = [];
+            }
+
+            if (!trashTypes ||
+                !Array.isArray(trashTypes) ||
+                trashTypes.length === 0
+            ) {
+                console.warn('trashschedule: redraw skipped - no valid trashTypes');
+                return;
+            }
+            
+            target.empty();
+            
+            $.each(trashTypes, function (i, trashType) {
                 if (!trashType._completed) {
                     if (limit === 0 || rendered < limit) {
                         var newItem = $('<div class="trashtype"></div>');
