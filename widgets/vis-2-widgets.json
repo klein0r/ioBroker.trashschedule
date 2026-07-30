@@ -1,0 +1,114 @@
+{
+  "trashschedule": {
+    "name": "TrashSchedule",
+    "component": "./TrashSchedule.vue",
+    "preview": "<div style='position: relative; text-align: initial; padding: 4px'><div style='width: 105px; height: 170px; border: 1px solid #bfbfbf; border-radius: 0; margin: 10px; display: inline-block; color: rgb(60, 60, 60); background: url(data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 viewBox=%270 0 372.57144 611.88544%27%3E%3Cdefs%3E%3Cfilter id=%27d%27%3E%3CfeGaussianBlur in=%27SourceGraphic%27 stdDeviation=%273%27 /%3E%3C/filter%3E%3C/defs%3E%3Cg%3E%3Cpath d=%27M 0 115.64502 C 0 79.356125 28.717217 50 64.157766 50 L 308.41398 50 C 343.85453 50 372.57174 79.356125 372.57174 115.64502 L 372.57174 470.15327 C 372.57174 506.44117 343.85453 535.79828 308.41398 535.79828 L 64.157766 535.79828 C 28.717217 535.79828 0 506.44117 0 470.15327 Z%27 fill=%27%238a8a8a%27 /%3E%3Cpath d=%27M 31.693357 115.64502 C 31.693357 96.324455 47.315998 80.701813 66.636563 80.701813 L 305.93518 80.701813 C 325.25574 80.701813 340.87838 96.324455 340.87838 115.64502 L 340.87838 470.15327 C 340.87838 489.47384 325.25574 505.09648 305.93518 505.09648 L 66.636563 505.09648 C 47.315998 505.09648 31.693357 489.47384 31.693357 470.15327 Z%27 fill=%27%23363636%27 /%3E%3Cpath d=%27M 68.645098 115.64502 C 68.645098 105.70221 76.759445 97.587862 86.702254 97.587862 L 285.88949 97.587862 C 295.8323 97.587862 303.94665 105.70221 303.94665 115.64502 L 303.94665 470.15327 C 303.94665 480.09609 295.8323 488.21043 285.88949 488.21043 L 86.702254 488.21043 C 76.759445 488.21043 68.645098 480.09609 68.645098 470.15327 Z%27 fill=%27%23595959%27 /%3E%3Cg filter=%27url(%23d)%27%3E%3Crect x=%2790%27 y=%27150%27 width=%27192.57144%27 height=%27280%27 fill=%27%23707070%27 /%3E%3C/g%3E%3Crect x=%2790%27 y=%27150%27 width=%27192.57144%27 height=%27280%27 fill=%27%239e9e9e%27 /%3E%3Cpath d=%27M 90 150 C 90 140.05719 97.799561 132.25763 107.74237 132.25763 L 265.40051 132.25763 C 275.34332 132.25763 283.14288 140.05719 283.14288 150 L 283.14288 200 L 90 200 Z%27 fill=%27%23a3a3a3%27 /%3E%3Cpath d=%27M 90 200 L 283.14288 200 L 283.14288 380 C 283.14288 389.94281 275.34332 397.74237 265.40051 397.74237 L 107.74237 397.74237 C 97.799561 397.74237 90 389.94281 90 380 Z%27 fill=%27%23a6a6a6%27 /%3E%3Cpath d=%27M 90 380 L 283.14288 380 L 283.14288 430 C 283.14288 439.94281 275.34332 447.74237 265.40051 447.74237 L 107.74237 447.74237 C 97.799561 447.74237 90 439.94281 90 430 Z%27 fill=%27%236e6e6e%27 /%3E%3C/g%3E%3C/svg%3E) no-repeat center center; background-size: 100% 100%;'></div></div>",
+    "propertiesPanel": {
+      "defaultWidth": 575,
+      "defaultHeight": 275
+    },
+    "properties": [
+      {
+        "name": "oid",
+        "label": {
+          "en": "Object ID",
+          "de": "Objekt ID"
+        },
+        "type": "oid",
+        "default": "trashschedule.0.type.json"
+      },
+      {
+        "name": "size",
+        "label": {
+          "en": "Size",
+          "de": "Größe"
+        },
+        "type": "number",
+        "min": 0,
+        "max": 100,
+        "default": 100
+      },
+      {
+        "name": "limit",
+        "label": {
+          "en": "Limit",
+          "de": "Limit"
+        },
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "default": 0
+      },
+      {
+        "name": "glow",
+        "label": {
+          "en": "Glow when due",
+          "de": "Leuchten, wenn fällig"
+        },
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "name": "glowLimit",
+        "label": {
+          "en": "Days (Glow)",
+          "de": "Tage (Leuchten)"
+        },
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "default": 1
+      },
+      {
+        "name": "showName",
+        "label": {
+          "en": "Show name",
+          "de": "Name anzeigen"
+        },
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "showDate",
+        "label": {
+          "en": "Show date",
+          "de": "Datum anzeigen"
+        },
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "name": "dateLocale",
+        "label": {
+          "en": "Date locale",
+          "de": "Datumsgebietsschema"
+        },
+        "type": "select",
+        "options": [
+          { "label": "German", "value": "de-DE" },
+          { "label": "English", "value": "en-US" },
+          { "label": "French", "value": "fr-FR" },
+          { "label": "Spanish", "value": "es-ES" },
+          { "label": "Italian", "value": "it-IT" },
+          { "label": "Dutch", "value": "nl-NL" },
+          { "label": "Polish", "value": "pl-PL" }
+        ],
+        "default": "de-DE"
+      },
+      {
+        "name": "dateWeekday",
+        "label": {
+          "en": "Weekday",
+          "de": "Wochentag"
+        },
+        "type": "select",
+        "options": [
+          { "label": "Long", "value": "long" },
+          { "label": "Short", "value": "short" },
+          { "label": "Hidden", "value": "hide" }
+        ],
+        "default": "long"
+      }
+    ]
+  }
+}
