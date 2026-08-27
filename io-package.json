@@ -1,103 +1,28 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.0",
+    "version": "5.3.2",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "5.3.2": {
+        "en": "Fixed vis-2.0 widget not displaying on initial page load\nAdded retry mechanism with StateManager\nImproved error handling",
+        "de": "Behoben: vis-2.0 Widget wird nicht beim initialen Seitenladen angezeigt\nRetry-Mechanismus mit StateManager hinzugefügt\nFehlerbehandlung verbessert"
+      },
+      "5.3.1": {
+        "en": "Added native vis-2.0 widget support with Vue 3",
+        "de": "Nativer vis-2.0 Widget Support mit Vue 3 hinzugefügt"
+      },
       "5.3.0": {
         "en": "Fixed filtering of Lobbe.app address selections in the admin UI\nAdded Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
-        "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt",
-        "ru": "Фиксированная фильтрация выбора адресов Lobbe.app в пользовательском интерфейсе администратора\nLobbe.app стал новым источником данных\nДобавлены немецкие этикетки для выбора адреса Lobbe",
-        "pt": "Filtragem fixa de seleções de endereços Lobbe.app na interface de administração\nAdicionado Lobbe.app como uma nova fonte de dados\nAdicionados rótulos alemães para a seleção de endereços do Lobbe",
-        "nl": "Vaste filtering van Lobbe.app adresselecties in de admin UI\nToegevoegd Lobbe.app als nieuwe databron\nDuitse labels toegevoegd voor de Lobbe adresselectie",
-        "fr": "Correction du filtrage des adresses Lobbe.app dans l'interface utilisateur admin\nAjout de Lobbe.app comme nouvelle source de données\nAjout d'étiquettes allemandes pour la sélection d'adresses Lobbe",
-        "it": "Fissaggio fisso delle selezioni degli indirizzi Lobbe.app nell'interfaccia di amministrazione\nAggiunto Lobbe.app come una nuova fonte di dati\nAggiunto etichette tedesche per la selezione indirizzo Lobbe",
-        "es": "Filtro fijo de las selecciones de direcciones Lobbe.app en el administrador UI\nAñadido Lobbe.app como nueva fuente de datos\nEtiquetas alemanas agregadas para la selección de la dirección de Lobbe",
-        "pl": "Naprawiono filtrowanie wybranych adresów Lobbe.app w UI administratora\nDodano Lobbe.app jako nowe źródło danych\nDodano niemieckie etykiety do wyboru adresu Lobbe",
-        "uk": "Виправлено фільтрацію вибору адреси Lobbe.app в адмін UI\nДодано Lobbe.app як джерело даних\nДодано німецькі етикетки для вибору адреси Lobbe",
-        "zh-cn": "Lobbe.app在管理员UI中的地址选择的固定过滤\n添加了 Lobbe. app 作为新数据源\n为 Lobbe 地址选择添加德国标签"
+        "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt"
       },
       "5.2.1": {
         "en": "Fixed responsive config layout on xl screens",
-        "de": "Feste ansprechende Konfiguration auf xl Bildschirmen",
-        "ru": "Фиксированная адаптивная компоновка конфигураций на экранах xl",
-        "pt": "Layout de configuração responsivo fixo em telas xl",
-        "nl": "Fixed responsive config layout op xl-schermen",
-        "fr": "Correction de la configuration réactive sur les écrans xl",
-        "it": "Configurazione reattiva fissa su schermi xl",
-        "es": "Diseño de configuración receptivo fijo en pantallas xl",
-        "pl": "Naprawiono reagujący układ konfiguracyjny na ekranach xl",
-        "uk": "Виправлено адаптивну конфігурацію на екранах xl",
-        "zh-cn": "Xl 屏幕上的固定响应配置布局"
-      },
-      "5.2.0": {
-        "en": "Responsive config layout",
-        "de": "Responsive config Layout",
-        "ru": "Адаптивный конфигурационный макет",
-        "pt": "Disposição de configuração responsiva",
-        "nl": "Responsieve configuratie-indeling",
-        "fr": "Mise en page de configuration réactive",
-        "it": "Layout di configurazione reattiva",
-        "es": "Diseño de configuración responsable",
-        "pl": "Odpowiedni układ konfiguracyjny",
-        "uk": "Рекомендаційні налаштування",
-        "zh-cn": "响应配置布局"
-      },
-      "5.1.0": {
-        "en": "Added Wolfenbüttel to providers",
-        "de": "Wolfenbüttel zu Anbietern hinzugefügt",
-        "ru": "Добавить Wolfenbüttel к провайдерам",
-        "pt": "Adicionado Wolfenbüttel aos fornecedores",
-        "nl": "Wolfenbüttel toegevoegd aan providers",
-        "fr": "Ajout de Wolfenbüttel aux fournisseurs",
-        "it": "Aggiunto Wolfenbüttel ai fornitori",
-        "es": "Añadido Wolfenbüttel a proveedores",
-        "pl": "Dodano Wolfenbüttel do dostawców",
-        "uk": "Додано Wolfenbüttel для постачальників",
-        "zh-cn": "添加到提供者的 Wolfenbüttel"
-      },
-      "5.0.1": {
-        "en": "Increased timeout of api calls",
-        "de": "Erhöhte Auszeit von api Anrufen",
-        "ru": "Увеличение времени ожидания звонков api",
-        "pt": "Aumento do tempo livre de chamadas api",
-        "nl": "Verhoogde timeout van api-oproepen",
-        "fr": "Augmentation du temps d'arrêt des appels api",
-        "it": "Aumento del timeout delle chiamate api",
-        "es": "Aumento del tiempo fuera de las llamadas api",
-        "pl": "Zwiększony czas połączeń api",
-        "uk": "Підвищений час відкликання АПІ",
-        "zh-cn": "API 调用时间增加"
-      },
-      "5.0.0": {
-        "en": "admin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
-        "de": "admin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
-        "ru": "admin 7.6.17 и js-контроллер 6.0.11 (или более поздние)\nОбновленные зависимости",
-        "pt": "admin 7.6.17 e js-controller 6.0.11 (ou posterior) são necessários\nDependências atualizadas",
-        "nl": "admin 7.6.17 en js-controller 6.0.11 (of later) zijn vereist\nBijgewerkte afhankelijkheden",
-        "fr": "admin 7.6.17 et js-contrôleur 6.0.11 (ou plus tard) sont requis\nDépendances actualisées",
-        "it": "admin 7.6.17 e js-controller 6.0.11 (o successivo) sono richiesti\nDipendenze aggiornate",
-        "es": "admin 7.6.17 y js-controller 6.0.11 (o posterior) son necesarios\nDependencias actualizadas",
-        "pl": "wymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)\nAktualizacja zależności",
-        "uk": "admin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові\nОновлені залежності",
-        "zh-cn": "需要admin 7.6.17和js控制器 6.0.11(或以后)\n更新的依赖关系"
-      },
-      "4.0.1": {
-        "en": "Improved logging of ical source\nUpdated dependencies",
-        "de": "Verbesserte Protokollierung von ical source\nAktualisierte Abhängigkeiten",
-        "ru": "Улучшенная вырубка ical source\nОбновленные зависимости",
-        "pt": "Registo melhorado da fonte ical\nDependências atualizadas",
-        "nl": "Verbeterde logging van de bron\nBijgewerkte afhankelijkheden",
-        "fr": "Amélioration de l'enregistrement des sources ic\nDépendances actualisées",
-        "it": "Registrazione migliorata della fonte ica\nDipendenze aggiornate",
-        "es": "Mejoramiento del registro de la fuente ical\nDependencias actualizadas",
-        "pl": "Ulepszone wylogowanie źródła icznego\nAktualizacja zależności",
-        "uk": "Покращується залога наукового джерела\nОновлені залежності",
-        "zh-cn": "改进了生物源记录\n更新的依赖关系"
+        "de": "Feste ansprechende Konfiguration auf xl Bildschirmen"
       }
     },
     "titleLang": {
@@ -213,6 +138,9 @@
     "apiLobbeStateId": "",
     "apiLobbeCityId": "",
     "apiLobbeStreetId": "",
+    "apiMuellabfuhrdeProvider": "",
+    "apiMuellabfuhrdeCityId": "",
+    "apiMuellabfuhrdeStreetId": "",
     "trashtypes": [
       {
         "name": "Restabfalltonne",
@@ -266,16 +194,7 @@
       "common": {
         "name": {
           "en": "Meta storage for user files",
-          "de": "Meta-Speicher für Benutzerdateien",
-          "ru": "Meta Storage для файлов пользователей",
-          "pt": "Meta de armazenamento para arquivos de usuário",
-          "nl": "Meta opslag voor gebruikersbestanden",
-          "fr": "Stockage Meta pour les fichiers utilisateur",
-          "it": "Meta storage per i file utente",
-          "es": "Meta almacenamiento para archivos de usuario",
-          "pl": "Meta storage for user files",
-          "uk": "Зберігання мета для файлів користувачів",
-          "zh-cn": "用户档案的储存"
+          "de": "Meta-Speicher für Benutzerdateien"
         },
         "type": "meta.user"
       },
@@ -287,16 +206,7 @@
       "common": {
         "name": {
           "en": "Used data source",
-          "de": "Genutzte Datenquelle",
-          "ru": "Использованный источник данных",
-          "pt": "Fonte de dados usada",
-          "nl": "Gebruikt gegevens",
-          "fr": "Source de données utilisée",
-          "it": "Fonte di dati utilizzata",
-          "es": "Fuente de datos usados",
-          "pl": "Źródło danych",
-          "uk": "Використовується джерело даних",
-          "zh-cn": "使用数据来源"
+          "de": "Genutzte Datenquelle"
         },
         "type": "string",
         "role": "text",
@@ -311,16 +221,7 @@
       "common": {
         "name": {
           "en": "Information",
-          "de": "Information",
-          "ru": "Информация",
-          "pt": "Em formação",
-          "nl": "Informatie",
-          "fr": "Informations",
-          "it": "Informazione",
-          "es": "Información",
-          "pl": "Informacja",
-          "uk": "Інформація",
-          "zh-cn": "信息"
+          "de": "Information"
         }
       },
       "native": {}
@@ -331,585 +232,13 @@
       "common": {
         "name": {
           "en": "Connected to ical instance",
-          "de": "Verbunden mit ical-Instanz",
-          "ru": "Подключено к ical экземпляру",
-          "pt": "Conectado a instância ical",
-          "nl": "Verbonden met ical instantie",
-          "fr": "Connecté à l'instance ical",
-          "it": "Collegato all'istanza ical",
-          "es": "Conectado a instancia ical",
-          "pl": "Połączony z instancją ic",
-          "uk": "Підключається до ical екземпляра",
-          "zh-cn": "连接到ical实例"
+          "de": "Verbunden mit ical-Instanz"
         },
         "type": "boolean",
         "role": "indicator.reachable",
         "read": true,
         "write": false,
         "def": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "type",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Type",
-          "de": "Typ",
-          "ru": "Тип",
-          "pt": "Modelo",
-          "nl": "Type",
-          "fr": "Taper",
-          "it": "Tipo",
-          "es": "Escribe",
-          "pl": "Rodzaj",
-          "uk": "Тип",
-          "zh-cn": "类型"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Types as JSON",
-          "de": "Typen als JSON",
-          "ru": "Типы как JSON",
-          "pt": "Tipos como JSON",
-          "nl": "Typen als JSON",
-          "fr": "Types en JSON",
-          "it": "Digita come JSON",
-          "es": "Tipos como JSON",
-          "pl": "Typy jako JSON",
-          "uk": "Типи як JSON",
-          "zh-cn": "类型为 JSON"
-        },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.jsonNotFound",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Types not found (as JSON array)",
-          "de": "Nicht gefundene Typen (als JSON-Array)",
-          "ru": "Типы не найдены (как JSON массив)",
-          "pt": "Tipos não encontrados (como array JSON)",
-          "nl": "Types niet gevonden",
-          "fr": "Types non trouvés (comme tableau JSON)",
-          "it": "Tipi non trovati (come array JSON)",
-          "es": "Tipos no encontrados (como matriz JSON)",
-          "pl": "Typy nie są znane (jak np. tablica JSON)",
-          "uk": "Види не знайдені (як масив JSON)",
-          "zh-cn": "未发现的类型(作为联合体)"
-        },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.lastRefresh",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Last refresh",
-          "de": "Letzte Aktualisierung",
-          "ru": "Последнее обновление",
-          "pt": "Última atualização",
-          "nl": "Laatste verversing",
-          "fr": "Dernière actualisation",
-          "it": "Ultimo aggiornamento",
-          "es": "última actualización",
-          "pl": "Ostatnie odświeżenie",
-          "uk": "Останнє оновлення",
-          "zh-cn": "上次刷新"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.nextRefresh",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next refresh",
-          "de": "Nächste Aktualisierung",
-          "ru": "Следующее обновление",
-          "pt": "Próxima atualização",
-          "nl": "Volgende verversen",
-          "fr": "Actualisation suivante",
-          "it": "Prossimo aggiornamento",
-          "es": "Siguiente actualización",
-          "pl": "Następne odświeżenie",
-          "uk": "Головна",
-          "zh-cn": "下次刷新"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.resetCompleted",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Set all types to pending",
-          "de": "Alle Typen auf ausstehend setzen",
-          "ru": "Сделать все типы ожидающими",
-          "pt": "Definir todos os tipos como pendentes",
-          "nl": "Stel alle typen in op in behandeling",
-          "fr": "Définir tous les types sur en attente",
-          "it": "Imposta tutti i tipi in sospeso",
-          "es": "Establecer todos los tipos como pendientes",
-          "pl": "Ustaw wszystkie typy na oczekujące",
-          "uk": "Встановіть для всіх типів статус очікування",
-          "zh-cn": "确定待决的各类"
-        },
-        "type": "boolean",
-        "role": "button",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.completedToday",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Set all types due today to completed",
-          "de": "Alle Typen, die heute fällig sind, auf Erledigt setzen"
-        },
-        "type": "boolean",
-        "role": "button",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.completedTomorrow",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Set all types due today and tomorrow to completed",
-          "de": "Alle Typen, die heute und morgen fällig sind, auf Erledigt setzen"
-        },
-        "type": "boolean",
-        "role": "button",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "type.completedAll",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Set all types to completed",
-          "de": "Alle Typen, die aktuell fällig sind, auf Erledigt setzen"
-        },
-        "type": "boolean",
-        "role": "button",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "next",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Next pickup",
-          "de": "Nächste Abholung",
-          "ru": "Следующий пикап",
-          "pt": "Próxima coleta",
-          "nl": "Volgende afhaling",
-          "fr": "Prochaine prise en charge",
-          "it": "Prossimo ritiro",
-          "es": "Próxima recogida",
-          "pl": "Następny odbiór",
-          "uk": "Далі пікап",
-          "zh-cn": "下次取件"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.types",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - types",
-          "de": "Nächste Abholung - Typen",
-          "ru": "Следующий пикап - виды",
-          "pt": "Próxima coleta - tipos",
-          "nl": "Volgende afhaling - soorten",
-          "fr": "Prochain ramassage - types",
-          "it": "Prossimo ritiro - tipi",
-          "es": "Próxima recogida - tipos",
-          "pl": "Następny odbiór - rodzaje",
-          "uk": "Наступний пікап - види",
-          "zh-cn": "下次取件 - 类型"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.typesText",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - as text",
-          "de": "Nächste Abholung - als Text",
-          "ru": "Следующий самовывоз - в виде текста",
-          "pt": "Próxima retirada - como texto",
-          "nl": "Volgende afhaling - als tekst",
-          "fr": "Prochain ramassage - sous forme de texte",
-          "it": "Prossimo ritiro - come testo",
-          "es": "Próxima recogida: como texto",
-          "pl": "Następny odbiór - jako tekst",
-          "uk": "Наступний пікап - як текст",
-          "zh-cn": "下次取件 - 作为文本"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.daysLeft",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - days left",
-          "de": "Nächste Abholung - verbleibende Tage",
-          "ru": "Следующий самовывоз - осталось дней",
-          "pt": "Próxima coleta - faltam dias",
-          "nl": "Volgende afhaling - nog dagen",
-          "fr": "Prochain ramassage - jours restants",
-          "it": "Prossimo ritiro - giorni rimasti",
-          "es": "Próxima recogida: quedan días",
-          "pl": "Następny odbiór – pozostały dni",
-          "uk": "Наступний пікап - дні зліва",
-          "zh-cn": "下次取件 - 剩余天数"
-        },
-        "type": "number",
-        "role": "value",
-        "unit": "days",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.date",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - date",
-          "de": "Nächste Abholung - Datum",
-          "ru": "Следующий пикап - дата",
-          "pt": "Próxima coleta - data",
-          "nl": "Volgende afhaling - datum",
-          "fr": "Prochain ramassage - date",
-          "it": "Prossimo ritiro - data",
-          "es": "Próxima recogida: fecha",
-          "pl": "Następny odbiór — data",
-          "uk": "Наступний пікап - дата",
-          "zh-cn": "下次取件 - 日期"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.dateFormat",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - date formatted",
-          "de": "Nächste Abholung - Datum formatiert",
-          "ru": "Следующее получение - дата в формате",
-          "pt": "Próxima coleta - data formatada",
-          "nl": "Volgende afhaling - datum geformatteerd",
-          "fr": "Prochain ramassage - date formatée",
-          "it": "Prossimo ritiro - data formattata",
-          "es": "Próxima recogida: fecha formateada",
-          "pl": "Następny odbiór — sformatowana data",
-          "uk": "Наступний пікап - дата форматування",
-          "zh-cn": "下次取件 - 日期格式化"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.weekday",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - weekday",
-          "de": "Nächste Abholung - Wochentag",
-          "ru": "Следующий пикап - будний день",
-          "pt": "Próxima coleta - dia da semana",
-          "nl": "Volgende afhaling - weekdag",
-          "fr": "Prochain ramassage - en semaine",
-          "it": "Prossimo ritiro - giorno della settimana",
-          "es": "Próxima recogida: día laborable",
-          "pl": "Następny odbiór – dzień powszedni",
-          "uk": "Наступний пікап - тиждень",
-          "zh-cn": "下次取件 - 工作日"
-        },
-        "type": "number",
-        "role": "value",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.dateFound",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next pickup - found event",
-          "de": "Nächste Abholung - Termin gefunden",
-          "ru": "Следующий пикап - найденное событие",
-          "pt": "Próxima coleta - evento encontrado",
-          "nl": "Volgende afhaling - evenement gevonden",
-          "fr": "Prochain ramassage - événement trouvé",
-          "it": "Prossimo ritiro - evento trovato",
-          "es": "Próxima recogida: evento encontrado",
-          "pl": "Następny odbiór — znalezione wydarzenie",
-          "uk": "Наступний пікап - знайдений захід",
-          "zh-cn": "下一个取件 - 找到事件"
-        },
-        "type": "boolean",
-        "role": "indicator",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "After next pickup",
-          "de": "Nach nächster Abholung",
-          "ru": "После следующего пикапа",
-          "pt": "Após a próxima coleta",
-          "nl": "Na volgende afhaling",
-          "fr": "Après le prochain ramassage",
-          "it": "Dopo il prossimo ritiro",
-          "es": "Después de la próxima recogida",
-          "pl": "Po następnym odbiorze",
-          "uk": "Після наступного пікапу",
-          "zh-cn": "下次取件后"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.types",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - types",
-          "de": "Nach nächster Abholung - Typen",
-          "ru": "После следующего самовывоза - виды",
-          "pt": "Após a próxima coleta - tipos",
-          "nl": "Na volgende afhaling - soorten",
-          "fr": "Après le prochain ramassage - types",
-          "it": "Dopo il prossimo ritiro - tipi",
-          "es": "Después de la próxima recogida: tipos",
-          "pl": "Po kolejnym odbiorze - rodzaje",
-          "uk": "Після наступного пікапу - види",
-          "zh-cn": "下次取件后 - 类型"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.typesText",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - as text",
-          "de": "Nach nächster Abholung - als Text",
-          "ru": "После следующего получения - в виде текста",
-          "pt": "Após a próxima coleta - como texto",
-          "nl": "Na volgende afhaling - als tekst",
-          "fr": "Après le prochain ramassage - sous forme de texte",
-          "it": "Dopo il prossimo ritiro - come testo",
-          "es": "Después de la próxima recogida: como texto",
-          "pl": "Po kolejnym odbiorze - jako tekst",
-          "uk": "Після наступного пікапу - як текст",
-          "zh-cn": "下次取件后 - 作为文本"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.daysLeft",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - days left",
-          "de": "Nach nächster Abholung - verbleibende Tage",
-          "ru": "После следующего самовывоза - осталось дней",
-          "pt": "Após a próxima coleta - faltam dias",
-          "nl": "Na volgende afhaling - resterende dagen",
-          "fr": "Après le prochain ramassage - jours restants",
-          "it": "Dopo il prossimo ritiro - giorni rimasti",
-          "es": "Después de la próxima recogida: quedan días",
-          "pl": "Po kolejnym odbiorze - pozostały dni",
-          "uk": "Після наступного пікапу - дні зліва",
-          "zh-cn": "下次取件后 - 剩余天数"
-        },
-        "type": "number",
-        "role": "value",
-        "unit": "days",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.date",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - date",
-          "de": "Nach nächster Abholung - Datum",
-          "ru": "После следующего самовывоза - дата",
-          "pt": "Após a próxima coleta - data",
-          "nl": "Na volgende afhaling - datum",
-          "fr": "Après le prochain ramassage - date",
-          "it": "Dopo il prossimo ritiro - data",
-          "es": "Después de la próxima recogida: fecha",
-          "pl": "Po kolejnym odbiorze - data",
-          "uk": "Після наступного пікапу - дата",
-          "zh-cn": "下次取件后 - 日期"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.dateFormat",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - date formatted",
-          "de": "Nach nächster Abholung - Datum formatiert",
-          "ru": "После следующего получения - дата в формате",
-          "pt": "Após a próxima coleta - data formatada",
-          "nl": "Na volgende afhaling - datum geformatteerd",
-          "fr": "Après le prochain ramassage - date formatée",
-          "it": "Dopo il prossimo ritiro - data formattata",
-          "es": "Después de la próxima recolección: fecha formateada",
-          "pl": "Po następnym odbiorze - data sformatowana",
-          "uk": "Після наступного пікапу - дата форматування",
-          "zh-cn": "下次取件后 - 日期格式化"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.weekday",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - weekday",
-          "de": "Nach nächster Abholung - Wochentag",
-          "ru": "После следующего самовывоза - будний день",
-          "pt": "Após a próxima coleta - dia da semana",
-          "nl": "Na volgende afhaling - weekdag",
-          "fr": "Après le prochain ramassage - en semaine",
-          "it": "Dopo il prossimo ritiro - giorno della settimana",
-          "es": "Después de la próxima recogida: día laborable",
-          "pl": "Po następnym odbiorze - dzień powszedni",
-          "uk": "Після наступного пікапу - вихідний день",
-          "zh-cn": "下次取件后 - 工作日"
-        },
-        "type": "number",
-        "role": "value",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.dateFound",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next pickup - found event",
-          "de": "Nach nächster Abholung - Termin gefunden",
-          "ru": "После следующего пикапа - найдено событие",
-          "pt": "Após a próxima coleta - evento encontrado",
-          "nl": "Na volgende afhaling - evenement gevonden",
-          "fr": "Après le prochain ramassage - événement trouvé",
-          "it": "Dopo il prossimo ritiro - evento trovato",
-          "es": "Después de la siguiente recogida: evento encontrado",
-          "pl": "Po kolejnym odbiorze - znalezione wydarzenie",
-          "uk": "Після наступного пікапу - знайшли захід",
-          "zh-cn": "下次取件后 - 找到事件"
-        },
-        "type": "boolean",
-        "role": "indicator",
-        "read": true,
-        "write": false
       },
       "native": {}
     }
