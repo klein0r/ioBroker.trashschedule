@@ -56,9 +56,10 @@
   ],
   "scripts": {
     "update-readme": "node update-readme.js",
-    "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
+    "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test|src-widgets)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\" && npm run test:widgets",
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
+    "test:widgets": "npm --prefix src-widgets test",
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .",
@@ -66,7 +67,8 @@
     "release": "release-script",
     "release-patch": "release-script patch --yes",
     "release-minor": "release-script minor --yes",
-    "release-major": "release-script major --yes"
+    "release-major": "release-script major --yes",
+    "build": "node tasks"
   },
   "bugs": {
     "url": "https://github.com/klein0r/ioBroker.trashschedule/issues"
