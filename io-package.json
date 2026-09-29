@@ -1,13 +1,26 @@
 {
   "common": {
     "name": "trashschedule",
-    "version": "5.3.0",
+    "version": "6.0.0",
     "blockedVersions": [
       "3.0.0",
       "3.1.0",
       "3.1.1"
     ],
     "news": {
+      "6.0.0": {
+        "en": "Adapter requires node.js >= 22 now\nadmin 7.8.23 and js-controller 6.0.11 (or later) are required\nAdded muellabfuhr-deutschland.de as a new data source\nFixed the source state of the abfall.io source (was empty)",
+        "de": "Adapter benötigt jetzt node.js >= 22\nadmin 7.8.23 und js-controller 6.0.11 (oder höher) sind nötig\nmuellabfuhr-deutschland.de als neue Quelle\nQuellstatus von abfall.io korrigiert (war leer)",
+        "ru": "Теперь для адаптера требуется файл node.js >= 22\nтребуются admin 7.8.23 и js-контроллер 6.0.11 (или более поздняя версия)\nДобавлен muellabfuhr-deutschland.de в качестве нового источника данных\nИсправлено исходное состояние исходного кода abfall.io (было пусто)",
+        "pt": "O adaptador exige node.js >= 2\nrequer admin 7.8.23 e js-controller 6.0.11 (ou posterior)\nNova fonte de dados muellabfuhr-deutschland.de\nCorrigido o estado da fonte abfall.io (estava vazio)",
+        "nl": "Voor de adapter is nu node.js >= 22 nodig\nadmin 7.8.23 en js-controller 6.0.11 (of later) zijn vereist\nMuellabfuhr-deutschland.de toegevoegd als nieuwe gegevensbron\nDe bronstatus van de abfall.io-bron is opgelost (was leeg)",
+        "fr": "Adapter nécessite node.js >= 22\nadmin 7.8.23 et js-controller 6.0.11 (ou version ultérieure) sont requis\nAjout de muellabfuhr-deutschland.de comme source de données\nL'état de la source d'abfall.io a été corrigé (elle était vide)",
+        "it": "Adapter richiede node.js =2 ora\nsono necessari admin 7.8.23 e js-controller 6.0.11 (o successivo)\nAggiunto muellabfuhr-deutschland.de\nRisolto lo stato della fonte abfall.io (era vuoto)",
+        "es": "El adaptador necesita node.js >= 22 ahora\nSe necesitan admin 7.8.23 y js-controller 6.0.11 (o posterior)\nAñadió muellabfuhr-deutschland.de como nueva fuente de datos\nSe corrigió el estado fuente de abfall.io (estaba vacío)",
+        "pl": "Adapter wymaga teraz node.js >= 22\nadmin 7.8.23 i js-controller 6.0.11 (lub nowszy) są wymagane\nDodano muellabfuhr-deutschland.de jako nowe źródło danych\nNaprawiono stan źródłowy źródła abfall.io (był pusty)",
+        "uk": "Адаптер вимагає node.js >= 22 зараз\nадміністратор 7.8.23 та js-контролер 6.0.11 (або новішої версії) потрібні\nДодано muellabfuhr-deutschland.de як нове джерело даних\nВиправлено стан джерела джерела джерела abfall.io (був порожнім)",
+        "zh-cn": "适配器现在需要 node.js >= 22\n需要管理员 7.8.23 和 js-controller 6.0.11（或更高版本）\n添加了 muellabfuhr-deutschland.de 作为新数据源\n修复了 abfall.io 源代码的源状态（为空）"
+      },
       "5.3.0": {
         "en": "Fixed filtering of Lobbe.app address selections in the admin UI\nAdded Lobbe.app as a new data source\nAdded German labels for the Lobbe address selection",
         "de": "Behobene Filterung von Lobbe.app Adressenauswahlen im Admin UI\nLobbe.app als neue Datenquelle hinzugefügt\nDeutsche Labels für die Lobbe Adressenauswahl hinzugefügt",
@@ -85,19 +98,6 @@
         "pl": "wymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)\nAktualizacja zależności",
         "uk": "admin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові\nОновлені залежності",
         "zh-cn": "需要admin 7.6.17和js控制器 6.0.11(或以后)\n更新的依赖关系"
-      },
-      "4.0.1": {
-        "en": "Improved logging of ical source\nUpdated dependencies",
-        "de": "Verbesserte Protokollierung von ical source\nAktualisierte Abhängigkeiten",
-        "ru": "Улучшенная вырубка ical source\nОбновленные зависимости",
-        "pt": "Registo melhorado da fonte ical\nDependências atualizadas",
-        "nl": "Verbeterde logging van de bron\nBijgewerkte afhankelijkheden",
-        "fr": "Amélioration de l'enregistrement des sources ic\nDépendances actualisées",
-        "it": "Registrazione migliorata della fonte ica\nDipendenze aggiornate",
-        "es": "Mejoramiento del registro de la fuente ical\nDependencias actualizadas",
-        "pl": "Ulepszone wylogowanie źródła icznego\nAktualizacja zależności",
-        "uk": "Покращується залога наукового джерела\nОновлені залежності",
-        "zh-cn": "改进了生物源记录\n更新的依赖关系"
       }
     },
     "titleLang": {

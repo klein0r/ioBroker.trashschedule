@@ -1,4 +1,8 @@
 # Older changes
+## 5.0.1 (2025-11-26)
+
+* (@klein0r) Increased timeout of api calls
+
 ## 5.0.0 (2025-11-16)
 
 * (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
