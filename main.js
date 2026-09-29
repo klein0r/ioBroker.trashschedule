@@ -7,6 +7,7 @@ const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
 const SourceApiLobbe = require('./lib/source/api-lobbe');
+const SourceApiMuellabfuhrde = require('./lib/source/api-muellabfuhrde');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -352,6 +353,7 @@ class Trashschedule extends utils.Adapter {
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
             'api-lobbe': new SourceApiLobbe(this),
+            'api-muellabfuhrde': new SourceApiMuellabfuhrde(this),
         };
 
         // Set active source
