@@ -1,6 +1,7 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
+const { isActionNeeded } = require('./lib/action-needed');
 
 const SourceIcal = require('./lib/source/ical');
 const SourceApiJumomind = require('./lib/source/api-jumomind');
@@ -708,29 +709,18 @@ class Trashschedule extends utils.Adapter {
                                             `type.${trashNameClean}.completed`,
                                         );
 
-                                        if (
-                                            dayDiff <= this.config.daysuntilaction &&
-                                            isCompletedState &&
-                                            !isCompletedState.val
-                                        ) {
-                                            this.log.debug(
-                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true`,
-                                            );
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
-                                                val: true,
-                                                ack: true,
-                                            });
-                                        }
-
-                                        if (isCompletedState && isCompletedState.val) {
-                                            this.log.debug(
-                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false`,
-                                            );
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
-                                                val: false,
-                                                ack: true,
-                                            });
-                                        }
+                                        const actionNeeded = isActionNeeded(
+                                            dayDiff,
+                                            this.config.daysuntilaction,
+                                            !!isCompletedState?.val,
+                                        );
+                                        this.log.debug(
+                                            `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to ${actionNeeded}`,
+                                        );
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
+                                            val: actionNeeded,
+                                            ack: true,
+                                        });
 
                                         // JSON summary
                                         const summaryObj = {
@@ -823,6 +813,11 @@ class Trashschedule extends utils.Adapter {
                             q: 0x02,
                         });
                         await this.setStateChangedAsync(`type.${trashNameClean}.completed`, {
+                            val: false,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
                             val: false,
                             ack: true,
                             q: 0x02,
