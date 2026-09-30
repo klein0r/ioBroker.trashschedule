@@ -57,7 +57,6 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (@typhosj) Fixed "actionNeeded" staying true after the pickup day has passed (#292)
-* (@typhosj) Added missing admin translations
 
 ### 6.0.0 (2026-09-29)
 
