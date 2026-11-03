@@ -176,6 +176,17 @@
       "vis",
       "vis-2"
     ],
+    "visWidgets": {
+      "vis2TrashscheduleWidgets": {
+        "i18n": "component",
+        "name": "vis2TrashscheduleWidgets",
+        "url": "trashschedule/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "TrashSchedule"
+        ]
+      }
+    },
     "dependencies": [
       {
         "js-controller": ">=6.0.11"

@@ -56,6 +56,7 @@ iobroker add trashschedule
 -->
 ### **WORK IN PROGRESS**
 
+* (@typhosj) Added a native vis-2 widget, it looks like the vis-1 widget and keeps the settings of existing vis-2 projects
 * (@typhosj) Fixed "actionNeeded" staying true after the pickup day has passed (#292)
 
 ### 6.0.0 (2026-09-29)
