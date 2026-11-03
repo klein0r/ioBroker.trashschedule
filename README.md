@@ -22,6 +22,10 @@
 
 Calculates the days left until next trash pickup
 
+## Sentry
+
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+
 ## Sponsored by
 
 [![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png?2024)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-trashschedule)
@@ -44,10 +48,6 @@ iobroker add trashschedule
 
 - SVG: https://pixabay.com/de/vectors/behälter-kann-deckel-offen-grün-310937/
 
-## Sentry
-
-**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
-
 ## Changelog
 
 <!--
@@ -57,6 +57,7 @@ iobroker add trashschedule
 ### **WORK IN PROGRESS**
 
 * (@typhosj) Added a native vis-2 widget, it looks like the vis-1 widget and keeps the settings of existing vis-2 projects
+* (@typhosj) Fixed "actionNeeded" staying true after the pickup day has passed (#292)
 
 ### 6.0.0 (2026-09-29)
 
