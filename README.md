@@ -59,6 +59,7 @@ iobroker add trashschedule
 * (@typhosj) Added a native vis-2 widget, it looks like the vis-1 widget and keeps the settings of existing vis-2 projects
 * (@typhosj) Fixed "actionNeeded" staying true after the pickup day has passed (#292)
 * (@GermanBluefox) Added the web component `iob-trashschedule-pickups` - the next pickups as trash cans or as a list - for vis-2, devices and Aura (`common.webComponents`)
+* (@GermanBluefox) The icons of the settings take the color of the theme (also in the dark theme)
 
 ### 6.0.0 (2026-09-29)
 
