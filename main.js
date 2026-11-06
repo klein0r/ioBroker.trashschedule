@@ -1,11 +1,14 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
+const { isActionNeeded } = require('./lib/action-needed');
 
 const SourceIcal = require('./lib/source/ical');
 const SourceApiJumomind = require('./lib/source/api-jumomind');
 const SourceApiAbfallIo = require('./lib/source/api-abfallio');
 const SourceApiAwido = require('./lib/source/api-awido');
+const SourceApiLobbe = require('./lib/source/api-lobbe');
+const SourceApiMuellabfuhrde = require('./lib/source/api-muellabfuhrde');
 
 class Trashschedule extends utils.Adapter {
     constructor(options) {
@@ -350,6 +353,8 @@ class Trashschedule extends utils.Adapter {
             'api-jumomind': new SourceApiJumomind(this),
             'api-abfallio': new SourceApiAbfallIo(this),
             'api-awido': new SourceApiAwido(this),
+            'api-lobbe': new SourceApiLobbe(this),
+            'api-muellabfuhrde': new SourceApiMuellabfuhrde(this),
         };
 
         // Set active source
@@ -373,10 +378,7 @@ class Trashschedule extends utils.Adapter {
             }
         } else {
             this.log.error('[onReady] source is not defined');
-            typeof this.terminate === 'function'
-                ? this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG)
-                : process.exit(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
-            return;
+            this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
         }
     }
 
@@ -707,29 +709,18 @@ class Trashschedule extends utils.Adapter {
                                             `type.${trashNameClean}.completed`,
                                         );
 
-                                        if (
-                                            dayDiff <= this.config.daysuntilaction &&
-                                            isCompletedState &&
-                                            !isCompletedState.val
-                                        ) {
-                                            this.log.debug(
-                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to true`,
-                                            );
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
-                                                val: true,
-                                                ack: true,
-                                            });
-                                        }
-
-                                        if (isCompletedState && isCompletedState.val) {
-                                            this.log.debug(
-                                                `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to false`,
-                                            );
-                                            await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
-                                                val: false,
-                                                ack: true,
-                                            });
-                                        }
+                                        const actionNeeded = isActionNeeded(
+                                            dayDiff,
+                                            this.config.daysuntilaction,
+                                            !!isCompletedState?.val,
+                                        );
+                                        this.log.debug(
+                                            `Setting "actionNeeded" flag for type.${trashNameClean}.actionNeeded to ${actionNeeded}`,
+                                        );
+                                        await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
+                                            val: actionNeeded,
+                                            ack: true,
+                                        });
 
                                         // JSON summary
                                         const summaryObj = {
@@ -822,6 +813,11 @@ class Trashschedule extends utils.Adapter {
                             q: 0x02,
                         });
                         await this.setStateChangedAsync(`type.${trashNameClean}.completed`, {
+                            val: false,
+                            ack: true,
+                            q: 0x02,
+                        });
+                        await this.setStateChangedAsync(`type.${trashNameClean}.actionNeeded`, {
                             val: false,
                             ack: true,
                             q: 0x02,
@@ -956,7 +952,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider) {
                             const response = await source.getApiCities(provider);
-                            const cities = response.map(c => ({ value: c.id, label: c.name }));
+                            const cities = response.map(c => ({ value: `${c.id}`, label: c.name }));
 
                             if (cities) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(cities)}`);
@@ -998,7 +994,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiDistricts(provider, cityId);
-                            const districts = response.map(d => ({ value: d.id, label: d.name }));
+                            const districts = response.map(d => ({ value: `${d.id}`, label: d.name }));
 
                             if (districts) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(districts)}`);
@@ -1041,7 +1037,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId) {
                             const response = await source.getApiStreets(provider, cityId, districtId);
-                            const streets = response.map(s => ({ value: s.id, label: s.name }));
+                            const streets = response.map(s => ({ value: `${s.id}`, label: s.name }));
 
                             if (streets) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(streets)}`);
@@ -1085,7 +1081,7 @@ class Trashschedule extends utils.Adapter {
 
                         if (provider && cityId && districtId && streetId) {
                             const response = await source.getApiHouseNumbers(provider, cityId, districtId, streetId);
-                            const houseNumbers = response.map(h => ({ value: h.id, label: h.name }));
+                            const houseNumbers = response.map(h => ({ value: `${h.id}`, label: h.name }));
 
                             if (houseNumbers) {
                                 this.log.debug(`[onMessage] ${obj.command} result: ${JSON.stringify(houseNumbers)}`);

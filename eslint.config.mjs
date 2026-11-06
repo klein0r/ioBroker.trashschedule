@@ -17,10 +17,12 @@ export default [
             'admin/blockly.js',
             '**/adapter-config.d.ts',
             'widgets/**/*.js',
+            'src-widgets/build/',
         ],
     },
     {
         rules: {
+            'jsdoc/reject-any-type': 'off',
             'jsdoc/require-jsdoc': 'off',
             'jsdoc/require-param': 'off',
             'jsdoc/require-param-description': 'off',

@@ -22,6 +22,10 @@
 
 Calculates the days left until next trash pickup
 
+## Sentry
+
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+
 ## Sponsored by
 
 [![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png?2024)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-trashschedule)
@@ -44,16 +48,30 @@ iobroker add trashschedule
 
 - SVG: https://pixabay.com/de/vectors/behälter-kann-deckel-offen-grün-310937/
 
-## Sentry
-
-**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
-
 ## Changelog
 
 <!--
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@typhosj) Added a native vis-2 widget, it looks like the vis-1 widget and keeps the settings of existing vis-2 projects
+* (@typhosj) Fixed "actionNeeded" staying true after the pickup day has passed (#292)
+
+### 6.0.0 (2026-09-29)
+
+* (copilot) Adapter requires node.js >= 22 now
+* (@klein0r) admin 7.8.23 and js-controller 6.0.11 (or later) are required
+* (@typhosj) Added muellabfuhr-deutschland.de as a new data source
+* (@typhosj) Fixed the source state of the abfall.io source (was empty)
+
+### 5.3.0 (2026-04-22)
+
+* (@Jailobeam) Fixed filtering of Lobbe.app address selections in the admin UI
+* (@Jailobeam) Added Lobbe.app as a new data source
+* (@Jailobeam) Added German labels for the Lobbe address selection
+
 ### 5.2.1 (2026-01-08)
 
 * (@klein0r) Fixed responsive config layout on xl screens
@@ -66,20 +84,13 @@ iobroker add trashschedule
 
 * (@klein0r) Added Wolfenbüttel to providers
 
-### 5.0.1 (2025-11-26)
-
-* (@klein0r) Increased timeout of api calls
-
-### 5.0.0 (2025-11-16)
-
-* (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
-* (@klein0r) Updated dependencies
+[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 
 MIT License
 
-Copyright (c) 2025-2026 Matthias Kleine <info@haus-automatisierung.com>
+Copyright (c) 2026 Matthias Kleine <info@haus-automatisierung.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
