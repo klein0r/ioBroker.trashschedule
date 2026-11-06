@@ -1,0 +1,18 @@
+{
+    "name": "iobroker-web-components-trashschedule",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "check-ts": "tsc --noEmit && tsc -p tsconfig.node.json --noEmit",
+        "lint": "eslint -c eslint.config.mjs src",
+        "test": "node --test \"src/**/*.test.ts\""
+    },
+    "devDependencies": {
+        "@iobroker/types": "^7.2.5",
+        "@iobroker/web-components": "^0.6.0",
+        "@types/node": "^22.20.5",
+        "vite": "^8.3.5"
+    }
+}

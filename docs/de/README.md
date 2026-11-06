@@ -56,4 +56,17 @@ ttd:
 
 ![VIS widget](./img/vis.png)
 
-**VIS 2.x wird mit diesem Widget nicht unterstützt!**
+vis-2 hat ein eigenes Widget, das genauso aussieht und die Einstellungen von vis-2-Projekten übernimmt, die das vis-1-Widget benutzt haben.
+
+## Web-Komponente (vis-2, devices, Aura)
+
+Die nächsten Abholungen gibt es auch als Web-Komponente `iob-trashschedule-pickups` ("Müllabfuhr", `common.webComponents`). vis-2 bietet sie als Widget an, devices als Kachel und Aura als Widget; jede andere Oberfläche mit `@iobroker/web-components` kann sie ebenfalls anzeigen. Sie liest `trashschedule.<n>.type.json` (oder den `json`-State eines Abfall-Typs) und zeigt die noch nicht erledigten Abfall-Typen - dieselbe Tonne in der Farbe des Abfall-Typs wie die VIS-Widgets, mit den verbleibenden Tagen, dem Namen und dem Datum der Abholung. Sie folgt dem hellen oder dunklen Theme ihrer Oberfläche, füllt die Fläche, die sie bekommt, und schreibt nichts.
+
+Einstellungen:
+
+- **Instanz** - die Instanz des Adapters
+- **Abfall-Typ** - optional: nur dieser Abfall-Typ (`trashschedule.0.type.<Name>`); leer: alle Abfall-Typen
+- **Layout** - Mülltonnen (füllen die Fläche aus) oder eine Liste
+- **Limit** - wie viele Abfall-Typen höchstens (0: alle)
+- **Name anzeigen**, **Datum anzeigen**, **Wochentag** (ausgeblendet, lang, kurz), **Datumsformat** (Systemsprache, Deutsch, Englisch (US))
+- **Leuchten, wenn fällig** und **Tage (Leuchten)** - die verbleibenden Tage leuchten, wenn höchstens so viele Tage übrig sind

@@ -56,10 +56,11 @@
   ],
   "scripts": {
     "update-readme": "node update-readme.js",
-    "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test|src-widgets)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\" && npm run test:widgets",
+    "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test|src-widgets|src-webcomponents)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\" && npm run test:widgets && npm run test:wc",
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
     "test:widgets": "npm --prefix src-widgets test",
+    "test:wc": "npm --prefix src-webcomponents test",
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .",
@@ -68,7 +69,11 @@
     "release-patch": "release-script patch --yes",
     "release-minor": "release-script minor --yes",
     "release-major": "release-script major --yes",
-    "build": "node tasks"
+    "build": "node tasks",
+    "build:widgets": "node tasks --widgets",
+    "build:wc": "node tasks --wc",
+    "check:wc": "npm --prefix src-webcomponents run check-ts",
+    "lint:wc": "npm --prefix src-webcomponents run lint"
   },
   "bugs": {
     "url": "https://github.com/klein0r/ioBroker.trashschedule/issues"

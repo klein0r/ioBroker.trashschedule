@@ -42,4 +42,17 @@
 
 ![VIS widget](./img/vis.png)
 
-**VIS 2.x is not supported with this widget!**
+vis-2 has a native widget that looks the same and keeps the settings of vis-2 projects that used the vis-1 widget.
+
+## Web component (vis-2, devices, Aura)
+
+The next pickups are also available as the web component `iob-trashschedule-pickups` ("Trash pickup", `common.webComponents`). vis-2 offers it as a widget, devices as a tile and Aura as a widget; every other host of `@iobroker/web-components` can show it as well. It reads `trashschedule.<n>.type.json` (or the `json` state of one trash type) and shows the trash types that are not completed yet - the same can in the color of the trash type as the VIS widgets, with the days left, the name and the date of the pickup. It follows the light or dark theme of its host, fills the box it gets and writes nothing.
+
+Settings:
+
+- **Instance** - the instance of the adapter
+- **Trash type** - optional: only this trash type (`trashschedule.0.type.<name>`); empty: all trash types
+- **Layout** - trash cans (arranged to fill the box) or a list
+- **Limit** - how many trash types at most (0: all)
+- **Show name**, **Show date**, **Weekday** (hidden, long, short), **Date format** (system language, German, English (US))
+- **Glow when due** and **Days (glow)** - the days left glow with this number of days left or fewer
