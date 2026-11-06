@@ -5,27 +5,18 @@
  * its own (`trashschedule-pickups.json`, written by the build from `manifest.ts`), so a host loads this module only
  * when it shows the element. The host sets `socket` and `settings`, and if it has them `theme` and `editMode`.
  *
- * The element shows what the vis widget (`widgets/trashschedule.html`) shows: a can per trash type in its color with
- * the days left, its name and the date of the pickup, read from the JSON state the adapter writes -
+ * The element shows what the vis widgets (vis-1 and vis-2) show: a can per trash type in its color with the days
+ * left, its name and the date of the pickup, read from the JSON state the adapter writes -
  * `trashschedule.<n>.type.json` for all trash types, `trashschedule.<n>.type.<name>.json` for one. Trash types that
- * are marked as completed are left out, as in the vis widget. It writes nothing.
+ * are marked as completed are left out, as in the vis widgets. It writes nothing. The can, its coloring, the date
+ * and the reading of the list are the code of the vis-2 widget (`pickups.ts`).
  *
  * Plain DOM, no framework: the module brings everything it needs.
  */
 import { defineWebComponent, IobWebComponent } from '@iobroker/web-components/element';
 
-import { getCanImage } from './can';
-import {
-    formatDate,
-    getLocale,
-    getSource,
-    parsePickups,
-    TAG,
-    type Layout,
-    type Pickup,
-    type PickupsSettings,
-    type Weekday,
-} from './constants';
+import { TAG, type Layout, type PickupsSettings } from './constants';
+import { formatDate, getCanImage, getLocale, getSource, parsePickups, type Pickup, type Weekday } from './pickups';
 import { getWord, type WordKey } from './i18n';
 import { getGridSize, MAX_GRID_COUNT, STYLES } from './styles';
 

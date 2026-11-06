@@ -3,19 +3,18 @@
  * `trashschedule-pickups.json` next to the module - a host reads that file for its palette and its settings without
  * loading the module.
  *
- * The name and the description are those of the devices widget (`common.deviceWidgets` in `io-package.json`): the
- * build takes every language the devices widget has and the rest from `NAME` and `DESCRIPTION` here. The same name,
- * per language, makes devices offer its own widget instead of this component.
+ * The adapter brings no plugin for devices (`common.deviceWidgets`): devices shows this component as its tile, vis-2
+ * as a widget next to the native vis-2 widget, Aura as a widget of its own.
  */
 import type { WebComponentManifest, WebComponentText } from '@iobroker/web-components';
 
 // with the extension: `vite.config.ts` imports this file, and Vite may load its config natively
 import { MODULE_FILE, TAG } from './constants.ts';
 
-export { DEVICES_WIDGET, MANIFEST_FILE, MODULE_FILE, MODULE_PATH, TAG } from './constants.ts';
+export { MANIFEST_FILE, MODULE_FILE, MODULE_PATH, TAG } from './constants.ts';
 
-/** The name of the component - the label of the devices widget, completed */
-export const NAME: Record<ioBroker.Languages, string> = {
+/** The name of the component in the palette of a host */
+export const NAME: WebComponentText = {
     en: 'Trash pickup',
     de: 'Müllabfuhr',
     ru: 'Вывоз мусора',
@@ -29,8 +28,8 @@ export const NAME: Record<ioBroker.Languages, string> = {
     'zh-cn': '垃圾清运',
 };
 
-/** The description of the component - the one of the devices widget, completed */
-export const DESCRIPTION: Record<ioBroker.Languages, string> = {
+/** The description of the component */
+export const DESCRIPTION: WebComponentText = {
     en: 'Shows the next trash pickups',
     de: 'Zeigt die nächsten Müllabfuhren an',
     ru: 'Показывает следующие вывозы мусора',
@@ -338,24 +337,14 @@ const GLOW_LIMIT_HELP: WebComponentText = {
     'zh-cn': '剩余天数不超过此值时发光',
 };
 
-/** The texts the build takes from the devices widget */
-export interface ManifestTexts {
-    name: WebComponentText;
-    description: WebComponentText;
-}
-
-/**
- * The manifest
- *
- * @param texts the name and the description: `NAME` and `DESCRIPTION`, with the words of the devices widget
- */
-export function buildManifest(texts: ManifestTexts): WebComponentManifest {
+/** The manifest */
+export function buildManifest(): WebComponentManifest {
     return {
         $schema: 'https://raw.githubusercontent.com/ioBroker/web-components/main/schemas/manifest.json',
         manifestVersion: 1,
         tag: TAG,
-        name: texts.name,
-        description: texts.description,
+        name: NAME,
+        description: DESCRIPTION,
         // relative to this file: /adapter/trashschedule/trashschedule.png
         icon: '../trashschedule.png',
         module: MODULE_FILE,

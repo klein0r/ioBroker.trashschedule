@@ -6,7 +6,8 @@
     "scripts": {
         "build": "vite build",
         "check-ts": "tsc --noEmit && tsc -p tsconfig.node.json --noEmit",
-        "lint": "eslint -c eslint.config.mjs src"
+        "lint": "eslint -c eslint.config.mjs src",
+        "test": "node --test \"src/**/*.test.ts\""
     },
     "devDependencies": {
         "@iobroker/types": "^7.2.5",

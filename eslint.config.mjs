@@ -18,6 +18,9 @@ export default [
             '**/adapter-config.d.ts',
             'widgets/**/*.js',
             'src-widgets/build/',
+            // own eslint config (`npm run lint:wc`); the built module is not linted
+            'src-webcomponents/',
+            'admin/webcomponents/',
         ],
     },
     {

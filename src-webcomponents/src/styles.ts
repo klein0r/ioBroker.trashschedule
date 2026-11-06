@@ -199,10 +199,9 @@ export const STYLES = `
     container-type: size;
     flex: none;
     width: 100%;
-    height: min(calc((96cqh - (var(--count) - 1) * var(--gap)) / var(--count)), 18cqw, 120px);
+    height: min(calc((96cqh - (var(--count) - 1) * var(--gap)) / var(--count)), 30cqw, 120px);
     display: flex;
     align-items: center;
-    gap: max(4px, 6cqh);
 }
 .mini {
     flex: none;
@@ -215,6 +214,8 @@ export const STYLES = `
 .text {
     flex: 1 1 0;
     min-width: 0;
+    /* the room beside the can and the days, by the height of the line: cq units of the row reach its children only */
+    padding: 0 max(4px, 25cqh);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,6 +225,21 @@ export const STYLES = `
 }
 .row .date {
     font-size: max(7px, min(25cqh, 7cqw));
+}
+/* a line too low for the name above the date (a flat tile): the date goes beside the name */
+@container (height < 26px) {
+    .row .text {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: flex-start;
+        gap: 0.6em;
+    }
+    .row .name {
+        flex: 0 1 auto;
+    }
+    .row .date {
+        flex: 0 100 auto;
+    }
 }
 .row .days {
     flex: none;
