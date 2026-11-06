@@ -1,0 +1,446 @@
+/**
+ * The manifest of `<iob-trashschedule-pickups>`. Read by the build only (`vite.config.ts`), which writes it as
+ * `trashschedule-pickups.json` next to the module - a host reads that file for its palette and its settings without
+ * loading the module.
+ *
+ * The name and the description are those of the devices widget (`common.deviceWidgets` in `io-package.json`): the
+ * build takes every language the devices widget has and the rest from `NAME` and `DESCRIPTION` here. The same name,
+ * per language, makes devices offer its own widget instead of this component.
+ */
+import type { WebComponentManifest, WebComponentText } from '@iobroker/web-components';
+
+// with the extension: `vite.config.ts` imports this file, and Vite may load its config natively
+import { MODULE_FILE, TAG } from './constants.ts';
+
+export { DEVICES_WIDGET, MANIFEST_FILE, MODULE_FILE, MODULE_PATH, TAG } from './constants.ts';
+
+/** The name of the component - the label of the devices widget, completed */
+export const NAME: Record<ioBroker.Languages, string> = {
+    en: 'Trash pickup',
+    de: 'Müllabfuhr',
+    ru: 'Вывоз мусора',
+    pt: 'Recolha do lixo',
+    nl: 'Afvalophaling',
+    fr: 'Collecte des déchets',
+    it: 'Raccolta rifiuti',
+    es: 'Recogida de basura',
+    pl: 'Wywóz śmieci',
+    uk: 'Вивіз сміття',
+    'zh-cn': '垃圾清运',
+};
+
+/** The description of the component - the one of the devices widget, completed */
+export const DESCRIPTION: Record<ioBroker.Languages, string> = {
+    en: 'Shows the next trash pickups',
+    de: 'Zeigt die nächsten Müllabfuhren an',
+    ru: 'Показывает следующие вывозы мусора',
+    pt: 'Mostra as próximas recolhas do lixo',
+    nl: 'Toont de volgende afvalophalingen',
+    fr: 'Affiche les prochaines collectes des déchets',
+    it: 'Mostra le prossime raccolte dei rifiuti',
+    es: 'Muestra las próximas recogidas de basura',
+    pl: 'Pokazuje najbliższe wywozy śmieci',
+    uk: 'Показує наступні вивози сміття',
+    'zh-cn': '显示接下来的垃圾清运',
+};
+
+const INSTANCE: WebComponentText = {
+    en: 'Instance',
+    de: 'Instanz',
+    ru: 'Экземпляр',
+    pt: 'Instância',
+    nl: 'Instantie',
+    fr: 'Instance',
+    it: 'Istanza',
+    es: 'Instancia',
+    pl: 'Instancja',
+    uk: 'Екземпляр',
+    'zh-cn': '实例',
+};
+
+const TRASH_TYPE: WebComponentText = {
+    en: 'Trash type',
+    de: 'Abfall-Typ',
+    ru: 'Тип мусора',
+    pt: 'Tipo de lixo',
+    nl: 'Soort afval',
+    fr: 'Type de déchets',
+    it: 'Tipo di rifiuti',
+    es: 'Tipo de basura',
+    pl: 'Rodzaj śmieci',
+    uk: 'Тип сміття',
+    'zh-cn': '垃圾类型',
+};
+
+const TRASH_TYPE_HELP: WebComponentText = {
+    en: 'Only this one, trashschedule.0.type.<name>; empty: all trash types of the instance',
+    de: 'Nur diesen, trashschedule.0.type.<Name>; leer: alle Abfall-Typen der Instanz',
+    ru: 'Только этот, trashschedule.0.type.<имя>; пусто: все типы мусора экземпляра',
+    pt: 'Apenas este, trashschedule.0.type.<nome>; vazio: todos os tipos de lixo da instância',
+    nl: 'Alleen deze, trashschedule.0.type.<naam>; leeg: alle soorten afval van de instantie',
+    fr: "Uniquement celui-ci, trashschedule.0.type.<nom> ; vide : tous les types de déchets de l'instance",
+    it: "Solo questo, trashschedule.0.type.<nome>; vuoto: tutti i tipi di rifiuti dell'istanza",
+    es: 'Solo este, trashschedule.0.type.<nombre>; vacío: todos los tipos de basura de la instancia',
+    pl: 'Tylko ten, trashschedule.0.type.<nazwa>; puste: wszystkie rodzaje śmieci instancji',
+    uk: 'Лише цей, trashschedule.0.type.<назва>; порожньо: усі типи сміття екземпляра',
+    'zh-cn': '仅此类型，trashschedule.0.type.<名称>；为空：实例的所有垃圾类型',
+};
+
+const LAYOUT: WebComponentText = {
+    en: 'Layout',
+    de: 'Layout',
+    ru: 'Макет',
+    pt: 'Layout',
+    nl: 'Indeling',
+    fr: 'Disposition',
+    it: 'Layout',
+    es: 'Diseño',
+    pl: 'Układ',
+    uk: 'Макет',
+    'zh-cn': '布局',
+};
+
+const LAYOUT_CANS: WebComponentText = {
+    en: 'Trash cans',
+    de: 'Mülltonnen',
+    ru: 'Мусорные баки',
+    pt: 'Contentores',
+    nl: 'Afvalbakken',
+    fr: 'Poubelles',
+    it: 'Bidoni',
+    es: 'Contenedores',
+    pl: 'Pojemniki',
+    uk: 'Сміттєві баки',
+    'zh-cn': '垃圾桶',
+};
+
+const LAYOUT_LIST: WebComponentText = {
+    en: 'List',
+    de: 'Liste',
+    ru: 'Список',
+    pt: 'Lista',
+    nl: 'Lijst',
+    fr: 'Liste',
+    it: 'Elenco',
+    es: 'Lista',
+    pl: 'Lista',
+    uk: 'Список',
+    'zh-cn': '列表',
+};
+
+const LIMIT: WebComponentText = {
+    en: 'Limit',
+    de: 'Limit',
+    ru: 'Ограничение',
+    pt: 'Limite',
+    nl: 'Limiet',
+    fr: 'Limite',
+    it: 'Limite',
+    es: 'Límite',
+    pl: 'Limit',
+    uk: 'Обмеження',
+    'zh-cn': '数量上限',
+};
+
+const LIMIT_HELP: WebComponentText = {
+    en: 'How many trash types at most; 0: all',
+    de: 'Wie viele Abfall-Typen höchstens; 0: alle',
+    ru: 'Сколько типов мусора максимум; 0: все',
+    pt: 'Quantos tipos de lixo no máximo; 0: todos',
+    nl: 'Hoeveel soorten afval maximaal; 0: alle',
+    fr: 'Nombre maximal de types de déchets ; 0 : tous',
+    it: 'Quanti tipi di rifiuti al massimo; 0: tutti',
+    es: 'Cuántos tipos de basura como máximo; 0: todos',
+    pl: 'Maksymalna liczba rodzajów śmieci; 0: wszystkie',
+    uk: 'Скільки типів сміття щонайбільше; 0: усі',
+    'zh-cn': '最多显示的垃圾类型数量；0：全部',
+};
+
+const SHOW_NAME: WebComponentText = {
+    en: 'Show name',
+    de: 'Name anzeigen',
+    ru: 'Показывать название',
+    pt: 'Mostrar nome',
+    nl: 'Naam tonen',
+    fr: 'Afficher le nom',
+    it: 'Mostra nome',
+    es: 'Mostrar nombre',
+    pl: 'Pokaż nazwę',
+    uk: 'Показувати назву',
+    'zh-cn': '显示名称',
+};
+
+const SHOW_DATE: WebComponentText = {
+    en: 'Show date',
+    de: 'Datum anzeigen',
+    ru: 'Показывать дату',
+    pt: 'Mostrar data',
+    nl: 'Datum tonen',
+    fr: 'Afficher la date',
+    it: 'Mostra data',
+    es: 'Mostrar fecha',
+    pl: 'Pokaż datę',
+    uk: 'Показувати дату',
+    'zh-cn': '显示日期',
+};
+
+const WEEKDAY: WebComponentText = {
+    en: 'Weekday',
+    de: 'Wochentag',
+    ru: 'День недели',
+    pt: 'Dia da semana',
+    nl: 'Weekdag',
+    fr: 'Jour de la semaine',
+    it: 'Giorno della settimana',
+    es: 'Día de la semana',
+    pl: 'Dzień tygodnia',
+    uk: 'День тижня',
+    'zh-cn': '星期',
+};
+
+const WEEKDAY_HIDE: WebComponentText = {
+    en: 'Hidden',
+    de: 'Ausgeblendet',
+    ru: 'Скрыт',
+    pt: 'Oculto',
+    nl: 'Verborgen',
+    fr: 'Masqué',
+    it: 'Nascosto',
+    es: 'Oculto',
+    pl: 'Ukryty',
+    uk: 'Прихований',
+    'zh-cn': '隐藏',
+};
+
+const WEEKDAY_LONG: WebComponentText = {
+    en: 'Long',
+    de: 'Lang',
+    ru: 'Длинный',
+    pt: 'Longo',
+    nl: 'Lang',
+    fr: 'Long',
+    it: 'Lungo',
+    es: 'Largo',
+    pl: 'Długi',
+    uk: 'Довгий',
+    'zh-cn': '长',
+};
+
+const WEEKDAY_SHORT: WebComponentText = {
+    en: 'Short',
+    de: 'Kurz',
+    ru: 'Короткий',
+    pt: 'Curto',
+    nl: 'Kort',
+    fr: 'Court',
+    it: 'Corto',
+    es: 'Corto',
+    pl: 'Krótki',
+    uk: 'Короткий',
+    'zh-cn': '短',
+};
+
+const DATE_LOCALE: WebComponentText = {
+    en: 'Date format',
+    de: 'Datumsformat',
+    ru: 'Формат даты',
+    pt: 'Formato da data',
+    nl: 'Datumnotatie',
+    fr: 'Format de date',
+    it: 'Formato data',
+    es: 'Formato de fecha',
+    pl: 'Format daty',
+    uk: 'Формат дати',
+    'zh-cn': '日期格式',
+};
+
+const DATE_LOCALE_SYSTEM: WebComponentText = {
+    en: 'System language',
+    de: 'Systemsprache',
+    ru: 'Язык системы',
+    pt: 'Idioma do sistema',
+    nl: 'Systeemtaal',
+    fr: 'Langue du système',
+    it: 'Lingua di sistema',
+    es: 'Idioma del sistema',
+    pl: 'Język systemu',
+    uk: 'Мова системи',
+    'zh-cn': '系统语言',
+};
+
+const DATE_LOCALE_DE: WebComponentText = {
+    en: 'German',
+    de: 'Deutsch',
+    ru: 'Немецкий',
+    pt: 'Alemão',
+    nl: 'Duits',
+    fr: 'Allemand',
+    it: 'Tedesco',
+    es: 'Alemán',
+    pl: 'Niemiecki',
+    uk: 'Німецька',
+    'zh-cn': '德语',
+};
+
+const DATE_LOCALE_EN: WebComponentText = {
+    en: 'English (US)',
+    de: 'Englisch (US)',
+    ru: 'Английский (США)',
+    pt: 'Inglês (EUA)',
+    nl: 'Engels (VS)',
+    fr: 'Anglais (États-Unis)',
+    it: 'Inglese (USA)',
+    es: 'Inglés (EE. UU.)',
+    pl: 'Angielski (USA)',
+    uk: 'Англійська (США)',
+    'zh-cn': '英语（美国）',
+};
+
+const GLOW: WebComponentText = {
+    en: 'Glow when due',
+    de: 'Leuchten, wenn fällig',
+    ru: 'Подсвечивать, когда пора',
+    pt: 'Brilhar quando chegar a hora',
+    nl: 'Oplichten wanneer het tijd is',
+    fr: "Briller à l'échéance",
+    it: 'Illumina alla scadenza',
+    es: 'Brillar al vencer',
+    pl: 'Świecić, gdy termin',
+    uk: 'Підсвічувати, коли час',
+    'zh-cn': '到期时发光',
+};
+
+const GLOW_LIMIT: WebComponentText = {
+    en: 'Days (glow)',
+    de: 'Tage (Leuchten)',
+    ru: 'Дней (подсветка)',
+    pt: 'Dias (brilho)',
+    nl: 'Dagen (oplichten)',
+    fr: 'Jours (brillance)',
+    it: 'Giorni (illuminazione)',
+    es: 'Días (brillo)',
+    pl: 'Dni (świecenie)',
+    uk: 'Днів (підсвічування)',
+    'zh-cn': '天数（发光）',
+};
+
+const GLOW_LIMIT_HELP: WebComponentText = {
+    en: 'Glows with this number of days left or fewer',
+    de: 'Leuchtet, wenn höchstens so viele Tage übrig sind',
+    ru: 'Подсвечивается, если осталось столько дней или меньше',
+    pt: 'Brilha quando faltam este número de dias ou menos',
+    nl: 'Licht op bij dit aantal resterende dagen of minder',
+    fr: "Brille lorsqu'il reste ce nombre de jours ou moins",
+    it: 'Si illumina quando mancano questi giorni o meno',
+    es: 'Brilla cuando quedan estos días o menos',
+    pl: 'Świeci, gdy zostało tyle dni lub mniej',
+    uk: 'Підсвічується, коли залишилося стільки днів або менше',
+    'zh-cn': '剩余天数不超过此值时发光',
+};
+
+/** The texts the build takes from the devices widget */
+export interface ManifestTexts {
+    name: WebComponentText;
+    description: WebComponentText;
+}
+
+/**
+ * The manifest
+ *
+ * @param texts the name and the description: `NAME` and `DESCRIPTION`, with the words of the devices widget
+ */
+export function buildManifest(texts: ManifestTexts): WebComponentManifest {
+    return {
+        $schema: 'https://raw.githubusercontent.com/ioBroker/web-components/main/schemas/manifest.json',
+        manifestVersion: 1,
+        tag: TAG,
+        name: texts.name,
+        description: texts.description,
+        // relative to this file: /adapter/trashschedule/trashschedule.png
+        icon: '../trashschedule.png',
+        module: MODULE_FILE,
+        // four cans as a dashboard tile; more or fewer arrange themselves in the box
+        size: { width: 400, height: 200 },
+        settings: {
+            type: 'panel',
+            items: {
+                instance: {
+                    type: 'instance',
+                    adapter: 'trashschedule',
+                    default: 'trashschedule.0',
+                    label: INSTANCE,
+                },
+                trashType: {
+                    type: 'objectId',
+                    types: 'channel',
+                    root: 'trashschedule',
+                    label: TRASH_TYPE,
+                    help: TRASH_TYPE_HELP,
+                },
+                layout: {
+                    type: 'select',
+                    default: 'cans',
+                    label: LAYOUT,
+                    options: [
+                        { value: 'cans', label: LAYOUT_CANS },
+                        { value: 'list', label: LAYOUT_LIST },
+                    ],
+                },
+                limit: {
+                    type: 'number',
+                    min: 0,
+                    max: 20,
+                    default: 0,
+                    label: LIMIT,
+                    help: LIMIT_HELP,
+                },
+                showName: {
+                    type: 'checkbox',
+                    default: true,
+                    label: SHOW_NAME,
+                },
+                showDate: {
+                    type: 'checkbox',
+                    default: true,
+                    label: SHOW_DATE,
+                },
+                dateWeekday: {
+                    type: 'select',
+                    default: 'long',
+                    label: WEEKDAY,
+                    options: [
+                        { value: 'hide', label: WEEKDAY_HIDE },
+                        { value: 'long', label: WEEKDAY_LONG },
+                        { value: 'short', label: WEEKDAY_SHORT },
+                    ],
+                    hidden: 'data.showDate === false',
+                },
+                dateLocale: {
+                    type: 'select',
+                    default: '',
+                    label: DATE_LOCALE,
+                    options: [
+                        { value: '', label: DATE_LOCALE_SYSTEM },
+                        { value: 'de-DE', label: DATE_LOCALE_DE },
+                        { value: 'en-US', label: DATE_LOCALE_EN },
+                    ],
+                    hidden: 'data.showDate === false',
+                },
+                glow: {
+                    type: 'checkbox',
+                    default: false,
+                    label: GLOW,
+                },
+                glowLimit: {
+                    type: 'number',
+                    min: 0,
+                    max: 30,
+                    default: 1,
+                    label: GLOW_LIMIT,
+                    help: GLOW_LIMIT_HELP,
+                    hidden: '!data.glow',
+                },
+            },
+        },
+    };
+}
