@@ -133,21 +133,31 @@ export const STYLES = `
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* the height of a line of the name and of the date, with its margin to the can; cq units here are the ones of the cell */
+    --name-size: max(8px, min(11cqw, 8.5cqh));
+    --date-size: max(7px, min(9cqw, 7cqh));
+}
+.item.with-name {
+    --name-room: calc(1.25 * var(--name-size) + 2cqh);
+}
+.item.with-date {
+    --date-room: calc(1.25 * var(--date-size) + 2cqh);
 }
 .item .name {
     flex: none;
     margin-bottom: 2cqh;
-    font-size: max(8px, min(11cqw, 8.5cqh));
+    font-size: var(--name-size);
 }
 .item .date {
     flex: none;
     margin-top: 2cqh;
-    font-size: max(7px, min(9cqw, 7cqh));
+    font-size: var(--date-size);
 }
+/* as high as the can: the name and the date stay at the can, the three are centered in the cell together */
 .can-area {
-    flex: 1 1 0;
-    min-height: 0;
+    flex: none;
     width: 100%;
+    height: max(0px, min(164.23cqw, 100cqh - var(--name-room, 0px) - var(--date-room, 0px)));
     container-type: size;
     display: flex;
     align-items: center;

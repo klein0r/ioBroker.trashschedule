@@ -8,7 +8,7 @@ void test('the instance of a setting', () => {
     assert.equal(getInstance('trashschedule.0'), 0);
     assert.equal(getInstance('system.adapter.trashschedule.2'), 2);
     assert.equal(getInstance('1'), 1);
-    assert.equal(getInstance(3 as unknown as string), 3);
+    assert.equal(getInstance(3), 3);
     assert.equal(getInstance(''), null);
     assert.equal(getInstance(undefined), null);
     assert.equal(getInstance('ical.0'), null);

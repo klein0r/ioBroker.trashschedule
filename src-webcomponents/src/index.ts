@@ -69,6 +69,9 @@ function drawHint(text: string): HTMLElement {
 
 function drawCan(pickup: ShownPickup, showName: boolean, showDate: boolean): HTMLElement {
     const item = element('div', pickup.glow ? 'item glow' : 'item');
+    // the can leaves room for the name and the date that are shown
+    item.classList.toggle('with-name', showName);
+    item.classList.toggle('with-date', showDate);
     item.title = pickup.title;
     if (showName) {
         item.append(element('div', 'name', pickup.name));

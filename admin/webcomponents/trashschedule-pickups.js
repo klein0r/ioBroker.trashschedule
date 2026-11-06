@@ -90,21 +90,31 @@ hr { width: 100%; border: 0; border-top: 1px solid var(--iob-divider); margin: 0
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* the height of a line of the name and of the date, with its margin to the can; cq units here are the ones of the cell */
+    --name-size: max(8px, min(11cqw, 8.5cqh));
+    --date-size: max(7px, min(9cqw, 7cqh));
+}
+.item.with-name {
+    --name-room: calc(1.25 * var(--name-size) + 2cqh);
+}
+.item.with-date {
+    --date-room: calc(1.25 * var(--date-size) + 2cqh);
 }
 .item .name {
     flex: none;
     margin-bottom: 2cqh;
-    font-size: max(8px, min(11cqw, 8.5cqh));
+    font-size: var(--name-size);
 }
 .item .date {
     flex: none;
     margin-top: 2cqh;
-    font-size: max(7px, min(9cqw, 7cqh));
+    font-size: var(--date-size);
 }
+/* as high as the can: the name and the date stay at the can, the three are centered in the cell together */
 .can-area {
-    flex: 1 1 0;
-    min-height: 0;
+    flex: none;
     width: 100%;
+    height: max(0px, min(164.23cqw, 100cqh - var(--name-room, 0px) - var(--date-room, 0px)));
     container-type: size;
     display: flex;
     align-items: center;
@@ -248,5 +258,5 @@ hr { width: 100%; border: 0; border-top: 1px solid var(--iob-divider); margin: 0
 }
 
 ${Q()}
-`,ne=[{word:`paper`,daysLeft:1,color:`#2a64c4`},{word:`organic`,daysLeft:3,color:`#2ca850`},{word:`recycling`,daysLeft:8,color:`#c8b820`},{word:`residual`,daysLeft:15,color:`#545454`}],re=864e5;function $(e,t,n){let r=document.createElement(e);return r.className=t,n!==void 0&&(r.textContent=n),r}function ie(e){let t=$(`div`,`hint`),n=$(`div`,`mini`);return n.style.backgroundImage=G(void 0),t.append(n,$(`div`,`message`,e)),t}function ae(e,t,n){let r=$(`div`,e.glow?`item glow`:`item`);r.title=e.title,t&&r.append($(`div`,`name`,e.name));let i=$(`div`,`can-area`),a=$(`div`,`can`);return a.style.backgroundImage=G(e.color),a.append($(`span`,`days`,e.days)),i.append(a),r.append(i),n&&r.append($(`div`,`date`,e.date)),r}function oe(e,t,n){let r=$(`div`,e.glow?`row glow`:`row`);r.title=e.title;let i=$(`div`,`mini`);i.style.backgroundImage=G(e.color);let a=$(`div`,`text`);return t&&a.append($(`div`,`name`,e.name)),n&&a.append($(`div`,`date`,e.date)),r.append(i,a,$(`div`,`days`,e.days)),r}function se(e,t){let n=e.pickups.length,r=$(`div`,`pickups ${e.layout}${t?` edit`:``}`);if(e.layout===`list`)r.style.setProperty(`--count`,String(n)),r.append(...e.pickups.map(t=>oe(t,e.showName,e.showDate)));else{if(r.classList.add(`n${n}`),n>12){let{rows:e,cols:t}=Z(n);r.style.setProperty(`--rows`,String(e)),r.style.setProperty(`--cols`,String(t))}r.append(...e.pickups.map(t=>ae(t,e.showName,e.showDate)))}return r}D(ee,class extends E{#e;#t=``;constructor(){super();let e=this.attachShadow({mode:`open`}),t=document.createElement(`style`);t.textContent=te,this.#e=document.createElement(`div`),this.#e.className=`mount`,e.append(t,this.#e)}getStateIds(e){return[V(e).id]}render(){let e=this.#n(),t=this.editMode,n=JSON.stringify([e,t]);n!==this.#t&&(this.#t=n,e.kind===`hint`?this.#e.replaceChildren(ie(e.text)):e.kind===`pickups`?this.#e.replaceChildren(se(e,t)):this.#e.replaceChildren())}#n(){let e=this.settings,t=this.systemLang,n=V(e);if(!n.id)return{kind:`hint`,text:J(t,n.problem||`chooseInstance`)};let r=null,i=this.states[n.id];if(i!==void 0&&(r=H(i?.val)),!r&&this.editMode){let e=/* @__PURE__ */ new Date;e.setHours(0,0,0,0),r=ne.map(n=>({name:J(t,n.word),daysLeft:n.daysLeft,nextDate:e.getTime()+n.daysLeft*re,description:``,color:n.color}))}if(!r)return i===void 0?{kind:`empty`}:{kind:`hint`,text:J(t,`noData`)};let a=Math.max(0,Math.floor(Number(e.limit)||0));if(a&&(r=r.slice(0,a)),!r.length)return{kind:`hint`,text:J(t,`noPickups`)};let o=e.dateWeekday===`hide`||e.dateWeekday===`short`?e.dateWeekday:`long`,s=e.dateLocale||W(t),c=e.glowLimit??1,l=J(t,`daysLeft`);return{kind:`pickups`,layout:e.layout===`list`?`list`:`cans`,showName:e.showName!==!1,showDate:e.showDate!==!1,pickups:r.map(t=>{let n=U(t.nextDate,s,o);return{name:t.name,days:String(t.daysLeft),date:n,color:t.color,glow:!!e.glow&&t.daysLeft<=c,title:[t.name,U(t.nextDate,s,`long`),`${l}: ${t.daysLeft}`,t.description].filter(Boolean).join(`
+`,ne=[{word:`paper`,daysLeft:1,color:`#2a64c4`},{word:`organic`,daysLeft:3,color:`#2ca850`},{word:`recycling`,daysLeft:8,color:`#c8b820`},{word:`residual`,daysLeft:15,color:`#545454`}],re=864e5;function $(e,t,n){let r=document.createElement(e);return r.className=t,n!==void 0&&(r.textContent=n),r}function ie(e){let t=$(`div`,`hint`),n=$(`div`,`mini`);return n.style.backgroundImage=G(void 0),t.append(n,$(`div`,`message`,e)),t}function ae(e,t,n){let r=$(`div`,e.glow?`item glow`:`item`);r.classList.toggle(`with-name`,t),r.classList.toggle(`with-date`,n),r.title=e.title,t&&r.append($(`div`,`name`,e.name));let i=$(`div`,`can-area`),a=$(`div`,`can`);return a.style.backgroundImage=G(e.color),a.append($(`span`,`days`,e.days)),i.append(a),r.append(i),n&&r.append($(`div`,`date`,e.date)),r}function oe(e,t,n){let r=$(`div`,e.glow?`row glow`:`row`);r.title=e.title;let i=$(`div`,`mini`);i.style.backgroundImage=G(e.color);let a=$(`div`,`text`);return t&&a.append($(`div`,`name`,e.name)),n&&a.append($(`div`,`date`,e.date)),r.append(i,a,$(`div`,`days`,e.days)),r}function se(e,t){let n=e.pickups.length,r=$(`div`,`pickups ${e.layout}${t?` edit`:``}`);if(e.layout===`list`)r.style.setProperty(`--count`,String(n)),r.append(...e.pickups.map(t=>oe(t,e.showName,e.showDate)));else{if(r.classList.add(`n${n}`),n>12){let{rows:e,cols:t}=Z(n);r.style.setProperty(`--rows`,String(e)),r.style.setProperty(`--cols`,String(t))}r.append(...e.pickups.map(t=>ae(t,e.showName,e.showDate)))}return r}D(ee,class extends E{#e;#t=``;constructor(){super();let e=this.attachShadow({mode:`open`}),t=document.createElement(`style`);t.textContent=te,this.#e=document.createElement(`div`),this.#e.className=`mount`,e.append(t,this.#e)}getStateIds(e){return[V(e).id]}render(){let e=this.#n(),t=this.editMode,n=JSON.stringify([e,t]);n!==this.#t&&(this.#t=n,e.kind===`hint`?this.#e.replaceChildren(ie(e.text)):e.kind===`pickups`?this.#e.replaceChildren(se(e,t)):this.#e.replaceChildren())}#n(){let e=this.settings,t=this.systemLang,n=V(e);if(!n.id)return{kind:`hint`,text:J(t,n.problem||`chooseInstance`)};let r=null,i=this.states[n.id];if(i!==void 0&&(r=H(i?.val)),!r&&this.editMode){let e=/* @__PURE__ */ new Date;e.setHours(0,0,0,0),r=ne.map(n=>({name:J(t,n.word),daysLeft:n.daysLeft,nextDate:e.getTime()+n.daysLeft*re,description:``,color:n.color}))}if(!r)return i===void 0?{kind:`empty`}:{kind:`hint`,text:J(t,`noData`)};let a=Math.max(0,Math.floor(Number(e.limit)||0));if(a&&(r=r.slice(0,a)),!r.length)return{kind:`hint`,text:J(t,`noPickups`)};let o=e.dateWeekday===`hide`||e.dateWeekday===`short`?e.dateWeekday:`long`,s=e.dateLocale||W(t),c=e.glowLimit??1,l=J(t,`daysLeft`);return{kind:`pickups`,layout:e.layout===`list`?`list`:`cans`,showName:e.showName!==!1,showDate:e.showDate!==!1,pickups:r.map(t=>{let n=U(t.nextDate,s,o);return{name:t.name,days:String(t.daysLeft),date:n,color:t.color,glow:!!e.glow&&t.daysLeft<=c,title:[t.name,U(t.nextDate,s,`long`),`${l}: ${t.daysLeft}`,t.description].filter(Boolean).join(`
 `)}})}}});
