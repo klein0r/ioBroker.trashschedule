@@ -15,5 +15,8 @@ Thumbs.db
 # vis-2 widget build, copied to widgets/trashschedule by tasks.js
 src-widgets/build/
 
+# web component build, copied to admin/webcomponents by tasks.js
+src-webcomponents/build/
+
 #ignore .commitinfo created by ioBroker release script
 .commitinfo

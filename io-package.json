@@ -187,6 +187,9 @@
         ]
       }
     },
+    "webComponents": [
+      "webcomponents/trashschedule-pickups.json"
+    ],
     "dependencies": [
       {
         "js-controller": ">=6.0.11"
